@@ -14,7 +14,7 @@ return(<nav className="navbar border-bottom navbar-expand-lg myCustomNavbar" dat
         </li>
         <li className="nav-item nav-item-flex">
           <img src="./src/images/ajuda_icon.png" width="25" height="25"/>
-          <a className="nav-link" href="#">Ajuda</a>
+          <a className="nav-link" href="#">Ajudaaaa</a>
         </li>
       </ul>
     </div>
