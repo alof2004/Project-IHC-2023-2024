@@ -1,0 +1,14 @@
+.myCustomNavbar {
+    background-color: #1e1e1f; /* Your custom color */
+   }
+
+.nav-item-flex {
+    display: flex;
+    align-items: center;
+    margin-right: 1px; /* Adjust this value to reduce or increase the space */
+
+   }
+
+.nav-item {
+    margin-right: 15px; /* Adjust this value to increase or decrease the spacing */
+}
