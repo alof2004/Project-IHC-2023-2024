@@ -1,14 +1,26 @@
 .myCustomNavbar {
-    background-color: #1e1e1f; /* Your custom color */
-   }
+  background-color: #1e1e1f; /* Your custom color */
+}
+
+.navbar-nav .nav-item {
+  display: flex;
+  align-items: center; /* Vertically align items */
+  margin-right: 10px; /* Adjust as needed */
+}
+
+.navbar-nav .nav-item img {
+  margin-right: 5px; /* Adjust as needed */
+}
 
 .nav-item-flex {
-    display: flex;
-    align-items: center;
-    margin-right: 1px; /* Adjust this value to reduce or increase the space */
-
-   }
-
-.nav-item {
-    margin-right: 15px; /* Adjust this value to increase or decrease the spacing */
+  display: flex;
+  align-items: center;
+  margin-right: 1px; /* Adjust this value to reduce or increase the space */
 }
+
+.login-page {
+  width: 560px;
+  padding: 8% 0 0;
+  margin: auto;
+}
+
