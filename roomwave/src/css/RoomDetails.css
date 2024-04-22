@@ -17,17 +17,43 @@
     color: orange;
 }
 
-.each-slide-effect > div {
+.room-images {
+    position: relative;
+}
+
+.main-image {
+    margin-top: 50px;
+    margin-left:87px;
+    width: 1300px;
+    height: 700px;
+}
+
+.other-images {
+    position: absolute;
+    top: 50px; /* Adjust the top position to align with the main image */
+    left: calc(87px + 1300px + 20px); /* Adjust the left position to align with the right edge of the main image plus some spacing */
     display: flex;
-    align-items: center;
-    justify-content: center;
-    background-size: cover;
-    height: 350px;
-  }
-  
-  .each-slide-effect span {
-    padding: 20px;
-    font-size: 20px;
-    background: #efefef;
-    text-align: center;
-  }
+    flex-direction: column;
+    gap: 10px;
+}
+
+.vertical-image {
+    width: 200px;
+    height: 120px;
+}
+
+.contact-box {
+    position: absolute; 
+    top: 275px; 
+    left: 1000px; 
+    transform: translateX(10px);
+    display: flex; 
+    background-color: rgb(220, 220, 220); 
+    
+
+}
+
+.phone-number {
+    font-size: 40px;
+    color: black;
+}

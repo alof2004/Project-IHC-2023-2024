@@ -18,7 +18,7 @@ function App() {
           <Routes>
             <Route path="/" element={<div>aaaa</div>} /> {/* Use element prop to render LoginBox */}
             <Route path="/login" element={<LoginBox />} /> {/* Use element prop to render LoginBox */}
-            <Route path="/RoomDetails" element={<RoomDetails />} /> {/* Use element prop to render LoginBox */}
+            <Route path="/RoomDetails" element={<RoomDetails />} /> {/* Use element prop to render RoomDetails */}
           </Routes>
         </div>
       </AuthProvider>

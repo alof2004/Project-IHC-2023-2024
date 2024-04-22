@@ -2,13 +2,11 @@
     {
         "id": 1,
         "Proprietaria": "Fernanda Serrano",
-        "imagens" : [
-            "./images/quarto1.jpg",
-            "./images/quarto1_2.jpg",
-            "./images/quarto1_3.jpg",
-            "./images/quarto1_4.jpg"
-        ],
-        "localizacao": "Rua das Flores",
+        "imagem1": "./src/images/quarto1.jpg",
+        "imagem2": "./src/images/quarto1_2.jpg",
+        "imagem3": "./src/images/quarto1_3.jpg",
+        "imagem4": "./src/images/quarto1_4.jpg",
+        "localizacao":  "Rua das Flores",
         "cidade": "Aveiro",
         "description": "Quarto com cama de casal, ar condicionado e banheiro privativo",
         "price": 100,
