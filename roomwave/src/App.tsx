@@ -3,6 +3,7 @@ import NavBar from "./components/NavBar";
 import LoginBox from "./components/LoginBox";
 import { AuthProvider, useAuth } from './components/AuthContext'; // Import useAuth hook
 import NavBarClient from './components/NavBarClient';
+import RoomDetails from './components/RoomDetails';
 
 function App() {
   const { isLoggedIn } = useAuth(); // Get isLoggedIn state from AuthContext
@@ -17,6 +18,7 @@ function App() {
           <Routes>
             <Route path="/" element={<div>aaaa</div>} /> {/* Use element prop to render LoginBox */}
             <Route path="/login" element={<LoginBox />} /> {/* Use element prop to render LoginBox */}
+            <Route path="/RoomDetails" element={<RoomDetails />} /> {/* Use element prop to render LoginBox */}
           </Routes>
         </div>
       </AuthProvider>

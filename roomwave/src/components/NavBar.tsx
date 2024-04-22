@@ -6,9 +6,9 @@ function NavBar() {
   return (
     <nav className="navbar border-bottom navbar-expand-lg myCustomNavbar" data-bs-theme="dark">
       <div className="container-fluid">
-        <a className="navbar-brand" href="#">
+        <Link to="/RoomDetails" className="navbar-brand">
           <img src="./src/images/roomWaveLogo.png" width="95" height="50" alt="Logo"/>
-        </a>
+        </Link>
         <div className="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
           <ul className="navbar-nav">
             <li className="nav-item nav-item-flex">
