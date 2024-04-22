@@ -2,7 +2,7 @@ import '../App.css'; // Adjust the path as necessary
 import '../Login.tsx'
 import { Link } from 'react-router-dom'; // Assuming you're using React Router
 
-function NavBar() {
+function NavBarClient() {
   return (
     <nav className="navbar border-bottom navbar-expand-lg myCustomNavbar" data-bs-theme="dark">
       <div className="container-fluid">
@@ -14,7 +14,7 @@ function NavBar() {
             <li className="nav-item nav-item-flex">
               <Link to="login" className="nav-link">
                 <img src="./src/images/perfil_icon.png" width="30" height="30" alt="Profile Icon"/>
-                Log-In
+                Log-In11111
               </Link>
             </li>
             <li className="nav-item nav-item-flex">
@@ -28,4 +28,4 @@ function NavBar() {
   );
 }
 
-export default NavBar;
+export default NavBarClient;

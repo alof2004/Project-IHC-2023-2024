@@ -1,0 +1,154 @@
+
+  .button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px; /* Add margin to separate button containers */
+  }
+  
+  .button-container button {
+    width: 48%;
+    margin: 5px;
+  }
+  
+  .button-container button:hover,
+  .button-container button:active,
+  .button-container button:focus {
+    background: #d6a876;
+  }
+  
+  .message {
+    margin: 15px 0 0;
+    color: #b3b3b3;
+    font-size: 12px;
+  }
+  
+  .message a {
+    color: #4CAF50;
+    text-decoration: none;
+  }
+
+  .titulo{
+    font-size: 40px;
+    color:#f2f2f2;
+    text-align: left;
+  }
+
+
+  .form {
+    position: relative;
+    z-index: 1;
+    background: #333333;
+    max-width: 1200px; /* Adjust the max-width to make the form larger horizontally */
+    width: 100%; /* Ensure the form takes up the full width */
+    height: auto; /* Remove fixed height */
+    margin: 0 auto; /* Center horizontally */
+    padding: 35px;
+    text-align: center;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  }
+  
+  .form input {
+    font-family: "Roboto", sans-serif;
+    outline: 0;
+    background: #f2f2f2;
+    width: 100%;
+    border: 0;
+    margin: 0 0 20px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+  }
+  
+  .form button {
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    outline: 0;
+    background: #FF7A41;
+    width: 100%;
+    border: 0;
+    padding: 15px;
+    color: #FFFFFF;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .form button:hover, .form button:active, .form button:focus {
+    background: #ecab76;
+    offset: 0.9s;
+  }
+  
+  .form .message {
+    margin: 15px 0 0;
+    color: #b3b3b3;
+    font-size: 12px;
+  }
+  
+  .form .message a {
+    color: #af814c;
+    text-decoration: none;
+  }
+  
+  .form .register-form {
+    display: none;
+  }
+  
+  .form .login-form {
+    display: block;
+  }
+  
+  .container {
+    position: relative;
+    z-index: 1;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+  
+  .container:before,
+  .container:after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+  
+  .container .info {
+    margin: 50px auto;
+    text-align: center;
+  }
+  
+  .container .info h1 {
+    margin: 0 0 15px;
+    padding: 0;
+    font-size: 36px;
+    font-weight: 300;
+    color: #1a1a1a;
+  }
+  
+  .container .info span {
+    color: #4d4d4d;
+    font-size: 12px;
+  }
+  
+  .container .info span a {
+    color: #000000;
+    text-decoration: none;
+  }
+  
+  .container .info span .fa {
+    color: #EF3B3A;
+  }
+  
+  
+  body {
+    background: #ecab76; /* fallback for old browsers */
+    background: -webkit-linear-gradient(right, #ecab76, #ecab76);
+    background: -moz-linear-gradient(right, #ecab76, #ecab76);
+    background: -o-linear-gradient(right, #ecab76, #ecab76);
+    background: linear-gradient(to left, #ecab76, #ecab76);
+    font-family: "Roboto", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
