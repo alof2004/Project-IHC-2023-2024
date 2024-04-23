@@ -1,0 +1,72 @@
+.return-button {    
+    width: 50px;
+    height: 50px;
+    margin-top: 50px;
+    margin-left:80px;
+}
+
+.title_info {
+    margin-top: 50px;
+    margin-left:80px;
+    font-size: 50px;
+    color: black;
+
+}
+
+.title_info_proprietaria {
+    color: #ffa500;
+}
+
+.room-images {
+    position: relative;
+}
+
+.main-image {
+    margin-top: 50px;
+    margin-left:87px;
+    width: 1300px;
+    height: 700px;
+}
+
+.other-images {
+    position: absolute;
+    top: 50px; /* Adjust the top position to align with the main image */
+    left: calc(87px + 1300px + 20px); /* Adjust the left position to align with the right edge of the main image plus some spacing */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.vertical-image {
+    width: 200px;
+    height: 120px;
+}
+
+.contact-box {
+    position: absolute; 
+    top: 270px; 
+    left: 1000px; 
+    display: flex; 
+    background-color: #ffa500; 
+    align-items: center;
+    padding: 10px;
+    border-radius: 30px;
+    height: 100px;
+
+
+}
+
+.phone-number {
+    font-size: 40px;
+    color: rgb(255, 255, 255);
+    margin-left: 10px;
+    white-space: nowrap;
+    
+}
+
+.description_info {
+    margin-left:80px;
+    font-size: 30px;
+    
+}   

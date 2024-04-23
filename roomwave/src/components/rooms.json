@@ -1,0 +1,50 @@
+[
+    {
+        "id": 1,
+        "Proprietaria": "Fernanda Serrano",
+        "imagem1": "./src/images/quarto1.jpg",
+        "imagem2": "./src/images/quarto1_2.jpg",
+        "imagem3": "./src/images/quarto1_3.jpg",
+        "imagem4": "./src/images/quarto1_4.jpg",
+        "localizacao":  "Rua das Flores",
+        "Locais_proximos": "Universidade, Mini-Preço e pastelaria Boa Estação",
+        "cidade": "Aveiro",
+        "description": "Quarto com cama de casal, ar condicionado e banheiro privativo",
+        "Transportes": " a 100 m",
+        "servicos":[
+            "roupeiro",
+            "secretária",
+            "estante de livros",
+            "sofá",
+            "frigorífico",
+            "equipamento de cozinha"
+        ],
+        "Descrição_Proprietaria":"Prédio de muita qualidade, muito cuidado, elevadores e porteiro. Espaço privado no terraço do imóvel com vista de Rio e cidade.",
+        "Cama": "2",
+        "Cozinha": "equipada",
+        "casas_de_banho": 2,
+        "Ambiente":"calmo",
+        "price": 100,
+        "Pessoas_permitidas": [
+            "Masculino e Feminino",
+            "jovens profissionais e universitários"
+        ],
+        "gastos": "incluidos",
+        "Animais":"admitidos",
+        "Fumadores":"interdito",
+        "area": "15",
+        "Vista": "virada a sul para praceta muito sossegada e ainda para a ria de Aveiro",
+        "Renda_inclui":[
+            "Água;",
+            "Luz;",
+            "Quarto;",
+            "Cozinha partilhada;",
+            "Sala partilhada;",
+            "Casa de banho partilhada;",
+            "Limpeza semanal",
+            "Permissão para animais;",
+            "Todos os géneros;"
+        ]
+
+    }
+]

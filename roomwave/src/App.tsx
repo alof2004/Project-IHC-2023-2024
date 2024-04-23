@@ -3,6 +3,7 @@ import NavBar from "./components/NavBar";
 import LoginBox from "./components/LoginBox";
 import { AuthProvider, useAuth } from './components/AuthContext'; // Import useAuth hook
 import NavBarClient from './components/NavBarClient';
+import RoomDetails from './components/RoomDetails';
 import HomeClient from './components/homeClient';
 import HomeLandlord from './components/homeLandlord';
 import Home from './components/home';
@@ -22,6 +23,7 @@ function App() {
             <Route path="/homeLandlord" element={<HomeLandlord />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup/client" element={<SignupClient />} />
+            <Route path="/RoomDetails" element={<RoomDetails />} /> {/* Use element prop to render RoomDetails */}
           </Routes>
         </div>
       </AuthProvider>

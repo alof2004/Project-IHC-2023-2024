@@ -13,7 +13,7 @@
   .button-container button:hover,
   .button-container button:active,
   .button-container button:focus {
-    background: #d6a876;
+    background: #ff9f39;
   }
   
   .message {
@@ -142,11 +142,11 @@
   
   
   body {
-    background: #ecab76; /* fallback for old browsers */
-    background: -webkit-linear-gradient(right, #ecab76, #ecab76);
-    background: -moz-linear-gradient(right, #ecab76, #ecab76);
-    background: -o-linear-gradient(right, #ecab76, #ecab76);
-    background: linear-gradient(to left, #ecab76, #ecab76);
+    background: #C8C8C8; /* fallback for old browsers */
+    background: -webkit-linear-gradient(right, #C8C8C8, #C8C8C8);
+    background: -moz-linear-gradient(right, #C8C8C8, #C8C8C8);
+    background: -o-linear-gradient(right, #C8C8C8, #C8C8C8);
+    background: linear-gradient(to left, #C8C8C8, #C8C8C8);
     font-family: "Roboto", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
