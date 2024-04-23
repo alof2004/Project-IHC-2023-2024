@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext, FC } from "react";
+import React, { createContext, useState, useContext, FC, useEffect } from "react";
 
 interface AuthContextType {
   isLoggedIn: boolean;
@@ -18,14 +18,11 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
   const [loginType, setLoginType] = useState("");
 
   const login = (type: string) => {
-    console.log('Logging in'); // This will log when the login function is called
-    setIsLoggedIn(true);
+    console.log('Logging in');
+    setIsLoggedIn(true); // Update immediately without setTimeout
     setLoginType(type);
-    setTimeout(() => {}, 3000); // This will pause execution for 1 second
-    console.log('Logged in', isLoggedIn); // This might still log `false` because state updates are asynchronous
   };
   
-
   const logout = () => {
     setIsLoggedIn(false);
     setLoginType("");
@@ -37,6 +34,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
     </AuthContext.Provider>
   );
 };
+
 
 export const useAuth = (): AuthContextType => {
   const context = useContext(AuthContext);

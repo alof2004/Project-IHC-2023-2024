@@ -3,25 +3,31 @@ import NavBar from "./components/NavBar";
 import LoginBox from "./components/LoginBox";
 import { AuthProvider, useAuth } from './components/AuthContext'; // Import useAuth hook
 import NavBarClient from './components/NavBarClient';
+import HomeClient from './components/homeClient';
+import HomeLandlord from './components/homeLandlord';
+import Home from './components/home';
+import Login from './components/Login';
+import SignupClient from './components/SignupClient';
 
 function App() {
   const { isLoggedIn } = useAuth(); // Get isLoggedIn state from AuthContext
-  console.log(useAuth()); // Log the value returned by the useAuth hook to see if it's correct
+
   return (
     <Router>
       <AuthProvider>
-        
         <div>
-          {isLoggedIn ? <NavBarClient /> : <NavBar />} {/* Render NavBar if user is logged in */}
-          <p>Is logged in? {isLoggedIn ? 'Yes' : 'No'}</p>
           <Routes>
-            <Route path="/" element={<div>aaaa</div>} /> {/* Use element prop to render LoginBox */}
-            <Route path="/login" element={<LoginBox />} /> {/* Use element prop to render LoginBox */}
+            <Route path="/" element={<Home />} />
+            <Route path="/homeClient" element={<HomeClient />} />
+            <Route path="/homeLandlord" element={<HomeLandlord />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup/client" element={<SignupClient />} />
           </Routes>
         </div>
       </AuthProvider>
     </Router>
   );
 }
+
 
 export default App;
