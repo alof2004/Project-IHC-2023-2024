@@ -44,16 +44,28 @@
 
 .contact-box {
     position: absolute; 
-    top: 275px; 
+    top: 255px; 
     left: 1000px; 
-    transform: translateX(10px);
     display: flex; 
-    background-color: rgb(220, 220, 220); 
-    
+    background-color: rgb(151, 151, 151); 
+    align-items: center;
+    padding: 10px;
+    border-radius: 30px;
+    height: 100px;
+
 
 }
 
 .phone-number {
     font-size: 40px;
-    color: black;
+    color: rgb(255, 255, 255);
+    margin-left: 10px;
+    white-space: nowrap;
+    
 }
+
+.description_info {
+    margin-left:80px;
+    font-size: 30px;
+    
+}   
