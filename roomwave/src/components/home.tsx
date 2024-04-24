@@ -1,5 +1,6 @@
 import React from 'react';
 import NavBar from './NavBar';
+import HomeText from './HomeText';
 
 function Home() {
   return (
@@ -9,7 +10,9 @@ function Home() {
         <img className="w3-image" src="../src/images/homepage.png" alt="Architecture" style={{ width: "100%", height: "auto" }} />
         
         {/* Select bar */}
-        <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", width: "300px" }}>
+        <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", width: "500px" }}>
+        <HomeText />
+
           <select style={{ width: "100%", fontSize: "18px", padding: "10px" }}>
             <option value="option1">Option 1</option>
             <option value="option2">Option 2</option>

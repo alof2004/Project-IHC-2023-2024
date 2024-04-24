@@ -1,41 +1,104 @@
-import "../src/css/HomeText.css";
-import Home from "./HomeTextFunction";
-function HomeText(){
-    return(
+import React, { useEffect } from 'react';
+import "../css/homeText.css";
+
+function HomeText() {
+  useEffect(() => {
+    decodeText();
+    const interval = setInterval(() => {
+      decodeText();
+    }, 10000);
+    return () => clearInterval(interval);
+  }, []);
+
+  function decodeText() {
+    const text = document.getElementsByClassName('decode-text')[0];
+    const state = [];
+    for (let i = 0, j = text.children.length; i < j; i++) {
+      text.children[i].classList.remove('state-1', 'state-2', 'state-3');
+      state[i] = i;
+    }
+    const shuffled = shuffle(state);
+
+    for (let i = 0, j = shuffled.length; i < j; i++) {
+      const child = text.children[shuffled[i]] as HTMLElement;
+      const classes = child.classList;
+
+      const state1Time = Math.round(Math.random() * (2000 - 300)) + 50;
+      if (classes.contains('text-animation')) {
+        setTimeout(() => firstStages(child), state1Time);
+      }
+    }
+  }
+
+  function firstStages(child: HTMLElement) {
+    if (child.classList.contains('state-2')) {
+      child.classList.add('state-3');
+    } else if (child.classList.contains('state-1')) {
+      child.classList.add('state-2');
+    } else if (!child.classList.contains('state-1')) {
+      child.classList.add('state-1');
+      setTimeout(() => secondStages(child), 100);
+    }
+  }
+
+  function secondStages(child: HTMLElement) {
+    if (child.classList.contains('state-1')) {
+      child.classList.add('state-2');
+      setTimeout(() => thirdStages(child), 100);
+    } else if (!child.classList.contains('state-1')) {
+      child.classList.add('state-1');
+    }
+  }
+
+  function thirdStages(child: HTMLElement) {
+    if (child.classList.contains('state-2')) {
+      child.classList.add('state-3');
+    }
+  }
+
+  function shuffle(array: number[]) {
+    let currentIndex = array.length;
+    let temporaryValue: number, randomIndex: number;
+
+    while (0 !== currentIndex) {
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+
+    return array;
+  }
+
+  return (
     <div>
-    <div className="decode-text">
-        <div className="text-animation">R</div>
+      <div className="decode-text">
+        <div className="text-animation">P</div>
+        <div className="text-animation">r</div>
+        <div className="text-animation">o</div>
+        <div className="text-animation">c</div>
+        <div className="text-animation">u</div>
+        <div className="text-animation">r</div>
         <div className="text-animation">a</div>
-        <div className="text-animation">n</div>
-        <div className="text-animation">d</div>
-        <div className="text-animation">o</div>
-        <div className="text-animation">m</div>
-        <div className="text-animation">i</div>
-        <div className="text-animation">z</div>
-        <div className="text-animation">e</div>
-        <div className="text-animation">d</div>
+        <div className="text-animation">r</div>
         <div className="space"></div>
 
-        <div className="text-animation">d</div>
-        <div className="text-animation">e</div>
-        <div className="text-animation">c</div>
-        <div className="text-animation">o</div>
-        <div className="text-animation">d</div>
-        <div className="text-animation">e</div>
-        <div className="space"></div>
-
-        <div className="text-animation">e</div>
-        <div className="text-animation">f</div>
-        <div className="text-animation">f</div>
-        <div className="text-animation">e</div>
-        <div className="text-animation">c</div>
+        <div className="text-animation">q</div>
+        <div className="text-animation">u</div>
+        <div className="text-animation">a</div>
+        <div className="text-animation">r</div>
         <div className="text-animation">t</div>
-    </div>
+        <div className="text-animation">o</div>
+        <div className="space"></div>
 
-    <a id="refresh" onClick="Home();">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
-    </a>
+        <div className="text-animation">e</div>
+        <div className="text-animation">m</div>
+        <div className="text-animation">:</div>
+      </div>
     </div>
-    )
+  )
 }
 
+export default HomeText;
