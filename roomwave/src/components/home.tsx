@@ -10,13 +10,29 @@ function Home() {
         <img className="w3-image" src="../src/images/homepage.png" alt="Architecture" style={{ width: "100%", height: "auto" }} />
         
         {/* Select bar */}
-        <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", width: "500px" }}>
+        <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", width: "1000px" }}>
         <HomeText />
 
-          <select style={{ width: "100%", fontSize: "18px", padding: "10px" }}>
-            <option value="option1">Option 1</option>
-            <option value="option2">Option 2</option>
-            <option value="option3">Option 3</option>
+          <select  value="Procurar em:" style={{ width: "100%", fontSize: "18px", padding: "0px" }}>
+              <option value="">Cidade</option>
+              <option value="Aveiro">Aveiro</option>
+              <option value="Beja">Beja</option>
+              <option value="Braga">Braga</option>
+              <option value="Bragança">Bragança</option>
+              <option value="Castelo Branco">Castelo Branco</option>
+              <option value="Coimbra">Coimbra</option>
+              <option value="Évora">Évora</option>
+              <option value="Faro">Faro</option>
+              <option value="Guarda">Guarda</option>
+              <option value="Leiria">Leiria</option>
+              <option value="Lisboa">Lisboa</option>
+              <option value="Portalegre">Portalegre</option>
+              <option value="Porto">Porto</option>
+              <option value="Santarém">Santarém</option>
+              <option value="Setúbal">Setúbal</option>
+              <option value="Viana do Castelo">Viana do Castelo</option>
+              <option value="Vila Real">Vila Real</option>
+              <option value="Viseu">Viseu</option>
           </select>
         </div>
         
