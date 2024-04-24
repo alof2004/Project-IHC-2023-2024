@@ -26,6 +26,7 @@ function App() {
             <Route path="/signup/client" element={<SignupClient />} />
             <Route path="/signup/landlord" element={<SignupLandlord />} />
             <Route path="/RoomDetails" element={<RoomDetails />} /> {/* Use element prop to render RoomDetails */}
+            <Route path="/home" element={<Home/>} />
           </Routes>
         </div>
       </AuthProvider>

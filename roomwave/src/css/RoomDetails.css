@@ -5,34 +5,43 @@
     margin-left:80px;
 }
 .title_info_more_number_proprietaria{
-    width: 60%;
+    width: 100%;
     display: flex;
     margin-top: 40px;
     margin-left:80px;
     font-size: 50px;
     color: black;
+    height: 75px;
+    margin-right: 80px;
 }
 
-
+.title_info_proprietaria{
+  width:40%;
+  height: 80px; /* Adjust the height as needed */
+  display: flex;
+  align-items: center;
+  font-size: 35px; /* Adjust font size as needed */
+  white-space: nowrap;
+}
 .title_info_number {
-    margin-left: 300px;
-    width: 510px; /* Adjust the width as needed */
-    height: 80px; /* Adjust the height as needed */
-    display: flex;
+    
+    width: auto;
+    height: 50px; /* Adjust the height as needed */
+    display:flex;
     align-items: center;
-    font-size: 35px; /* Adjust font size as needed */
+    font-size: 30px; /* Adjust font size as needed */
     white-space: nowrap;
     background-color: #ffa500;
     border-radius: 30px;
     padding: 0 20px; /* Add padding as needed */
+    margin-top: 16px;
+    flex-wrap: wrap;
 }
 
-.title_info_proprietaria {
-    color: #ffa500;
-}
 
 .room-images {
     position: relative;
+    width: 60%;
   }
   
   .main-image {
@@ -59,7 +68,7 @@
   }
   
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1444px) {
     .room-images {
       flex-direction: column; 
       align-items: center; 
@@ -80,6 +89,18 @@
       width: 90%; 
       height: auto; 
     }
+    .title_info_more_number_proprietaria {
+      flex-direction: column; /* Empilha os elementos verticalmente */
+      align-items: center; /* Centraliza os elementos */
+      text-align: center; /* Centraliza o texto */
+  }
+
+  .title_info_proprietaria,
+  .title_info_number {
+      width: 100%; /* Define a largura máxima para 100% em telas menores */
+      text-align: center; /* Centraliza o texto */
+      justify-content: center; /* Centraliza o conteúdo */
+  }
   }
 
 
@@ -88,6 +109,55 @@
     font-size: 30px;
     margin-bottom: 40px;
     width: 75%;
-    
-    
 }   
+
+.info_contact h1 {
+  background-color: rgb(0, 0, 0);
+  color: white;
+  margin-left: 400px;
+  margin-right: 80px;
+  margin-top: 18px;
+  text-align: center;
+  border-radius: 10px;
+  font-size: 40px;
+  padding: 10px 50px 10px 50px; /* Ajustei o padding para não interferir com a linha */
+  font-family: 'Inconsolata', monospace;
+}
+
+.info_contact_second {
+  display: flex;
+  justify-content: space-around; /* Isso espaça os elementos igualmente na horizontal */
+  margin-left: 320px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  margin-top: -5px;
+}
+
+.info_contact_second img {
+  width: 80px;
+  height: auto; 
+  cursor: pointer; 
+
+  }
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+   }
+   
+   .column {
+    width: 45%; /* Ajuste a largura conforme necessário */
+   }
+   
+   .column ul {
+    list-style-type: none;
+    padding: 0;
+   }
+   
+   .column li {
+    margin-bottom: 60px; /* Espaçamento entre os itens */
+   }
+   
+   .icon {
+    margin-right: 5px; /* Espaçamento entre o ícone e o texto */
+   }
