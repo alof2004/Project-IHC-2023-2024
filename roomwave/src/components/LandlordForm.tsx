@@ -6,16 +6,16 @@ import { useNavigate } from 'react-router-dom';
 
 
 
-function ClientForm(){
+function LandlordForm(){
     // Define state variables to store form field values
     const [firstname, setFirstName] = useState('');
     const [lastname, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [birthdate, setDateOfBirth] = useState('');
-    const [job, setRole] = useState(''); // Assuming the user's role is either 'student' or 'worker'
+    const [city, setRole] = useState(''); // Assuming the user's role is either 'student' or 'worker'
     const [phone, setPhoneNumber] = useState('');
-    const [type, setType] = useState('client'); // Assuming the user's type is 'client'
+    const [type, setType] = useState('landlord'); // Assuming the user's type is 'client'
     const { loginUser } = useUser();
     const navigate = useNavigate();
 
@@ -31,9 +31,9 @@ function ClientForm(){
             type,
             password,
             birthdate,
-            job,
+            job: "landlord",
             phone,
-
+            city
         };
 
         console.log(formData);      
@@ -88,13 +88,29 @@ function ClientForm(){
                         required 
                     />
                     <select 
-                        value={job} 
+                        value={city} 
                         onChange={(e) => setRole(e.target.value)} 
                         required 
                     >
-                        <option value="">Select Role</option>
-                        <option value="student">Student</option>
-                        <option value="worker">Worker</option>
+                        <option value="">Cidade</option>
+                        <option value="Aveiro">Aveiro</option>
+                        <option value="Beja">Beja</option>
+                        <option value="Braga">Braga</option>
+                        <option value="Bragança">Bragança</option>
+                        <option value="Castelo Branco">Castelo Branco</option>
+                        <option value="Coimbra">Coimbra</option>
+                        <option value="Évora">Évora</option>
+                        <option value="Faro">Faro</option>
+                        <option value="Guarda">Guarda</option>
+                        <option value="Leiria">Leiria</option>
+                        <option value="Lisboa">Lisboa</option>
+                        <option value="Portalegre">Portalegre</option>
+                        <option value="Porto">Porto</option>
+                        <option value="Santarém">Santarém</option>
+                        <option value="Setúbal">Setúbal</option>
+                        <option value="Viana do Castelo">Viana do Castelo</option>
+                        <option value="Vila Real">Vila Real</option>
+                        <option value="Viseu">Viseu</option>
                     </select>
                 </div>
                 <input 
@@ -110,4 +126,4 @@ function ClientForm(){
     );
 }
 
-export default ClientForm;
+export default LandlordForm;

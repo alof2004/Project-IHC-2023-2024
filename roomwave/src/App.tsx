@@ -9,6 +9,7 @@ import HomeLandlord from './components/homeLandlord';
 import Home from './components/home';
 import Login from './components/Login';
 import SignupClient from './components/SignupClient';
+import SignupLandlord from './components/SignupLandlord';
 
 function App() {
   const { isLoggedIn } = useAuth(); // Get isLoggedIn state from AuthContext
@@ -23,6 +24,7 @@ function App() {
             <Route path="/homeLandlord" element={<HomeLandlord />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup/client" element={<SignupClient />} />
+            <Route path="/signup/landlord" element={<SignupLandlord />} />
             <Route path="/RoomDetails" element={<RoomDetails />} /> {/* Use element prop to render RoomDetails */}
           </Routes>
         </div>
