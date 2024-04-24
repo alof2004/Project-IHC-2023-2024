@@ -1,4 +1,5 @@
 import { useState } from 'react';
+
 interface Room {
   imagem1: string;
   imagem2: string;
@@ -7,16 +8,11 @@ interface Room {
 }
 
 function Carousel({ room }: { room: Room }) {
-
-  // Estado para controlar a imagem principal e as outras imagens
   const [mainImage, setMainImage] = useState(room.imagem1);
   const [otherImages, setOtherImages] = useState([room.imagem2, room.imagem3, room.imagem4]);
 
-  // Função para lidar com o clique em uma imagem secundária
-  const handleImageClick = (clickedImage: any) => {
-    // Define a imagem clicada como a nova imagem principal
+  const handleImageClick = (clickedImage: string) => {
     setMainImage(clickedImage);
-    // Remove a imagem clicada da lista de outras imagens e adiciona a imagem principal anterior ao final da lista
     setOtherImages([...otherImages.filter(image => image !== clickedImage), mainImage]);
   };
 
