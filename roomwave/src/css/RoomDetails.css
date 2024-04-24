@@ -4,13 +4,27 @@
     margin-top: 50px;
     margin-left:80px;
 }
-
-.title_info {
-    margin-top: 50px;
+.title_info_more_number_proprietaria{
+    width: 60%;
+    display: flex;
+    margin-top: 40px;
     margin-left:80px;
     font-size: 50px;
     color: black;
+}
 
+
+.title_info_number {
+    margin-left: 300px;
+    width: 450px; /* Adjust the width as needed */
+    height: 80px; /* Adjust the height as needed */
+    display: flex;
+    align-items: center;
+    font-size: 35px; /* Adjust font size as needed */
+    white-space: nowrap;
+    background-color: #ffa500;
+    border-radius: 30px;
+    padding: 0 20px; /* Add padding as needed */
 }
 
 .title_info_proprietaria {
@@ -19,54 +33,61 @@
 
 .room-images {
     position: relative;
-}
-
-.main-image {
+  }
+  
+  .main-image {
     margin-top: 50px;
-    margin-left:87px;
+    margin-left: 87px;
     width: 1300px;
     height: 700px;
-}
-
-.other-images {
+    margin-bottom: 100px;
+  }
+  
+  .other-images {
     position: absolute;
-    top: 50px; /* Adjust the top position to align with the main image */
-    left: calc(87px + 1300px + 20px); /* Adjust the left position to align with the right edge of the main image plus some spacing */
+    top: 50px;
+    left: calc(87px + 1300px + 20px);
     display: flex;
     flex-direction: column;
     gap: 10px;
     cursor: pointer;
-}
-
-.vertical-image {
+  }
+  
+  .vertical-image {
     width: 200px;
     height: 120px;
-}
+  }
+  
 
-.contact-box {
-    position: absolute; 
-    top: 150px; 
-    left: 1000px; 
-    display: flex; 
-    background-color: #ffa500; 
-    align-items: center;
-    padding: 10px;
-    border-radius: 30px;
-    height: 100px;
+  @media screen and (max-width: 768px) {
+    .room-images {
+      flex-direction: column; 
+      align-items: center; 
+    }
+  
+    .main-image {
+      width: 90%;
+      height: auto; 
+      margin: 20px 0;
+    }
+  
+    .other-images {
+      position: static; 
+      margin-top: 20px; 
+    }
+  
+    .vertical-image {
+      width: 90%; 
+      height: auto; 
+    }
+  }
 
-
-}
-
-.phone-number {
-    font-size: 40px;
-    color: rgb(255, 255, 255);
-    margin-left: 10px;
-    white-space: nowrap;
-    
-}
 
 .description_info {
     margin-left:80px;
     font-size: 30px;
+    margin-bottom: 40px;
+    width: 75%;
+    
     
 }   
