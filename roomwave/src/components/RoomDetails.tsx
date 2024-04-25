@@ -3,34 +3,51 @@ import '../css/RoomDetails.css';
 import details from './rooms.json';
 import Carousel from './Carousel';
 import NavBar from './NavBar';
+import { useState } from 'react';
 
 
 function RoomDetails(){
     const room = details[0]; // Assuming there's only one room in the array
+    const [isFavorite, setIsFavorite] = useState(false);
 
-    
-    
+    const handleFavoritesClick = () => {
+        setIsFavorite(!isFavorite); // Alternar entre true e false
+    };
 
     return (
         <div >
             <NavBar />
-            <Link to="./LoginBox ">                   
+            <Link to="./home">                   
                  <img src='./src/images/return.png' className='return-button' alt="return"/>
             </Link>
             <div className='title_info_more_number_proprietaria'> 
-                <h1 className='title_info'>
-                    Quarto de {''} 
-                    <span className='title_info_proprietaria'>{room.Proprietaria}</span>
-                </h1>
+                    <div className='title_info_proprietaria'>
+                        <h1>
+                            Quarto de {''} 
+                            <span style={{color:"#ffa500"}}>{room.Proprietaria}</span>
+                        </h1>
+                    </div>
                     <div className=' title_info_number' >
-                        <img src= "./src/images/telefone_icon.png" width='80 px' height='50px'></img>
+                        <img src= "./src/images/telefone_icon.png" width='60 px' height='40px'></img>
                         <span>Telefone: 914439900</span>
                     </div>
-                    <div >
-                        
+                    <div className='info_contact'>   
+                      <div>
+                        <h1>Contactar</h1>
+                      </div>
+                      <div className='info_contact_second'>
+                        <div onClick={handleFavoritesClick} style={{ cursor: 'pointer' }}>
+                            <div>
+                                <img src={isFavorite ? './src/images/favorites2.png' : './src/images/favorites1.png'} alt="favorites"  />
+                            </div>
+                        </div>
+                        <div>
+                            <img src='./src/images/share.png' alt="share" />
+                        </div>
+                    </div>
                     </div>
             </div>
-            <h2 style={{marginLeft:"80px"}}>
+            <h2 style={{marginLeft:"80px", fontSize:"30px"}}>
                 Localização: {''} 
                 <span className=''>{room.localizacao}, {room.cidade}</span>
             </h2>
@@ -52,12 +69,78 @@ function RoomDetails(){
                 </p>
             </div>
 
-            <div className='description_info rent_include'>
+            <div className='description_info'>
                 <h2 style={{fontSize:"50px", marginBottom:"30px"}}>Renda inclui:</h2>
-                <p> 
-                    
-                </p>
-            </div>
+            
+                    <div className="container">
+                        <div className="column">
+                        <ul>
+                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Renda_inclui[0]}</li>
+                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Renda_inclui[1]}</li>
+                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Renda_inclui[2]}</li>
+                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Renda_inclui[3]}</li>
+                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Renda_inclui[4]}</li>
+                        </ul>
+                        </div>
+                        <div className="column">
+                        <ul>
+                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Renda_inclui[5]}</li>
+                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Renda_inclui[6]}</li>
+                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Renda_inclui[7]}</li>
+                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Renda_inclui[8]}</li>
+                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Renda_inclui[9]}</li>
+                        </ul>
+                        </div>
+                    </div>
+                </div>
+                <div className='description_info'>
+                <h2 style={{fontSize:"50px", marginBottom:"30px"}}>Sobre habitação:</h2>
+            
+                    <div className="container">
+                        <div className="column">
+                        <ul>
+                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Renda_inclui[0]}</li>
+                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Renda_inclui[1]}</li>
+                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Renda_inclui[2]}</li>
+                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Renda_inclui[3]}</li>
+                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Renda_inclui[4]}</li>
+                        </ul>
+                        </div>
+                        <div className="column">
+                        <ul>
+                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Renda_inclui[5]}</li>
+                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Renda_inclui[6]}</li>
+                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Renda_inclui[7]}</li>
+                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Renda_inclui[8]}</li>
+                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Renda_inclui[9]}</li>
+                        </ul>
+                        </div>
+                    </div>
+                </div>
+                <div className='description_info'>
+                <h2 style={{fontSize:"50px", marginBottom:"30px"}}>Equipamentos disponiveisS:</h2>
+            
+                    <div className="container">
+                        <div className="column">
+                        <ul>
+                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Renda_inclui[0]}</li>
+                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Renda_inclui[1]}</li>
+                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Renda_inclui[2]}</li>
+                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Renda_inclui[3]}</li>
+                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Renda_inclui[4]}</li>
+                        </ul>
+                        </div>
+                        <div className="column">
+                        <ul>
+                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Renda_inclui[5]}</li>
+                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Renda_inclui[6]}</li>
+                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Renda_inclui[7]}</li>
+                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Renda_inclui[8]}</li>
+                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Renda_inclui[9]}</li>
+                        </ul>
+                        </div>
+                    </div>
+                </div>
         </div>
     )
 }
