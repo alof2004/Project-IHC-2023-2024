@@ -11,6 +11,7 @@ import Login from './components/Login';
 import SignupClient from './components/SignupClient';
 import SignupLandlord from './components/SignupLandlord';
 
+
 function App() {
   const { isLoggedIn } = useAuth(); // Get isLoggedIn state from AuthContext
 
@@ -27,6 +28,7 @@ function App() {
             <Route path="/signup/landlord" element={<SignupLandlord />} />
             <Route path="/RoomDetails" element={<RoomDetails />} /> {/* Use element prop to render RoomDetails */}
             <Route path="/home" element={<Home/>} />
+            <Route path="/rooms/:city" element={<Home/>} />
           </Routes>
         </div>
       </AuthProvider>

@@ -5,7 +5,7 @@
 }
 .decode-text {
     width: 100%;
-    font-size: 30px;
+    font-size: 80px;
   }
   
   .space {
@@ -57,6 +57,23 @@
     cursor: pointer;
   }
   
+  .decode-text {
+    white-space: nowrap; /* Prevent text from wrapping */
+  }
   
-
+  .text-animation {
+    display: inline-block;
+  }
+  
+  .space {
+    display: inline-block;
+    width: 0.5em; /* Adjust the width of the space as needed */
+  }
+  
+  /* Media query for smaller screens */
+  @media screen and (max-width: 600px) {
+    .decode-text {
+      font-size: 0.8em; /* Adjust font size for smaller screens */
+    }
+  }
   

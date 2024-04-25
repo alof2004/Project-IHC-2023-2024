@@ -1,0 +1,12 @@
+select {
+    /* Hide default arrow in modern browsers */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+}
+
+/* Hide dropdown arrow in Internet Explorer */
+select::-ms-expand {
+    display: none;
+}

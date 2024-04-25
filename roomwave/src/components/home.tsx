@@ -1,7 +1,21 @@
 import NavBar from './NavBar';
 import HomeText from './HomeText';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import '../css/Home.css';
 
 function Home() {
+  const [selectedCity, setSelectedCity] = useState('');
+  const navigate = useNavigate();
+
+  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedCity(e.target.value);
+    if (e.target.value) {
+      navigate(`/rooms/${e.target.value}`);
+    }
+  }
+
+
   return (
     <div>
       <NavBar />
@@ -9,9 +23,25 @@ function Home() {
         <img className="w3-image" src="../src/images/homepage.png" alt="Architecture" style={{ width: "100%", height: "auto" }} />
         
         {/* Select bar */}
-        <div style={{ position: "absolute", top: "0", left: "0", width: "80%", maxWidth: "400px", paddingLeft: "100px", paddingTop:"100px" }}>
+        <div style={{ position: "absolute", top: "0", left: "0", width: "80%", maxWidth: "900px", height: "50px" ,paddingLeft: "100px", paddingTop:"140px" }}>
           <HomeText />
-          <select value="Procurar em:" style={{ width: "100%", height: "50px", fontSize: "20px", paddingLeft: "5px", paddingRight: "30px", lineHeight: "50px", backgroundPositionX: "calc(100% - 20px)" }}>
+          <div style={{ position: "absolute",color: "white", top: "50", right: "0", width: "30px", height: "100%", pointerEvents: "none", paddingTop:"25px" }}>&#x25BC;</div>
+          <form> {/* Removed onSubmit attribute */}
+            <select value={selectedCity} onChange={handleChange} style={{ 
+              width: "800px",
+              height: "75px", 
+              fontSize: "20px", 
+              paddingLeft: "20px", 
+              paddingRight: "30px", 
+              lineHeight: "50px", 
+              backgroundPositionX: "calc(100% - 20px)", 
+              backgroundColor: "#252525", 
+              color:"white", 
+              borderRadius: "5", 
+              border: "5px solid #FF7A41", 
+              boxShadow: "rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px",
+              outline: "none",
+            }}>
             <option value="">Cidade:</option>
             <option value="Aveiro">Aveiro</option>
             <option value="Beja">Beja</option>
@@ -31,11 +61,11 @@ function Home() {
             <option value="Viana do Castelo">Viana do Castelo</option>
             <option value="Vila Real">Vila Real</option>
             <option value="Viseu">Viseu</option>
-          </select>
+            </select>
+          </form>
         </div>
       </header>
     </div>
   );
 }
-
 export default Home;
