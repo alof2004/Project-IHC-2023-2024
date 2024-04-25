@@ -10,6 +10,7 @@ import Home from './components/home';
 import Login from './components/Login';
 import SignupClient from './components/SignupClient';
 import SignupLandlord from './components/SignupLandlord';
+import RoomsListPage from './components/RoomsListPage';
 
 
 function App() {
@@ -28,7 +29,7 @@ function App() {
             <Route path="/signup/landlord" element={<SignupLandlord />} />
             <Route path="/RoomDetails" element={<RoomDetails />} /> {/* Use element prop to render RoomDetails */}
             <Route path="/home" element={<Home/>} />
-            <Route path="/rooms/:city" element={<div>QUARTOS</div>} />
+            <Route path="/rooms/:city" element={<RoomsListPage/>} />
           </Routes>
         </div>
       </AuthProvider>
