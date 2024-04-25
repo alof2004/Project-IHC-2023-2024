@@ -25,7 +25,7 @@ body {
 	margin-bottom: 40px;
 	border-radius: 10px;
 	background-color: #fff;
-	border: 2px solid #ddd;
+	border: 3px solid #ddd;
 	font-size: 18px;
 	overflow: hidden;
 	cursor: pointer;
@@ -130,12 +130,12 @@ body {
 	background-color: #424242;
 	transition: width 0.2s ease;
 }
-.projcard-blue .projcard-bar { background-color: #0088FF; }
-.projcard-blue::before { background-image: linear-gradient(-70deg, #0088FF, transparent 50%); }
-.projcard-blue:nth-child(2n)::before { background-image: linear-gradient(-250deg, #0088FF, transparent 50%); }
-.projcard-red .projcard-bar { background-color: #D62F1F; }
-.projcard-red::before { background-image: linear-gradient(-70deg, #D62F1F, transparent 50%); }
-.projcard-red:nth-child(2n)::before { background-image: linear-gradient(-250deg, #D62F1F, transparent 50%); }
+.projcard-blue .projcard-bar { background-color: #000000; }
+.projcard-blue::before { background-image: linear-gradient(-70deg, #000000, transparent 50%); }
+.projcard-blue:nth-child(2n)::before { background-image: linear-gradient(-250deg, #000000, transparent 50%); }
+.projcard-red .projcard-bar { background-color: #000000; }
+.projcard-red::before { background-image: linear-gradient(-70deg, #000000, transparent 50%); }
+.projcard-red:nth-child(2n)::before { background-image: linear-gradient(-250deg, #000000, transparent 50%); }
 .projcard-green .projcard-bar { background-color: #40BD00; }
 .projcard-green::before { background-image: linear-gradient(-70deg, #40BD00, transparent 50%); }
 .projcard-green:nth-child(2n)::before { background-image: linear-gradient(-250deg, #40BD00, transparent 50%); }

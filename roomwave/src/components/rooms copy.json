@@ -1,0 +1,174 @@
+[
+    {
+        "id": 1,
+        "Proprietaria": "Fernanda Serrano",
+        "imagem1": "./src/images/quarto1.jpg",
+        "imagem2": "./src/images/quarto1_2.jpg",
+        "imagem3": "./src/images/quarto1_3.jpg",
+        "imagem4": "./src/images/quarto1_4.jpg",
+        "localizacao":  "Rua das Flores Nº23 Fraçção AB",
+        "Locais_proximos": "Universidade, Mini-Preço e pastelaria Boa Estação",
+        "cidade": "Aveiro",
+        "description": "Quarto com cama de casal, ar condicionado e banheiro privativo",
+        "Transportes": " a 100 m",
+        "servicos":[
+            "roupeiro",
+            "secretária",
+            "estante de livros",
+            "sofá",
+            "frigorífico",
+            "equipamento de cozinha"
+        ],
+        "Descrição_Proprietaria":"Prédio de muita qualidade, muito cuidado, elevadores e porteiro. Espaço privado no terraço do imóvel com vista de Rio e cidade.",
+        "Cama": "de casal",
+        "Cozinha": "equipada",
+        "casas_de_banho": 2,
+        "Ambiente":"calmo",
+        "price": 100,
+        "Pessoas_permitidas": [
+            "Masculino e Feminino",
+            "jovens profissionais e universitários"
+        ],
+        "gastos": "incluídos",
+        "Animais":"admitidos",
+        "Fumadores":"interdito",
+        "area": "15",
+        "Vista": "virada a sul para praceta muito sossegada e ainda para a ria de Aveiro",
+        "Renda_inclui":[
+            "Água;",
+            "Luz;",
+            "Quarto;",
+            "Cozinha partilhada;",
+            "Sala partilhada;",
+            "Casa de banho partilhada;",
+            "Limpeza semanal",
+            "Permissão para animais;",
+            "Todos os géneros;"
+        ]
+
+    },
+    {
+        "id": 2,
+        "Proprietaria": "Rui Oliveira",
+        "imagem1": "./src/images/quarto2.jpg",
+        "localizacao": "Rua da Boavista Nº50",
+        "Locais_proximos": "Estação de metro, supermercado Pingo Doce, cafés",
+        "cidade": "Porto",
+        "description": "Quarto com cama de solteiro, armário embutido e acesso a varanda",
+        "Transportes": " a 200 m",
+        "servicos": [
+          "armário embutido",
+          "secretária",
+          "cama de solteiro",
+          "acesso a varanda"
+        ],
+        "Descrição_Proprietaria": "Prédio renovado recentemente, ambiente tranquilo e familiar. Varanda com vista para a cidade.",
+        "Cama": "de solteiro",
+        "Cozinha": "equipada",
+        "casas_de_banho": 1,
+        "Ambiente": "tranquilo",
+        "price": 80,
+        "Pessoas_permitidas": [
+          "Masculino e Feminino",
+          "estudantes e profissionais"
+        ],
+        "gastos": "incluídos",
+        "Animais": "não permitidos",
+        "Fumadores": "permitido",
+        "area": "12",
+        "Vista": "vista para a cidade",
+        "Renda_inclui": [
+          "Água;",
+          "Luz;",
+          "Internet;",
+          "Quarto;",
+          "Cozinha partilhada;",
+          "Casa de banho partilhada;",
+          "Limpeza semanal;",
+          "Todos os géneros;"
+        ]
+      },
+      {
+        "id": 3,
+        "Proprietaria": "Ana Silva",
+        "imagem1": "./src/images/quarto3.jpg",
+        "localizacao": "Avenida Manuel da Fonseca Nº12",
+        "Locais_proximos": "Hospital, supermercado Continente, parques",
+        "cidade": "Beja",
+        "description": "Quarto com cama de solteiro, mesa de estudo e armário",
+        "Transportes": " a 300 m",
+        "servicos": [
+          "armário",
+          "mesa de estudo",
+          "cama de solteiro"
+        ],
+        "Descrição_Proprietaria": "Casa espaçosa, ambiente acolhedor. Localização central e tranquila.",
+        "Cama": "de solteiro",
+        "Cozinha": "partilhada",
+        "casas_de_banho": 1,
+        "Ambiente": "acolhedor",
+        "price": 70,
+        "Pessoas_permitidas": [
+          "Masculino e Feminino",
+          "estudantes e trabalhadores"
+        ],
+        "gastos": "incluídos",
+        "Animais": "a considerar",
+        "Fumadores": "permitido",
+        "area": "10",
+        "Vista": "vista para a cidade",
+        "Renda_inclui": [
+          "Água;",
+          "Luz;",
+          "Internet;",
+          "Quarto;",
+          "Cozinha partilhada;",
+          "Casa de banho partilhada;",
+          "Limpeza semanal;",
+          "Permissão a considerar;",
+          "Todos os géneros;"
+        ]
+      },
+      {
+        "id": 4,
+        "Proprietaria": "Marta Carvalho",
+        "imagem1": "./src/images/quarto4.jpg",
+        "localizacao": "Rua do Souto Nº30",
+        "Locais_proximos": "Universidade do Minho, supermercado Lidl, cafés",
+        "cidade": "Braga",
+        "description": "Quarto com cama de casal, mesa de estudo e varanda",
+        "Transportes": " a 500 m",
+        "servicos": [
+          "armário",
+          "mesa de estudo",
+          "cama de casal",
+          "varanda"
+        ],
+        "Descrição_Proprietaria": "Apartamento moderno, ambiente jovem e descontraído. Varanda com vista para a cidade.",
+        "Cama": "de casal",
+        "Cozinha": "partilhada",
+        "casas_de_banho": 1,
+        "Ambiente": "descontraído",
+        "price": 120,
+        "Pessoas_permitidas": [
+          "Masculino e Feminino",
+          "estudantes e profissionais"
+        ],
+        "gastos": "incluídos",
+        "Animais": "não permitidos",
+        "Fumadores": "interdito",
+        "area": "14",
+        "Vista": "vista para a cidade",
+        "Renda_inclui": [
+          "Água;",
+          "Luz;",
+          "Internet;",
+          "Quarto;",
+          "Cozinha partilhada;",
+          "Casa de banho partilhada;",
+          "Limpeza semanal;",
+          "Todos os géneros;"
+        ]
+      }
+            
+]

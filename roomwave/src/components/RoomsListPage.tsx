@@ -1,69 +1,66 @@
 import React, { useEffect, useState } from 'react';
 import '../css/RoomsListPage.css';
+import roomsData from './rooms.json'; // Import the JSON data
+
+interface Room {
+ id: number;
+ Proprietaria: string;
+ imagem1: string;
+ imagem2?: string;
+ imagem3: string;
+ imagem4: string;
+ localizacao: string;
+ Locais_proximos: string;
+ cidade: string;
+ description: string;
+ Transportes: string;
+ servicos: string[];
+ Descrição_Proprietaria: string;
+ Cama: string;
+ Cozinha: string;
+ casas_de_banho: number;
+ Ambiente: string;
+ price: number;
+ Pessoas_permitidas: string[];
+ gastos: string;
+ Animais: string;
+ Fumadores: string;
+ area: string;
+ Vista: string;
+ Renda_inclui: string[];
+}
+
 function RoomsListPage() {
-    const [lastSegment, setLastSegment] = useState('');
+    const [rooms, setRooms] = useState<Room[]>([]);
 
     useEffect(() => {
-        const url = window.location.href;
-        const segment = url.substring(url.lastIndexOf('/') + 1);
-        const decodedRoomName = decodeURIComponent(segment);
-        setLastSegment(decodedRoomName);
+        // Set the rooms state with the data from rooms.json
+        setRooms(roomsData);
     }, []);
-
 
     return (
         <div>
-            <h1>Quartos em: {lastSegment}</h1>
+            <h1>Rooms List</h1>
             <div className="projcard-container">
-                <div className="projcard projcard-blue">
-                    <div className="projcard-innerbox">
-                        <img className="projcard-img" src="../src/images/quarto1_3.jpg" />
-                        <div className="projcard-textbox">
-                            <div className="projcard-title">Quarto 1</div>
-                            <div className="projcard-subtitle">Rua do Rio, Aveiro</div>
-                            <div className="projcard-bar"></div>
-                            <div className="projcard-description">Sei lá.</div>
-                            <div className="projcard-tagbox">
-                                <span className="projcard-tag">HTML</span>
-                                <span className="projcard-tag">CSS</span>
+                {/* Iterate through each room */}
+                {rooms.map(room => (
+                    <div key={room.id} className="projcard projcard-blue">
+                        <div className="projcard-innerbox">
+                            <img className="projcard-img" src={room.imagem1} alt={`Room ${room.id}`} />
+                            <div className="projcard-textbox">
+                                <div className="projcard-title">{room.description}</div>
+                                <div className="projcard-subtitle">{room.localizacao}</div>
+                                <div className="projcard-description">{room.description}</div>
+                                <div className="projcard-tagbox">
+                                    {/* Iterate through each service */}
+                                    {room.servicos.map((service, index) => (
+                                        <span key={index} className="projcard-tag">{service}</span>
+                                    ))}
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                
-                <div className="projcard projcard-red">
-                    <div className="projcard-innerbox">
-                        <img className="projcard-img" src="../src/images/quarto1_2.jpg" />
-                        <div className="projcard-textbox">
-                            <div className="projcard-title">Quarto 2</div>
-                            <div className="projcard-subtitle">Rua da Ria, Aveiro</div>
-                            <div className="projcard-bar"></div>
-                            <div className="projcard-description">Não sei.</div>
-                            <div className="projcard-tagbox">
-                                <span className="projcard-tag">PHP</span>
-                                <span className="projcard-tag">SQL</span>
-                                <span className="projcard-tag">Database</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div className="projcard projcard-green">
-                    <div className="projcard-innerbox">
-                        <img className="projcard-img" src="https://picsum.photos/800/600?image=1039" />
-                        <div className="projcard-textbox">
-                            <div className="projcard-title">And a Third Card</div>
-                            <div className="projcard-subtitle">You know what this is by now</div>
-                            <div className="projcard-bar"></div>
-                            <div className="projcard-description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</div>
-                            <div className="projcard-tagbox">
-                                <span className="projcard-tag">Excel</span>
-                                <span className="projcard-tag">VBA</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
+                ))}
             </div>
         </div>
     );
