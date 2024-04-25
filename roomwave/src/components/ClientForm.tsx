@@ -51,17 +51,21 @@ function ClientForm(){
                 <div className="name-inputs">
                     <input 
                         type="text" 
-                        placeholder="First Name" 
+                        placeholder="Primeiro Nome" 
                         value={firstname} 
                         onChange={(e) => setFirstName(e.target.value)} 
-                        required 
+                        required
+                        title="Insira o seu primeiro nome." // Set a custom title attribute
                     />
+                    <span className="name-space"> </span>
                     <input 
                         type="text" 
-                        placeholder="Last Name" 
+                        placeholder="Último Nome" 
                         value={lastname} 
                         onChange={(e) => setLastName(e.target.value)} 
                         required 
+                        title="Insira o seu último nome." 
+
                     />
                 </div>
                 <input 
@@ -70,13 +74,15 @@ function ClientForm(){
                     value={email} 
                     onChange={(e) => setEmail(e.target.value)} 
                     required 
+                    title="Insira o seu email." 
                 />
                 <input 
                     type="password" 
                     placeholder="Password" 
                     value={password} 
                     onChange={(e) => setPassword(e.target.value)} 
-                    required 
+                    required
+                    title="Insira uma password."
                 />
                 <div className="job-pass">
                     <input 
@@ -86,6 +92,7 @@ function ClientForm(){
                         onChange={(e) => setDateOfBirth(e.target.value)} 
                         required 
                     />
+                    <span className="name-space"> </span>
                     <select 
                         value={job} 
                         onChange={(e) => setRole(e.target.value)} 
@@ -94,7 +101,9 @@ function ClientForm(){
                         <option value="">Select Role</option>
                         <option value="student">Student</option>
                         <option value="worker">Worker</option>
+                        <option value="other">Other</option>
                     </select>
+                    <div className="arrow">&#x25BC;</div>
                 </div>
                 <input 
                     type="text" 

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import '../css/ClientForm.css';
 import { useUser } from "./UserContext";
-import fs from 'fs'; // Import Node.js file system module
 import { useNavigate } from 'react-router-dom';
 
 
@@ -40,7 +39,7 @@ function LandlordForm(){
         localStorage.setItem('userData', JSON.stringify(formData));
         console.log('Form data saved to local storage');
         loginUser(formData);
-        navigate("../../homeClient")
+        navigate("../../homeLandlord")
 
 
     };
@@ -57,6 +56,7 @@ function LandlordForm(){
                         onChange={(e) => setFirstName(e.target.value)} 
                         required 
                     />
+                    <span className="name-space"> </span>
                     <input 
                         type="text" 
                         placeholder="Last Name" 
@@ -87,6 +87,8 @@ function LandlordForm(){
                         onChange={(e) => setDateOfBirth(e.target.value)} 
                         required 
                     />
+                    <span className="name-space"> </span>
+
                     <select 
                         value={city} 
                         onChange={(e) => setRole(e.target.value)} 
@@ -112,6 +114,8 @@ function LandlordForm(){
                         <option value="Vila Real">Vila Real</option>
                         <option value="Viseu">Viseu</option>
                     </select>
+                    <div className="arrow">&#x25BC;</div>
+
                 </div>
                 <input 
                     type="text" 

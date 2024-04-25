@@ -15,6 +15,10 @@ function Home() {
     }
   }
 
+  const url = window.location.href;
+  const lastSegment = url.substring(url.lastIndexOf('/') + 1);
+  console.log(lastSegment); // Output: "Guarda"
+
 
   return (
     <div>

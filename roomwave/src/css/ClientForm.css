@@ -73,3 +73,28 @@ body, html {
 }
 
 
+
+.name-space {
+    margin: 0 5px; /* Adjust the margin as needed */
+}
+
+.job-pass {
+    position: relative; /* Ensure that the container is positioned relatively */
+}
+
+.custom-select {
+    width: calc(100% - 30px); /* Adjust the width to accommodate the arrow */
+    position: relative; /* Position the arrow relative to the select element */
+}
+
+.arrow {
+    position: absolute; /* Position the arrow absolutely */
+    top: 0;
+    right: 0;
+    width: 30px;
+    height: 100%;
+    color: black;
+    pointer-events: none;
+    padding-top: 10px;
+    padding-right: 20px;
+}
