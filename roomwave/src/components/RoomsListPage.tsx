@@ -6,7 +6,8 @@ function RoomsListPage() {
     useEffect(() => {
         const url = window.location.href;
         const segment = url.substring(url.lastIndexOf('/') + 1);
-        setLastSegment(segment);
+        const decodedRoomName = decodeURIComponent(segment);
+        setLastSegment(decodedRoomName);
     }, []);
 
     return (
