@@ -12,6 +12,7 @@
   "dependencies": {
     "@googlemaps/react-wrapper": "^1.1.35",
     "bootstrap": "^5.3.3",
+    "clamp-js": "^0.7.0",
     "leaflet": "^1.9.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -20,6 +21,7 @@
     "react-slideshow-image": "^4.3.1"
   },
   "devDependencies": {
+    "@types/clamp-js": "^0.7.6",
     "@types/node": "^20.12.7",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
