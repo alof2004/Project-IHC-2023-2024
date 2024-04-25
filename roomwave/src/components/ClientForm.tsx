@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import '../css/ClientForm.css';
 import { useUser } from "./UserContext";
-import fs from 'fs'; // Import Node.js file system module
 import { useNavigate } from 'react-router-dom';
 
 
