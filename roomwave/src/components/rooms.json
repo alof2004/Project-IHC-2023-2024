@@ -34,7 +34,7 @@
         "price": 100,
         "Pessoas_permitidas": [
             "Masculino e Feminino",
-            "jovens profissionais e universitários"
+            "Jovens profissionais e universitários"
         ],
         "gastos": "incluídos",
         "Animais":"admitidos",
@@ -63,7 +63,7 @@
             "Máquina de café;",
             "Torradeira;",
             "Ferro de engomar;"
-        ]
-
+        ],
+        "Genero": ["Masculino", "Feminino"]
     }       
 ]

@@ -27,14 +27,13 @@ function Home() {
         <img className="w3-image" src="../src/images/homepage.png" alt="Architecture" style={{ width: "100%", height: "auto" }} />
         
         {/* Select bar */}
-        <div style={{ position: "absolute", top: "0", left: "0", width: "80%", maxWidth: "900px", height: "50px" }}>
+        <div style={{ position: "absolute", top: "0", textAlign:'center', width: "100%", height: "50px", justifyContent:'center', alignItems:"center", paddingTop:"140px"}}>
           <HomeText />
-          <div style={{ position: "absolute",color: "white", top: "50", right: "0", width: "30px", height: "100%", pointerEvents: "none", paddingTop:"25px" }}>&#x25BC;</div>
           <form> {/* Removed onSubmit attribute */}
-            <select value={selectedCity} onChange={handleChange} style={{ 
-              width: "800px",
-              height: "75px", 
-              fontSize: "20px", 
+            <select  value={selectedCity} onChange={handleChange} style={{ 
+              width: "900px",
+              height: "90px", 
+              fontSize: "30px", 
               paddingLeft: "20px", 
               paddingRight: "30px", 
               lineHeight: "50px", 

@@ -2,6 +2,8 @@
 /* CSS */
 .button-87 {
   margin: 10px;
+  width: 10%;
+  padding: 15px 30px;
   text-align: center;
   text-transform: uppercase;
   transition: 0.5s;
@@ -17,7 +19,6 @@
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  width:10%;
 }
 
 .button-87:hover {
@@ -30,7 +31,6 @@
 .button-87:active {
   transform: scale(0.95);
 }
-
 
 
 /* CSS */

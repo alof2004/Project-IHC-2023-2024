@@ -11,8 +11,11 @@ interface Room {
  imagem3: string;
  imagem4: string;
  localizacao: string;
- Locais_proximos: string;
+ Locais_proximos: string[];
  cidade: string;
+ país: string;
+ latitude: number;
+ longitude: number;
  description: string;
  Transportes: string;
  servicos: string[];
@@ -29,6 +32,7 @@ interface Room {
  area: string;
  Vista: string;
  Renda_inclui: string[];
+ Equipamento_disponivel: string[];
  Genero: string[];
 }
 const city = window.location.pathname.split("/")[2]; // Get the city from the URL

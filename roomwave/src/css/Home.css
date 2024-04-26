@@ -1,12 +1,18 @@
 select {
-    /* Hide default arrow in modern browsers */
+    appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
-    appearance: none;
 
-}
-
-/* Hide dropdown arrow in Internet Explorer */
-select::-ms-expand {
-    display: none;
-}
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="white"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 0.5rem center; /* Adjust this value to add padding to the left of the arrow */
+    padding-right: 1.5rem; /* Adjust this value to move the arrow further to the right */
+  }
+  
+  /* Adjust select height and appearance to match */
+select {
+    height: 2.5rem; /* Adjust height as needed */
+    padding: 0.5rem; /* Adjust padding as needed */
+    border: 1px solid #ccc; /* Add border for styling */
+    border-radius: 0.25rem; /* Add border-radius for styling */
+  }

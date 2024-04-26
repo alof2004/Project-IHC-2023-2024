@@ -1,16 +1,11 @@
 @import url(https://fonts.googleapis.com/css?family=Share+Tech+Mono);
   
-.container3 {
-  text-align: center;
-  justify-content: center;
-  display: flex;
-}
 .text-animation {
   font-family: "Share Tech Mono", monospace;
 }
 .decode-text {
     width: 100%;
-    font-size: 80px;
+    font-size: 120px;
   }
   
   .space {
