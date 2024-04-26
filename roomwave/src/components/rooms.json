@@ -44,7 +44,7 @@
             "Limpeza semanal",
             "Permissão para animais;",
             "Todos os géneros;"
-        ]
-
-    }       
+        ],
+        "Genero": ["Masculino", "Feminino"]
+    }        
 ]

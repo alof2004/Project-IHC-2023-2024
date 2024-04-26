@@ -73,7 +73,7 @@ function HomeText() {
   }
 
   return (
-    <div>
+    <div className='container3'>
       <div className="decode-text">
         <div className="text-animation">P</div>
         <div className="text-animation">r</div>
