@@ -67,14 +67,15 @@ function RoomsListPage() {
         <div>
             <h1>Rooms List</h1>
             <div>
-                <select className="button-87">
+                <select className="button-62">
                     <option onClick={()=> handleFilter({genero: 'Masculino'})} value="Masculino">Masculino</option>
                     <option onClick={()=> handleFilter({genero: 'Feminino'})} value="Feminino">Feminino</option>
                 </select>
                 <select className="button-79">
                     <option onClick={()=> handleFilter({genero: 'Masculino'})} value="Masculino">Masculino</option>
                     <option onClick={()=> handleFilter({genero: 'Feminino'})} value="Feminino">Feminino</option>
-                </select>               
+                </select>            
+
                 <button onClick={() => handleFilter({ city: 'City1' })}>City1</button>
                 <button onClick={() => handleFilter({ city: 'City2' })}>City2</button>
                 <button onClick={() => handleFilter({ city: '', minPrice:0})}>All</button>

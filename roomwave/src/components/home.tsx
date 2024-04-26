@@ -30,7 +30,7 @@ function Home() {
         <div style={{ position: "absolute", top: "0", textAlign:'center', width: "100%", height: "50px", justifyContent:'center', alignItems:"center", paddingTop:"140px"}}>
           <HomeText />
           <form> {/* Removed onSubmit attribute */}
-            <select  value={selectedCity} onChange={handleChange} style={{ 
+            <select  className="homeSelect" value={selectedCity} onChange={handleChange} style={{ 
               width: "900px",
               height: "90px", 
               fontSize: "30px", 
