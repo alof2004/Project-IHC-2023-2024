@@ -4,6 +4,10 @@ import details from './rooms.json';
 import Carousel from './Carousel';
 import NavBar from './NavBar';
 import { useState } from 'react';
+import Map from './Map';
+import Button from './button';
+
+
 
 
 function RoomDetails(){
@@ -33,7 +37,7 @@ function RoomDetails(){
                     </div>
                     <div className='info_contact'>   
                       <div>
-                        <h1>Contactar</h1>
+                        <Button />
                       </div>
                       <div className='info_contact_second'>
                         <div onClick={handleFavoritesClick} style={{ cursor: 'pointer' }}>
@@ -51,18 +55,24 @@ function RoomDetails(){
                 Localização: {''} 
                 <span className=''>{room.localizacao}, {room.cidade}</span>
             </h2>
-            
-            <Carousel room={{ imagem1: './src/images/quarto1.jpg', 
-                              imagem2: './src/images/quarto1_2.jpg', 
-                              imagem3: './src/images/quarto1_3.jpg', 
-                              imagem4: './src/images/quarto1_4.jpg' 
-                            }} />
+            <div>
+                <Carousel room={{ imagem1: './src/images/quarto1.jpg', 
+                                  imagem2: './src/images/quarto1_2.jpg', 
+                                  imagem3: './src/images/quarto1_3.jpg', 
+                                  imagem4: './src/images/quarto1_4.jpg' 
+                                }} />
+                <div className='price_info'>
+                    <h1>
+                         Preço por mês: {room.price}€ + gastos {room.gastos}
+                    </h1>
+                </div>
+            </div>
             <div className='description_info'>
                 <h2 style={{fontSize:"50px", marginBottom:"30px"}}>Informações sobre o quarto</h2>
                 <p> 
                     A habitação dispõem de uma área de {room.area}m2 e é rodeada por um ambiente {room.Ambiente}. Inclui uma {room.servicos.join(", ")} e, o mais importante, uma cama {room.Cama}. <br />
                     Janela {room.Ambiente}. A cozinha é {room.Cozinha}, a casa tem disponiveis {room.casas_de_banho} casas de banho.<br />
-                    Na sua proximidade encontra vários edifícios como: {room.Locais_proximos}.
+                    Na sua proximidade encontra vários edifícios como: {room.servicos.join(", ")}.
                     Autocarros {room.Transportes}. {room.Descrição_Proprietaria}<br />
                     Pessoas do género {room.Pessoas_permitidas[0]} são permitidas ,bem como {room.Pessoas_permitidas[1]}.Animais são {room.Animais} e o acesso a fumadores é {room.Fumadores}.<br />
                     Os gastos são {room.gastos}<br />
@@ -99,48 +109,54 @@ function RoomDetails(){
                     <div className="container">
                         <div className="column">
                         <ul>
-                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Renda_inclui[0]}</li>
-                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Renda_inclui[1]}</li>
-                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Renda_inclui[2]}</li>
-                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Renda_inclui[3]}</li>
-                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Renda_inclui[4]}</li>
+                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.servicos[0]}</li>
+                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.servicos[1]}</li>
+                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.servicos[2]}</li>
+                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.servicos[3]}</li>
+                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.servicos[4]}</li>
                         </ul>
                         </div>
                         <div className="column">
                         <ul>
-                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Renda_inclui[5]}</li>
-                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Renda_inclui[6]}</li>
-                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Renda_inclui[7]}</li>
-                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Renda_inclui[8]}</li>
-                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Renda_inclui[9]}</li>
+                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.servicos[5]}</li>
+                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.servicos[6]}</li>
+                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.servicos[7]}</li>
+                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.servicos[8]}</li>
+                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.servicos[9]}</li>
                         </ul>
                         </div>
                     </div>
                 </div>
                 <div className='description_info'>
-                <h2 style={{fontSize:"50px", marginBottom:"30px"}}>Equipamentos disponiveisS:</h2>
+                <h2 style={{fontSize:"50px", marginBottom:"30px"}}>Equipamentos disponíveis:</h2>
             
                     <div className="container">
                         <div className="column">
                         <ul>
-                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Renda_inclui[0]}</li>
-                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Renda_inclui[1]}</li>
-                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Renda_inclui[2]}</li>
-                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Renda_inclui[3]}</li>
-                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Renda_inclui[4]}</li>
+                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Equipamento_disponivel[0]}</li>
+                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Equipamento_disponivel[1]}</li>
+                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Equipamento_disponivel[2]}</li>
+                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Equipamento_disponivel[3]}</li>
+                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Equipamento_disponivel[4]}</li>
                         </ul>
                         </div>
                         <div className="column">
                         <ul>
-                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Renda_inclui[5]}</li>
-                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Renda_inclui[6]}</li>
-                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Renda_inclui[7]}</li>
-                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Renda_inclui[8]}</li>
-                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Renda_inclui[9]}</li>
+                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Equipamento_disponivel[5]}</li>
+                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Equipamento_disponivel[6]}</li>
+                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Equipamento_disponivel[7]}</li>
+                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Equipamento_disponivel[8]}</li>
+                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Equipamento_disponivel[9]}</li>
                         </ul>
                         </div>
                     </div>
                 </div>
+                
+                <div className='mapcontainer'>
+                    <h2 style={{marginLeft:"80px", fontSize:"50px", marginBottom:"30px"}}>Localização:</h2>
+                    <Map />
+                </div>
+                
         </div>
     )
 }

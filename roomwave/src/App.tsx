@@ -1,8 +1,6 @@
+// App.tsx
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import NavBar from "./components/NavBar";
-import LoginBox from "./components/LoginBox";
-import { AuthProvider, useAuth } from './components/AuthContext'; // Import useAuth hook
-import NavBarClient from './components/NavBarClient';
+import { AuthProvider, useAuth } from './components/AuthContext';
 import RoomDetails from './components/RoomDetails';
 import HomeClient from './components/homeClient';
 import HomeLandlord from './components/homeLandlord';
@@ -11,12 +9,19 @@ import Login from './components/Login';
 import SignupClient from './components/SignupClient';
 import SignupLandlord from './components/SignupLandlord';
 import RoomsListPage from './components/RoomsListPage';
+import 'leaflet/dist/leaflet.css';
+import Map from './components/Map';
+import Foundcoord from './components/foundcoord';
+import Button from './components/button';
+
+
+
 
 
 function App() {
-  const { isLoggedIn } = useAuth(); // Get isLoggedIn state from AuthContext
+ const { isLoggedIn } = useAuth();
 
-  return (
+ return (
     <Router>
       <AuthProvider>
         <div>
@@ -27,15 +32,17 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/signup/client" element={<SignupClient />} />
             <Route path="/signup/landlord" element={<SignupLandlord />} />
-            <Route path="/RoomDetails" element={<RoomDetails />} /> {/* Use element prop to render RoomDetails */}
+            <Route path="/RoomDetails" element={<RoomDetails />} />
             <Route path="/home" element={<Home/>} />
             <Route path="/rooms/:city" element={<RoomsListPage/>} />
+            <Route path="/Map" element={<Map/>} />
+            <Route path="/foundcoord" element={<Foundcoord />} />
+            <Route path="/button" element={<Button />} />
           </Routes>
         </div>
       </AuthProvider>
     </Router>
-  );
+ );
 }
-
 
 export default App;

@@ -7,8 +7,15 @@
         "imagem3": "../src/images/quarto1_3.jpg",
         "imagem4": "../src/images/quarto1_4.jpg",
         "localizacao":  "Rua das Flores Nº23 Fraçção AB",
-        "Locais_proximos": "Universidade, Mini-Preço e pastelaria Boa Estação",
+        "Locais_proximos": [
+            "Universidade de Aveiro",
+            "Mini-Preço",
+            "pastelaria Boa Estação"
+        ],
         "cidade": "Aveiro",
+        "país": "Portugal",
+        "latitude": 40.39448794226985,
+        "longitude":-8.450340947097306,
         "description": "Quarto com cama de casal, ar condicionado e banheiro privativo",
         "Transportes": " a 100 m",
         "servicos":[
@@ -43,8 +50,20 @@
             "Casa de banho partilhada;",
             "Limpeza semanal",
             "Permissão para animais;",
-            "Todos os géneros;"
+            "Todos os géneros são permitidos;"
         ],
-        "Genero": ["Masculino", "Feminino"]
-    }        
+        "Equipamento_disponivel":[
+            "Frigorífico;",
+            "Máquina de lavar roupa;",
+            "Máquina de lavar loiça;",
+            "Micro-ondas;",
+            "Forno;",
+            "Placa de fogão;",
+            "Exaustor;",
+            "Máquina de café;",
+            "Torradeira;",
+            "Ferro de engomar;"
+        ]
+
+    }       
 ]
