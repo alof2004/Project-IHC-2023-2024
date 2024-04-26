@@ -13,6 +13,7 @@ import 'leaflet/dist/leaflet.css';
 import Map from './components/Map';
 import Foundcoord from './components/foundcoord';
 import Button from './components/button';
+import AddRoom from './components/AddRoom'
 
 
 
@@ -32,6 +33,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/signup/client" element={<SignupClient />} />
             <Route path="/signup/landlord" element={<SignupLandlord />} />
+            <Route path="/addRoom" element={<AddRoom />} />
             <Route path="/RoomDetails" element={<RoomDetails />} />
             <Route path="/home" element={<Home/>} />
             <Route path="/rooms/:city" element={<RoomsListPage/>} />
