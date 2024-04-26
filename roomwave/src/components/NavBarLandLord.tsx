@@ -13,7 +13,7 @@ function NavBarLandLord() {
         <div className="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
           <ul className="navbar-nav">
             <li className="nav-item nav-item-flex">
-              <Link to="addRoom" className="nav-link">
+              <Link to="../addRoom" className="nav-link">
                 <img src="./src/images/heart.png" width="30" height="30" alt="Home Icon"/>
                 AddRoom
               </Link>
