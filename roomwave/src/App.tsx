@@ -13,7 +13,7 @@ import 'leaflet/dist/leaflet.css';
 import Map from './components/Map';
 import Foundcoord from './components/foundcoord';
 import Button from './components/button';
-import AddRoom from './components/AddRoom'
+import AddRoom from './components/AddRoom';
 
 
 
