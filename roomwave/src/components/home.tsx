@@ -27,7 +27,7 @@ function Home() {
         <img className="w3-image" src="../src/images/homepage.png" alt="Architecture" style={{ width: "100%", height: "auto" }} />
         
         {/* Select bar */}
-        <div style={{ position: "absolute", top: "0", left: "0", width: "80%", maxWidth: "900px", height: "50px" ,paddingLeft: "100px", paddingTop:"140px" }}>
+        <div style={{ position: "absolute", top: "0", left: "0", width: "80%", maxWidth: "900px", height: "50px" }}>
           <HomeText />
           <div style={{ position: "absolute",color: "white", top: "50", right: "0", width: "30px", height: "100%", pointerEvents: "none", paddingTop:"25px" }}>&#x25BC;</div>
           <form> {/* Removed onSubmit attribute */}
