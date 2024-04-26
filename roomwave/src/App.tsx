@@ -21,7 +21,6 @@ import AddRoom from './components/AddRoom';
 
 function App() {
  const { isLoggedIn } = useAuth();
-
  return (
     <Router>
       <AuthProvider>

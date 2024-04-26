@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import '../css/RoomForm.css';
 import { useNavigate } from 'react-router-dom';
 
-
-
 function RoomForm(){
     // Define state variables to store form field values
     const [id, setId] = useState<number | null>(null);
@@ -37,45 +35,21 @@ function RoomForm(){
     const [equipamentoDisponivel, setEquipamentoDisponivel] = useState<string[]>([]);
     const navigate = useNavigate();
 
-    const fs = require('fs'); // Importar módulo fs para manipulação de arquivos
-
-    // Função para encontrar o maior ID nos dados do arquivo rooms.json
-    const findHighestIdInFile = () => {
-        try {
-            // Ler o conteúdo do arquivo rooms.json
-            const data = fs.readFileSync('rooms.json', 'utf8');
-            // Parse dos dados JSON
-            const roomsData = JSON.parse(data);
-            // Se o arquivo estiver vazio, retornar null
-            if (roomsData.length === 0) {
-                return null;
-            }
-            // Encontrar o maior ID
-            const highestId = Math.max(...roomsData.map((room: { id: number }) => room.id));
-            return highestId;
-        } catch (error) {
-            console.error('Error reading rooms.json:', error);
-            return null;
-        }
-    };
-
-    // Função para gerar um ID único para um novo quarto
     const generateRoomId = () => {
+        // Retrieve the current list of rooms from localStorage
         const roomsData = JSON.parse(localStorage.getItem('roomsData') || '[]');
+        // If there are no rooms, start with ID 1
         if (roomsData.length === 0) {
-            // Se o localStorage estiver vazio, verificar o arquivo `rooms.json` para o maior ID
-            const highestIdInFile = findHighestIdInFile();
-            return highestIdInFile !== null ? highestIdInFile + 1 : 1;
-        } else {
-            // Se o localStorage tiver quartos existentes, encontrar o quarto com o maior ID
-            const highestIdInLocalStorage = Math.max(...roomsData.map((room: { id: number }) => room.id));
-            return highestIdInLocalStorage + 1;
+            return 1;
         }
+        // Otherwise, find the highest ID and increment it
+        const highestId = Math.max(...roomsData.map((room: { id: number }) => room.id));
+        return highestId + 1;
     };
 
     // Function to handle form submission
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();  // Prevent the default form submission behavior
+        event.preventDefault(); // Prevent the default form submission behavior
         
         const newRoomId = generateRoomId();
         // Construct an object with the form data
@@ -109,15 +83,15 @@ function RoomForm(){
             vista,
             rendaInclui,
             equipamentoDisponivel,
-
         };
-
+    
         console.log(formData);
-        localStorage.setItem('roomsData', JSON.stringify(formData));
+        // Assuming you have a mechanism to store all rooms in an array in localStorage
+        const roomsData = JSON.parse(localStorage.getItem('roomsData') || '[]');
+        roomsData.push(formData);
+        localStorage.setItem('roomsData', JSON.stringify(roomsData));
         console.log('New room added:', formData);
         navigate("../../homeLandlord");
-
-
     };
 
     return ( 
