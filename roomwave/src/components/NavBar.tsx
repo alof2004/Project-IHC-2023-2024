@@ -22,8 +22,9 @@ function NavBar() {
               </Link>
             </li>
             <li className="nav-item nav-item-flex">
-              <img src="../src/images/ajuda_icon.png" width="25" height="25" alt="Help Icon"/>
-              <a className="nav-link" href="#">Ajuda</a>
+              <Link to="../../../Ajuda" className="nav-link">
+              <img src="../src/images/ajuda_icon.png" width="25" height="25" alt="Help Icon"/>Ajuda
+              </Link>
             </li>
           </ul>
         </div>

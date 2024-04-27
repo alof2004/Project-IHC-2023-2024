@@ -14,6 +14,7 @@ import Map from './components/Map';
 import Foundcoord from './components/foundcoord';
 import Button from './components/button';
 import AddRoom from './components/AddRoom';
+import Ajuda from './components/Ajuda';
 
 
 
@@ -39,6 +40,7 @@ function App() {
             <Route path="/Map" element={<Map/>} />
             <Route path="/foundcoord" element={<Foundcoord />} />
             <Route path="/button" element={<Button />} />
+            <Route path="/ajuda" element={<Ajuda />} />
           </Routes>
         </div>
       </AuthProvider>
