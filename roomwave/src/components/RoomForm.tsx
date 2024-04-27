@@ -136,12 +136,14 @@ function RoomForm(){
         <div className="addroom-container">
         <form className="addroom-form" onSubmit={handleSubmit}>
             <h2>Room Form</h2>
+            <label htmlFor="localizacao" className="label1">Localização</label>
             <input
                 type="text"
                 placeholder="Localização"
                 value={localizacao}
                 onChange={(e) => setLocalizacao(e.target.value)}
                 required
+                title="Insira a rua/morada"
             />
 
             <div className="image-upload-container">
@@ -166,6 +168,7 @@ function RoomForm(){
                 </div>
             </div>
             
+            <label htmlFor="Locais Próximos (separados por vírgula)" className="label1">Locais próximos</label>
             <input
                 type="text"
                 placeholder="Locais Próximos (separados por vírgula)"
@@ -173,42 +176,70 @@ function RoomForm(){
                 onChange={(e) => setLocaisProximos(e.target.value.split(','))}
                 required
             />
-            <input
-                type="text"
-                placeholder="Cidade"
-                value={cidade}
-                onChange={(e) => setCidade(e.target.value)}
-                required
-            />
-            <input
-                type="text"
-                placeholder="País"
-                value={pais}
-                onChange={(e) => setPais(e.target.value)}
-                required
-            />
-            <input
-                type="number"
-                placeholder="Latitude"
-                value={latitude || ''}
-                onChange={(e) => setLatitude(parseFloat(e.target.value))}
-                required
-            />
-            <input
-                type="number"
-                placeholder="Longitude"
-                value={longitude || ''}
-                onChange={(e) => setLongitude(parseFloat(e.target.value))}
-                required
-            />
-            <input
-                type="text"
-                placeholder="Descrição"
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                required
-                title="Insira uma breve descrição objetiva do quarto"
-            />
+
+            <div className="location-info-container">
+                <div className="label-container">
+                    <label htmlFor="cidade" className="label1">Cidade</label>
+                    <input
+                        type="text"
+                        id="cidade"
+                        placeholder="Cidade"
+                        value={cidade}
+                        onChange={(e) => setCidade(e.target.value)}
+                        required
+                    />
+                </div>
+                
+                <div className="label-containerend">
+                    <label htmlFor="pais" className="label1">País</label>
+                    <input
+                        type="text"
+                        id="pais"
+                        placeholder="País"
+                        value={pais}
+                        onChange={(e) => setPais(e.target.value)}
+                        required
+                    />
+                </div>
+                
+                <div className="label-container1">
+                    <label htmlFor="latitude" className="label1">Latitude</label>
+                    <input
+                        type="number"
+                        id="latitude"
+                        placeholder="Latitude"
+                        value={latitude || ''}
+                        onChange={(e) => setLatitude(parseFloat(e.target.value))}
+                        required
+                    />
+                </div>
+                
+                <div className="label-container1">
+                    <label htmlFor="longitude" className="label1">Longitude</label>
+                    <input
+                        type="number"
+                        id="longitude"
+                        placeholder="Longitude"
+                        value={longitude || ''}
+                        onChange={(e) => setLongitude(parseFloat(e.target.value))}
+                        required
+                    />
+                </div>
+            </div>
+            
+            <div className="descricao-label-container">
+                <label htmlFor="descricao" className="descricao-label">Descrição</label>
+                <textarea
+                    id="descricao"
+                    placeholder="Descrição"
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
+                    required
+                    className="descricao-input"
+                    title="Insira uma breve descrição objetiva do quarto"
+                />
+            </div>
+
             <div className="dropdown-container">
                 <label className="dropdown-label">Transport Distance</label>
                 <input

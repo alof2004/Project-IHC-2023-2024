@@ -13,7 +13,7 @@ body, html {
 }
 
 .addroom-form {
-    width: 1000px; 
+    width: 1200px; 
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -165,6 +165,10 @@ body, html {
     transform: scale(1.05); /* Increase size on hover for a subtle effect */
 }
 
+.image-upload-container{
+    margin-top: -10px;
+}
+
 .image-upload-input {
     vertical-align: middle; /* Align button vertically */
     background-color: #ffffff; /* Set button background color */
@@ -174,4 +178,75 @@ body, html {
     padding: 8px 12px; /* Adjust padding as needed */
     cursor: pointer; /* Add pointer cursor on hover */
     transition: background-color 0.3s ease; /* Add transition effect */
+}
+
+.label1{
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: white;
+    vertical-align: middle; /* Align vertically with the label below */
+    margin-right: 9px;
+    margin-top: 0px;
+}
+
+.image-upload-label{
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: white;
+    vertical-align: middle; /* Align vertically with the label below */
+    margin-right: 9px;
+}
+
+.location-info-container {
+    display: flex; /* Display children elements in a row */
+    flex-wrap: wrap; /* Allow wrapping if content overflows */
+}
+
+.label-container {
+    margin-right: 20px; /* Adjust spacing between label-input pairs */
+    margin-bottom: 10px; /* Adjust spacing between rows */
+    margin-top: -30px;
+    width: 280px;
+}
+
+.label-containerend{
+    margin-right: 100px; /* Adjust spacing between label-input pairs */
+    margin-bottom: 10px; /* Adjust spacing between rows */
+    margin-top: -30px;
+    width: 280px;
+}
+
+.label-container1 {
+    margin-right: 20px; /* Adjust spacing between label-input pairs */
+    margin-bottom: 10px; /* Adjust spacing between rows */
+    margin-top: -30px;
+    width: 200px;
+}
+
+.label1 {
+    font-weight: bold;
+    color: white;
+    height: 30px; /* Adjust the height of the label */
+    line-height: 30px; /* Align text vertically in the middle */
+}
+
+.descricao-label {
+    font-weight: bold;
+    color: white;
+    height: 30px; /* Adjust the height of the label */
+    line-height: 30px; /* Align text vertically in the middle */
+}
+
+.descricao-input {
+    min-height: 200px; /* Adjust the minimum height of the textarea */
+    width: 100%; /* Ensure the textarea fills its container */
+    padding: 10px; /* Add padding to increase the vertical space for typing */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    resize: vertical; /* Allow vertical resizing of the textarea */
+    overflow-y: auto; /* Show vertical scrollbar if content exceeds textarea height */
+    vertical-align: top; /* Align text to the top of the textarea */
+    line-height: 1.5; /* Adjust line height for better readability */
+    word-wrap: break-word; /* Break long words that exceed textarea width */
+    border-radius: 20px; /* Adicione cantos arredondados */
+    border: 1px solid #ccc; /* Adicione uma borda sólida para melhorar a aparência */
 }
