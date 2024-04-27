@@ -99,8 +99,8 @@ function RoomForm(){
     };
 
     return ( 
-        <div className="signup-container">
-        <form className="signup-form" onSubmit={handleSubmit}>
+        <div className="addroom-container">
+        <form className="addroom-form" onSubmit={handleSubmit}>
             <h2>Room Form</h2>
             <input
                 type="text"

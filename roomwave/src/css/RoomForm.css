@@ -4,7 +4,7 @@ body, html {
     font-family: Arial, sans-serif;
 }
 
-.signup-container {
+.addroom-container {
     width: 100%;
     height: 100%;
     display: flex;
@@ -12,7 +12,7 @@ body, html {
     align-items: center;
 }
 
-.signup-form {
+.addroom-form {
     width: 700px; 
     padding: 20px;
     border-radius: 8px;
@@ -24,11 +24,11 @@ body, html {
     color: aliceblue;
 }
 
-.signup-form h2 {
+.addroom-form h2 {
     margin: 0 0 20px;
 }
 
-.signup-form input, select {
+.addroom-form input, select {
     width: calc(100% - 24px); 
     height: 40px;
     margin-bottom: 30px;
@@ -39,11 +39,11 @@ body, html {
     transition: border-color 0.3s ease;
 }
 
-.signup-form input:hover {
+.addroom-form input:hover {
     border-color: #966419; 
 }
 
-.signup-form button {
+.addroom-form button {
     width: calc(100% + 20px); 
     height: 50px;
     border: none;
@@ -55,7 +55,7 @@ body, html {
     transition: background-color 0.3s ease;
 }
 
-.signup-form button:hover {
+.addroom-form button:hover {
     background-color: #ac5530; 
 }
 
@@ -67,8 +67,8 @@ body, html {
     flex: 1;
     margin-right: 10px; /* Adjust margin as needed */
 }
-.signup-form input,
-.signup-form select {
+.addroom-form input,
+.addroom-form select {
     width: 100%;
 }
 
