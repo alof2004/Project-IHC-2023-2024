@@ -49,6 +49,18 @@ function RoomForm(){
         return highestId + 1;
     };
 
+    const [isOpen, setIsOpen] = useState(false);
+    const distances = [100, 200, 300, 400, 500];
+
+    const handleToggle = () => {
+        setIsOpen(!isOpen);
+    };
+
+    const handleSelectDistance = (distance: number) => {
+        setTransportes(`${distance}m`);
+        setIsOpen(false);
+    };
+
     // Function to handle form submission
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault(); // Prevent the default form submission behavior
@@ -104,6 +116,13 @@ function RoomForm(){
             <h2>Room Form</h2>
             <input
                 type="text"
+                placeholder="Localização"
+                value={localizacao}
+                onChange={(e) => setLocalizacao(e.target.value)}
+                required
+            />
+            <input
+                type="text"
                 placeholder="Imagem 1"
                 value={imagem1}
                 onChange={(e) => setImagem1(e.target.value)}
@@ -128,13 +147,6 @@ function RoomForm(){
                 placeholder="Imagem 4"
                 value={imagem4}
                 onChange={(e) => setImagem4(e.target.value)}
-                required
-            />
-            <input
-                type="text"
-                placeholder="Localização"
-                value={localizacao}
-                onChange={(e) => setLocalizacao(e.target.value)}
                 required
             />
             <input
@@ -180,14 +192,42 @@ function RoomForm(){
                 required
                 title="Insira uma breve descrição objetiva do quarto"
             />
+
+            <div style={{ position: 'relative', width: '200px' }}>
             <input
                 type="text"
-                placeholder="Transportes"
                 value={transportes}
-                onChange={(e) => setTransportes(e.target.value)}
-                required
-                title="A quantos metros?"
+                placeholder="Select Distance"
+                readOnly
+                onClick={handleToggle}
+                style={{ cursor: 'pointer', padding: '5px', width: '100%', border: '1px solid #ccc' }}
             />
+            {isOpen && (
+                <div
+                    style={{
+                        position: 'absolute',
+                        top: 'calc(100% + 2px)',
+                        left: 0,
+                        width: '100%',
+                        border: '1px solid #ccc',
+                        backgroundColor: '#fff',
+                        zIndex: 100,
+                        color: '#333',
+                    }}
+                >
+                    {distances.map((distance, index) => (
+                        <div
+                            key={index}
+                            style={{ padding: '5px', cursor: 'pointer', borderBottom: '1px solid #ccc' }}
+                            onClick={() => handleSelectDistance(distance)}
+                        >
+                            {`${distance}m`}
+                        </div>
+                    ))}
+                </div>
+            )}
+            </div>
+            
             <input
                 type="text"
                 placeholder="Serviços (separados por vírgula)"
