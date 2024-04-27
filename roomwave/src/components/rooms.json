@@ -64,6 +64,7 @@
             "Torradeira;",
             "Ferro de engomar;"
         ],
-        "Genero": ["Masculino", "Feminino"]
-    }       
+        "Genero": ["Masculino", "Feminino"],
+        "TipoQuarto": "T1"
+    }
 ]

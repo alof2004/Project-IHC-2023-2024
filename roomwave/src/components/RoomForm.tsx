@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import '../css/RoomForm.css';
 import { useNavigate } from 'react-router-dom';
+import {useUser} from './UserContext';
 
 function RoomForm(){
     // Define state variables to store form field values
@@ -34,6 +35,7 @@ function RoomForm(){
     const [rendaInclui, setRendaInclui] = useState<string[]>([]);
     const [equipamentoDisponivel, setEquipamentoDisponivel] = useState<string[]>([]);
     const navigate = useNavigate();
+
 
     const generateRoomId = () => {
         // Retrieve the current list of rooms from localStorage
@@ -86,6 +88,8 @@ function RoomForm(){
         };
     
         console.log(formData);
+        const { user } = useUser();
+        formData.proprietaria = user?.firstname + " " + user?.lastname;
         // Assuming you have a mechanism to store all rooms in an array in localStorage
         const roomsData = JSON.parse(localStorage.getItem('roomsData') || '[]');
         roomsData.push(formData);
@@ -98,13 +102,6 @@ function RoomForm(){
         <div className="addroom-container">
         <form className="addroom-form" onSubmit={handleSubmit}>
             <h2>Room Form</h2>
-            <input
-                type="text"
-                placeholder="Nome do Proprietário"
-                value={proprietaria}
-                onChange={(e) => setProprietaria(e.target.value)}
-                required
-            />
             <input
                 type="text"
                 placeholder="Imagem 1"

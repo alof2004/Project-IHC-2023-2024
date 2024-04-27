@@ -1,4 +1,4 @@
-select {
+.homeSelect {
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -10,7 +10,7 @@ select {
   }
   
   /* Adjust select height and appearance to match */
-select {
+.homeSelect {
     height: 2.5rem; /* Adjust height as needed */
     padding: 0.5rem; /* Adjust padding as needed */
     border: 1px solid #ccc; /* Add border for styling */

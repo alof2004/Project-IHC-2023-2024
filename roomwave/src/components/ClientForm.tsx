@@ -94,6 +94,7 @@ function ClientForm(){
                     />
                     <span className="name-space"> </span>
                     <select 
+                        className='job-select'
                         value={job} 
                         onChange={(e) => setRole(e.target.value)} 
                         required 
