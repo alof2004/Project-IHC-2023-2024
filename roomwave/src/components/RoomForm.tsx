@@ -58,7 +58,7 @@ function RoomForm(){
     };
 
     const handleSelectDistance = (distance: number) => {
-        setTransportes(distance === 500 ? '+500m' : `${distance}m`);
+        setTransportes(distance === 500 ? 'a +500m' : `a ${distance}m`);
         setIsOpen(false);
     };
 

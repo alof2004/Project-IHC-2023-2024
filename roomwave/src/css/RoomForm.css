@@ -200,25 +200,26 @@ body, html {
 .location-info-container {
     display: flex; /* Display children elements in a row */
     flex-wrap: wrap; /* Allow wrapping if content overflows */
+    margin-top: 20px;
 }
 
 .label-container {
     margin-right: 20px; /* Adjust spacing between label-input pairs */
-    margin-bottom: 10px; /* Adjust spacing between rows */
+    margin-bottom: 20px; /* Adjust spacing between rows */
     margin-top: -30px;
     width: 280px;
 }
 
 .label-containerend{
     margin-right: 100px; /* Adjust spacing between label-input pairs */
-    margin-bottom: 10px; /* Adjust spacing between rows */
+    margin-bottom: 20px; /* Adjust spacing between rows */
     margin-top: -30px;
     width: 280px;
 }
 
 .label-container1 {
     margin-right: 20px; /* Adjust spacing between label-input pairs */
-    margin-bottom: 10px; /* Adjust spacing between rows */
+    margin-bottom: 20px; /* Adjust spacing between rows */
     margin-top: -30px;
     width: 200px;
 }
@@ -228,6 +229,10 @@ body, html {
     color: white;
     height: 30px; /* Adjust the height of the label */
     line-height: 30px; /* Align text vertically in the middle */
+}
+
+.descricao-label-container {
+    margin-top:-10px;
 }
 
 .descricao-label {
@@ -248,5 +253,5 @@ body, html {
     line-height: 1.5; /* Adjust line height for better readability */
     word-wrap: break-word; /* Break long words that exceed textarea width */
     border-radius: 20px; /* Adicione cantos arredondados */
-    border: 1px solid #ccc; /* Adicione uma borda sólida para melhorar a aparência */
+    border: 1px solid #000000; /* Adicione uma borda sólida para melhorar a aparência */
 }
