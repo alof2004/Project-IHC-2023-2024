@@ -209,11 +209,6 @@ body {
 	padding: min(3rem, 5vw);
 }
 
-form {
-	padding: 1.5rem;
-	background-color: rgba(245, 245, 245);
-	border-radius: 0.5rem;
-}
 
 legend {
 	font-weight: 700;
@@ -245,8 +240,3 @@ progress {
 	flex: 0 1 50%;
 }
 
-form:nth-child(2n) {
-	color-scheme: dark;
-	background-color: black;
-	color: white;
-}
