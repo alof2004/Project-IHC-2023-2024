@@ -143,6 +143,7 @@ function RoomForm(){
                 onChange={(e) => setLocalizacao(e.target.value)}
                 required
             />
+
             <div className="image-upload-container">
                 <label className="image-upload-label">Upload Images (Max 4)</label>
                 <input
@@ -154,10 +155,17 @@ function RoomForm(){
                 />
                 <div className="image-preview-container">
                     {images.map((image, index) => (
-                        <img key={index} src={image} alt={`Image ${index + 1}`} className="image-preview" />
+                        <img
+                            key={index}
+                            src={image}
+                            alt={`Image ${index + 1}`}
+                            className="image-preview"
+                            style={{ width: `calc(25% - 10px)` }} // Set width to 25% of container width with margin
+                        />
                     ))}
                 </div>
             </div>
+            
             <input
                 type="text"
                 placeholder="Locais Próximos (separados por vírgula)"
