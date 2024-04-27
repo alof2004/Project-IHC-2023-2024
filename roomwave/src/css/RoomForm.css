@@ -98,3 +98,45 @@ body, html {
     padding-top: 10px;
     padding-right: 20px;
 }
+
+.dropdown-container {
+    position: relative;
+    width: 200px;
+    margin-bottom: 20px;
+}
+
+/* Input Field */
+.dropdown-input {
+    cursor: pointer;
+    padding: 8px;
+    width: 100%;
+    border: 1px solid #ccc;
+}
+
+/* Options Container */
+.options-container {
+    position: absolute;
+    top: calc(65% + 2px);
+    left: 0;
+    width: 100%;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    z-index: 100;
+    color: #333;
+}
+
+/* Option Item */
+.option-item {
+    padding: 8px 12px;
+    cursor: pointer;
+    border-bottom: 1px solid #ccc;
+}
+
+/* Label */
+.dropdown-label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: white;
+    vertical-align: middle; /* Align vertically with the label below */
+    margin-right: 9px;
+}

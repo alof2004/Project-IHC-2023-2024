@@ -7,10 +7,11 @@ function RoomForm(){
     // Define state variables to store form field values
     const [id, setId] = useState<number | null>(null);
     const [proprietaria, setProprietaria] = useState('');
-    const [imagem1, setImagem1] = useState('');
-    const [imagem2, setImagem2] = useState('');
-    const [imagem3, setImagem3] = useState('');
-    const [imagem4, setImagem4] = useState('');
+    //const [imagem1, setImagem1] = useState('');
+    //const [imagem2, setImagem2] = useState('');
+    //const [imagem3, setImagem3] = useState('');
+    //const [imagem4, setImagem4] = useState('');
+    const [images, setImages] = useState<string[]>([]);
     const [localizacao, setLocalizacao] = useState('');
     const [locaisProximos, setLocaisProximos] = useState<string[]>([]);
     const [cidade, setCidade] = useState('');
@@ -57,8 +58,28 @@ function RoomForm(){
     };
 
     const handleSelectDistance = (distance: number) => {
-        setTransportes(`${distance}m`);
+        setTransportes(distance === 500 ? '+500m' : `${distance}m`);
         setIsOpen(false);
+    };
+
+    const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const files = e.target.files;
+        if (files) {
+            const fileArray: string[] = [];
+            for (let i = 0; i < Math.min(files.length, 4); i++) {
+                const file = files[i];
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    if (event.target) {
+                        fileArray.push(event.target.result as string);
+                        if (fileArray.length === Math.min(files.length, 4)) {
+                            setImages(fileArray);
+                        }
+                    }
+                };
+                reader.readAsDataURL(file);
+            }
+        }
     };
 
     // Function to handle form submission
@@ -70,10 +91,11 @@ function RoomForm(){
         const formData = {
             id: newRoomId,
             proprietaria,
-            imagem1,
-            imagem2,
-            imagem3,
-            imagem4,
+            //imagem1,
+            //imagem2,
+            //imagem3,
+            //imagem4,
+            images: images,
             localizacao,
             locaisProximos,
             cidade,
@@ -121,34 +143,21 @@ function RoomForm(){
                 onChange={(e) => setLocalizacao(e.target.value)}
                 required
             />
-            <input
-                type="text"
-                placeholder="Imagem 1"
-                value={imagem1}
-                onChange={(e) => setImagem1(e.target.value)}
-                required
-            />
-            <input
-                type="text"
-                placeholder="Imagem 2"
-                value={imagem2}
-                onChange={(e) => setImagem2(e.target.value)}
-                required
-            />
-            <input
-                type="text"
-                placeholder="Imagem 3"
-                value={imagem3}
-                onChange={(e) => setImagem3(e.target.value)}
-                required
-            />
-            <input
-                type="text"
-                placeholder="Imagem 4"
-                value={imagem4}
-                onChange={(e) => setImagem4(e.target.value)}
-                required
-            />
+            <div className="image-upload-container">
+                <label className="image-upload-label">Upload Images (Max 4)</label>
+                <input
+                    type="file"
+                    accept="image/*"
+                    multiple
+                    onChange={handleImageChange}
+                    className="image-upload-input"
+                />
+                <div className="image-preview-container">
+                    {images.map((image, index) => (
+                        <img key={index} src={image} alt={`Image ${index + 1}`} className="image-preview" />
+                    ))}
+                </div>
+            </div>
             <input
                 type="text"
                 placeholder="Locais Próximos (separados por vírgula)"
@@ -192,40 +201,29 @@ function RoomForm(){
                 required
                 title="Insira uma breve descrição objetiva do quarto"
             />
-
-            <div style={{ position: 'relative', width: '200px' }}>
-            <input
-                type="text"
-                value={transportes}
-                placeholder="Select Distance"
-                readOnly
-                onClick={handleToggle}
-                style={{ cursor: 'pointer', padding: '5px', width: '100%', border: '1px solid #ccc' }}
-            />
-            {isOpen && (
-                <div
-                    style={{
-                        position: 'absolute',
-                        top: 'calc(100% + 2px)',
-                        left: 0,
-                        width: '100%',
-                        border: '1px solid #ccc',
-                        backgroundColor: '#fff',
-                        zIndex: 100,
-                        color: '#333',
-                    }}
-                >
-                    {distances.map((distance, index) => (
-                        <div
-                            key={index}
-                            style={{ padding: '5px', cursor: 'pointer', borderBottom: '1px solid #ccc' }}
-                            onClick={() => handleSelectDistance(distance)}
-                        >
-                            {`${distance}m`}
-                        </div>
-                    ))}
-                </div>
-            )}
+            <div className="dropdown-container">
+                <label className="dropdown-label">Transport Distance</label>
+                <input
+                    type="text"
+                    value={transportes}
+                    placeholder="Select Distance"
+                    readOnly
+                    onClick={handleToggle}
+                    className="dropdown-input"
+                />
+                {isOpen && (
+                    <div className="options-container">
+                        {distances.map((distance, index) => (
+                            <div
+                                key={index}
+                                className="option-item"
+                                onClick={() => handleSelectDistance(distance)}
+                            >
+                                {distance === 500 ? '+500m' : `${distance}m`}
+                            </div>
+                        ))}
+                    </div>
+                )}
             </div>
             
             <input
