@@ -240,3 +240,11 @@ progress {
 	flex: 0 1 50%;
 }
 
+
+.centered-heart {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 10px; /* Adjust as needed */
+	margin-right: 30px;
+}

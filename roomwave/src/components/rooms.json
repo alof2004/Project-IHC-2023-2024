@@ -65,6 +65,8 @@
             "Ferro de engomar;"
         ],
         "Genero": ["Masculino", "Feminino"],
-        "TipoQuarto": "T1"
+        "TipoQuarto": "T1",
+        "WC": "Partilhado",
+        "Alojamento": "Apartamento"
     }
 ]
