@@ -5,6 +5,7 @@ import '../css/HeartIcon.css';
 
 interface HeartIconProps {
  roomId: number;
+ isFavorite: boolean;
 }
 
 const HeartIcon: React.FC<HeartIconProps> = ({ roomId }) => {
