@@ -7,7 +7,7 @@ import { useState } from 'react';
 import Map from './Map';
 import Button from './button';
 import Footer from './footer';
-import Table_location from './Table_location';
+import TemplateDemo from './Table_location';
 
 
 
@@ -153,9 +153,9 @@ function RoomDetails(){
                     <h2 style={{marginLeft:"80px", fontSize:"50px", marginBottom:"30px"}}>Localização:</h2>
                     <Map />
                 </div>
-                <Table_location />
-                <Footer />
         </div>
+        <TemplateDemo />
+        <Footer />
     </div>
     )
 }

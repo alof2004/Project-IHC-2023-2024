@@ -741,13 +741,12 @@ img.flag {
 }
 
 .card {
-    background: var(--surface-card);
+   
     padding: 2rem;
-    border-color: black;
-    background-color:white;
+    font-size: 40px;
     margin-left: 80px;
     margin-right: 80px;
-    border-radius: 10px;
     margin-bottom: 1rem;
-    margin-top: 20px;
+    margin-top: 50px;
 }
+

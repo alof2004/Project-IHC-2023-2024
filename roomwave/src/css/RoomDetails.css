@@ -90,7 +90,7 @@
     font-size: 30px;
     margin-bottom: 40px;
     width: 75%;
-    background-color: #aaa9a9;
+    background-color: #b4b2b2;
 }   
 
 
@@ -101,7 +101,8 @@
 .info_contact_second {
   display: flex;
   flex-direction: column;
-  margin-left: 100px;
+  position: relative;
+
 }
 
 #favorites_share{
@@ -378,5 +379,6 @@
       margin-left: 100px;
      }
 
+     
 
 }

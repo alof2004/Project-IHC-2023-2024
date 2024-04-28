@@ -1,26 +1,62 @@
 import React, { useState, useEffect } from 'react';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
-import { ProductService } from './Locais.tsx';
-import '../css/Table.css';
+import { Rating } from 'primereact/rating';
+import "../css/Table.css";
+import { Product } from './Locais.tsx';
 
+interface TemplateDemoProps {}
 
-export default function SizeDemo() {
-    const [products, setProducts] = useState<{ id: string; Locais: string; image: string; duracao: number; km: number; rating: number; }[]>([]);
+const TemplateDemo: React.FC<TemplateDemoProps> = () => {
+    const [products, setProducts] = useState<Product[]>([]);
 
     useEffect(() => {
-        ProductService.getProducts().then((data) => setProducts(data));
+        setProducts(Product.getProductsData());
     }, []);
+
+    const formatCurrency = (product: Product) => {
+        return <span>{product.duracao} km´s</span>;
+    };
+
+    const imageBodyTemplate = (product: Product) => {
+        return <img src={`https://primefaces.org/cdn/primereact/images/product/${product.image}`} alt={product.image} className="w-6rem shadow-2 border-round" />;
+    };
+
+    const priceBodyTemplate = (product: Product) => {
+        return formatCurrency(product);
+    };
+
+    const ratingBodyTemplate = (product: Product) => {
+        return <Rating value={product.rating} readOnly cancel={false} />;
+    };
+
+    const durationBodyTemplate = (product: Product) => {
+        return <span>{product.duracao} mins</span>;
+    };
+
+    const categoryBodyTemplate = (product: Product) => {
+        return <span>{product.categoria}</span>;
+    };
+    
+
+    const header = (
+        <div className="flex flex-wrap align-items-center justify-content-between gap-2">
+            <span className="text-xl text-900 font-bold">Estabelecimentos próximos:</span>
+        </div>
+    );
 
     return (
         <div className="card">
-            <DataTable value={products}  tableStyle={{ minWidth: '50rem' }}>
-                <Column field="Locais" header="Local Próximo"></Column>
-                <Column field="duracao" header="Duração(min)"></Column>
-                <Column field="km" header="Distância(km)"></Column>
-                <Column field="rating" header="Avaliação"></Column>
+            <DataTable value={products} header={header}>
+                <Column field="Locais" header="Local"></Column>
+                <Column field="duracao" header="Duração" body={durationBodyTemplate}></Column>
+                <Column field="km" header="Distância" body={priceBodyTemplate}></Column>
+                <Column header="Imagem" body={imageBodyTemplate}></Column>
+                <Column field="Categoria" header="Categoria" body={categoryBodyTemplate} ></Column>
+                <Column field="rating" header="Avaliação" body={ratingBodyTemplate}></Column>
             </DataTable>
         </div>
     );
-}
-        
+};
+
+export default TemplateDemo;
