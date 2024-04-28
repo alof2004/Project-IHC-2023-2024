@@ -230,10 +230,11 @@ function RoomsListPage() {
                         </div>
                         </div>
                         <div className="projcard-price" style={{float:"right", padding:"10px 10px 0px 0px", fontSize:"20px"}}>{room.price}€ / mês</div>
-
-
-
-                        <HeartIcon roomId={room.id} isFavorite={isFavorite} />
+                        <div className="centered-heart">
+                        <div onClick={(e) => { e.stopPropagation(); e.preventDefault(); }}>
+                            <HeartIcon roomId={room.id} isFavorite={isFavorite} />
+                        </div>
+                        </div>
                     </div>
                     );
                 })
