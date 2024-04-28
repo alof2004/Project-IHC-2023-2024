@@ -9,9 +9,9 @@ import { UserProvider } from './components/UserContext.tsx'
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <UserProvider>
-    <AuthProvider>
-    <App />
-    </AuthProvider>
+      <AuthProvider>
+        <App />
+      </AuthProvider>
     </UserProvider>
   </React.StrictMode>,
 )

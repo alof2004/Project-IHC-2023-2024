@@ -8,10 +8,12 @@ interface PriceRangeProps {
 const PriceRange: React.FC<PriceRangeProps> = ({ onRangeChange }) => {
  const [range, setRange] = useState<[number, number]>([100, 1500]);
 
- const handleChanges = (event: Event, newValue: [number, number]) => {
-    setRange(newValue);
-    onRangeChange(newValue);
- };
+ const handleChanges = (event: Event, newValue: number | number[], activeThumb: number) => {
+  if (Array.isArray(newValue) && newValue.length === 2) {
+    setRange(newValue as [number, number]); // Type assertion here
+    onRangeChange(newValue as [number, number]); // Type assertion here
+ }
+};
 
  return (
     <div style={{ width: "20rem", padding: "20px", margin: "10px", backgroundColor: "#252525", color: "white", borderRadius: "10px" }}>
@@ -31,7 +33,6 @@ const PriceRange: React.FC<PriceRangeProps> = ({ onRangeChange }) => {
             color: 'white', // Ensures the track is white
           },
         }}
-
       />
       Mostrando preços {range[0]} - {range[1]}
     </div>

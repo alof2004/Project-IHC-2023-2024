@@ -1,6 +1,6 @@
 // App.tsx
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { AuthProvider, useAuth } from './components/AuthContext';
+import { useAuth } from './components/AuthContext';
 import RoomDetails from './components/RoomDetails';
 import HomeClient from './components/homeClient';
 import HomeLandlord from './components/homeLandlord';
@@ -24,7 +24,6 @@ function App() {
  const { isLoggedIn } = useAuth();
  return (
     <Router>
-      <AuthProvider>
         <div>
           <Routes>
             <Route path="/" element={<Home />} />
@@ -43,7 +42,6 @@ function App() {
             <Route path="/ajuda" element={<Ajuda />} />
           </Routes>
         </div>
-      </AuthProvider>
     </Router>
  );
 }

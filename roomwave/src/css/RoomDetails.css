@@ -1,4 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital@1&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+
+.text{
+    font-family: 'Oswald', sans-serif;
+    font-size: 50px;
+}
+
 .return-button {    
     width: 50px;
     height: 50px;
@@ -6,7 +13,6 @@
     margin-left:80px;
 }
 .title_info_more_number_proprietaria{
-    width: 100%;
     display: flex;
     margin-top: 40px;
     margin-left:80px;
@@ -16,6 +22,10 @@
     margin-right: 80px;
 }
 
+.title_info_proprietaria h1{
+  font-size: 60px;
+}
+
 .title_info_proprietaria{
   width:40%;
   height: 80px; /* Adjust the height as needed */
@@ -23,40 +33,39 @@
   align-items: center;
   font-size: 35px; /* Adjust font size as needed */
   white-space: nowrap;
+  margin-top: 40px;
 }
 .title_info_number {
-    
-    width: auto;
-    height: 50px; /* Adjust the height as needed */
-    display:flex;
-    align-items: center;
-    font-size: 30px; /* Adjust font size as needed */
-    white-space: nowrap;
-    background-color: #ffa500;
-    border-radius: 30px;
-    padding: 0 20px; /* Add padding as needed */
-    margin-top: 16px;
-    flex-wrap: wrap;
+  height: 50px; /* Ajuste a altura conforme necessário */
+  display: flex;
+  align-items: center;
+  font-size: 50px; /* Ajuste o tamanho da fonte conforme necessário */
+  white-space: nowrap;
+  background-color: #ffa500;
+  border-radius: 30px;
+  padding: 30px 50px; /* Adicione padding conforme necessário */
+  margin-top: 16px;
+  text-overflow: ellipsis; /* Adiciona reticências para o texto que excede o contêiner */
+  margin-left: 200px;
 }
+
 
 
 .room-images {
     position: relative;
-    width: 30%;
-  }
+    width: 100%;
+    margin-top: 100px;  
+}
 
 .price_info{
     margin-left:80px;
     font-size: 500px;
     margin-bottom: 40px;
-    width: 30%;
 }
   
   .main-image {
     margin-top: 50px;
     margin-left: 87px;
-    width: 1300px;
-    height: 700px;
     margin-bottom: 100px;
   }
   
@@ -74,42 +83,6 @@
     width: 200px;
     height: 120px;
   }
-  
-
-  @media screen and (max-width: 1444px) {
-    .room-images {
-      flex-direction: column; 
-      align-items: center; 
-    }
-  
-    .main-image {
-      width: 90%;
-      height: auto; 
-      margin: 20px 0;
-    }
-  
-    .other-images {
-      position: static; 
-      margin-top: 20px; 
-    }
-  
-    .vertical-image {
-      width: 90%; 
-      height: auto; 
-    }
-    .title_info_more_number_proprietaria {
-      flex-direction: column; /* Empilha os elementos verticalmente */
-      align-items: center; /* Centraliza os elementos */
-      text-align: center; /* Centraliza o texto */
-  }
-
-  .title_info_proprietaria,
-  .title_info_number {
-      width: 100%; /* Define a largura máxima para 100% em telas menores */
-      text-align: center; /* Centraliza o texto */
-      justify-content: center; /* Centraliza o conteúdo */
-  }
-  }
 
 
 .description_info {
@@ -117,28 +90,25 @@
     font-size: 30px;
     margin-bottom: 40px;
     width: 75%;
+    background-color: #aaa9a9;
 }   
 
-.info_contact h1 {
-  background-color: rgb(0, 0, 0);
-  color: white;
-  margin-left: 400px;
-  margin-right: 80px;
-  margin-top: 18px;
-  text-align: center;
-  border-radius: 10px;
-  font-size: 40px;
-  padding: 10px 50px 10px 50px; /* Ajustei o padding para não interferir com a linha */
-  font-family: 'Inconsolata', monospace;
+
+.info_contact {
+  width:100%;
 }
 
 .info_contact_second {
   display: flex;
-  margin-left: 320px;
-  border-radius: 10px;
-  margin-top: -5px;
-  justify-content: space-around;
-  padding: 30px;
+  flex-direction: column;
+  margin-left: 100px;
+}
+
+#favorites_share{
+  display: flex;
+  gap: 90px;
+  margin-left:425px;
+  margin-top: 5px;
 }
 
 .info_contact_second img {
@@ -150,34 +120,39 @@
 
   .container {
     display: flex;
-    justify-content: space-between;
-    
+    font-size: 40px;
    }
    
    .column {
-    width: 50%; /* Ajuste a largura conforme necessário */
-    margin-right: 100px;
-    /*quero encostar a esquerda*/
-   }
-   
-   .column ul {
-    list-style-type: none;
-    padding: 0;
-   }
-   
-   .column li {
-    margin-bottom: 60px; /* Espaçamento entre os itens */
-   }
-   
+    width: 45%; 
+    margin-right: 20px; 
+    }
+    .column-left {
+      margin-left: -20px; /* Ajuste a margem esquerda da coluna esquerda para alinhar com o título */
+    }
+    
+    .column-right {
+      margin-right: -20px; 
+    }
+    .column ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    
+    .column li {
+      margin-bottom: 60px;
+    }
+       
    .icon {
     margin-right: 30px; /* Espaçamento entre o ícone e o texto */
    }
 
-   .mapcontainer{
-    margin-left: 80px;
-    width: 70%;
-    height: 20%;
-   }
+    .mapcontainer{
+      margin-left: 80px;
+      width: 80%; /* Reduzindo a largura para 50% */
+      height: 10%; /* Reduzindo a altura para 10% */
+  }
+  
 
    *:after, *:before {
     box-sizing: border-box;
@@ -325,3 +300,83 @@
    }
    
    
+   @media screen and (max-width: 1874px) {
+  
+    .price_info{
+      margin-left:80px;
+      font-size: 500px;
+      margin-bottom: 40px;
+      margin-top: 200px;
+  }
+
+  .room-images {
+    flex-direction: column;
+    gap: 10px; /* Adiciona um espaço entre as imagens */
+    margin-top: 200px;
+    display: flex;
+   }
+   
+   .main-image {
+    flex-direction: column;
+    margin-top: 150px;
+    object-fit: cover;
+    margin-right:80px;
+   }
+   
+   .other-images{
+    position: absolute; /* Posiciona as imagens secundárias em relação ao contêiner .room-images */
+    top: 100%; /* Posiciona as imagens secundárias logo abaixo da imagem principal */
+    left: 0; /* Alinha as imagens secundárias à esquerda do contêiner */
+    display: flex;
+    flex-direction: row; /* Alinha as imagens secundárias em uma linha */
+    gap: 10px; /* Espaçamento entre as imagens secundárias */
+    margin-left: 80px;
+   }
+   
+   .vertical-image {
+    width: 200px; /* Define a largura da imagem */
+    height: 120px; /* Define a altura da imagem */
+    object-fit: cover; /* Garante que a imagem cubra todo o espaço disponível sem distorcer a proporção */
+
+   }
+
+    .title_info_more_number_proprietaria {
+      flex-direction: column; /* Empilha os elementos verticalmente */
+      text-align: center; /* Centraliza o texto */
+      margin-bottom: 10px;
+      margin-left: 0px;
+    }
+
+    .title_info_number {
+      text-align: center; /* Centraliza o texto */
+      justify-content: center; /* Centraliza o conteúdo */
+      margin-top: 30px;
+      margin-left: 0px;
+    
+    }
+
+    .info_contact_second {
+      display: flex;
+      justify-content: space-between; /* Espaça os elementos igualmente ao longo do eixo horizontal */
+      align-items: center; /* Alinha os elementos verticalmente no centro */
+      gap: 20px; /* Espaçamento entre os elementos */
+      padding: 0 80px; /* Padding horizontal para dar algum espaço nas laterais */
+      margin-left: 0px;
+      margin-right: 320px;
+     }
+     
+     #favorites_share {
+      display: flex;
+      gap: 20px; /* Espaçamento entre os ícones */
+      cursor: pointer;
+      margin-right:190px;
+     }
+     
+     #favorites_share img {
+      width: 80px; /* Ajuste conforme necessário */
+      height: auto; /* Mantém a proporção da imagem */
+      margin-left: 100px;
+     }
+
+
+}

@@ -6,11 +6,11 @@
         "imagem2": "../src/images/quarto1_2.jpg",
         "imagem3": "../src/images/quarto1_3.jpg",
         "imagem4": "../src/images/quarto1_4.jpg",
-        "localizacao":  "Rua das Flores Nº23 Fraçção AB",
+        "localizacao":  "Rua das Flores Nº23 Fração AB",
         "Locais_proximos": [
             "Universidade de Aveiro",
             "Mini-Preço",
-            "pastelaria Boa Estação"
+            "Pastelaria Boa Estação"
         ],
         "cidade": "Aveiro",
         "país": "Portugal",
@@ -48,9 +48,9 @@
             "Cozinha partilhada;",
             "Sala partilhada;",
             "Casa de banho partilhada;",
-            "Limpeza semanal",
+            "Limpeza semanal;",
             "Permissão para animais;",
-            "Todos os géneros são permitidos;"
+            "Possibilidade de ambos os géneros puderem ocupar o quarto;"
         ],
         "Equipamento_disponivel":[
             "Frigorífico;",
