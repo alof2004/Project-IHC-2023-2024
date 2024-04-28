@@ -18,10 +18,6 @@ const TemplateDemo: React.FC<TemplateDemoProps> = () => {
         return <span>{product.duracao} km´s</span>;
     };
 
-    const imageBodyTemplate = (product: Product) => {
-        return <img src={`https://primefaces.org/cdn/primereact/images/product/${product.image}`} alt={product.image} className="w-6rem shadow-2 border-round" />;
-    };
-
     const priceBodyTemplate = (product: Product) => {
         return formatCurrency(product);
     };
@@ -31,7 +27,7 @@ const TemplateDemo: React.FC<TemplateDemoProps> = () => {
     };
 
     const durationBodyTemplate = (product: Product) => {
-        return <span>{product.duracao} mins</span>;
+        return <span>{product.duracao} min</span>;
     };
 
     const categoryBodyTemplate = (product: Product) => {
@@ -51,7 +47,6 @@ const TemplateDemo: React.FC<TemplateDemoProps> = () => {
                 <Column field="Locais" header="Local"></Column>
                 <Column field="duracao" header="Duração" body={durationBodyTemplate}></Column>
                 <Column field="km" header="Distância" body={priceBodyTemplate}></Column>
-                <Column header="Imagem" body={imageBodyTemplate}></Column>
                 <Column field="Categoria" header="Categoria" body={categoryBodyTemplate} ></Column>
                 <Column field="rating" header="Avaliação" body={ratingBodyTemplate}></Column>
             </DataTable>

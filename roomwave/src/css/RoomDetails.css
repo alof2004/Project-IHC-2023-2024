@@ -90,33 +90,31 @@
     font-size: 30px;
     margin-bottom: 40px;
     width: 75%;
-    background-color: #b4b2b2;
+    background-color: rgb(255, 255, 255);
 }   
 
-
-.info_contact {
-  width:100%;
-}
 
 .info_contact_second {
   display: flex;
   flex-direction: column;
   position: relative;
+  width: 65%;
 
 }
 
-#favorites_share{
-  display: flex;
-  gap: 90px;
-  margin-left:425px;
-  margin-top: 5px;
+.heart_icon,
+.share_icon {
+  display: inline-block;
+  margin-left: 310px;
+}
+
+.icon_contact{
+  width: 100%;
 }
 
 .info_contact_second img {
   width: 80px;
-  height: auto; 
   cursor: pointer; 
-
   }
 
   .container {
@@ -192,7 +190,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-left: 400px;
+    margin-left: 200px;
     margin-right: 80px;
     margin-top: 18px;
     width: 300px;
@@ -301,14 +299,14 @@
    }
    
    
-   @media screen and (max-width: 1874px) {
+   @media screen and (max-width: 2200px) {
   
     .price_info{
       margin-left:80px;
       font-size: 500px;
       margin-bottom: 40px;
       margin-top: 200px;
-  }
+    }
 
   .room-images {
     flex-direction: column;
@@ -319,7 +317,7 @@
    
    .main-image {
     flex-direction: column;
-    margin-top: 150px;
+    margin-top: 300px;
     object-fit: cover;
     margin-right:80px;
    }
@@ -356,29 +354,28 @@
     
     }
 
-    .info_contact_second {
-      display: flex;
-      justify-content: space-between; /* Espaça os elementos igualmente ao longo do eixo horizontal */
-      align-items: center; /* Alinha os elementos verticalmente no centro */
-      gap: 20px; /* Espaçamento entre os elementos */
-      padding: 0 80px; /* Padding horizontal para dar algum espaço nas laterais */
-      margin-left: 0px;
-      margin-right: 320px;
-     }
-     
-     #favorites_share {
-      display: flex;
-      gap: 20px; /* Espaçamento entre os ícones */
-      cursor: pointer;
-      margin-right:190px;
-     }
-     
-     #favorites_share img {
-      width: 80px; /* Ajuste conforme necessário */
-      height: auto; /* Mantém a proporção da imagem */
-      margin-left: 100px;
-     }
+    .info_contact{
+      width: 0px;
+    }
+  
+    .heart_icon,
+.share_icon {
+  display: inline;
+  margin-left: 180px;
+}
 
-     
+.inco_contact{
+  width: 100%;
+}
+
+.dir-control{
+  margin-left:400px;
+}
+    .info_contact_second {
+      justify-content: space-between; /* Ensure the icons are spaced apart */
+      margin-left: 400px;
+      margin-right: 320px;
+      width: 900px;
+    }
 
 }

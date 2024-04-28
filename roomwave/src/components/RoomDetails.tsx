@@ -46,11 +46,11 @@ function RoomDetails(){
                       
                       <div className='info_contact_second'>
                         <Button />
-                        <div id="favorites_share" onClick={handleFavoritesClick} style={{ cursor: 'pointer' }}>
-                            <div>
+                        <div className="icon_contact" onClick={handleFavoritesClick} style={{ cursor: 'pointer' }}>
+                            <div className='heart_icon'>
                                 <img src={isFavorite ? './src/images/favorites2.png' : './src/images/favorites1.png'} alt="favorites"  />
                             </div>
-                            <div>
+                            <div className='share_icon'>
                                 <img src='./src/images/share.png' alt="share" />
                             </div>
                         </div>
@@ -150,7 +150,7 @@ function RoomDetails(){
 
                 
                 <div className='mapcontainer'>
-                    <h2 style={{marginLeft:"80px", fontSize:"50px", marginBottom:"30px"}}>Localização:</h2>
+                    <h2 style={{marginLeft:"0px", fontSize:"50px", marginBottom:"30px"}}>Localização:</h2>
                     <Map />
                 </div>
         </div>

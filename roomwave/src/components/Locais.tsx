@@ -1,7 +1,6 @@
 export interface Product {
     id: string;
     Locais: string;
-    image: string;
     duracao: number;
     km: number;
     rating: number;
@@ -14,7 +13,6 @@ export const Product = {
             {
                 id: '1000',
                 Locais: 'Universidade de Aveiro',
-                image: 'blue-t-shirt.jpg',
                 duracao: 5,
                 km: 25,
                 rating: 5,
@@ -23,7 +21,6 @@ export const Product = {
             {
                 id: '1001',
                 Locais: 'Museu de Aveiro',
-                image: 'blue-t-shirt.jpg',
                 duracao: 10,
                 km: 30,
                 rating: 3,
@@ -32,7 +29,6 @@ export const Product = {
             {
                 id: '1002',
                 Locais: 'Praia da Barra',
-                image: 'blue-t-shirt.jpg',
                 duracao: 20,
                 km: 90,
                 rating: 1,
