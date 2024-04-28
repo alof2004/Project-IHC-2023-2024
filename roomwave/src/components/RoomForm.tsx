@@ -35,6 +35,10 @@ function RoomForm(){
     const [vista, setVista] = useState('');
     const [rendaInclui, setRendaInclui] = useState<string[]>([]);
     const [equipamentoDisponivel, setEquipamentoDisponivel] = useState<string[]>([]);
+    const [genero, setGenero] = useState<string[]>([]);
+    const [tipoQuarto, setTipoQuarto] = useState('');
+    const [wc, setWC] = useState('');
+    const [alojamento, setAlojamento] = useState('');
     const navigate = useNavigate();
 
 
@@ -89,21 +93,21 @@ function RoomForm(){
         const newRoomId = generateRoomId();
         // Construct an object with the form data
         const formData = {
-            id: newRoomId,
-            proprietaria,
+            id: newRoomId,//ta
+            proprietaria, //mais ou menos
             //imagem1,
             //imagem2,
             //imagem3,
             //imagem4,
-            images: images,
-            localizacao,
-            locaisProximos,
-            cidade,
-            pais,
-            latitude,
-            longitude,
-            description,
-            transportes,
+            images: images, //ta
+            localizacao, //ta
+            locaisProximos, //ta
+            cidade, //ta
+            pais, //ta
+            latitude, //ta
+            longitude, //ta
+            description, //ta
+            transportes, //ta
             servicos,
             descricaoProprietaria,
             cama,
@@ -312,6 +316,46 @@ function RoomForm(){
                 onChange={(e) => setAmbiente(e.target.value)}
                 required
                 title="Descreva o ambiente"
+            />
+            <input
+                type="text"
+                placeholder="Tipo de quarto"
+                value={tipoQuarto}
+                onChange={(e) => setTipoQuarto(e.target.value)}
+                required
+                title="T1,T2,T3,T4"
+            />
+            <input
+                type="text"
+                placeholder="Géneros"
+                value={genero.join(',')}
+                onChange={(e) => setGenero(e.target.value.split(','))}
+                required
+                title="Insira os géneros permitidos"
+            />
+            <input
+                type="text"
+                placeholder="Wc"
+                value={tipoQuarto}
+                onChange={(e) => setTipoQuarto(e.target.value)}
+                required
+                title="T1,T2,T3,T4"
+            />
+            <input
+                type="text"
+                placeholder="Tipo de quarto"
+                value={wc}
+                onChange={(e) => setWC(e.target.value)}
+                required
+                title="Partilhado/Individual/..."
+            />
+            <input
+                type="text"
+                placeholder="Alojamento"
+                value={alojamento}
+                onChange={(e) => setAlojamento(e.target.value)}
+                required
+                title="Apartamento/Casa/..."
             />
             <input
                 type="number"
