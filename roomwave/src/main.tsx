@@ -10,11 +10,11 @@ import { FavoriteRoomsProvider } from './components/FavoriteRoomsContext.tsx'
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <UserProvider>
-    <AuthProvider>
+      <AuthProvider>
     <FavoriteRoomsProvider>
-    <App />
+        <App />
     </FavoriteRoomsProvider>
-    </AuthProvider>
+      </AuthProvider>
     </UserProvider>
   </React.StrictMode>,
 )

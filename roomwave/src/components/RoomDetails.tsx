@@ -6,6 +6,8 @@ import NavBar from './NavBar';
 import { useState } from 'react';
 import Map from './Map';
 import Button from './button';
+import Footer from './footer';
+import Table_location from './Table_location';
 
 
 
@@ -19,9 +21,10 @@ function RoomDetails(){
     };
 
     return (
-        <div >
-            <NavBar />
-            <Link to="./home">                   
+        <div>
+        <NavBar />
+        <div className='text'>
+            <Link to="/">                   
                  <img src='./src/images/return.png' className='return-button' alt="return"/>
             </Link>
             <div className='title_info_more_number_proprietaria'> 
@@ -29,41 +32,46 @@ function RoomDetails(){
                         <h1>
                             Quarto de {''} 
                             <span style={{color:"#ffa500"}}>{room.Proprietaria}</span>
+                            <h2 style={{marginTop:"30px",flexDirection:"column",fontSize:"30px"}}>
+                                Localização: {''} 
+                                <span>{room.localizacao}, {room.cidade}</span>
+                            </h2>
                         </h1>
                     </div>
                     <div className=' title_info_number' >
-                        <img src= "./src/images/telefone_icon.png" width='60 px' height='40px'></img>
+                        <img src= "./src/images/telefone_icon.png" width='80 px' height='50px'></img>
                         <span>Telefone: 914439900</span>
                     </div>
                     <div className='info_contact'>   
-                      <div>
-                        <Button />
-                      </div>
+                      
                       <div className='info_contact_second'>
-                        <div onClick={handleFavoritesClick} style={{ cursor: 'pointer' }}>
+                        <Button />
+                        <div id="favorites_share" onClick={handleFavoritesClick} style={{ cursor: 'pointer' }}>
                             <div>
                                 <img src={isFavorite ? './src/images/favorites2.png' : './src/images/favorites1.png'} alt="favorites"  />
                             </div>
+                            <div>
+                                <img src='./src/images/share.png' alt="share" />
+                            </div>
                         </div>
-                        <div>
-                            <img src='./src/images/share.png' alt="share" />
-                        </div>
-                    </div>
+                      </div>
                     </div>
             </div>
-            <h2 style={{marginLeft:"80px", fontSize:"30px"}}>
-                Localização: {''} 
-                <span className=''>{room.localizacao}, {room.cidade}</span>
-            </h2>
-            <div>
+            
+            <div >
                 <Carousel room={{ imagem1: './src/images/quarto1.jpg', 
                                   imagem2: './src/images/quarto1_2.jpg', 
                                   imagem3: './src/images/quarto1_3.jpg', 
                                   imagem4: './src/images/quarto1_4.jpg' 
                                 }} />
                 <div className='price_info'>
-                    <h1>
-                         Preço por mês: {room.price}€ + gastos {room.gastos}
+                <h1>
+                    <span style={{ fontSize:"50px",color:"orange" }}>
+                    Preço por mês:  
+                    </span>
+                    <span style={{fontSize:"80px"}}>
+                         {room.price}€
+                    </span>  + gastos {room.gastos}
                     </h1>
                 </div>
             </div>
@@ -80,84 +88,75 @@ function RoomDetails(){
             </div>
 
             <div className='description_info'>
-                <h2 style={{fontSize:"50px", marginBottom:"30px"}}>Renda inclui:</h2>
-            
+                    <h2 className="title_info" style={{ fontSize: "50px", marginBottom: "30px", marginRight: "20px" }}>A Renda inclui:</h2>
+
                     <div className="container">
-                        <div className="column">
-                        <ul>
-                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Renda_inclui[0]}</li>
-                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Renda_inclui[1]}</li>
-                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Renda_inclui[2]}</li>
-                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Renda_inclui[3]}</li>
-                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Renda_inclui[4]}</li>
-                        </ul>
+                        <div className="column column-left"> 
+                            <ul>
+                                {room.Renda_inclui.slice(0, 5).map((Renda_inclui, index) => (
+                                    <li key={index}><span className="icon"><img src='./src/images/plus.png' style={{ width: "35px", height: "35px" }} alt="plus icon" /></span>{Renda_inclui}</li>
+                                ))}
+                            </ul>
                         </div>
-                        <div className="column">
-                        <ul>
-                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Renda_inclui[5]}</li>
-                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Renda_inclui[6]}</li>
-                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Renda_inclui[7]}</li>
-                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Renda_inclui[8]}</li>
-                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Renda_inclui[9]}</li>
-                        </ul>
+                        <div className="column column-right"> 
+                            <ul>
+                                {room.Renda_inclui.slice(5, 10).map((Renda_inclui, index) => (
+                                    <li key={index}><span className="icon"><img src='./src/images/plus.png' style={{ width: "35px", height: "35px" }} alt="plus icon" /></span>{Renda_inclui}</li>
+                                ))}
+                            </ul>
                         </div>
                     </div>
                 </div>
                 <div className='description_info'>
-                <h2 style={{fontSize:"50px", marginBottom:"30px"}}>Sobre habitação:</h2>
-            
+                    <h2 className="title_info" style={{ fontSize: "50px", marginBottom: "30px", marginRight: "20px" }}>Sobre a habitação:</h2>
+
                     <div className="container">
-                        <div className="column">
-                        <ul>
-                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.servicos[0]}</li>
-                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.servicos[1]}</li>
-                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.servicos[2]}</li>
-                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.servicos[3]}</li>
-                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.servicos[4]}</li>
-                        </ul>
+                        <div className="column column-left"> 
+                            <ul>
+                                {room.servicos.slice(0, 5).map((servicos, index) => (
+                                    <li key={index}><span className="icon"><img src='./src/images/plus.png' style={{ width: "35px", height: "35px" }} alt="plus icon" /></span>{servicos}</li>
+                                ))}
+                            </ul>
                         </div>
-                        <div className="column">
-                        <ul>
-                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.servicos[5]}</li>
-                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.servicos[6]}</li>
-                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.servicos[7]}</li>
-                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.servicos[8]}</li>
-                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.servicos[9]}</li>
-                        </ul>
+                        <div className="column column-right"> 
+                            <ul>
+                                {room.servicos.slice(5, 10).map((servicos, index) => (
+                                    <li key={index}><span className="icon"><img src='./src/images/plus.png' style={{ width: "35px", height: "35px" }} alt="plus icon" /></span>{servicos}</li>
+                                ))}
+                            </ul>
                         </div>
                     </div>
                 </div>
                 <div className='description_info'>
-                <h2 style={{fontSize:"50px", marginBottom:"30px"}}>Equipamentos disponíveis:</h2>
-            
+                    <h2 className="title_info" style={{ fontSize: "50px", marginBottom: "30px", marginRight: "20px" }}>Equipamentos:</h2>
+
                     <div className="container">
-                        <div className="column">
-                        <ul>
-                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Equipamento_disponivel[0]}</li>
-                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Equipamento_disponivel[1]}</li>
-                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Equipamento_disponivel[2]}</li>
-                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Equipamento_disponivel[3]}</li>
-                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Equipamento_disponivel[4]}</li>
-                        </ul>
+                        <div className="column column-left"> 
+                            <ul>
+                                {room.Equipamento_disponivel.slice(0, 5).map((Equipamento_disponivel, index) => (
+                                    <li key={index}><span className="icon"><img src='./src/images/plus.png' style={{ width: "35px", height: "35px" }} alt="plus icon" /></span>{Equipamento_disponivel}</li>
+                                ))}
+                            </ul>
                         </div>
-                        <div className="column">
-                        <ul>
-                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Equipamento_disponivel[5]}</li>
-                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Equipamento_disponivel[6]}</li>
-                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Equipamento_disponivel[7]}</li>
-                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Equipamento_disponivel[8]}</li>
-                            <li><span className="icon"><img src='./src/images/plus.png' style={{width:"35px", height:"35px"}}/></span>{room.Equipamento_disponivel[9]}</li>
-                        </ul>
+                        <div className="column column-right"> 
+                            <ul>
+                                {room.Equipamento_disponivel.slice(5, 10).map((Equipamento_disponivel, index) => (
+                                    <li key={index}><span className="icon"><img src='./src/images/plus.png' style={{ width: "35px", height: "35px" }} alt="plus icon" /></span>{Equipamento_disponivel}</li>
+                                ))}
+                            </ul>
                         </div>
                     </div>
                 </div>
+
                 
                 <div className='mapcontainer'>
                     <h2 style={{marginLeft:"80px", fontSize:"50px", marginBottom:"30px"}}>Localização:</h2>
                     <Map />
                 </div>
-                
+                <Table_location />
+                <Footer />
         </div>
+    </div>
     )
 }
 

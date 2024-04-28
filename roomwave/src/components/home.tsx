@@ -3,6 +3,7 @@ import HomeText from './HomeText';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../css/Home.css';
+import Footer from './footer';
 
 function Home() {
   const [selectedCity, setSelectedCity] = useState('');
@@ -68,6 +69,7 @@ function Home() {
           </form>
         </div>
       </header>
+      <Footer />
     </div>
   );
 }

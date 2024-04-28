@@ -7,10 +7,11 @@ function RoomForm(){
     // Define state variables to store form field values
     const [id, setId] = useState<number | null>(null);
     const [proprietaria, setProprietaria] = useState('');
-    const [imagem1, setImagem1] = useState('');
-    const [imagem2, setImagem2] = useState('');
-    const [imagem3, setImagem3] = useState('');
-    const [imagem4, setImagem4] = useState('');
+    //const [imagem1, setImagem1] = useState('');
+    //const [imagem2, setImagem2] = useState('');
+    //const [imagem3, setImagem3] = useState('');
+    //const [imagem4, setImagem4] = useState('');
+    const [images, setImages] = useState<string[]>([]);
     const [localizacao, setLocalizacao] = useState('');
     const [locaisProximos, setLocaisProximos] = useState<string[]>([]);
     const [cidade, setCidade] = useState('');
@@ -49,6 +50,38 @@ function RoomForm(){
         return highestId + 1;
     };
 
+    const [isOpen, setIsOpen] = useState(false);
+    const distances = [100, 200, 300, 400, 500];
+
+    const handleToggle = () => {
+        setIsOpen(!isOpen);
+    };
+
+    const handleSelectDistance = (distance: number) => {
+        setTransportes(distance === 500 ? 'a +500m' : `a ${distance}m`);
+        setIsOpen(false);
+    };
+
+    const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const files = e.target.files;
+        if (files) {
+            const fileArray: string[] = [];
+            for (let i = 0; i < Math.min(files.length, 4); i++) {
+                const file = files[i];
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    if (event.target) {
+                        fileArray.push(event.target.result as string);
+                        if (fileArray.length === Math.min(files.length, 4)) {
+                            setImages(fileArray);
+                        }
+                    }
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+    };
+
     // Function to handle form submission
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault(); // Prevent the default form submission behavior
@@ -58,10 +91,11 @@ function RoomForm(){
         const formData = {
             id: newRoomId,
             proprietaria,
-            imagem1,
-            imagem2,
-            imagem3,
-            imagem4,
+            //imagem1,
+            //imagem2,
+            //imagem3,
+            //imagem4,
+            images: images,
             localizacao,
             locaisProximos,
             cidade,
@@ -102,41 +136,39 @@ function RoomForm(){
         <div className="addroom-container">
         <form className="addroom-form" onSubmit={handleSubmit}>
             <h2>Room Form</h2>
-            <input
-                type="text"
-                placeholder="Imagem 1"
-                value={imagem1}
-                onChange={(e) => setImagem1(e.target.value)}
-                required
-            />
-            <input
-                type="text"
-                placeholder="Imagem 2"
-                value={imagem2}
-                onChange={(e) => setImagem2(e.target.value)}
-                required
-            />
-            <input
-                type="text"
-                placeholder="Imagem 3"
-                value={imagem3}
-                onChange={(e) => setImagem3(e.target.value)}
-                required
-            />
-            <input
-                type="text"
-                placeholder="Imagem 4"
-                value={imagem4}
-                onChange={(e) => setImagem4(e.target.value)}
-                required
-            />
+            <label htmlFor="localizacao" className="label1">Localização</label>
             <input
                 type="text"
                 placeholder="Localização"
                 value={localizacao}
                 onChange={(e) => setLocalizacao(e.target.value)}
                 required
+                title="Insira a rua/morada"
             />
+
+            <div className="image-upload-container">
+                <label className="image-upload-label">Upload Images (Max 4)</label>
+                <input
+                    type="file"
+                    accept="image/*"
+                    multiple
+                    onChange={handleImageChange}
+                    className="image-upload-input"
+                />
+                <div className="image-preview-container">
+                    {images.map((image, index) => (
+                        <img
+                            key={index}
+                            src={image}
+                            alt={`Image ${index + 1}`}
+                            className="image-preview"
+                            style={{ width: `calc(25% - 10px)` }} // Set width to 25% of container width with margin
+                        />
+                    ))}
+                </div>
+            </div>
+            
+            <label htmlFor="Locais Próximos (separados por vírgula)" className="label1">Locais próximos</label>
             <input
                 type="text"
                 placeholder="Locais Próximos (separados por vírgula)"
@@ -144,50 +176,95 @@ function RoomForm(){
                 onChange={(e) => setLocaisProximos(e.target.value.split(','))}
                 required
             />
-            <input
-                type="text"
-                placeholder="Cidade"
-                value={cidade}
-                onChange={(e) => setCidade(e.target.value)}
-                required
-            />
-            <input
-                type="text"
-                placeholder="País"
-                value={pais}
-                onChange={(e) => setPais(e.target.value)}
-                required
-            />
-            <input
-                type="number"
-                placeholder="Latitude"
-                value={latitude || ''}
-                onChange={(e) => setLatitude(parseFloat(e.target.value))}
-                required
-            />
-            <input
-                type="number"
-                placeholder="Longitude"
-                value={longitude || ''}
-                onChange={(e) => setLongitude(parseFloat(e.target.value))}
-                required
-            />
-            <input
-                type="text"
-                placeholder="Descrição"
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                required
-                title="Insira uma breve descrição objetiva do quarto"
-            />
-            <input
-                type="text"
-                placeholder="Transportes"
-                value={transportes}
-                onChange={(e) => setTransportes(e.target.value)}
-                required
-                title="A quantos metros?"
-            />
+
+            <div className="location-info-container">
+                <div className="label-container">
+                    <label htmlFor="cidade" className="label1">Cidade</label>
+                    <input
+                        type="text"
+                        id="cidade"
+                        placeholder="Cidade"
+                        value={cidade}
+                        onChange={(e) => setCidade(e.target.value)}
+                        required
+                    />
+                </div>
+                
+                <div className="label-containerend">
+                    <label htmlFor="pais" className="label1">País</label>
+                    <input
+                        type="text"
+                        id="pais"
+                        placeholder="País"
+                        value={pais}
+                        onChange={(e) => setPais(e.target.value)}
+                        required
+                    />
+                </div>
+                
+                <div className="label-container1">
+                    <label htmlFor="latitude" className="label1">Latitude</label>
+                    <input
+                        type="number"
+                        id="latitude"
+                        placeholder="Latitude"
+                        value={latitude || ''}
+                        onChange={(e) => setLatitude(parseFloat(e.target.value))}
+                        required
+                    />
+                </div>
+                
+                <div className="label-container1">
+                    <label htmlFor="longitude" className="label1">Longitude</label>
+                    <input
+                        type="number"
+                        id="longitude"
+                        placeholder="Longitude"
+                        value={longitude || ''}
+                        onChange={(e) => setLongitude(parseFloat(e.target.value))}
+                        required
+                    />
+                </div>
+            </div>
+            
+            <div className="descricao-label-container">
+                <label htmlFor="descricao" className="descricao-label">Descrição</label>
+                <textarea
+                    id="descricao"
+                    placeholder="Descrição"
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
+                    required
+                    className="descricao-input"
+                    title="Insira uma breve descrição objetiva do quarto"
+                />
+            </div>
+
+            <div className="dropdown-container">
+                <label className="dropdown-label">Transport Distance</label>
+                <input
+                    type="text"
+                    value={transportes}
+                    placeholder="Select Distance"
+                    readOnly
+                    onClick={handleToggle}
+                    className="dropdown-input"
+                />
+                {isOpen && (
+                    <div className="options-container">
+                        {distances.map((distance, index) => (
+                            <div
+                                key={index}
+                                className="option-item"
+                                onClick={() => handleSelectDistance(distance)}
+                            >
+                                {distance === 500 ? '+500m' : `${distance}m`}
+                            </div>
+                        ))}
+                    </div>
+                )}
+            </div>
+            
             <input
                 type="text"
                 placeholder="Serviços (separados por vírgula)"

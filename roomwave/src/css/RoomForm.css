@@ -13,7 +13,7 @@ body, html {
 }
 
 .addroom-form {
-    width: 700px; 
+    width: 1200px; 
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -97,4 +97,161 @@ body, html {
     pointer-events: none;
     padding-top: 10px;
     padding-right: 20px;
+}
+
+.dropdown-container {
+    position: relative;
+    width: 200px;
+    margin-bottom: 20px;
+}
+
+/* Input Field */
+.dropdown-input {
+    cursor: pointer;
+    padding: 8px;
+    width: 100%;
+    border: 1px solid #ccc;
+}
+
+/* Options Container */
+.options-container {
+    position: absolute;
+    top: calc(65% + 2px);
+    left: 0;
+    width: 100%;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    z-index: 100;
+    color: #333;
+}
+
+/* Option Item */
+.option-item {
+    padding: 8px 12px;
+    cursor: pointer;
+    border-bottom: 1px solid #ccc;
+}
+
+/* Label */
+.dropdown-label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: white;
+    vertical-align: middle; /* Align vertically with the label below */
+    margin-right: 9px;
+}
+
+
+
+.image-preview-container {
+    display: flex;
+    gap: 10px; /* Adjust gap between images */
+    margin-top: -20px; /* Adjust distance from the label */
+    margin-bottom: 20px; /* Add space between other input fields */
+}
+
+/* Image Preview */
+.image-preview {
+    max-width: 100%;
+    height: 150px; /* Set a fixed height for the image previews */
+    object-fit: cover; /* Maintain aspect ratio and cover the container */
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Add shadow for a nicer look */
+    transition: transform 0.2s ease; /* Add a smooth transition effect */
+}
+
+/* Image Preview hover effect */
+.image-preview:hover {
+    transform: scale(1.05); /* Increase size on hover for a subtle effect */
+}
+
+.image-upload-container{
+    margin-top: -10px;
+}
+
+.image-upload-input {
+    vertical-align: middle; /* Align button vertically */
+    background-color: #ffffff; /* Set button background color */
+    color: rgb(0, 0, 0); /* Set button text color */
+    border: none; /* Remove button border */
+    border-radius: 5px; /* Add border radius for rounded corners */
+    padding: 8px 12px; /* Adjust padding as needed */
+    cursor: pointer; /* Add pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Add transition effect */
+}
+
+.label1{
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: white;
+    vertical-align: middle; /* Align vertically with the label below */
+    margin-right: 9px;
+    margin-top: 0px;
+}
+
+.image-upload-label{
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: white;
+    vertical-align: middle; /* Align vertically with the label below */
+    margin-right: 9px;
+}
+
+.location-info-container {
+    display: flex; /* Display children elements in a row */
+    flex-wrap: wrap; /* Allow wrapping if content overflows */
+    margin-top: 20px;
+}
+
+.label-container {
+    margin-right: 20px; /* Adjust spacing between label-input pairs */
+    margin-bottom: 20px; /* Adjust spacing between rows */
+    margin-top: -30px;
+    width: 280px;
+}
+
+.label-containerend{
+    margin-right: 100px; /* Adjust spacing between label-input pairs */
+    margin-bottom: 20px; /* Adjust spacing between rows */
+    margin-top: -30px;
+    width: 280px;
+}
+
+.label-container1 {
+    margin-right: 20px; /* Adjust spacing between label-input pairs */
+    margin-bottom: 20px; /* Adjust spacing between rows */
+    margin-top: -30px;
+    width: 200px;
+}
+
+.label1 {
+    font-weight: bold;
+    color: white;
+    height: 30px; /* Adjust the height of the label */
+    line-height: 30px; /* Align text vertically in the middle */
+}
+
+.descricao-label-container {
+    margin-top:-10px;
+}
+
+.descricao-label {
+    font-weight: bold;
+    color: white;
+    height: 30px; /* Adjust the height of the label */
+    line-height: 30px; /* Align text vertically in the middle */
+}
+
+.descricao-input {
+    min-height: 200px; /* Adjust the minimum height of the textarea */
+    width: 100%; /* Ensure the textarea fills its container */
+    padding: 10px; /* Add padding to increase the vertical space for typing */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    resize: vertical; /* Allow vertical resizing of the textarea */
+    overflow-y: auto; /* Show vertical scrollbar if content exceeds textarea height */
+    vertical-align: top; /* Align text to the top of the textarea */
+    line-height: 1.5; /* Adjust line height for better readability */
+    word-wrap: break-word; /* Break long words that exceed textarea width */
+    border-radius: 20px; /* Adicione cantos arredondados */
+    border: 1px solid #000000; /* Adicione uma borda sólida para melhorar a aparência */
 }

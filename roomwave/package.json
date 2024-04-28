@@ -10,9 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
+    "@fortawesome/free-solid-svg-icons": "^6.5.2",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "@googlemaps/react-wrapper": "^1.1.35",
+    "@material/slider": "^14.0.0",
     "@ionic/react": "^8.0.1",
     "@mui/material": "^5.15.15",
     "@react-google-maps/api": "^2.19.3",
@@ -26,6 +28,7 @@
     "mapbox-gl": "^3.3.0",
     "mdb-react-ui-kit": "^8.0.0",
     "mo-js": "^0.288.2",
+    "primereact": "^10.6.3",
     "react": "^18.3.1",
     "react-animated-heart": "^0.0.8",
     "react-dom": "^18.3.1",
@@ -33,7 +36,8 @@
     "react-leaflet": "^4.2.1",
     "react-router-dom": "^6.22.3",
     "react-slideshow-image": "^4.3.1",
-    "resuite": "^0.0.2"
+    "resuite": "^0.0.2",
+    "styled-components": "^6.1.8"
   },
   "devDependencies": {
     "@types/clamp-js": "^0.7.6",
