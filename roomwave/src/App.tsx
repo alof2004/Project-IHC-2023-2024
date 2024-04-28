@@ -1,6 +1,6 @@
 // App.tsx
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { useAuth } from './components/AuthContext';
+import { AuthProvider, useAuth } from './components/AuthContext';
 import RoomDetails from './components/RoomDetails';
 import HomeClient from './components/homeClient';
 import HomeLandlord from './components/homeLandlord';
