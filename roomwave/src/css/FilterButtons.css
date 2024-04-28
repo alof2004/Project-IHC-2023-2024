@@ -6,8 +6,9 @@
 .button-79 {
   backface-visibility: hidden;
   background: #252525;
+  border-radius: 0px;
   border: 0;
-  border-radius: .375rem;
+  border-top: 1px solid white;
   box-sizing: border-box;
   color: #fff;
   cursor: pointer;
@@ -18,7 +19,9 @@
   letter-spacing: -.01em;
   line-height: 1.3;
   position: relative;
-  margin:40px;
+  margin:10px;
+  margin-top: 0px;
+  margin-bottom: 0px;
   text-align: center;
   text-decoration: none;
   transform: translateZ(0) scale(1);
@@ -26,7 +29,8 @@
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  width:150px;
+  width:320px;
+  height: 50px;
 
 }
 
@@ -48,13 +52,11 @@
 }
 
 .button-79:focus:before {
-  border-width: .125rem;
   content: "";
   left: calc(-1*.375rem);
   pointer-events: none;
   position: absolute;
   top: calc(-1*.375rem);
-  transition: border-radius;
   user-select: none;
 }
 
@@ -67,36 +69,38 @@
 }
 
 /* CSS */
+/* CSS */ 
+
 /* CSS */
-.button-62 {
-  background: linear-gradient(to bottom right, #292929, #363636);
-  border: 0;
-  border-radius: 6px;
-  color: #FFFFFF;
+.accordion-content1 {
+  display: none;
+  padding: 10px;
+  background-color: #252525;
+  color: white;
+}
+
+.accordion-button {
+  background-color: #252525;
+  color: white;
   cursor: pointer;
-  display: inline-block;
-  font-family: -apple-system,system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 2.5;
-  outline: transparent;
-  padding: 0 1rem;
-  text-align: center;
-  text-decoration: none;
-  transition: box-shadow .2s ease-in-out;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  white-space: nowrap;
-  width: 40px;
+  padding: 10px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  transition: 0.4s;
 }
 
-.button-62:not([disabled]):focus {
-  box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 1rem rgba(37, 37, 37, 0.5), .125rem .125rem 1rem rgba(124, 124, 124, 0.5);
+.accordion-button.active, .accordion-button:hover {
+  background-color: #1a1a1a;
 }
 
-.button-62:not([disabled]):hover {
-  box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 1rem rgba(46, 45, 45, 0.5), .125rem .125rem 1rem rgba(114, 114, 114, 0.5);
+.accordion-button:after {
+  content: '\002B'; /* Unicode character for "+" */
+  float: right;
+  margin-left: 5px;
 }
 
-/* CSS */
+.accordion-button.active:after {
+  content: "\2212"; /* Unicode character for "-" */
+}

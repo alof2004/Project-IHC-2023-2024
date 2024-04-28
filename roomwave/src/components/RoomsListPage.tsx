@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useNavigate, useParams } from 'react-router-dom'; // Import useNavigate
+
 import '../css/RoomsListPage.css';
 import roomsData from './rooms.json'; // Import the JSON data
 import '../css/FilterButtons.css';
 import PriceRange from './PriceRange';
-import { Checkbox } from '@mui/material';
+import Modal from './Modal';
+import HeartIcon from './HeartIcon';
+import { useFavoriteRooms } from './FavoriteRoomsContext';
 interface Room {
  id: number;
  Proprietaria: string;
@@ -37,23 +40,35 @@ interface Room {
  Equipamento_disponivel: string[];
  Genero: string[];
  TipoQuarto: string;
+ WC: string;
+ Alojamento: string;
 }
-const city = window.location.pathname.split("/")[2]; // Get the city from the URL
 
 interface PriceRangeProps {
     onRangeChange: (newRange: [number, number]) => void;
 }
 
 function RoomsListPage() {
+    const { city } = useParams(); // Get the current city from the URL
     const [rooms, setRooms] = useState<Room[]>([]);
-    const navigate = useNavigate(); // Use the useNavigate hook
-    const [filters, setFilters] = useState({ city: '', minPrice: 0, genero: '', tipoCasa: '', }); // State to hold the current filters
-    const roomsCity = roomsData.filter(room => room.cidade === city); // Filter rooms by city
+    const navigate = useNavigate();
+    const [filters, setFilters] = useState({
+        minPrice: 0,
+        genero: '',
+        tipoCasa: '',
+        WC: '',
+        Alojamento: '',
+    });
     const [priceRange, setPriceRange] = useState([10, 1500]);
     const [selectedServices, setSelectedServices] = useState<string[]>([]);
-
     const availableServices = Array.from(new Set(roomsData.flatMap(room => room.servicos)));
+    const [isOptionsVisible, setIsOptionsVisible] = useState(false);
+    
 
+    const getFavoriteRooms = () => {
+        const favoriteRooms = localStorage.getItem('favoriteRooms');
+        return favoriteRooms ? JSON.parse(favoriteRooms) : [];
+       };
 
     const handleServiceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const service = e.target.value;
@@ -63,24 +78,22 @@ function RoomsListPage() {
             setSelectedServices(prevServices => prevServices.filter(s => s !== service));
         }
     };
+    
 
     const handlePriceRangeChange = (newRange: React.SetStateAction<number[]>) => {
-       setPriceRange(newRange);
+        setPriceRange(newRange);
     };
 
     useEffect(() => {
-        // Set the rooms state with the data from rooms.json
-        setRooms(roomsData);
-    }, []);
+        // Filter rooms based on the current city
+        setRooms(roomsData.filter(room => room.cidade === city));
+    }, [city]); // Update rooms when the city changes
 
-    const handleFilter = (newFilters: { city?: string; minPrice?: number; genero?: string; tipoCasa?: string}) => {
+    const handleFilter = (newFilters: { minPrice?: number; genero?: string; tipoCasa?: string; WC?: string; Alojamento?: string}) => {
         setFilters(prevFilters => ({ ...prevFilters, ...newFilters }));
     };
 
-    const filteredRooms = roomsCity.filter(room => {
-        // Apply city filter
-        if (filters.city && room.cidade !== filters.city) return false;
-    
+    const filteredRooms = rooms.filter(room => {
         // Apply gender filter
         if (filters.genero && !room.Genero.includes(filters.genero)) return false;
     
@@ -91,73 +104,147 @@ function RoomsListPage() {
 
         if (selectedServices.length > 0 && !selectedServices.every(service => room.servicos.includes(service))) return false;
 
-    
+        if (filters.WC && room.WC !== filters.WC) return false;
+
+        if (filters.Alojamento && room.Alojamento !== filters.Alojamento) return false;
         return true;
     });
 
     return (
         <div>
-            <h1>Rooms List</h1>
             <div>
-                <select className="button-79"  onChange={(e) => handleFilter({ genero: e.target.value })}>
-                    <option onClick={()=> handleFilter({genero: ''})} value="">Género:</option>
-                    <option onClick={()=> handleFilter({genero: 'Masculino'})} value="Masculino">Masculino</option>
-                    <option onClick={()=> handleFilter({genero: 'Feminino'})} value="Feminino">Feminino</option>
-                </select>
-                <select className="button-79" onChange={(e) => handleFilter({ tipoCasa: e.target.value })}>
-                    <option onClick={()=> handleFilter({tipoCasa: ''})} value="">Tipo de Casa:</option>
-                    <option onClick={()=> handleFilter({tipoCasa: 'T1'})} value="T1">T1</option>
-                    <option onClick={()=> handleFilter({tipoCasa: 'T2'})} value="T2">T2</option>
-                    <option onClick={()=> handleFilter({tipoCasa: 'T3'})} value="T3">T3</option>
-                    <option onClick={()=> handleFilter({tipoCasa: 'T4'})} value="T4">T4</option>
-                    <option onClick={()=> handleFilter({tipoCasa: 'T5'})} value="T5">T5</option>
-                </select>
-                <button onClick={() => handleFilter({ city: 'City1' })}>City1</button>
-                <button onClick={() => handleFilter({ city: 'City2' })}>City2</button>
-                <button onClick={() => handleFilter({ city: '', minPrice:0})}>All</button>
-                <button onClick={() => handleFilter({ minPrice: 101 })}>Price 50€</button>
-                
+                <h1>Rooms List</h1>
+            </div>      
+            <div>
                 <PriceRange onRangeChange={handlePriceRangeChange} />
-                <div style={{ width: "20rem", padding: "20px",margin:"10px", backgroundColor: "#252525", color: "white", borderRadius: "10px" }}>
-                <fieldset>
-                    <legend>Filtrar por serviços disponíveis:</legend>
-                    {availableServices.map(service => (
-                        <div className="form__group" key={service}>
-                            <input
+                <div>
+                    <button
+                        style={{
+                        width: '20rem',
+                        padding: '20px',
+                        margin: '10px',
+                        marginTop: '0px',
+                        marginBottom: '0px',
+                        backgroundColor: '#252525',
+                        color: 'white',
+                        border: 'none',
+                        borderTop: '1px solid #333',
+                        fontSize:'20px',
+                        fontFamily: "Circular,Helvetica,sans-serif",
+                        fontWeight: "700",
+                        letterSpacing: "-.01em",
+                        borderBottom: '1px solid #333',
+                        }}
+                        onClick={() => setIsOptionsVisible(!isOptionsVisible)}
+                    >
+                        Filtrar por mobília disponível:
+                    </button>
+                    {isOptionsVisible && (
+                        <div
+                        style={{
+                            width: '20rem',
+                            padding: '20px',
+                            margin: '10px',
+                            marginBottom: '0px',
+                            borderTop: '1px solid #333',
+                            marginTop: '0px',
+                            backgroundColor: '#252525',
+                            color: 'white',
+                            border: 'none',
+
+                        }}
+                        >
+                        <fieldset>
+                            {availableServices.map((service) => (
+                            <div className="form__group" key={service}>
+                                <input
                                 type="checkbox"
                                 id={service}
                                 value={service}
                                 name="services"
                                 onChange={handleServiceChange}
                                 checked={selectedServices.includes(service)}
-                            />
-                            <label htmlFor={service}>{service}</label>
+                                />
+                                <label htmlFor={service}>{service}</label>
+                            </div>
+                            ))}
+                        </fieldset>
                         </div>
-                    ))}
-                </fieldset>
+                    )}
+                    </div>
+                <div>
+                    <select className="button-79" onChange={(e) => handleFilter({ genero: e.target.value })}>
+                        <option onClick={()=> handleFilter({genero: ''})} value="">Género:</option>
+                        <option onClick={()=> handleFilter({genero: 'Masculino'})} value="Masculino">Masculino</option>
+                        <option onClick={()=> handleFilter({genero: 'Feminino'})} value="Feminino">Feminino</option>
+                        <option onClick={()=> handleFilter({genero: 'Casais'})} value="Casais">Casais</option>
+                    </select>
+                </div>
+                <div>
+                    <select className="button-79" onChange={(e) => handleFilter({ tipoCasa: e.target.value })}>
+                        <option onClick={()=> handleFilter({tipoCasa: ''})} value="">Número de Quartos:</option>
+                        <option onClick={()=> handleFilter({tipoCasa: 'T1'})} value="T1">T1</option>
+                        <option onClick={()=> handleFilter({tipoCasa: 'T2'})} value="T2">T2</option>
+                        <option onClick={()=> handleFilter({tipoCasa: 'T3'})} value="T3">T3</option>
+                        <option onClick={()=> handleFilter({tipoCasa: 'T4'})} value="T4">T4</option>
+                        <option onClick={()=> handleFilter({tipoCasa: 'T5'})} value="T5">T5</option>
+                    </select>
+                </div>
+                <div>
+                    <select className="button-79" onChange={(e) => handleFilter({ Alojamento: e.target.value })}>
+                        <option onClick={()=> handleFilter({Alojamento: ''})} value="">Alojamento:</option>
+                        <option onClick={()=> handleFilter({Alojamento: 'Apartamento'})} value="Apartamento">Apartamento</option>
+                        <option onClick={()=> handleFilter({Alojamento: 'Vivenda'})} value="Vivenda">Vivenda</option>
+                        <option onClick={()=> handleFilter({Alojamento: 'Hostel'})} value="Hostel">Hostel</option>
+                    </select>
+                </div>
+                <div>
+                    <select className="button-79" onChange={(e) => handleFilter({ WC: e.target.value })}>
+                        <option onClick={()=> handleFilter({WC: ''})} value="">WC</option>
+                        <option onClick={()=> handleFilter({WC: 'Privado'})} value="Privado">Privado</option>
+                        <option onClick={()=> handleFilter({WC: 'Partilhado'})} value="Partilhado">Partilhado</option>
+                    </select>
                 </div>
             </div>
+
             <div className="projcard-container">
-                {filteredRooms.map(room => (
+                
+            {rooms.length > 0 ? (
+                filteredRooms.map(room => {
+                    // Determine if the room is favorited
+                    const isFavorite = getFavoriteRooms().includes(room.id);
+
+                    return (
                     <div key={room.id} className="projcard projcard-blue" onClick={() => navigate(`/room/${room.id}`)}>
                         <div className="projcard-innerbox">
-                            <img className="projcard-img" src={room.imagem1} alt={`Room ${room.id}`} />
-                            <div className="projcard-textbox">
-                                <div className="projcard-title">{room.description}</div>
-                                <div className="projcard-subtitle">{room.localizacao}</div>
-                                <div className="projcard-description">{room.description}</div>
-                                <div className="projcard-tagbox">
-                                    {room.servicos.map((service, index) => (
-                                        <span key={index} className="projcard-tag">{service}</span>
-                                    ))}
-                                </div>
+                        <img className="projcard-img" src={room.imagem1} alt={`Room ${room.id}`} />
+                        <div className="projcard-textbox">
+                            <div className="projcard-title">{room.description}</div>
+                            <div className="projcard-subtitle">{room.localizacao}</div>
+                            <div className="projcard-description">{room.description}</div>
+                            <div className="projcard-tagbox">
+                            {room.servicos.map((service, index) => (
+                                <span key={index} className="projcard-tag">{service}</span>
+                            ))}
                             </div>
                         </div>
-                            <div className="projcard-price" style={{float:"right", padding:"10px 10px 0px 0px", fontSize:"20px"}}>{room.price}€ / mês</div>
+                        </div>
+                        <div className="projcard-price" style={{float:"right", padding:"10px 10px 0px 0px", fontSize:"20px"}}>{room.price}€ / mês</div>
+                        <div className="centered-heart">
+                        <div onClick={(e) => { e.stopPropagation(); e.preventDefault(); }}>
+                            <HeartIcon roomId={room.id} isFavorite={isFavorite} />
+                        </div>
+                        </div>
                     </div>
-                ))}
+                    );
+                })
+                ) : (
+                <Modal />
+                )}
             </div>
+            
         </div>
+        
     );
 }
 
