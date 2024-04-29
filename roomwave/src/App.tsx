@@ -21,7 +21,6 @@ import { UserProvider } from './components/UserContext';
 
 
 
-
 function App() {
  const { isLoggedIn } = useAuth();
  return (

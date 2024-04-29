@@ -4,6 +4,9 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../css/Home.css';
 import Footer from './footer';
+import ImageHome from './ImageHome';
+import ImageHomeesquerda from './ImageHomeesqueda';
+import LastImageHome from './LastImageHome';
 
 function Home() {
   const [selectedCity, setSelectedCity] = useState('');
@@ -69,6 +72,9 @@ function Home() {
           </form>
         </div>
       </header>
+        <ImageHome />
+        <ImageHomeesquerda />
+        <LastImageHome />
       <Footer />
     </div>
   );
