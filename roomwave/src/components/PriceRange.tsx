@@ -34,7 +34,7 @@ const PriceRange: React.FC<PriceRangeProps> = ({ onRangeChange }) => {
           },
         }}
       />
-      Mostrando preços {range[0]} - {range[1]}
+      Mostrando preços entre: {range[0]} - {range[1]}
     </div>
  );
 };

@@ -7,6 +7,7 @@ import '../css/FilterButtons.css';
 import PriceRange from './PriceRange';
 import Modal from './Modal';
 import HeartIcon from './HeartIcon';
+import NavBar from './NavBar';
 
 interface Room {
  id: number;
@@ -59,6 +60,7 @@ function RoomsListPage() {
         WC: '',
         Alojamento: '',
         animais: '',
+        gastos: '',
     });
     const [priceRange, setPriceRange] = useState([10, 1500]);
     const [selectedServices, setSelectedServices] = useState<string[]>([]);
@@ -102,7 +104,7 @@ function RoomsListPage() {
         setRooms(roomsData.filter(room => room.cidade === city));
     }, [city]); // Update rooms when the city changes
 
-    const handleFilter = (newFilters: { minPrice?: number; genero?: string; tipoCasa?: string; WC?: string; Alojamento?: string, animais?:string}) => {
+    const handleFilter = (newFilters: { minPrice?: number; genero?: string; tipoCasa?: string; WC?: string; Alojamento?: string, animais?:string, gastos?: string}) => {
         setFilters(prevFilters => ({ ...prevFilters, ...newFilters }));
     };
 
@@ -122,15 +124,19 @@ function RoomsListPage() {
         if (filters.Alojamento && room.Alojamento !== filters.Alojamento) return false;
 
         if (filters.animais && room.Animais !== filters.animais) return false;
+
+        if (filters.gastos && room.gastos !== filters.gastos) return false;
         return true;
     });
 
     return (
         <div>
             <div>
-                <h1>Rooms List</h1>
+                <NavBar/>
             </div>      
-            <div>
+            <h1>Lista de quartos em {city}:</h1>
+            <div style={{display:"flex", margin:"30px 30px 20px 20px", backgroundColor:"white"}}>
+                <div style={{ width: '20%', margin: '0px', paddingTop:"10px", paddingBottom:"10px" }}>
                 <PriceRange onRangeChange={handlePriceRangeChange} />
                 <div>
                     <button
@@ -143,12 +149,12 @@ function RoomsListPage() {
                         backgroundColor: '#252525',
                         color: 'white',
                         border: 'none',
-                        borderTop: '1px solid #333',
+                        borderTop: '1px solid #white',
                         fontSize:'20px',
                         fontFamily: "Circular,Helvetica,sans-serif",
                         fontWeight: "700",
                         letterSpacing: "-.01em",
-                        borderBottom: '1px solid #333',
+                        borderBottom: '2px solid white',
                         }}
                         onClick={() => setIsOptionsVisible(!isOptionsVisible)}
                     >
@@ -282,9 +288,16 @@ function RoomsListPage() {
                         <option onClick={()=> handleFilter({animais: 'proíbidos'})} value="proíbidos">Animais Proíbidos</option>
                     </select>
                 </div>
+                <div>
+                    <select className="button-79" onChange={(e) => handleFilter({ gastos: e.target.value })}>
+                        <option onClick={()=> handleFilter({gastos: ''})} value="">Gastos incluídos:</option>
+                        <option onClick={()=> handleFilter({gastos: 'incluídos'})} value="incluídos">Incluídos</option>
+                        <option onClick={()=> handleFilter({gastos: 'não incluídos'})} value="admitidos">Não Incluídos</option>
+                    </select>
+                </div>
             </div>
 
-            <div className="projcard-container">
+            <div className="projcard-container" style={{ width: '60%', float:"right"}} >
                 
             {rooms.length > 0 ? (
                 filteredRooms.map(room => {
@@ -319,8 +332,9 @@ function RoomsListPage() {
                 <Modal />
                 )}
             </div>
-            
+            </div>
         </div>
+        
     );
 }
 
