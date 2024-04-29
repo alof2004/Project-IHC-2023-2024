@@ -7,7 +7,7 @@ import '../css/FilterButtons.css';
 import PriceRange from './PriceRange';
 import Modal from './Modal';
 import HeartIcon from './HeartIcon';
-import { useFavoriteRooms } from './FavoriteRoomsContext';
+
 interface Room {
  id: number;
  Proprietaria: string;
@@ -58,11 +58,15 @@ function RoomsListPage() {
         tipoCasa: '',
         WC: '',
         Alojamento: '',
+        animais: '',
     });
     const [priceRange, setPriceRange] = useState([10, 1500]);
     const [selectedServices, setSelectedServices] = useState<string[]>([]);
     const availableServices = Array.from(new Set(roomsData.flatMap(room => room.servicos)));
+    const availableElectro = Array.from(new Set(roomsData.flatMap(room => room.Equipamento_disponivel)));
     const [isOptionsVisible, setIsOptionsVisible] = useState(false);
+    const [isOptionsVisible1, setIsOptionsVisible1] = useState(false);
+
     
 
     const getFavoriteRooms = () => {
@@ -71,6 +75,15 @@ function RoomsListPage() {
        };
 
     const handleServiceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const service = e.target.value;
+        if (e.target.checked) {
+            setSelectedServices(prevServices => [...prevServices, service]);
+        } else {
+            setSelectedServices(prevServices => prevServices.filter(s => s !== service));
+        }
+    };
+
+    const handleElectroChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const service = e.target.value;
         if (e.target.checked) {
             setSelectedServices(prevServices => [...prevServices, service]);
@@ -89,7 +102,7 @@ function RoomsListPage() {
         setRooms(roomsData.filter(room => room.cidade === city));
     }, [city]); // Update rooms when the city changes
 
-    const handleFilter = (newFilters: { minPrice?: number; genero?: string; tipoCasa?: string; WC?: string; Alojamento?: string}) => {
+    const handleFilter = (newFilters: { minPrice?: number; genero?: string; tipoCasa?: string; WC?: string; Alojamento?: string, animais?:string}) => {
         setFilters(prevFilters => ({ ...prevFilters, ...newFilters }));
     };
 
@@ -107,6 +120,8 @@ function RoomsListPage() {
         if (filters.WC && room.WC !== filters.WC) return false;
 
         if (filters.Alojamento && room.Alojamento !== filters.Alojamento) return false;
+
+        if (filters.animais && room.Animais !== filters.animais) return false;
         return true;
     });
 
@@ -171,7 +186,62 @@ function RoomsListPage() {
                         </fieldset>
                         </div>
                     )}
-                    </div>
+                </div>
+                <div>
+                    <button
+                        style={{
+                        width: '20rem',
+                        padding: '20px',
+                        margin: '10px',
+                        marginTop: '0px',
+                        marginBottom: '0px',
+                        backgroundColor: '#252525',
+                        color: 'white',
+                        border: 'none',
+                        borderTop: '1px solid #333',
+                        fontSize:'20px',
+                        fontFamily: "Circular,Helvetica,sans-serif",
+                        fontWeight: "700",
+                        letterSpacing: "-.01em",
+                        borderBottom: '1px solid #333',
+                        }}
+                        onClick={() => setIsOptionsVisible1(!isOptionsVisible1)}
+                    >
+                        Filtrar por aparelhos eletrónicos disponível:
+                    </button>
+                    {isOptionsVisible1 && (
+                        <div
+                        style={{
+                            width: '20rem',
+                            padding: '20px',
+                            margin: '10px',
+                            marginBottom: '0px',
+                            borderTop: '1px solid #333',
+                            marginTop: '0px',
+                            backgroundColor: '#252525',
+                            color: 'white',
+                            border: 'none',
+
+                        }}
+                        >
+                        <fieldset>
+                            {availableElectro.map((eletronicos) => (
+                            <div className="form__group" key={eletronicos}>
+                                <input
+                                type="checkbox"
+                                id={eletronicos}
+                                value={eletronicos}
+                                name="services"
+                                onChange={handleElectroChange}
+                                checked={selectedServices.includes(eletronicos)}
+                                />
+                                <label htmlFor={eletronicos}>{eletronicos}</label>
+                            </div>
+                            ))}
+                        </fieldset>
+                        </div>
+                    )}
+                </div>
                 <div>
                     <select className="button-79" onChange={(e) => handleFilter({ genero: e.target.value })}>
                         <option onClick={()=> handleFilter({genero: ''})} value="">Género:</option>
@@ -203,6 +273,13 @@ function RoomsListPage() {
                         <option onClick={()=> handleFilter({WC: ''})} value="">WC</option>
                         <option onClick={()=> handleFilter({WC: 'Privado'})} value="Privado">Privado</option>
                         <option onClick={()=> handleFilter({WC: 'Partilhado'})} value="Partilhado">Partilhado</option>
+                    </select>
+                </div>
+                <div>
+                    <select className="button-79" onChange={(e) => handleFilter({ animais: e.target.value })}>
+                        <option onClick={()=> handleFilter({animais: ''})} value="">Animais</option>
+                        <option onClick={()=> handleFilter({animais: 'admitos'})} value="admitidos">Animais Permitidos</option>
+                        <option onClick={()=> handleFilter({animais: 'proíbidos'})} value="proíbidos">Animais Proíbidos</option>
                     </select>
                 </div>
             </div>
@@ -244,7 +321,6 @@ function RoomsListPage() {
             </div>
             
         </div>
-        
     );
 }
 

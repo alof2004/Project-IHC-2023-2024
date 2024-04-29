@@ -13,36 +13,37 @@ interface UserData {
   // Add other properties as needed
 }
 
+// Define the structure of the user context
 interface UserContextType {
-    user: UserData | null;
-    loginUser: (userData: UserData) => void;
-    logoutUser: () => void;
-  }
-  
-  const initialContextValue: UserContextType = {
-    user: null,
-    loginUser: () => {},
-    logoutUser: () => {},
+  user: UserData | null;
+  loginUser: (userData: UserData) => void;
+  logoutUser: () => void;
+}
+
+const initialContextValue: UserContextType = {
+  user: null,
+  loginUser: () => {},
+  logoutUser: () => {},
+};
+
+const UserContext = createContext<UserContextType>(initialContextValue);
+
+export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+  const [user, setUser] = useState<UserData | null>(null);
+
+  const loginUser = (userData: UserData) => {
+    setUser(userData);
   };
-  
-  const UserContext = createContext<UserContextType>(initialContextValue);
-  
-  export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-    const [user, setUser] = useState<UserData | null>(null);
-  
-    const loginUser = (userData: UserData) => {
-      setUser(userData);
-    };
-  
-    const logoutUser = () => {
-      setUser(null);
-    };
-  
-    return (
-      <UserContext.Provider value={{ user, loginUser, logoutUser }}>
-        {children}
-      </UserContext.Provider>
-    );
+
+  const logoutUser = () => {
+    setUser(null);
   };
-  
-  export const useUser = () => useContext(UserContext);
+
+  return (
+    <UserContext.Provider value={{ user, loginUser, logoutUser }}>
+      {children}
+    </UserContext.Provider>
+  );
+};
+
+export const useUser = () => useContext(UserContext);
