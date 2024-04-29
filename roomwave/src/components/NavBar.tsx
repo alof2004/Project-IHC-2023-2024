@@ -1,8 +1,12 @@
 import '../App.css'; // Adjust the path as necessary
 import '../css/NavBar.css'; // Adjust the path as necessary
 import { Link } from 'react-router-dom'; // Assuming you're using React Router
+import { useUser } from "./UserContext"; // Assuming you have a UserContext
+import NavBarClient from './NavBarClient';
 
 function NavBar() {
+  const { user } = useUser();
+  if (!user) {
   return (
     <nav className="navbar border-bottom navbar-expand-lg myCustomNavbar" data-bs-theme="dark">
       <div className="container-fluid">
@@ -31,6 +35,12 @@ function NavBar() {
       </div>
     </nav>
   );
+  }
+  else{
+    return(
+      <NavBarClient/>
+    )
+  }
 }
 
 export default NavBar;

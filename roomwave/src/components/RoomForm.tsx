@@ -40,6 +40,8 @@ function RoomForm(){
     const [wc, setWC] = useState('');
     const [alojamento, setAlojamento] = useState('');
     const navigate = useNavigate();
+    const { user } = useUser();
+
 
 
     const generateRoomId = () => {
@@ -126,7 +128,7 @@ function RoomForm(){
         };
     
         console.log(formData);
-        const { user } = useUser();
+        
         formData.proprietaria = user?.firstname + " " + user?.lastname;
         // Assuming you have a mechanism to store all rooms in an array in localStorage
         const roomsData = JSON.parse(localStorage.getItem('roomsData') || '[]');

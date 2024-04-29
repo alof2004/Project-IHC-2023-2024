@@ -16,6 +16,7 @@ import Button from './components/button';
 import AddRoom from './components/AddRoom';
 import Ajuda from './components/Ajuda';
 import { FavoriteRoomsProvider } from './components/FavoriteRoomsContext';
+import { UserProvider } from './components/UserContext';
 
 
 
@@ -25,6 +26,7 @@ function App() {
  const { isLoggedIn } = useAuth();
  return (
     <Router>
+      <UserProvider>
       <AuthProvider>
         <FavoriteRoomsProvider>
         <div>
@@ -47,6 +49,7 @@ function App() {
         </div>
         </FavoriteRoomsProvider>
       </AuthProvider>
+      </UserProvider>
     </Router>
  );
 }

@@ -27,7 +27,7 @@ function NavBarClient() {
             <li className="nav-item nav-item-flex">
               <Link to="../../../Ajuda" className="nav-link">
               <img src="../src/images/ajuda_icon.png" width="25" height="25" alt="Help Icon"/>
-              <a className="nav-link" href="#">Ajuda</a>
+              Ajuda
               </Link>
             </li>
           </ul>
