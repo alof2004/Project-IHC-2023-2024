@@ -9,7 +9,7 @@ const ImageHome= () => {
                 </h1>
                 <div className="row">
                     <div className="video-container">
-                        <video src="./src/images/consultor.mp4" loop autoPlay muted></video>
+                        <video src="./src/images/certificador.mp4" loop autoPlay muted></video>
                         <h3>Asseguramos um certificado para os quartos  de confiança</h3>
                     </div>
                                 

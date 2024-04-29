@@ -34,7 +34,7 @@ setInputText(lowerCase);
                         </div>
                     </div>
                     <div className="video-container">
-                        <video src="./src/images/consultor.mp4" loop autoPlay muted></video>
+                        <video src="./src/images/universidade.mp4" loop autoPlay muted></video>
                     </div>
                     
                 </div>

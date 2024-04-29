@@ -15,7 +15,7 @@ const Footer: React.FC = () => {
 		<Box>
 			<h1
 				style={{
-					color: "green",
+					color: "#FF7A41",
 					textAlign: "center",
 					marginTop: "20px",
 				}}

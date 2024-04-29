@@ -9,7 +9,7 @@ const ImageHome= () => {
                 </h1>
                 <div className="row">
                     <div className="video-container">
-                        <video src="./src/images/consultor.mp4" loop autoPlay muted></video>
+                        <video src="./src/images/renda.mp4" loop autoPlay muted></video>
                     </div>
                                 
                     <div className="content">
