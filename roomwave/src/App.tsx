@@ -20,7 +20,6 @@ import { FavoriteRoomsProvider } from './components/FavoriteRoomsContext';
 
 
 
-
 function App() {
  const { isLoggedIn } = useAuth();
  return (
