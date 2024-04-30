@@ -68,6 +68,7 @@
         "TipoQuarto": "T1",
         "WC": "Partilhado",
         "Alojamento": "Apartamento",
+        "Andar": "2º",
         "Avaliado": "Sim",
         "Avaliacao": 4.5
     },
@@ -140,6 +141,7 @@
         "TipoQuarto": "T1",
         "WC": "Partilhado",
         "Alojamento": "Apartamento",
+        "Andar": "2º",
         "Avaliado": "Sim",
         "Avaliacao": 5
     }
