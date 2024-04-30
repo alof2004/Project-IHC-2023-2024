@@ -268,6 +268,7 @@ progress {
 
 .sort:hover{
 	background-color: #ff7a41!important;
+	transition: 0.3s;
 }
 
 .mini{
