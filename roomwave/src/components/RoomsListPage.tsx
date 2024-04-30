@@ -43,6 +43,7 @@ interface Room {
  TipoQuarto: string;
  WC: string;
  Alojamento: string;
+ Andar: string;
  Avaliado: string;
  Avaliacao: number;
 }
@@ -74,7 +75,7 @@ function RoomsListPage() {
     const [sortOrderArea, setSortOrderArea] = useState<'asc' | 'desc'>('desc'); // Start with descending order
     const [sortOrderEvaluated, setSortOrderEvaluated] = useState<'asc' | 'desc'>('desc'); // Start with descending order
     const [filteredRooms, setFilteredRooms] = useState<Room[]>([]);
-    let active: string | null = null;
+    const [activeButton, setActiveButton] = useState<string | null>(null); // Add state for active button
 
 
 
@@ -137,7 +138,7 @@ function RoomsListPage() {
         
         switch (sortCriteria) {
             case 'price':
-                active = 'price';
+                setActiveButton('price');
                 sortedRoomsCopy.sort((a, b) => {
                     if (sortOrderPrice === 'asc') {
                         return a.price - b.price;
@@ -148,7 +149,7 @@ function RoomsListPage() {
                 setSortOrderPrice(sortOrderPrice === 'asc' ? 'desc' : 'asc'); // Toggle sort order
                 break;
             case 'area':
-                active = 'area';
+                setActiveButton('area');
                 sortedRoomsCopy.sort((a, b) => {
                     if (sortOrderArea === 'asc') {
                         return a.area - b.area;
@@ -159,7 +160,7 @@ function RoomsListPage() {
                 setSortOrderArea(sortOrderArea === 'asc' ? 'desc' : 'asc'); // Toggle sort order
                 break;
             case 'evaluated':
-                active = 'evaluated';
+                setActiveButton('evaluated');
                 sortedRoomsCopy.sort((a, b) => {
                     if (sortOrderEvaluated === 'asc') {
                         return a.Avaliacao - b.Avaliacao;
@@ -184,13 +185,13 @@ function RoomsListPage() {
                 <NavBar/>
             </div>      
             <h1>Lista de quartos em {city}:</h1>
-            <div style={{display:"flex", margin:"30px 30px 20px 20px", backgroundColor:"white"}}>
+            <div style={{display:"flex", margin:"30px 30px 20px 20px", backgroundColor:"white", borderRadius:"10px", padding:"20px"}}>
                 <div style={{ width: '20%', margin: '0px', paddingTop:"10px", paddingBottom:"10px" }}>
                 <PriceRange onRangeChange={handlePriceRangeChange} />
                 <div>
                     <button
                         style={{
-                        width: '20rem',
+                        width: '28rem',
                         padding: '20px',
                         margin: '10px',
                         marginTop: '0px',
@@ -212,7 +213,7 @@ function RoomsListPage() {
                     {isOptionsVisible && (
                         <div
                         style={{
-                            width: '20rem',
+                            width: '28rem',
                             padding: '20px',
                             margin: '10px',
                             marginBottom: '0px',
@@ -245,7 +246,7 @@ function RoomsListPage() {
                 <div>
                     <button
                         style={{
-                        width: '20rem',
+                        width: '28rem',
                         padding: '20px',
                         margin: '10px',
                         marginTop: '0px',
@@ -267,7 +268,7 @@ function RoomsListPage() {
                     {isOptionsVisible1 && (
                         <div
                         style={{
-                            width: '20rem',
+                            width: '28rem',
                             padding: '20px',
                             margin: '10px',
                             marginBottom: '0px',
@@ -347,16 +348,16 @@ function RoomsListPage() {
             </div>
 
             <div className="projcard-container" style={{ width: '60%', float:"right"}} >
-                <div>
-                <button className={`button-79 ${sortOrderPrice ? active: 'price' }`} onClick={() => handleSortOrder("price")}>
-                    Ordenar por Preço {sortOrderPrice === 'asc' ? 'decrescente ↑' : 'crescente ↓'}
-                </button>
-                <button className={`button-79 ${sortOrderArea ? active : 'area'}`} onClick={() => handleSortOrder("area")}>
-                    Ordenar por maior Área total {sortOrderArea === 'asc' ? 'decrescente ↑' : 'crescente ↓'}
-                </button>
-                <button className={`button-79 ${sortOrderEvaluated ? active : 'evaluated'}`} onClick={() => handleSortOrder("evaluated")}>
-                    Ordenar por Avaliação {sortOrderEvaluated === 'asc' ? 'decrescente ↑' : 'crescente ↓'}
-                </button>
+                <div className='sortButtons'>
+                        <button className={`button-79 sort ${activeButton === 'price' ? 'active' : ''}`} onClick={() => handleSortOrder("price")}>
+                            Ordenar por Preço {sortOrderPrice === 'asc' ? 'decrescente ↑' : 'crescente ↓'}
+                        </button>
+                        <button className={`button-79 sort ${activeButton === 'area' ? 'active' : ''}`} onClick={() => handleSortOrder("area")}>
+                            Ordenar por maior Área total {sortOrderArea === 'asc' ? 'decrescente ↑' : 'crescente ↓'}
+                        </button>
+                        <button className={`button-79 sort ${activeButton === 'evaluated' ? 'active' : ''}`} onClick={() => handleSortOrder("evaluated")}>
+                            Ordenar por Avaliação {sortOrderEvaluated === 'asc' ? 'decrescente ↑' : 'crescente ↓'}
+                        </button>
                 </div>
                  
             {rooms.length > 0 ? (
@@ -372,6 +373,24 @@ function RoomsListPage() {
                             <div className="projcard-title">{room.description}</div>
                             <div className="projcard-subtitle">{room.localizacao}</div>
                             <div className="projcard-description">{room.description}</div>
+                            <div className="containerList">
+                                <div className="row-list">
+                                    <div className="projcard-description-items">
+                                        <img className="mini" src="../../src/images/bed.png" /> Cama {room.Cama}
+                                    </div>
+                                    <div className="projcard-description-items">
+                                        <img className="mini" src="../../src/images/building.png" />Andar: {room.Andar}
+                                    </div>
+                                </div>
+                                <div className="row-list">
+                                    <div className="projcard-description-items">
+                                        <img className="mini" src="../../src/images/area.png" /> Área total: {room.area} m²
+                                    </div>
+                                    <div className="projcard-description-items">
+                                        <img className="mini" src="../../src/images/WC.png" />{room.WC}
+                                    </div>
+                                </div>
+                            </div>
                             <div className="projcard-tagbox">
                             {room.servicos.map((service, index) => (
                                 <span key={index} className="projcard-tag">{service}</span>
