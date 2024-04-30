@@ -78,9 +78,9 @@ function RoomDetails(){
             <div className='description_info'>
                 <h2 style={{fontSize:"50px", marginBottom:"30px"}}>Informações sobre o quarto</h2>
                 <p> 
-                    A habitação dispõem de uma área de {room.area}m2 e é rodeada por um ambiente {room.Ambiente}. Inclui uma {room.servicos.join(", ")} e, o mais importante, uma cama {room.Cama}. <br />
+                    A habitação dispõem de uma área de {room.area}m2 e é rodeada por um ambiente {room.Ambiente}. Inclui uma {room.mobilia.join(", ")} e, o mais importante, uma cama {room.Cama}. <br />
                     Janela {room.Ambiente}. A cozinha é {room.Cozinha}, a casa tem disponiveis {room.casas_de_banho} casas de banho.<br />
-                    Na sua proximidade encontra vários edifícios como: {room.servicos.join(", ")}.
+                    Na sua proximidade encontra vários edifícios como: {room.mobilia.join(", ")}.
                     Autocarros {room.Transportes}. {room.Descrição_Proprietaria}<br />
                     Pessoas do género {room.Pessoas_permitidas[0]} são permitidas ,bem como {room.Pessoas_permitidas[1]}.Animais são {room.Animais} e o acesso a fumadores é {room.Fumadores}.<br />
                     Os gastos são {room.gastos}<br />
@@ -113,15 +113,15 @@ function RoomDetails(){
                     <div className="container">
                         <div className="column column-left"> 
                             <ul>
-                                {room.servicos.slice(0, 5).map((servicos, index) => (
-                                    <li key={index}><span className="icon"><img src='./src/images/plus.png' style={{ width: "35px", height: "35px" }} alt="plus icon" /></span>{servicos}</li>
+                                {room.mobilia.slice(0, 5).map((mobilia, index) => (
+                                    <li key={index}><span className="icon"><img src='./src/images/plus.png' style={{ width: "35px", height: "35px" }} alt="plus icon" /></span>{mobilia}</li>
                                 ))}
                             </ul>
                         </div>
                         <div className="column column-right"> 
                             <ul>
-                                {room.servicos.slice(5, 10).map((servicos, index) => (
-                                    <li key={index}><span className="icon"><img src='./src/images/plus.png' style={{ width: "35px", height: "35px" }} alt="plus icon" /></span>{servicos}</li>
+                                {room.mobilia.slice(5, 10).map((mobilia, index) => (
+                                    <li key={index}><span className="icon"><img src='./src/images/plus.png' style={{ width: "35px", height: "35px" }} alt="plus icon" /></span>{mobilia}</li>
                                 ))}
                             </ul>
                         </div>
