@@ -14,8 +14,8 @@ interface Room {
  Proprietaria: string;
  imagem1: string;
  imagem2?: string;
- imagem3: string;
- imagem4: string;
+ imagem3?: string;
+ imagem4?: string;
  localizacao: string;
  Locais_proximos: string[];
  cidade: string;
@@ -35,7 +35,7 @@ interface Room {
  gastos: string;
  Animais: string;
  Fumadores: string;
- area: string;
+ area: number;
  Vista: string;
  Renda_inclui: string[];
  Equipamento_disponivel: string[];
@@ -43,6 +43,8 @@ interface Room {
  TipoQuarto: string;
  WC: string;
  Alojamento: string;
+ Avaliado: string;
+ Avaliacao: number;
 }
 
 interface PriceRangeProps {
@@ -68,13 +70,20 @@ function RoomsListPage() {
     const availableElectro = Array.from(new Set(roomsData.flatMap(room => room.Equipamento_disponivel)));
     const [isOptionsVisible, setIsOptionsVisible] = useState(false);
     const [isOptionsVisible1, setIsOptionsVisible1] = useState(false);
+    const [sortOrderPrice, setSortOrderPrice] = useState<'asc' | 'desc'>('desc'); // Start with descending order
+    const [sortOrderArea, setSortOrderArea] = useState<'asc' | 'desc'>('desc'); // Start with descending order
+    const [sortOrderEvaluated, setSortOrderEvaluated] = useState<'asc' | 'desc'>('desc'); // Start with descending order
+    const [filteredRooms, setFilteredRooms] = useState<Room[]>([]);
+    let active: string | null = null;
+
+
 
     
 
-    const getFavoriteRooms = () => {
+     const getFavoriteRooms = () => {
         const favoriteRooms = localStorage.getItem('favoriteRooms');
         return favoriteRooms ? JSON.parse(favoriteRooms) : [];
-       };
+    };
 
     const handleServiceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const service = e.target.value;
@@ -93,41 +102,81 @@ function RoomsListPage() {
             setSelectedServices(prevServices => prevServices.filter(s => s !== service));
         }
     };
-    
 
     const handlePriceRangeChange = (newRange: React.SetStateAction<number[]>) => {
         setPriceRange(newRange);
     };
 
     useEffect(() => {
-        // Filter rooms based on the current city
-        setRooms(roomsData.filter(room => room.cidade === city));
-    }, [city]); // Update rooms when the city changes
+        const filtered = roomsData.filter(room => room.cidade === city);
+        setRooms(filtered);
+        setFilteredRooms(filtered);
+    }, [city]);
+
+    useEffect(() => {
+        const newFilteredRooms = rooms.filter(room => {
+            if (filters.genero && !room.Genero.includes(filters.genero)) return false;
+            if ((priceRange[0] && room.price < priceRange[0]) || (priceRange[1] && room.price > priceRange[1])) return false;
+            if (filters.tipoCasa && room.TipoQuarto !== filters.tipoCasa) return false;
+            if (selectedServices.length > 0 && !selectedServices.every(service => room.servicos.includes(service))) return false;
+            if (filters.WC && room.WC !== filters.WC) return false;
+            if (filters.Alojamento && room.Alojamento !== filters.Alojamento) return false;
+            if (filters.animais && room.Animais !== filters.animais) return false;
+            if (filters.gastos && room.gastos !== filters.gastos) return false;
+            return true;
+        });
+        setFilteredRooms(newFilteredRooms);
+    }, [rooms, filters, priceRange, selectedServices]);
 
     const handleFilter = (newFilters: { minPrice?: number; genero?: string; tipoCasa?: string; WC?: string; Alojamento?: string, animais?:string, gastos?: string}) => {
         setFilters(prevFilters => ({ ...prevFilters, ...newFilters }));
     };
 
-    const filteredRooms = rooms.filter(room => {
-        // Apply gender filter
-        if (filters.genero && !room.Genero.includes(filters.genero)) return false;
-    
-        // Apply price range filter
-        if ((priceRange[0] && room.price < priceRange[0]) || (priceRange[1] && room.price > priceRange[1])) return false;
+    const handleSortOrder = (sortCriteria: string) => {
+        let sortedRoomsCopy = [...filteredRooms];
         
-        if (filters.tipoCasa && room.TipoQuarto !== filters.tipoCasa) return false;
-
-        if (selectedServices.length > 0 && !selectedServices.every(service => room.servicos.includes(service))) return false;
-
-        if (filters.WC && room.WC !== filters.WC) return false;
-
-        if (filters.Alojamento && room.Alojamento !== filters.Alojamento) return false;
-
-        if (filters.animais && room.Animais !== filters.animais) return false;
-
-        if (filters.gastos && room.gastos !== filters.gastos) return false;
-        return true;
-    });
+        switch (sortCriteria) {
+            case 'price':
+                active = 'price';
+                sortedRoomsCopy.sort((a, b) => {
+                    if (sortOrderPrice === 'asc') {
+                        return a.price - b.price;
+                    } else {
+                        return b.price - a.price;
+                    }
+                });
+                setSortOrderPrice(sortOrderPrice === 'asc' ? 'desc' : 'asc'); // Toggle sort order
+                break;
+            case 'area':
+                active = 'area';
+                sortedRoomsCopy.sort((a, b) => {
+                    if (sortOrderArea === 'asc') {
+                        return a.area - b.area;
+                    } else {
+                        return b.area - a.area;
+                    }
+                });
+                setSortOrderArea(sortOrderArea === 'asc' ? 'desc' : 'asc'); // Toggle sort order
+                break;
+            case 'evaluated':
+                active = 'evaluated';
+                sortedRoomsCopy.sort((a, b) => {
+                    if (sortOrderEvaluated === 'asc') {
+                        return a.Avaliacao - b.Avaliacao;
+                    } else {
+                        return b.Avaliacao - a.Avaliacao;
+                    }
+                });
+                setSortOrderEvaluated(sortOrderEvaluated === 'asc' ? 'desc' : 'asc'); // Toggle sort order
+                break;
+            default:
+                break;
+        }
+        
+        setFilteredRooms(sortedRoomsCopy);
+    };
+    
+    
 
     return (
         <div>
@@ -298,7 +347,18 @@ function RoomsListPage() {
             </div>
 
             <div className="projcard-container" style={{ width: '60%', float:"right"}} >
-                
+                <div>
+                <button className={`button-79 ${sortOrderPrice ? active: 'price' }`} onClick={() => handleSortOrder("price")}>
+                    Ordenar por Preço {sortOrderPrice === 'asc' ? 'decrescente ↑' : 'crescente ↓'}
+                </button>
+                <button className={`button-79 ${sortOrderArea ? active : 'area'}`} onClick={() => handleSortOrder("area")}>
+                    Ordenar por maior Área total {sortOrderArea === 'asc' ? 'decrescente ↑' : 'crescente ↓'}
+                </button>
+                <button className={`button-79 ${sortOrderEvaluated ? active : 'evaluated'}`} onClick={() => handleSortOrder("evaluated")}>
+                    Ordenar por Avaliação {sortOrderEvaluated === 'asc' ? 'decrescente ↑' : 'crescente ↓'}
+                </button>
+                </div>
+                 
             {rooms.length > 0 ? (
                 filteredRooms.map(room => {
                     // Determine if the room is favorited

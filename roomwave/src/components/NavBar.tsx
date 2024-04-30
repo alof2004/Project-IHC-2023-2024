@@ -6,7 +6,8 @@ import NavBarClient from './NavBarClient';
 
 function NavBar() {
   const { user } = useUser();
-  if (!user) {
+  console.log(user);
+  if (localStorage.getItem("userData") === null) {
   return (
     <nav className="navbar border-bottom navbar-expand-lg myCustomNavbar" data-bs-theme="dark">
       <div className="container-fluid">

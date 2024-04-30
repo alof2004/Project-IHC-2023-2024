@@ -7,20 +7,20 @@ function NavBarClient() {
       <div className="container-fluid">
         <Link to="/" className="navbar-brand">
           <a className="navbar-brand" href="#">
-            <img src="./src/images/roomWaveLogo.png" width="95" height="50" alt="Logo"/>
+            <img src="../../src/images/roomWaveLogo.png" width="95" height="50" alt="Logo"/>
           </a>
         </Link>
         <div className="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
           <ul className="navbar-nav">
             <li className="nav-item nav-item-flex">
               <Link to="favorites" className="nav-link">
-                <img src="./src/images/heart.png" width="30" height="30" alt="Home Icon"/>
+                <img src="../../src/images/heart.png" width="30" height="30" alt="Home Icon"/>
                 Favorites
               </Link>
             </li>
             <li className="nav-item nav-item-flex">
               <Link to="perfil" className="nav-link">
-                <img src="./src/images/perfil_icon.png" width="30" height="30" alt="Profile Icon"/>
+                <img src="../..//src/images/perfil_icon.png" width="30" height="30" alt="Profile Icon"/>
                 Perfil
               </Link>
             </li>

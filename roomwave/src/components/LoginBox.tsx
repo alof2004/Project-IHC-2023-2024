@@ -41,8 +41,10 @@ const LoginBox: React.FC = () => {
       const userData = { email: user.email, password: user.password, type: user.type, birthdate: user.birthdate, phone: user.phone, firstname: user.firstname, lastname: user.lastname, job: user.job};
       console.log("userData:", userData);
       loginUser(userData);
+      localStorage.setItem("userData", JSON.stringify(userData));
       console.log("user.email:", user.email);
       if (user.type === "client") {
+        console.log(user)
         navigate("/homeClient");
       } else if (user.type === "senhorio") {
         navigate("/homeLandlord");

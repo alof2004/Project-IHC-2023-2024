@@ -9,6 +9,7 @@ import ImageHomeesquerda from './ImageHomeesqueda';
 import LastImageHome from './LastImageHome';
 
 function Home() {
+  localStorage.removeItem("userData");
   const [selectedCity, setSelectedCity] = useState('');
   const navigate = useNavigate();
 
