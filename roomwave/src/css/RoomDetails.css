@@ -90,7 +90,7 @@
     font-size: 30px;
     margin-bottom: 40px;
     width: 75%;
-    background-color: rgb(255, 255, 255);
+    background-color: rgba(255, 255, 255, 0.368);
 }   
 
 
@@ -119,7 +119,6 @@
 
   .container {
     display: flex;
-    font-size: 40px;
    }
    
    .column {
@@ -140,6 +139,7 @@
     
     .column li {
       margin-bottom: 60px;
+      font-size: 40px;
     }
        
    .icon {
@@ -311,7 +311,7 @@
   .room-images {
     flex-direction: column;
     gap: 10px; /* Adiciona um espaço entre as imagens */
-    margin-top: 200px;
+    margin-top: 100px;
     display: flex;
    }
    
@@ -359,23 +359,48 @@
     }
   
     .heart_icon,
-.share_icon {
-  display: inline;
-  margin-left: 180px;
-}
-
-.inco_contact{
-  width: 100%;
-}
-
-.dir-control{
-  margin-left:400px;
-}
-    .info_contact_second {
-      justify-content: space-between; /* Ensure the icons are spaced apart */
-      margin-left: 400px;
-      margin-right: 320px;
-      width: 900px;
+    .share_icon {
+      display: inline;
+      margin-left: 180px;
     }
 
+    .icon_contact{
+      margin-right: 30%;
+      display: flex;
+      
+    }
+    
+  
+    .info_contact_second {
+      display: flex;
+      flex-direction: row;
+      position: absolute;
+      margin-left: 0px;
+    }
+    
+
+    @media screen and (max-width: 1085px) {
+
+      .info_contact_second {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        margin-left: 0px;
+      }
+
+      .other-images{
+        position: absolute; /* Posiciona as imagens secundárias em relação ao contêiner .room-images */
+        top: 100%; /* Posiciona as imagens secundárias logo abaixo da imagem principal */
+        left: 0; /* Alinha as imagens secundárias à esquerda do contêiner */
+        display: flex;
+        flex-direction: column; /* Alinha as imagens secundárias em uma linha */
+        gap: 10px; /* Espaçamento entre as imagens secundárias */
+        margin-left: 80px;
+       }
+
+       .price_info{
+        margin-top: 400px;
+       }
+    }  
+    
 }
