@@ -1,3 +1,4 @@
+
 [
     {
         "id": 1,
@@ -18,7 +19,7 @@
         "longitude":-8.450340947097306,
         "description": "Quarto com cama de casal, ar condicionado e casa de banho privativo",
         "Transportes": " a 100 m",
-        "servicos":[
+        "mobilia":[
             "Roupeiro",
             "Secretária",
             "Estante de livros",
@@ -69,7 +70,9 @@
         "WC": "Partilhado",
         "Alojamento": "Apartamento",
         "Avaliado": "Sim",
-        "Avaliacao": 4.5
+        "Avaliacao": 4.5,
+        "data_entrada": "2024-05-01T00:00:00.000Z",
+        "data_saida": "2024-06-01T00:00:00.000Z"
     },
     {
         "id": 2,
@@ -90,7 +93,7 @@
         "longitude":-8.450340947097306,
         "description": "Quarto com cama de casal, ar condicionado e casa de banho privativo",
         "Transportes": " a 100 m",
-        "servicos":[
+        "mobilia":[
             "Roupeiro",
             "Secretária",
             "Estante de livros",
@@ -141,6 +144,8 @@
         "WC": "Partilhado",
         "Alojamento": "Apartamento",
         "Avaliado": "Sim",
-        "Avaliacao": 5
+        "Avaliacao": 5,
+        "data_entrada": "2024-07-22T00:00:00.000Z",
+        "data_saida": null
     }
 ]
