@@ -17,6 +17,7 @@ import AddRoom from './components/AddRoom';
 import Ajuda from './components/Ajuda';
 import { FavoriteRoomsProvider } from './components/FavoriteRoomsContext';
 import { UserProvider } from './components/UserContext';
+import FavoritesPage from './components/FavoritesPage';
 
 
 
@@ -44,6 +45,7 @@ function App() {
             <Route path="/foundcoord" element={<Foundcoord />} />
             <Route path="/button" element={<Button />} />
             <Route path="/ajuda" element={<Ajuda />} />
+            <Route path="/favorites" element={<FavoritesPage/>} />
           </Routes>
         </div>
         </FavoriteRoomsProvider>

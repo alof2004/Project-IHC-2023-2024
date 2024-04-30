@@ -24,7 +24,7 @@ interface Room {
  longitude: number;
  description: string;
  Transportes: string;
- servicos: string[];
+ mobilia: string[];
  Descrição_Proprietaria: string;
  Cama: string;
  Cozinha: string;
@@ -46,6 +46,8 @@ interface Room {
  Andar: string;
  Avaliado: string;
  Avaliacao: number;
+ data_entrada: string;
+ data_saida: string;
 }
 
 interface PriceRangeProps {
@@ -67,7 +69,7 @@ function RoomsListPage() {
     });
     const [priceRange, setPriceRange] = useState([10, 1500]);
     const [selectedServices, setSelectedServices] = useState<string[]>([]);
-    const availableServices = Array.from(new Set(roomsData.flatMap(room => room.servicos)));
+    const availableServices = Array.from(new Set(roomsData.flatMap(room => room.mobilia)));
     const availableElectro = Array.from(new Set(roomsData.flatMap(room => room.Equipamento_disponivel)));
     const [isOptionsVisible, setIsOptionsVisible] = useState(false);
     const [isOptionsVisible1, setIsOptionsVisible1] = useState(false);
@@ -119,7 +121,7 @@ function RoomsListPage() {
             if (filters.genero && !room.Genero.includes(filters.genero)) return false;
             if ((priceRange[0] && room.price < priceRange[0]) || (priceRange[1] && room.price > priceRange[1])) return false;
             if (filters.tipoCasa && room.TipoQuarto !== filters.tipoCasa) return false;
-            if (selectedServices.length > 0 && !selectedServices.every(service => room.servicos.includes(service))) return false;
+            if (selectedServices.length > 0 && !selectedServices.every(service => room.mobilia.includes(service))) return false;
             if (filters.WC && room.WC !== filters.WC) return false;
             if (filters.Alojamento && room.Alojamento !== filters.Alojamento) return false;
             if (filters.animais && room.Animais !== filters.animais) return false;
@@ -190,22 +192,7 @@ function RoomsListPage() {
                 <PriceRange onRangeChange={handlePriceRangeChange} />
                 <div>
                     <button
-                        style={{
-                        width: '28rem',
-                        padding: '20px',
-                        margin: '10px',
-                        marginTop: '0px',
-                        marginBottom: '0px',
-                        backgroundColor: '#252525',
-                        color: 'white',
-                        border: 'none',
-                        borderTop: '1px solid #white',
-                        fontSize:'20px',
-                        fontFamily: "Circular,Helvetica,sans-serif",
-                        fontWeight: "700",
-                        letterSpacing: "-.01em",
-                        borderBottom: '2px solid white',
-                        }}
+                        className="button-style"
                         onClick={() => setIsOptionsVisible(!isOptionsVisible)}
                     >
                         Filtrar por mobília disponível:
@@ -236,7 +223,7 @@ function RoomsListPage() {
                                 onChange={handleServiceChange}
                                 checked={selectedServices.includes(service)}
                                 />
-                                <label htmlFor={service}>{service}</label>
+                                <label  style={{marginTop:"0px"}} htmlFor={service}>{service}</label>
                             </div>
                             ))}
                         </fieldset>
@@ -245,22 +232,7 @@ function RoomsListPage() {
                 </div>
                 <div>
                     <button
-                        style={{
-                        width: '28rem',
-                        padding: '20px',
-                        margin: '10px',
-                        marginTop: '0px',
-                        marginBottom: '0px',
-                        backgroundColor: '#252525',
-                        color: 'white',
-                        border: 'none',
-                        borderTop: '1px solid #333',
-                        fontSize:'20px',
-                        fontFamily: "Circular,Helvetica,sans-serif",
-                        fontWeight: "700",
-                        letterSpacing: "-.01em",
-                        borderBottom: '1px solid #333',
-                        }}
+                        className="button-style"
                         onClick={() => setIsOptionsVisible1(!isOptionsVisible1)}
                     >
                         Filtrar por aparelhos eletrónicos disponível:
@@ -291,7 +263,7 @@ function RoomsListPage() {
                                 onChange={handleElectroChange}
                                 checked={selectedServices.includes(eletronicos)}
                                 />
-                                <label htmlFor={eletronicos}>{eletronicos}</label>
+                                <label style={{marginTop:"0px"}} htmlFor={eletronicos}>{eletronicos}</label>
                             </div>
                             ))}
                         </fieldset>
@@ -392,7 +364,7 @@ function RoomsListPage() {
                                 </div>
                             </div>
                             <div className="projcard-tagbox">
-                            {room.servicos.map((service, index) => (
+                            {room.mobilia.map((service, index) => (
                                 <span key={index} className="projcard-tag">{service}</span>
                             ))}
                             </div>

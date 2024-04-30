@@ -124,3 +124,26 @@ input[type="range"]::-moz-range-thumb {
   color: yellow;
   margin-top: 2rem;
 }
+
+.style1 {
+  width: 28rem;
+  padding: 20px;
+  margin: 10px;
+  margin-top: 0;
+  margin-bottom: 0;
+  background-color: #252525;
+  color: white;
+  border-radius: 0;
+  border-bottom: 1px solid #eee;
+  font-size: 20px;
+  font-family: Circular, Helvetica, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  border: none;
+}
+
+.style1:hover {
+  background-color: #1a1a1a;
+  scale: 1.05;
+  transition:0.3s;
+}

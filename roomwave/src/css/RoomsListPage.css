@@ -249,7 +249,7 @@ progress {
 }
 
 .button-79.active {
-    background-color: #e47241;
+    background-color: #e47241; 
 }
 
 .sortButtons{
@@ -257,12 +257,17 @@ progress {
 }
 
 .sort{
+	border-radius: 10px !important;
 	background-color: #e47241;
 	color: white;
 	cursor: pointer;
 	height:70px !important;
 	padding:0px !important;
 	width: 400px !important;
+}
+
+.sort:hover{
+	background-color: #ff7a41!important;
 }
 
 .mini{
@@ -309,3 +314,32 @@ progress {
 .projcard-tagbox {
     margin-top: 30px; /* Add margin to the top of the tag box */
 }
+
+.button-style1:hover {
+	background-color: #ffcc00; /* Change to your desired hover color */
+  }
+.button-style {
+	width: 28rem;
+	padding: 20px;
+	margin: 10px;
+	margin-top: 0;
+	margin-bottom: 0;
+	background-color: #252525;
+	color: white;
+	border: none;
+	border-top: 1px solid white;
+	font-size: 20px;
+	font-family: "Circular", "Helvetica", sans-serif; /* Fixed font family */
+	font-weight: 700;
+	letter-spacing: -.01em;
+	border-bottom: 2px solid white;
+  }
+  
+  .button-style:hover {
+	background-color: #1a1a1a;
+	scale: 1.05;
+	transition: 0.3s;
+	color:white
+  }
+
+  
