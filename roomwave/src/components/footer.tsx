@@ -17,7 +17,8 @@ const Footer: React.FC = () => {
 				style={{
 					color: "#FF7A41",
 					textAlign: "center",
-					marginTop: "20px",
+					marginTop: "0px",
+					marginBottom: "80px",
 				}}
 			>
 				Uma Habitação pelo teu dinheiro
