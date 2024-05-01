@@ -1,3 +1,7 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+
+
 span.flag {
     width: 44px;
     height: 30px;
@@ -741,7 +745,7 @@ img.flag {
 }
 
 .card {
-   
+    font-family: 'Oswald', sans-serif;
     padding: 2rem;
     font-size: 40px;
     margin-left: 80px;
