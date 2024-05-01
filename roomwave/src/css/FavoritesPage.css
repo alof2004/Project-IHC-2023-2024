@@ -15,7 +15,8 @@
     background-color: #E47241;
     color: white;
     border-radius: 10px;
-    height: 50px;
+    font-size: 20px;
+    height: 90px;
 }
 
 .return:hover{
@@ -52,7 +53,8 @@
   
   .gradient-effect {
     background: linear-gradient(9deg, rgba(224,79,39,1) 0%, rgba(255,136,0) 50%, rgb(218, 93, 35) 100%);
-    color: black;
+    color: white;
+    text-shadow: 2px 2px 2px #000000;
     background-size: 200% auto;
     animation: gradientChange 5s ease infinite;
   }

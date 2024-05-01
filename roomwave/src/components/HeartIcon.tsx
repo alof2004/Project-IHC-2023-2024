@@ -11,7 +11,6 @@ interface HeartIconProps {
 
 const HeartIcon: React.FC<HeartIconProps> = ({ roomId }) => {
  const [isFavorite, setIsFavorite] = useState(false);
-  const { user } = useUser();
 
  useEffect(() => {
     // Check if the room is favorited when the component mounts
@@ -20,20 +19,28 @@ const HeartIcon: React.FC<HeartIconProps> = ({ roomId }) => {
  }, [roomId]);
 
  const toggleFavorite = () => {
-    // Toggle favorite status in localStorage
-    if (!user) {
-      window.location.href = '/login';
-      return;
-    }
-    const favoriteRooms = JSON.parse(localStorage.getItem('favoriteRooms') || '[]');
-    const updatedFavorites = favoriteRooms.includes(roomId)
-      ? favoriteRooms.filter((id: number) => id !== roomId)
-      : [...favoriteRooms, roomId];
-    localStorage.setItem('favoriteRooms', JSON.stringify(updatedFavorites));
+  // Retrieve user data from localStorage
+  const userDataString = localStorage.getItem('userData');
+  const userData = JSON.parse(userDataString || '{}');
 
-    // Update the state to reflect the new favorite status
-    setIsFavorite(!isFavorite);
- };
+  // Check if there is no user data or if the user is not logged in
+  if (!userData ) {
+    console.log('User is not logged in');
+    window.location.href = '/login';
+    return;
+  }
+
+  // Toggle favorite status in localStorage
+  const favoriteRooms = JSON.parse(localStorage.getItem('favoriteRooms') || '[]');
+  const updatedFavorites = favoriteRooms.includes(roomId)
+   ? favoriteRooms.filter((id: number) => id!== roomId)
+    : [...favoriteRooms, roomId];
+  localStorage.setItem('favoriteRooms', JSON.stringify(updatedFavorites));
+
+  // Update the state to reflect the new favorite status
+  setIsFavorite(!isFavorite);
+};
+
 
  return (
     <div className='large-font text-center top-20'>

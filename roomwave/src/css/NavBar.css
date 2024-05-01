@@ -143,3 +143,7 @@ body {
   opacity: 0.5;
   font-weight: bolder;
 }
+
+.nav-link.dropdown-toggle::after {
+  display: none;
+}

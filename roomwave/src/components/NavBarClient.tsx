@@ -18,11 +18,15 @@ function NavBarClient() {
                 Favorites
               </Link>
             </li>
-            <li className="nav-item nav-item-flex">
-              <Link to="../../../perfil" className="nav-link">
-                <img src="../..//src/images/perfil_icon.png" width="30" height="30" alt="Profile Icon"/>
-                Perfil
-              </Link>
+            <li className="nav-item dropdown">
+            <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{paddingLeft:"2px"}} href='#'>
+            <img src="../../src/images/perfil_icon.png" width="30" height="30" alt="Profile Icon"/>
+              Perfil
+              <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a className="dropdown-item" href="#">O meu Perfil</a>
+                <a className="dropdown-item" href="#">Log-Out</a>
+              </div>
+              </a>
             </li>
             <li className="nav-item nav-item-flex">
               <Link to="../../../Ajuda" className="nav-link">

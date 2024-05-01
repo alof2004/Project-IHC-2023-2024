@@ -85,9 +85,10 @@ function FavoritesPage(){
                     );
                 })
                 ) : (
-                <Modal />
-                )}
-            <button className="return" onClick={() => navigate('/home')}>Voltar para a página inicial</button>
+                <div className="no-favorites">
+                </div>
+            )}
+            <button className="return" onClick={() => navigate('/homeClient')}>Voltar para a página inicial</button>
         </div>
         </div>
     );
