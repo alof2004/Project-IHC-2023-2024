@@ -90,7 +90,7 @@ function RoomDetails(){
             <div className='description_info'>
                     <h2 className="title_info" style={{ fontSize: "50px", marginBottom: "30px", marginRight: "20px" }}>A Renda inclui:</h2>
 
-                    <div className="container">
+                    <div className="boxoptions">
                         <div className="column column-left"> 
                             <ul>
                                 {room.Renda_inclui.slice(0, 5).map((Renda_inclui, index) => (
@@ -110,7 +110,7 @@ function RoomDetails(){
                 <div className='description_info'>
                     <h2 className="title_info" style={{ fontSize: "50px", marginBottom: "30px", marginRight: "20px" }}>Sobre a habitação:</h2>
 
-                    <div className="container">
+                    <div className="boxoptions">
                         <div className="column column-left"> 
                             <ul>
                                 {room.mobilia.slice(0, 5).map((mobilia, index) => (
@@ -130,7 +130,7 @@ function RoomDetails(){
                 <div className='description_info'>
                     <h2 className="title_info" style={{ fontSize: "50px", marginBottom: "30px", marginRight: "20px" }}>Equipamentos:</h2>
 
-                    <div className="container">
+                    <div className="boxoptions">
                         <div className="column column-left"> 
                             <ul>
                                 {room.Equipamento_disponivel.slice(0, 5).map((Equipamento_disponivel, index) => (
