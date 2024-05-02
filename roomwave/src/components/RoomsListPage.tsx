@@ -436,7 +436,7 @@ function RoomsListPage() {
                         <img className="projcard-img" src={room.imagem1} alt={`Room ${room.id}`} />
                         <div className="projcard-textbox">
                             <div className="projcard-title">{room.description}</div>
-                            <div className="projcard-subtitle">{room.localizacao}</div>
+                            <div className="projcard-subtitle"><span className="location-label" style={{color:"#FF7A41",fontWeight:"bold"}}>Localização: </span>{room.localizacao}</div>
                             <div className="projcard-subtitle" style={{ fontFamily: "Circular, Helvetica, sans-serif", color: isAvailableToday ? 'green' : 'red' }}>
                                 {isAvailableToday ? (
                                     <span>Disponível hoje</span>

@@ -14,14 +14,15 @@ body {
 	box-sizing: border-box;
 }
 .projcard-container {
-	margin-left: auto;
+	margin-left: 80px;
 	margin-right: auto;
+	padding-left: 0;
 	width: 1200px;
 }
 .projcard {
 	position: relative;
 	width: 100%;
-	height: 300px;
+	height: 380px;
 	margin-bottom: 40px;
 	border-radius: 10px;
 	background-color: #fff;
@@ -29,11 +30,11 @@ body {
 	font-size: 18px;
 	overflow: hidden;
 	cursor: pointer;
-	box-shadow: 0 4px 21px -12px rgba(0, 0, 0, .66);
+	box-shadow: 0 4px 21px -10px rgba(0, 0, 0, .90);
 	transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
 .projcard:hover {
-	box-shadow: 0 34px 32px -33px rgba(0, 0, 0, .18);
+	box-shadow: 0 34px 32px -33px rgba(0, 0, 0, .50);
 	transform: translate(0px, -3px);
 }
 .projcard::before {
@@ -56,9 +57,9 @@ body {
 }
 .projcard-img {
 	position: absolute;
-	height: 300px;
-	width: 400px;
-	top: 0;
+	height: 400px;
+	width: 600px;
+	top: 20;
 	left: 0;
 	transition: transform 0.2s ease;
 }
@@ -88,7 +89,7 @@ body {
 	top: -20%;
 	left: -55px;
 	height: 140%;
-	width: 60px;
+	width: 300px;
 	transform: rotate(8deg);
 }
 
@@ -104,6 +105,7 @@ body {
 .projcard-title {
 	font-family: 'Voces', 'Open Sans', arial, sans-serif;
 	font-size: 24px;
+	padding-right: 40px;
 }
 .projcard-subtitle {
 	font-family: 'Voces', 'Open Sans', arial, sans-serif;
