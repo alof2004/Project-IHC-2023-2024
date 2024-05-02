@@ -53,6 +53,7 @@ const RoomSlider = () => {
 
   return (
     <div className="px-0">
+      <h1 style={{marginLeft:"4%", marginTop:"4%",fontSize:"60px"}}>Quartos vistos recentemente...</h1>
       <Carousel className="room-slider-carousel" activeIndex={activePage} onSelect={() => {}}>
         {pages.map((page, index) => (
           <Carousel.Item key={index}>
