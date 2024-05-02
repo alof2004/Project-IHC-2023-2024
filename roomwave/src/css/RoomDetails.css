@@ -289,15 +289,15 @@
    }
    
    .dir-control--secondary {
-    --buttonColor: hsl(0, 0%, 0%);
+    --buttonColor: hsl(0, 0%, 100%);
     --bg: hsl(0, 0%, 5%);
    }
    
    .dir-control--filled {
-    --backdrop: #000000;
+    --backdrop: #c7edef;
     --slideColor: hsl(0, 0%, 5%);
     --textColor: hsl(0, 0%, 5%);
-    --bg: #000000;
+    --bg: #c7edef;
    }
    
    
