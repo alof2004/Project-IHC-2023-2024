@@ -5,10 +5,8 @@ function NavBarClient() {
   return (
     <nav className="navbar border-bottom navbar-expand-lg myCustomNavbar" data-bs-theme="dark">
       <div className="container-fluid">
-        <Link to="/homeClient" className="navbar-brand">
-          <a className="navbar-brand" href="#">
-            <img src="../../src/images/roomWaveLogo.png" width="95" height="50" alt="Logo"/>
-          </a>
+      <Link to="/HomeClient" className="navbar-brand">
+          <img src="../src/images/roomWaveLogo.png" width="95" height="50" alt="Logo"/>
         </Link>
         <div className="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
           <ul className="navbar-nav">
