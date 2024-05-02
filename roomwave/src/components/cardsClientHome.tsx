@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { Card, Carousel, Row, Col } from 'react-bootstrap';
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import { FaAward } from 'react-icons/fa';
-import { FiChevronLeft, FiChevronRight } from 'react-icons/fi'; // Importando ícones de seta do React Icons
+import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import roomData from './rooms.json';
 
 const RoomSlider = () => {
-  const itemsPerPage = 3; // Número de quartos por página
+  const itemsPerPage = 3;
   const [activePage, setActivePage] = useState(0);
 
   const renderRatingStars = (rating: number) => {
@@ -33,7 +33,6 @@ const RoomSlider = () => {
     return null;
   };
 
-  // Função para dividir os quartos em páginas
   const splitRoomsIntoPages = (data: string | any[], itemsPerPage: number) => {
     const pages = [];
     for (let i = 0; i < data.length; i += itemsPerPage) {
@@ -54,36 +53,26 @@ const RoomSlider = () => {
 
   return (
     <div className="px-0">
-      <div className="d-flex justify-content-between align-items-center mb-3">
-        <span>
-          <button className="btn btn-light btn-lg" onClick={handlePrevPage} disabled={activePage === 0}><FiChevronLeft size={50} /></button>
-          <span className="mx-3" style={{fontSize:"30px"}}><strong>Anterior</strong></span>
-        </span>
-        <span>
-          <span className="mx-3"  style={{fontSize:"30px"}} ><strong>Próxima</strong></span>
-          <button className="btn btn-light btn-lg" onClick={handleNextPage} disabled={activePage === pages.length - 1}><FiChevronRight size={50} /></button>
-        </span>
-      </div>
       <Carousel className="room-slider-carousel" activeIndex={activePage} onSelect={() => {}}>
         {pages.map((page, index) => (
           <Carousel.Item key={index}>
             <Row>
-              {Array.isArray(page) && page.map((room) => (
+              {Array.isArray(page) && page.map((room) => (                
                 <Col key={room.id} md={4}>
-                  <Card className="shadow-lg border-0 position-relative" style={{ width: '1000px', height: "1250px", borderRadius: "60px" }}>
+                  <Card className="shadow-lg border-0 position-relative" style={{ width: '700px', height: "1350px", borderRadius: "60px" }}>
                     <div className="room-image-container">
-                      <Card.Img className="room-image" style={{ width: "930px", height: "500px", objectFit: "cover" }} variant="top" src={room.imagem1} />
+                      <Card.Img className="room-image" style={{ width: "640px", height: "400px", objectFit: "cover" }} variant="top" src={room.imagem1} />
                     </div>
                     <Card.Body className="p-2">
-                      <Card.Title className="text-center mb-2"><h1 style={{ fontSize: "60px" }}>Quarto de {room.Proprietaria}</h1></Card.Title>
-                      <div className="text-center" style={{ fontSize: "40px" }}>
-                        <p className="text-sm"><strong>Descrição:</strong> {room.description}</p>
-                        <p className="text-sm"><strong>Localização:</strong> {room.localizacao}, {room.cidade}, {room.país}</p>
-                        <p className="text-sm"><strong>Preço:</strong> <span style={{ color: 'orange' }}>{room.price}€</span></p>
-                        <p className="text-sm"><strong>Avaliação:</strong> {renderRatingStars(room.Avaliacao)}</p>
-                        <p className="text-sm"><strong>Pessoas permitidas:</strong> {room.Pessoas_permitidas.join(', ')}</p>
-                        <p className="text-sm"><strong>Animais permitidos:</strong> {room.Animais}</p>
-                        <p className="text-sm"><strong>Gastos incluídos:</strong> {room.gastos === 'incluídas' ? 'Sim' : 'Não'}</p>
+                      <div className="text-center">
+                        <h1 style={{ fontSize: "50px" }}>Quarto de {room.Proprietaria}</h1>
+                        <div className="text-sm"><strong>Descrição:</strong> {room.description}</div>
+                        <div className="text-sm"><strong>Localização:</strong> {room.localizacao}, {room.cidade}, {room.país}</div>
+                        <div className="text-sm"><strong>Preço:</strong> <span style={{ color: 'orange' }}>{room.price}€</span></div>
+                        <div className="text-sm"><strong>Avaliação:</strong> {renderRatingStars(room.Avaliacao)}</div>
+                        <div className="text-sm"><strong>Pessoas permitidas:</strong> {room.Pessoas_permitidas.join(', ')}</div>
+                        <div className="text-sm"><strong>Animais permitidos:</strong> {room.Animais}</div>
+                        <div className="text-sm"><strong>Gastos incluídos:</strong> {room.gastos === 'incluídas' ? 'Sim' : 'Não'}</div>
                       </div>
                     </Card.Body>
                     {renderCertificationIcon(room.Avaliacao)}
@@ -94,6 +83,12 @@ const RoomSlider = () => {
           </Carousel.Item>
         ))}
       </Carousel>
+      <div className="d-flex justify-content-between align-items-center">
+        <button className="btn btn-light btn-lg " onClick={handlePrevPage} disabled={activePage === 0}><FiChevronLeft size={50} /></button>
+        <span className="mx-3" style={{ fontSize: "30px" }}><strong>Anterior</strong></span>
+        <span className="mx-3" style={{ fontSize: "30px" }}><strong>Próxima</strong></span>
+        <button className="btn btn-light btn-lg" onClick={handleNextPage} disabled={activePage === pages.length - 1}><FiChevronRight size={50} /></button>
+      </div>
     </div>
   );
 };
