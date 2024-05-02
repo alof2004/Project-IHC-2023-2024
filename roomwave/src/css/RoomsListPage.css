@@ -14,10 +14,13 @@ body {
 	box-sizing: border-box;
 }
 .projcard-container {
-	margin-left: 80px;
+	margin-left: auto;
 	margin-right: auto;
 	padding-left: 0;
-	width: 1200px;
+	width: 100%;
+	background-color: white;
+	border-radius: 10px;
+	padding: 20px 20px 20px 20px
 }
 .projcard {
 	position: relative;
@@ -368,3 +371,57 @@ progress {
 .mapa1:hover{
 	color: black !important;
 }
+
+@media (max-width: 768px) { /* Adjust the max-width as needed */
+	.projcard-container {
+	  width: 100%; /* Make it full width */
+	  float: none; /* Remove float */
+	  clear: both; /* Clear any floats */
+	  margin-top: 20px; /* Add some space between filters and cards */
+	}
+  }
+
+  @media (max-width: 768px) {
+	.filter-container {
+	  flex-direction: column; /* Change to a column layout */
+	}
+  
+	.projcard-container {
+	  width: 100%; /* Make it full width */
+	  float: none; /* Remove float */
+	  margin-top: 20px; /* Add some space between filters and cards */
+	}
+  }
+  
+  /* Media query for screens smaller than 768px (phones) */
+@media (max-width: 768px) {
+	.projcard-container {
+	  width: 100%; /* Make rooms full width */
+	  float: none; /* Remove float */
+	  overflow: auto; /* Add overflow scrolling */
+	  padding: 0 20px; /* Add some padding to prevent content from touching the edges */
+	  margin:0px;
+	  width: 95%  !important
+	}
+  }
+
+  @media (max-width: 768px) {
+	.projcard-projcard-blue {
+	  width: 100%; /* Make rooms full width */
+	  float: none; /* Remove float */
+	  overflow: auto; /* Add overflow scrolling */
+	  padding: 0 20px; /* Add some padding to prevent content from touching the edges */
+	  height: 100px;
+	}
+  }
+  .leaflet-popup-content-wrapper, .leaflet-popup-tip {
+	width: 1000px;
+	padding:0px
+  }
+
+  .leaflet-popup-content {
+margin:0px  }
+
+.custom-modal{
+	max-width: 90%; /* Set this to your desired width */
+  }

@@ -6,7 +6,7 @@ import icon from "./constants";
 import details from './rooms.json';
 import HeartIcon from "./HeartIcon";
 import StarRating from "./StarRating";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { isToday } from "date-fns";
 import '../css/RoomsListPage.css'
 import '../css/Map.css'
@@ -84,6 +84,7 @@ const MyMapApp: React.FC = () => {
     const favoriteRooms = localStorage.getItem('favoriteRooms');
     return favoriteRooms ? JSON.parse(favoriteRooms) : [];
 };
+  const {city} = useParams();
   const room = details[0]; // Assuming there's only one room in the array
   const position: [number, number] = [room.latitude, room.longitude];
   const navigate = useNavigate();
