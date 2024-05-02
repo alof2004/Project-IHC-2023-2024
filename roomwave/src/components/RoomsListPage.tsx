@@ -11,6 +11,7 @@ import NavBar from './NavBar';
 import MyMapApp from './Map';
 import { format, isToday } from 'date-fns';
 import StarRating from './StarRating';
+import MapModal from './MapModal';
 
 
 interface Room {
@@ -86,6 +87,8 @@ function RoomsListPage() {
     const [activeButton, setActiveButton] = useState<string | null>(null); // Add state for active button
     const [startDate, setStartDate] = useState('');
     const [endDate, setEndDate] = useState('');
+    const [modalShow, setModalShow] = React.useState(false);
+
 
     const isAvailableToday = (room: Room): boolean => {
         const today = new Date();
@@ -228,7 +231,11 @@ function RoomsListPage() {
             </div>      
             <div className="filter-container" style={{display:"flex", margin:"30px 30px 20px 20px", backgroundColor:"#dedede", borderRadius:"10px", padding:"20px"}}>
                 <div  style={{ margin: '0px', paddingTop:"10px", paddingBottom:"10px" }}>
-                <button className="button-style mapa1" onClick={() => navigate('/Map')} >Ver no Mapa</button>
+                <button className="button-style mapa1" onClick={() => setModalShow(true)} >Ver no Mapa</button>
+                <MapModal
+                    show={modalShow}
+                    onHide={() => setModalShow(false)}
+                />
                 <PriceRange onRangeChange={handlePriceRangeChange} />
                 <div>
                     <button

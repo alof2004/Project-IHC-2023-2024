@@ -421,3 +421,7 @@ progress {
 
   .leaflet-popup-content {
 margin:0px  }
+
+.custom-modal{
+	max-width: 90%; /* Set this to your desired width */
+  }
