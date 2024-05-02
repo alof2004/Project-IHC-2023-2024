@@ -226,8 +226,8 @@ function RoomsListPage() {
             <div>
                 <NavBar/>
             </div>      
-            <div style={{display:"flex", margin:"30px 30px 20px 20px", backgroundColor:"white", borderRadius:"10px", padding:"20px"}}>
-                <div style={{ width: '20%', margin: '0px', paddingTop:"10px", paddingBottom:"10px" }}>
+            <div className="filter-container" style={{display:"flex", margin:"30px 30px 20px 20px", backgroundColor:"#dedede", borderRadius:"10px", padding:"20px"}}>
+                <div  style={{ margin: '0px', paddingTop:"10px", paddingBottom:"10px" }}>
                 <button className="button-style mapa1" onClick={() => navigate('/Map')} >Ver no Mapa</button>
                 <PriceRange onRangeChange={handlePriceRangeChange} />
                 <div>
@@ -394,7 +394,7 @@ function RoomsListPage() {
                 </div>
             </div>
 
-            <div className="projcard-container" style={{ width: '60%', float:"right"}} >
+            <div className="projcard-container" style={{ width: '75%', float:"right"}} >
             <h1>Lista de quartos em {city}:</h1>
                 <h5>
                 {filteredRooms.length === 1 ? (
