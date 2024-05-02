@@ -5,9 +5,9 @@ const StyledForm = styled.form`
   position: relative;
   width: 33rem;
   background: var(--color-brand);
-  border-radius: var(--rad);
-  margin-left: 70%;
+  margin-left: 50%;
   margin-top: 100px;
+  background: var(--color-dark);
 `;
 
 const StyledInput = styled.input`
@@ -18,13 +18,11 @@ const StyledInput = styled.input`
   font-size: 1.8rem;
   outline: 0;
   width: 100%;
-  background: var(--color-light);
   padding: 0 1.6rem;
   border-radius: var(--rad);
   appearance: none;
-  transition: all var(--dur) var(--bez);
-  transition-property: width, border-radius;
-  z-index: 1;
+  
+
   position: relative;
 
   &:not(:placeholder-shown) {
@@ -40,11 +38,10 @@ const StyledButton = styled.button`
   display: none;
   position: absolute;
   top: 0;
-  right: 0;
+  right: 88px;
   width: var(--btn-width);
   font-weight: bold;
-  background: var(--color-brand);
-  border-radius: 0 var(--rad) var(--rad) 0;
+    border-radius: 0 var(--rad) var(--rad) 0;
 `;
 
 const SearchForm = () => {
