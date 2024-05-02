@@ -16,10 +16,6 @@ function NavBar() {
         </Link>
         <div className="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
           <ul className="navbar-nav">
-            <div className="container1">
-              <input type="text" placeholder="Procurar quartos em..." />
-              <div className="search"></div>
-            </div>
             <li className="nav-item nav-item-flex">
               <Link to="../../../login" className="nav-link">
                 <img src="../src/images/perfil_icon.png" width="30" height="30" alt="Profile Icon"/>
