@@ -22,9 +22,9 @@ const HeartIcon: React.FC<HeartIconProps> = ({ roomId }) => {
   // Retrieve user data from localStorage
   const userDataString = localStorage.getItem('userData');
   const userData = JSON.parse(userDataString || '{}');
-
+  console.log('userData', userData);
   // Check if there is no user data or if the user is not logged in
-  if (!userData ) {
+  if (!userData || Object.keys(userData).length === 0) {
     console.log('User is not logged in');
     window.location.href = '/login';
     return;
@@ -33,7 +33,7 @@ const HeartIcon: React.FC<HeartIconProps> = ({ roomId }) => {
   // Toggle favorite status in localStorage
   const favoriteRooms = JSON.parse(localStorage.getItem('favoriteRooms') || '[]');
   const updatedFavorites = favoriteRooms.includes(roomId)
-   ? favoriteRooms.filter((id: number) => id!== roomId)
+    ? favoriteRooms.filter((id: number) => id !== roomId)
     : [...favoriteRooms, roomId];
   localStorage.setItem('favoriteRooms', JSON.stringify(updatedFavorites));
 
