@@ -4,6 +4,9 @@ import { useUser } from "./UserContext";
 import HomeText from './HomeText';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Footer from './footer';
+import CardsClientHome from './cardsClientHome';
+
 
 function HomeClient() {
     const { user } = useUser();
@@ -72,6 +75,8 @@ function HomeClient() {
         </div>
       </header>
         </div>
+        <CardsClientHome />
+        <Footer />
     </div>
     );
 }
