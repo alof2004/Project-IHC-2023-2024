@@ -414,3 +414,10 @@ progress {
 	  height: 100px;
 	}
   }
+  .leaflet-popup-content-wrapper, .leaflet-popup-tip {
+	width: 1000px;
+	padding:0px
+  }
+
+  .leaflet-popup-content {
+margin:0px  }
