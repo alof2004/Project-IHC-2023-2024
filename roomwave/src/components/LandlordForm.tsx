@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../css/ClientForm.css';
 import { useUser } from "./UserContext";
 import { useNavigate } from 'react-router-dom';
@@ -18,12 +18,29 @@ function LandlordForm(){
     const { loginUser } = useUser();
     const navigate = useNavigate();
 
-    // Function to handle form submission
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();  // Prevent the default form submission behavior
-        
-        // Construct an object with the form data
-        const formData = {
+    useEffect(() => {
+        // Save the current path to local storage
+        localStorage.setItem('redirectPath', location.pathname);
+      }, [location]);
+    
+      const redirectToSavedPath = () => {
+        const savedPath = localStorage.getItem('redirectPath');
+        if (savedPath) {
+          navigate(savedPath);
+          // Clear the saved path from storage
+          localStorage.removeItem('redirectPath');
+        }
+        else{
+          navigate("../../homeClient")
+        }
+      };
+    
+      // Function to handle form submission
+      const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+          event.preventDefault();  // Prevent the default form submission behavior
+          
+          // Construct an object with the form data
+          const formData = {
             firstname,
             lastname,
             email,
@@ -34,15 +51,13 @@ function LandlordForm(){
             phone,
             city
         };
-
-        console.log(formData);      
-        localStorage.setItem('userData', JSON.stringify(formData));
-        console.log('Form data saved to local storage');
-        loginUser(formData);
-        navigate("../../homeLandlord")
-
-
-    };
+  
+          console.log(formData);      
+          localStorage.setItem('userData', JSON.stringify(formData));
+          console.log('Form data saved to local storage');
+          loginUser(formData);
+          redirectToSavedPath();
+      };
 
     return ( 
         <div className="signup-container">

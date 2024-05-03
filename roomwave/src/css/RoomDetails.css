@@ -28,24 +28,24 @@
 .title_info_proprietaria{
   width:40%;
   height: 80px; /* Adjust the height as needed */
-  display: flex;
   align-items: center;
   font-size: 35px; /* Adjust font size as needed */
   white-space: nowrap;
   margin-top: 40px;
 }
+
 .title_info_number {
   height: 50px; /* Ajuste a altura conforme necessário */
   display: flex;
   align-items: center;
   font-size: 50px; /* Ajuste o tamanho da fonte conforme necessário */
   white-space: nowrap;
-  background-color: #ffa500;
-  border-radius: 30px;
-  padding: 30px 50px; /* Adicione padding conforme necessário */
-  margin-top: 16px;
+  background-color: #FF7A41;
+  border-radius: 10px;
+  padding: 35px 20px; /* Adicione padding conforme necessário */
+  margin-top: 45px;
   text-overflow: ellipsis; /* Adiciona reticências para o texto que excede o contêiner */
-  margin-left: 200px;
+  margin-left: 50px;
 }
 
 
@@ -90,6 +90,8 @@
     margin-bottom: 40px;
     width: 75%;
     background-color: rgba(255, 255, 255, 0.368);
+    border-radius: 30px;
+    padding:20px
 }   
 
 
@@ -98,6 +100,7 @@
   flex-direction: column;
   position: relative;
   width: 65%;
+  margin-top: 20px;
 
 }
 
@@ -404,4 +407,86 @@
        }
     }  
     
+}
+
+/* RoomDetails.css */
+
+/* Ensure important layout elements are prominent and responsive */
+
+/* RoomDetails.css */
+
+/* Ensure important layout elements are prominent and responsive */
+
+.title_info_more_number_proprietaria {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap; /* Allow items to wrap to the next line */
+  gap:40px
+}
+
+.title_info_proprietaria {
+  flex-basis: 100%; /* Take up full width on smaller screens */
+  margin-bottom: 20px; /* Add some space between sections */
+}
+
+.title_info_number {
+  flex-basis: 100%; /* Take up full width on smaller screens */
+  margin-bottom: 20px; /* Add some space between sections */
+}
+
+@media (min-width: 768px) {
+  /* Adjust layout for larger screens if necessary */
+  .title_info_more_number_proprietaria {
+    flex-wrap: nowrap; /* Prevent items from wrapping on larger screens */
+  }
+
+  .title_info_proprietaria {
+    flex-basis: auto; /* Reset to default size */
+    margin-bottom: 10px; /* Reduce margin for larger screens */
+  }
+
+  .title_info_number {
+    flex-basis: auto; /* Reset to default size */
+    margin-bottom: 10px; /* Reduce margin for larger screens */
+  }
+}
+
+/* RoomDetails.css */
+
+/* Ensure heart icon and share icon are displayed on the same line */
+.icon_contact {
+  display: flex;
+  align-items: center; /* Align items vertically */
+}
+
+/* Adjust size of heart icon and share icon */
+/* RoomDetails.css */
+
+/* Adjust positioning and spacing of heart icon and share icon */
+.heart_icon {
+  position: absolute;
+  top: 110px;
+  right: 120px; /* Adjust this value to add space between the icons */
+  width: 35px;
+  height: 35px;
+}
+
+.share_icon {
+  position: absolute;
+  top: 117px;
+  right: -80px;
+  width: 90px;
+  height: 90px;
+}
+
+
+@media screen and (max-width: 768px) {
+  .heart_icon,
+  .share_icon {
+    position: static;
+    display: block;
+    margin-top: 20px; /* Adjust this value to position the icons higher */
+    z-index: auto; /* Reset the z-index for smaller screens */
+  }
 }

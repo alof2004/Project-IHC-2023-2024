@@ -52,15 +52,15 @@ interface Room {
 
 const MyMapApp: React.FC = () => {
   const [selectedRoom, setSelectedRoom] = useState<Room | null>(null);
-  const { id } = useParams();
+  const { ID } = useParams();
   const navigate = useNavigate();
 
   const MyComponent: React.FC = () => {
     const map = useMap();
 
     useEffect(() => {
-      if (id) {
-        const room = details.find(room => room.id.toString() === id);
+      if (ID) {
+        const room = details.find(room => room.id.toString() === ID);
         if (room) {
           setSelectedRoom(room);
           map.setView([room.latitude, room.longitude], 15); // Set map center to room coordinates
@@ -71,7 +71,7 @@ const MyMapApp: React.FC = () => {
           });
         }
       }
-    }, [map, id, navigate]);
+    }, [map, ID, navigate]);
 
     return null;
   };

@@ -45,6 +45,7 @@ function App() {
             <Route path="/button" element={<Button />} />
             <Route path="/ajuda" element={<Ajuda />} />
             <Route path="/favorites" element={<FavoritesPage/>} />
+            <Route path="/room/:ID" element={<RoomDetails/>} />
           </Routes>
         </div>
         </FavoriteRoomsProvider>
