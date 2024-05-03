@@ -10,10 +10,11 @@ body, html {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 100px;
 }
 
 .addroom-form {
-    width: 1200px; 
+    width: 1250px; 
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -166,7 +167,7 @@ body, html {
 }
 
 .image-upload-container{
-    margin-top: -10px;
+    margin-top: 5px;
 }
 
 .image-upload-input {
@@ -201,13 +202,16 @@ body, html {
     display: flex; /* Display children elements in a row */
     flex-wrap: wrap; /* Allow wrapping if content overflows */
     margin-top: 20px;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: -15px;
 }
 
 .label-container {
     margin-right: 20px; /* Adjust spacing between label-input pairs */
     margin-bottom: 20px; /* Adjust spacing between rows */
     margin-top: -30px;
-    width: 280px;
+    width: 200px;
 }
 
 .label-containerend{
@@ -258,12 +262,21 @@ body, html {
 }
 
 .location-info-container1 {
-    width: 1200p;
+    width: 1200px;
     display: flex;
     flex-wrap: wrap;
     margin-top: 20px;
     justify-content: center;
     gap: 15px;
+}
+
+.location-info-container2 {
+    width: 1200p;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    justify-content: center;
+    gap: 5px;
 }
 
 .label-container2 {
@@ -344,4 +357,7 @@ body, html {
 .selected-equipment li {
     margin-right: 10px;
     display: inline-block;
+}
+.bb{
+    margin-bottom: 30px;
 }

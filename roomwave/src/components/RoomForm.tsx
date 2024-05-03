@@ -120,13 +120,9 @@ function RoomForm(){
         const newRoomId = generateRoomId();
         // Construct an object with the form data
         const formData = {
-            id: newRoomId,//ta
-            proprietaria, //ta
-            telefone,
-            //imagem1,
-            //imagem2,
-            //imagem3,
-            //imagem4,
+            id: newRoomId,              //ta
+            proprietaria,               //ta
+            telefone,                   //ta
             images: images,             //ta
             localizacao,                //ta
             locaisProximos,             //ta
@@ -144,22 +140,22 @@ function RoomForm(){
             wc,                         //ta
             ambiente,                   //ta
             price,                      //ta
-            pessoasPermitidas,
+            pessoasPermitidas: genero,  //waiting (ns se é para existir)
             gastos,                     //ta
             animais,                    //ta
             fumadores,                  //ta
             area,                       //ta
             vista,                      //ta
-            rendaInclui,
-            equipamentoDisponivel,
+            rendaInclui,                //waiting (ns se é para existir)
+            equipamentoDisponivel,      //ta
             tipoQuarto,                 //ta
-            genero,
+            genero,                     //ta
             alojamento,                 //ta
             andar,                      //ta
             avaliado,                   //ta
             avaliacao,                  //ta
-            data_entrada,
-            data_saida,
+            data_entrada,               //ta
+            data_saida,                 //ta
         };
     
         console.log(formData);
@@ -168,6 +164,8 @@ function RoomForm(){
         formData.telefone = user?.phone ?? '';
         formData.avaliado = "Não";
         formData.avaliacao= 0;
+        formData.rendaInclui=[];
+        formData.pais="Portugal";
         // Assuming you have a mechanism to store all rooms in an array in localStorage
         const roomsData = JSON.parse(localStorage.getItem('roomsData') || '[]');
         roomsData.push(formData);
@@ -181,10 +179,10 @@ function RoomForm(){
         <form className="addroom-form" onSubmit={handleSubmit}>
             <h2>Room Form</h2>
 
-            <label htmlFor="localizacao" className="label1">Localização</label>
+            <label htmlFor="localizacao" className="label1">Morada(Rua)</label>
             <input
                 type="text"
-                placeholder="Localização"
+                placeholder="Morada"
                 value={localizacao}
                 onChange={(e) => setLocalizacao(e.target.value)}
                 required
@@ -225,26 +223,32 @@ function RoomForm(){
             <div className="location-info-container">
                 <div className="label-container">
                     <label htmlFor="cidade" className="label1">Cidade</label>
-                    <input
-                        type="text"
-                        id="cidade"
-                        placeholder="Cidade"
+                    <select
                         value={cidade}
                         onChange={(e) => setCidade(e.target.value)}
                         required
-                    />
-                </div>
-                
-                <div className="label-containerend">
-                    <label htmlFor="pais" className="label1">País</label>
-                    <input
-                        type="text"
-                        id="pais"
-                        placeholder="País"
-                        value={pais}
-                        onChange={(e) => setPais(e.target.value)}
-                        required
-                    />
+                        title="Insira a cidade onde se encontra o alojamento"
+                    >
+                        <option value="">Cidade</option>
+                        <option value="Aveiro">Aveiro</option>
+                        <option value="Beja">Beja</option>
+                        <option value="Braga">Braga</option>
+                        <option value="Bragança">Bragança</option>
+                        <option value="Castelo Branco">Castelo Branco</option>
+                        <option value="Coimbra">Coimbra</option>
+                        <option value="Évora">Évora</option>
+                        <option value="Faro">Faro</option>
+                        <option value="Guarda">Guarda</option>
+                        <option value="Leiria">Leiria</option>
+                        <option value="Lisboa">Lisboa</option>
+                        <option value="Portalegre">Portalegre</option>
+                        <option value="Porto">Porto</option>
+                        <option value="Santarém">Santarém</option>
+                        <option value="Setúbal">Setúbal</option>
+                        <option value="Viana do Castelo">Viana do Castelo</option>
+                        <option value="Vila Real">Vila Real</option>
+                        <option value="Viseu">Viseu</option>
+                    </select>
                 </div>
                 
                 <div className="label-container1">
@@ -270,6 +274,31 @@ function RoomForm(){
                         required
                     />
                 </div>
+
+                <div className="label-container1">
+                    <label htmlFor="longitude" className="label1">Data de entrada</label>
+                    <input 
+                            type="date" 
+                            placeholder="Data de entrada" 
+                            value={data_entrada ? data_entrada.slice(0, 10) : ''} 
+                            onChange={(e) => setDataEntrada(`${e.target.value}T00:00:00.000Z`)} 
+                            required
+                            title='Insira a data a partir de quando o alojamento está disponível'
+                        />
+                </div>
+
+                <div className="label-container1">
+                <label htmlFor="longitude" className="label1">Data de saída</label>
+                <input 
+                        type="date" 
+                        placeholder="Data de saída" 
+                        value={data_saida ? data_saida.slice(0, 10) : ''} 
+                        onChange={(e) => setDataSaida(`${e.target.value}T00:00:00.000Z`)} 
+                        required
+                        title='Insira a data a partir de quando o alojamento deixa de estar disponível'
+                    />
+                </div>
+
             </div>
             
             <label htmlFor="localizacao" className="label1">Title</label>
@@ -321,8 +350,8 @@ function RoomForm(){
                         title="Indique se o quarto se encontra mobilado (Pode indicar a mobilia na descrição)"
                     >
                         <option value="">Selecione...</option>
-                        <option value="Sim">Sim</option>
-                        <option value="Não">Não</option>
+                        <option value="Mobilado">Mobilado</option>
+                        <option value="Não mobilado">Não mobilado</option>
                     </select>
                 </div>
 
@@ -410,10 +439,10 @@ function RoomForm(){
                 />
             </div>
 
-            <div className="location-info-container1">
+            <div className="location-info-container2">
 
-                <div className="label-container5">
-                    <label htmlFor="tipodequarto" className="label1">Tipo de Quarto</label>
+                <div className="label-container3">
+                    <label htmlFor="tipodequarto" className="label1">Tipologia</label>
                     <select
                         value={tipoQuarto}
                         onChange={(e) => setTipoQuarto(e.target.value)}
@@ -514,6 +543,28 @@ function RoomForm(){
                     </select>
                 </div>
 
+                <div className="label-container3">
+                <label htmlFor="genero" className="label1">Género</label>
+                <select
+                    value={genero}
+                    onChange={(e) => {
+                        const selectedOptions = Array.from(e.target.selectedOptions, option => option.value);
+                        if (selectedOptions.includes("Indiferente")) {
+                            setGenero(["Masculino", "Feminino"]);
+                        } else {
+                            setGenero(selectedOptions);
+                        }
+                    }}
+                    required
+                    title="Insira os géneros permitidos"
+                >
+                    <option value="">Selecione...</option>
+                    <option value="Masculino">Masculino</option>
+                    <option value="Feminino">Feminino</option>
+                    <option value="Indiferente">Indiferente</option>
+                </select>
+            </div>
+
             </div>
             
             <label htmlFor="ambiente" className="label1">Ambiente</label>
@@ -536,7 +587,7 @@ function RoomForm(){
                 title="Descreva a vista"
             />
 
-            <button type="button" onClick={handleToggleOptions}>
+            <button type="button" className='bb' onClick={handleToggleOptions}>
                 {showEquipmentOptions ? 'Esconde as opções' : 'Adiciona os equipamentos disponíveis no alojamento'}
             </button>
             {showEquipmentOptions && (
@@ -555,39 +606,7 @@ function RoomForm(){
                     ))}
                 </div>
             )}
-            <div className="selected-equipment">
-                <h3>Selected Equipment:</h3>
-                <ul>
-                    {equipamentoDisponivel.map((equipment, index) => (
-                        <li key={index}>{equipment}</li>
-                    ))}
-                </ul>
-            </div>
 
-            <input
-                type="text"
-                placeholder="Géneros"
-                value={genero.join(',')}
-                onChange={(e) => setGenero(e.target.value.split(','))}
-                required
-                title="Insira os géneros permitidos"
-            />
-            <input
-                type="text"
-                placeholder="Renda Inclui (separado por vírgula)"
-                value={rendaInclui.join(',')}
-                onChange={(e) => setRendaInclui(e.target.value.split(','))}
-                required
-                title="Insira o que está incluido na renda, separado por vírgula"
-            />
-            <input
-                type="text"
-                placeholder="Equipamento Disponível (separado por vírgula)"
-                value={equipamentoDisponivel.join(',')}
-                onChange={(e) => setEquipamentoDisponivel(e.target.value.split(','))}
-                required
-                title="Insira todos os equipamentos disponíveis, separados por vírgula"
-            />
             <button type="submit">Submit</button>
         </form>
     </div>
