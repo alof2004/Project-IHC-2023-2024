@@ -1,21 +1,75 @@
 .profile-container {
-    max-width: 600px;
-    margin: 0 auto;
+    max-width: 50%;
+    margin-top: 8%;
+    margin-left: 30%;
     padding: 20px;
     background-color: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    box-shadow: 20px 30px 4px rgba(0, 0, 0, 0.1);
+    height: 1000px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  .content-container {
+    display: flex; /* Torna os elementos filhos flexíveis */
+  }
+  
+  .profile-container h2 {
+    font-size: 60px;
+    color:#FF7A41;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 100px;
   }
   
   .profile-info {
-    margin-top: 20px;
+    font-size: 30px;
+    width: 80%;
+    display: inline-block;
   }
   
   .profile-info p {
     margin-bottom: 10px;
+    background-color: rgb(216, 216, 216);
+    border-radius: 20px;
+    padding: 10px;
   }
   
   .profile-info strong {
     font-weight: bold;
   }
   
+  .photo-container {
+    text-align: center;
+    width: 18%;
+    margin-left: 30px;
+    background-color: rgb(249, 116, 44);
+    margin-right: 30px;
+  }
+  
+  .photo-container img {
+    max-width: 300px; /* Ajuste o tamanho máximo da imagem conforme necessário */
+    height: 350px;
+    margin-top: 12px;
+  }
+  
+  .custom-file-upload {
+    display: inline-block;
+    margin-left: 5px;
+    cursor: pointer;
+    padding: 10px 20px;
+    margin-top: 48%;
+    background-color: #f1f1f1;
+    color: #000000;
+    border-radius: 5px;
+    border: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .custom-file-upload:hover {
+    background-color: #5d3500;
+  }
+  
+  .custom-file-upload input[type="file"] {
+    display: none;
+  }

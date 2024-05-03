@@ -4,6 +4,7 @@ import NavBarClient from './NavBarClient';
 
 function Perfil() {
   const [userData, setUserData] = useState<any>(null); // Definindo o tipo como 'any'
+  const [photo, setPhoto] = useState<string | null>(null); // Estado para armazenar a foto do usuário
 
   useEffect(() => {
     // Obtém os dados do usuário armazenados no localStorage
@@ -17,22 +18,46 @@ function Perfil() {
     }
   }, []);
 
+  const handlePhotoChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0]; // Obtém o primeiro arquivo selecionado pelo usuário
+
+    if (file) {
+      // Converte o arquivo para uma URL de objeto e define como a foto do usuário
+      const imageUrl = URL.createObjectURL(file);
+      setPhoto(imageUrl);
+    }
+  };
+
   return (
-    <><NavBarClient />
-    <div className="profile-container">
-          <h2>Perfil do Cliente</h2>
+    <>
+      <NavBarClient />
+      <div className="profile-container">
+        <h2>Perfil do Cliente</h2>
+        <div className="content-container">
+          <div className="photo-container">
+            {photo ? (
+              <img src={photo} alt="Foto do usuário" />
+            ) : (
+              <label className="custom-file-upload">
+                <input type="file" onChange={handlePhotoChange} accept="image/*" />
+                Escolher Foto
+              </label>
+            )}
+          </div>
           {userData ? (
-              <div className="profile-info">
-                  <p><strong>Nome:</strong> {userData.firstname} {userData.lastname}</p>
-                  <p><strong>Email:</strong> {userData.email}</p>
-                  <p><strong>Data de Nascimento:</strong> {userData.birthdate}</p>
-                  <p><strong>Função:</strong> {userData.job}</p>
-                  <p><strong>Telefone:</strong> {userData.phone}</p>
-              </div>
+            <div className="profile-info">
+              <p><strong>Nome:</strong> {userData.firstname} {userData.lastname}</p>
+              <p><strong>Email:</strong> {userData.email}</p>
+              <p><strong>Data de Nascimento:</strong> {userData.birthdate}</p>
+              <p><strong>Função:</strong> {userData.job}</p>
+              <p><strong>Telefone:</strong> {userData.phone}</p>
+            </div>
           ) : (
-              <p>Nenhuma informação de perfil encontrada.</p>
+            <p>Nenhuma informação de perfil encontrada.</p>
           )}
-      </div></>
+        </div>
+      </div>
+    </>
   );
 }
 
