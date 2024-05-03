@@ -84,17 +84,16 @@ function RoomDetails(){
                  <img src='../../src/images/return.png' className='return-button' alt="return"/>
             </Link>
             <div className='title_info_more_number_proprietaria'> 
-                     <div className='title_info_proprietaria'>
-                        <h1>
-                            Quarto de {''} 
-                            <span style={{color:"#FF7A41"}}>{room?.Proprietaria || ''}</span>
-                        </h1>
-                        <h2 style={{marginTop:"30px",fontSize:"30px"}}>
-                            Localização: {''} 
-                            <span>{room?.localizacao}, {room?.cidade}</span>
-                        </h2>
-                    </div>
-
+                        <div className='title_info_proprietaria'>
+                            <h1>
+                                Quarto de {''} 
+                                <span style={{ color: "#FF7A41" }}>{room?.Proprietaria || ''}</span>
+                            </h1>
+                            <h2 style={{ marginTop: "30px", fontSize: "30px" }}>
+                                Localização: {''} 
+                                <span>{room?.localizacao}, {room?.cidade}</span>
+                            </h2>
+                        </div>
                     {userData ? (
                         <div className='title_info_number'>
                             <img src="../../src/images/telefone_icon.png" width='80px' height='50px' alt="telefone icon" />
@@ -109,20 +108,18 @@ function RoomDetails(){
                         </Link>
                         )}
 
-                    <div className='info_contact'>   
-                        <div className='info_contact_second'>
-                        <Button />
-                        <div className="icon_contact" style={{ cursor: 'pointer' }}>
-                            <div className='heart_icon'>
-                            <HeartIcon roomId={parseInt(ID ?? '')} isFavorite={false} />
+                            <div className='info_contact'>  
+                                <Button />
+                                <div className="icon_contact" style={{ marginTop: '20px', display: 'flex', alignItems: 'center' }}>
+                                    <div className='heart_icon' style={{ marginRight: '10px' }}>
+                                        <HeartIcon roomId={parseInt(ID ?? '')} isFavorite={false} />
+                                    </div>
+                                    <div className='share_icon' style={{ marginLeft: '10px' }}>
+                                        <img src='../../src/images/share.png' alt="share" style={{ width: '100%', height: '100%' }} />
+                                    </div>
+                                </div>
                             </div>
-                            <div className='share_icon'>
-                            <img src='../../src/images/share.png' alt="share" style={{ width: '100%', height: '100%' }} />
-                            </div>
-                        </div>
-                        </div>
 
-                    </div>
             </div>
             
             <div >
