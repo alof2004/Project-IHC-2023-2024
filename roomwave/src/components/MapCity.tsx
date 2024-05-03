@@ -6,7 +6,7 @@ import icon from "./constants";
 import details from './rooms.json';
 import HeartIcon from "./HeartIcon";
 import StarRating from "./StarRating";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { isToday } from "date-fns";
 import '../css/RoomsListPage.css'
 import '../css/Map.css'
@@ -53,55 +53,52 @@ interface Room {
   data_saida: string;
  }
 
-const MyMapApp: React.FC = () => {
-  const [hoveredRoom, setHoveredRoom] = useState<Room | null>(null);
+
+ const MyMapApp: React.FC = () => {
+  const [selectedRoom, setSelectedRoom] = useState<Room | null>(null);
   const [popupOpen, setPopupOpen] = useState(false);
 
   const MyComponent: React.FC = () => {
     const map = useMap();
 
     useEffect(() => {
-      const room = details[0]; // Assuming there's only one room in the array
-      const marker = L.marker([room.latitude, room.longitude], { icon }).addTo(map);
-      
-      marker.on('mouseover', () => {
-        setHoveredRoom(room);
-        setPopupOpen(true);
-      }).on('mouseout', () => {
-        setHoveredRoom(null);
-        setPopupOpen(false);
-      });
+      details.forEach((room) => {
+        const marker = L.marker([room.latitude, room.longitude], { icon }).addTo(map);
+        
+        marker.on('mouseover', () => {
+          setSelectedRoom(room);
+          setPopupOpen(true);
+        }).on('mouseout', () => {
+          setSelectedRoom(null);
+          setPopupOpen(false);
+        });
 
-      return () => {
-        marker.remove(); // Cleanup marker when component unmounts
-      };
-    }, [map]);
+        return () => {
+          marker.remove(); // Cleanup marker when component unmounts
+        };
+      });
+    }, [map, details]);
 
     return null;
   };
 
   const getFavoriteRooms = () => {
     const favoriteRooms = localStorage.getItem('favoriteRooms');
-    return favoriteRooms ? JSON.parse(favoriteRooms) : [];
-};
-  const {city} = useParams();
-  const room = details[0]; // Assuming there's only one room in the array
-  const position: [number, number] = [room.latitude, room.longitude];
+    return favoriteRooms? JSON.parse(favoriteRooms) : [];
+  };
+
   const navigate = useNavigate();
-  const isFavorite = getFavoriteRooms().includes(room.id);
+  const isFavorite = getFavoriteRooms().includes(selectedRoom?.id);
   const today = new Date();
-  const roomEndDate = new Date(room.data_saida);
-  const roomStartDate = new Date(room.data_entrada);
-  const isAvailableToday = isToday(today) && today >= roomStartDate && today <= roomEndDate;
-  let nextAvailableDate = null;
-
-
-
+  const selectedRoomEndDate = new Date(selectedRoom?.data_saida || '');
+  const selectedRoomStartDate = new Date(selectedRoom?.data_entrada || '');
+  const isAvailableToday = isToday(today) && today >= selectedRoomStartDate && today <= selectedRoomEndDate;
+  let nextAvailableDate = null; // You might need to calculate this based on your data
 
   return (
     <MapContainer
-      center={position}
-      zoom={15}
+      center={[40.393944738596296, -8.450301889205338]} // Example center coordinates, replace with actual city center
+      zoom={13}
       style={{ height: "100vh" }}
       dragging={false}
       scrollWheelZoom={false}
@@ -110,62 +107,9 @@ const MyMapApp: React.FC = () => {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       <MyComponent />
-      {popupOpen && hoveredRoom && (
-        <Popup position={[hoveredRoom.latitude, hoveredRoom.longitude]} className="custom-popup" >
-              <div className="custom-popup-content" style={{width:"1000px"}}>
-                    <div key={room.id} className="projcard projcard-blue" onClick={() => navigate(`/room/${room.id}`)}>
-                        <div className="projcard-innerbox">
-                        <img className="projcard-img" src={hoveredRoom.imagem1} alt={`Room ${hoveredRoom.id}`} />
-                        <div className="projcard-textbox">
-                            <div className="projcard-title">{hoveredRoom.description}</div>
-                            <div className="projcard-subtitle"><span className="location-label" style={{color:"#FF7A41",fontWeight:"bold"}}>Localização: </span>{room.localizacao}</div>
-                            <div className="projcard-subtitle" style={{ fontFamily: "Circular, Helvetica, sans-serif", color: isAvailableToday ? 'green' : 'red' }}>
-                                {isAvailableToday ? (
-                                    <span>Disponível hoje</span>
-                                ) : (
-                                    <span>Indisponível até {nextAvailableDate}</span>
-                                )}
-                            </div>
-                            <div className="projcard-subtitle"><StarRating rating={(room.Avaliacao)} /> {/* Display the star rating */}
-                            </div>
-
-                            <div className="projcard-description">{room.description}</div>
-                            <div className="containerList">
-                                <div className="row-list">
-                                    <div className="projcard-description-items">
-                                        <img className="mini" src="../../src/images/bed.png" /> Cama {room.Cama}
-                                    </div>
-                                    <div className="projcard-description-items">
-                                        <img className="mini" src="../../src/images/building.png" />Andar: {room.Andar}
-                                    </div>
-                                </div>
-                                <div className="row-list">
-                                    <div className="projcard-description-items">
-                                        <img className="mini" src="../../src/images/area.png" /> Área total: {room.area} m²
-                                    </div>
-                                    <div className="projcard-description-items">
-                                        <img className="mini" src="../../src/images/WC.png" />WC {room.WC}
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="projcard-tagbox">
-                            {room.mobilia.map((service, index) => (
-                                <span key={index} className="projcard-tag">{service}</span>
-                            ))}
-                            </div>
-                        </div>
-                        </div>
-                        <div className="projcard-price" style={{float:"right", padding:"10px 10px 0px 0px", fontSize:"20px"}}>{room.price}€ / mês
-                        <br /> 
-                        <span style={{fontSize:"15px"}}>Despesas {room.gastos}</span>
-                        </div>
-                        <div className="centered-heart">
-                        <div onClick={(e) => { e.stopPropagation(); e.preventDefault(); }}>
-                            <HeartIcon roomId={room.id} isFavorite={isFavorite} />
-                        </div>
-                        </div>
-                    </div>
-                  </div>
+      {popupOpen && selectedRoom && (
+        <Popup position={[selectedRoom.latitude, selectedRoom.longitude]} className="custom-popup" >
+          {/* Popup content goes here */}
         </Popup>
       )}
     </MapContainer>

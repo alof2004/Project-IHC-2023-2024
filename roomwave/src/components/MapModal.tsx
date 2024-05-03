@@ -4,7 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom'; // Import useNavigate
 import Modal, { ModalProps } from 'react-bootstrap/Modal';
 import { Omit, BsPrefixProps } from 'react-bootstrap/esm/helpers';
 import { JSX } from 'react/jsx-runtime';
-import MyMapApp from './Map';
+import MyMapApp from './MapCity';
 function MapModal(props: JSX.IntrinsicAttributes & Omit<Omit<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>, "ref"> & { ref?: ((instance: HTMLDivElement | null) => void) | RefObject<HTMLDivElement> | null | undefined; }, BsPrefixProps<"div"> & ModalProps> & BsPrefixProps<"div"> & ModalProps & { children?: ReactNode; }) {
     const {city} = useParams(); 
   return (
