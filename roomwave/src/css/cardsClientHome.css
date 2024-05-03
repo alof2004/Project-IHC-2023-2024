@@ -1,0 +1,10 @@
+.room-slider-container {
+    justify-content: space-between;
+    align-items: center;
+    width: 100%; /* This ensures the container takes up the full width */
+  }
+  .btn.btn-light.btn-xl {
+    background-color: transparent!important; /* Override the background color */
+    border: none!important; /* Remove the border */
+    margin: 20px !important; /* Remove padding */
+  }  

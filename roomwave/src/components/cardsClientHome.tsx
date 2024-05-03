@@ -4,6 +4,7 @@ import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import { FaAward } from 'react-icons/fa';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import roomData from './rooms.json';
+import '../css/cardsClientHome.css'
 
 const RoomSlider = () => {
   const itemsPerPage = 3;
@@ -48,19 +49,21 @@ const RoomSlider = () => {
   const handlePrevPage = () => {
     setActivePage((prevPage) => prevPage - 1);
   };
-
   const pages = splitRoomsIntoPages(roomData, itemsPerPage);
 
   return (
     <div className="px-0">
-      <h1 style={{marginLeft:"4%", marginTop:"4%",fontSize:"60px"}}>Quartos vistos recentemente...</h1>
-      <Carousel className="room-slider-carousel" activeIndex={activePage} onSelect={() => {}}>
-        {pages.map((page, index) => (
-          <Carousel.Item key={index}>
-            <Row>
-              {Array.isArray(page) && page.map((room) => (                
-                <Col key={room.id} md={4}>
-                  <Card className="shadow-lg border-0 position-relative" style={{ width: '90%', height: "1350px", borderRadius: "60px" }}>
+    <h1 style={{marginLeft:"4%", marginTop:"4%",fontSize:"60px"}}>Quartos vistos recentemente...</h1>
+    <div className="room-slider-container"> {/* Ensure this container spans the full width */}
+    <div className="d-flex justify-content-between align-items-center">
+    <button className="btn btn-light btn-xl" onClick={handlePrevPage} disabled={activePage === 0}><FiChevronLeft size={100} style={{backgroundColor:"transparent", border:"none"}} /></button>
+      <Carousel style={{width:"90%"}} className="room-slider-carousel" activeIndex={activePage} onSelect={() => {}}>
+          {pages.map((page, index) => (
+            <Carousel.Item key={index}>
+              <Row>
+                {Array.isArray(page) && page.map((room) => (                
+                  <Col key={room.id} md={4}>
+                    <Card className="shadow-lg border-0 position-relative" style={{ width: '90%', height: "1350px", borderRadius: "60px" }}>
                     <div className="room-image-container">
                       <Card.Img className="room-image" style={{ width: "100%", height: "500px", objectFit: "cover" }} variant="top" src={room.imagem1} />
                     </div>
@@ -78,18 +81,16 @@ const RoomSlider = () => {
                     </Card.Body>
                     {renderCertificationIcon(room.Avaliacao)}
                   </Card>
-                </Col>
-              ))}
-            </Row>
-          </Carousel.Item>
-        ))}
-      </Carousel>
-      <div className="d-flex justify-content-between align-items-center">
-        <button className="btn btn-light btn-lg " onClick={handlePrevPage} disabled={activePage === 0}><FiChevronLeft size={50} />
-        <span className="mx-3" style={{ fontSize: "30px" }}><strong>Anterior</strong></span></button>
-        <button className="btn btn-light btn-lg" onClick={handleNextPage} disabled={activePage === pages.length - 1}><FiChevronRight size={50} />
-        <span className="mx-3" style={{ fontSize: "30px" }}><strong>Próxima</strong></span>
+                  </Col>
+                ))}
+              </Row>
+            </Carousel.Item>
+          ))}
+        </Carousel>
+        
+        <button className="btn btn-light btn-xl" onClick={handleNextPage} disabled={activePage === pages.length - 1}><FiChevronRight size={100} />
         </button>
+      </div>
       </div>
     </div>
   );
