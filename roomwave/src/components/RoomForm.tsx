@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import '../css/RoomForm.css';
 import { useNavigate } from 'react-router-dom';
 import {useUser} from './UserContext';
+import jsonData from './rooms.json';
 
 function RoomForm(){
     // Define state variables to store form field values
     const [id, setId] = useState<number | null>(null);
     const [proprietaria, setProprietaria] = useState('');
+    const [telefone, setTelefone] = useState('');
     //const [imagem1, setImagem1] = useState('');
     //const [imagem2, setImagem2] = useState('');
     //const [imagem3, setImagem3] = useState('');
@@ -44,8 +46,10 @@ function RoomForm(){
     const [avaliacao, setAvaliacao] = useState<number | null>(null);
     const [data_entrada, setDataEntrada] = useState('');
     const [data_saida, setDataSaida] = useState('');
+    const [requestaval, setRequestAval] = useState('');
     const navigate = useNavigate();
     const { user } = useUser();
+
 
 
 
@@ -93,6 +97,22 @@ function RoomForm(){
         }
     };
 
+    const uniqueEquipmentNames = Array.from(new Set(jsonData.flatMap(property => property.Equipamento_disponivel)));
+
+    const toggleEquipment = (equipment: string) => {
+        if (equipamentoDisponivel.includes(equipment)) {
+            setEquipamentoDisponivel(prevState => prevState.filter(item => item !== equipment));
+        } else {
+            setEquipamentoDisponivel(prevState => [...prevState, equipment]);
+        }
+    };
+
+    const [showEquipmentOptions, setShowEquipmentOptions] = useState(false);
+
+    const handleToggleOptions = () => {
+        setShowEquipmentOptions(prevState => !prevState);
+    };
+
     // Function to handle form submission
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault(); // Prevent the default form submission behavior
@@ -102,6 +122,7 @@ function RoomForm(){
         const formData = {
             id: newRoomId,//ta
             proprietaria, //ta
+            telefone,
             //imagem1,
             //imagem2,
             //imagem3,
@@ -128,15 +149,15 @@ function RoomForm(){
             animais,                    //ta
             fumadores,                  //ta
             area,                       //ta
-            vista,
+            vista,                      //ta
             rendaInclui,
             equipamentoDisponivel,
             tipoQuarto,                 //ta
             genero,
             alojamento,                 //ta
             andar,                      //ta
-            avaliado,
-            avaliacao,
+            avaliado,                   //ta
+            avaliacao,                  //ta
             data_entrada,
             data_saida,
         };
@@ -144,6 +165,9 @@ function RoomForm(){
         console.log(formData);
         
         formData.proprietaria = user?.firstname + " " + user?.lastname;
+        formData.telefone = user?.phone ?? '';
+        formData.avaliado = "Não";
+        formData.avaliacao= 0;
         // Assuming you have a mechanism to store all rooms in an array in localStorage
         const roomsData = JSON.parse(localStorage.getItem('roomsData') || '[]');
         roomsData.push(formData);
@@ -156,6 +180,7 @@ function RoomForm(){
         <div className="addroom-container">
         <form className="addroom-form" onSubmit={handleSubmit}>
             <h2>Room Form</h2>
+
             <label htmlFor="localizacao" className="label1">Localização</label>
             <input
                 type="text"
@@ -501,14 +526,7 @@ function RoomForm(){
                 title="Descreva o ambiente"
             />
 
-            <input
-                type="text"
-                placeholder="Géneros"
-                value={genero.join(',')}
-                onChange={(e) => setGenero(e.target.value.split(','))}
-                required
-                title="Insira os géneros permitidos"
-            />
+            <label htmlFor="vista" className="label1">Vista</label>
             <input
                 type="text"
                 placeholder="Vista"
@@ -516,6 +534,43 @@ function RoomForm(){
                 onChange={(e) => setVista(e.target.value)}
                 required
                 title="Descreva a vista"
+            />
+
+            <button type="button" onClick={handleToggleOptions}>
+                {showEquipmentOptions ? 'Esconde as opções' : 'Adiciona os equipamentos disponíveis no alojamento'}
+            </button>
+            {showEquipmentOptions && (
+                <div className="equipment-options">
+                    {uniqueEquipmentNames.map((equipment, index) => (
+                        <div key={index} className="equipment-option">
+                            <label htmlFor={`equipment-${index}`}>{equipment}</label>
+                            <input
+                                type="checkbox"
+                                id={`equipment-${index}`}
+                                value={equipment}
+                                onChange={() => toggleEquipment(equipment)}
+                                checked={equipamentoDisponivel.includes(equipment)}
+                            />
+                        </div>
+                    ))}
+                </div>
+            )}
+            <div className="selected-equipment">
+                <h3>Selected Equipment:</h3>
+                <ul>
+                    {equipamentoDisponivel.map((equipment, index) => (
+                        <li key={index}>{equipment}</li>
+                    ))}
+                </ul>
+            </div>
+
+            <input
+                type="text"
+                placeholder="Géneros"
+                value={genero.join(',')}
+                onChange={(e) => setGenero(e.target.value.split(','))}
+                required
+                title="Insira os géneros permitidos"
             />
             <input
                 type="text"
