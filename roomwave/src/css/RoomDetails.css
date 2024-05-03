@@ -96,8 +96,6 @@
 
 
 .info_contact_second {
-  display: flex;
-  flex-direction: column;
   position: relative;
   width: 65%;
   margin-top: 20px;
@@ -107,7 +105,7 @@
 .heart_icon,
 .share_icon {
   display: inline-block;
-  margin-left: 310px;
+  margin-left: 100px;
 }
 
 .icon_contact{
@@ -191,11 +189,10 @@
     position: relative;
     text-decoration: none;
     height: 80px;
-    display: flex;
     align-items: center;
     justify-content: center;
     margin-left: 200px;
-    margin-right: 80px;
+    margin-right: 200px;
     margin-top: 18px;
     width: 300px;
     transition: transform 0.2s;
@@ -315,7 +312,7 @@
   .room-images {
     flex-direction: column;
     gap: 10px; /* Adiciona um espaço entre as imagens */
-    margin-top: 100px;
+    margin-top: 200px;
     display: flex;
    }
    
@@ -376,9 +373,6 @@
     
   
     .info_contact_second {
-      display: flex;
-      flex-direction: row;
-      position: absolute;
       margin-left: 0px;
     }
     
@@ -387,7 +381,6 @@
 
       .info_contact_second {
         display: flex;
-        flex-direction: column;
         position: absolute;
         margin-left: 0px;
       }
@@ -464,29 +457,24 @@
 /* RoomDetails.css */
 
 /* Adjust positioning and spacing of heart icon and share icon */
-.heart_icon {
-  position: absolute;
-  top: 110px;
-  right: 120px; /* Adjust this value to add space between the icons */
-  width: 35px;
-  height: 35px;
-}
+
 
 .share_icon {
   position: absolute;
-  top: 117px;
-  right: -80px;
   width: 90px;
   height: 90px;
 }
+/* Adjust positioning and spacing of heart icon and share icon */
+.heart_icon,
+.share_icon {
+  position: relative; /* Change position to relative */
+  z-index: 1; /* Ensure the icons are above other elements */
+  margin-left: 10px; /* Adjust margin as needed */
+}
 
-
-@media screen and (max-width: 768px) {
-  .heart_icon,
-  .share_icon {
-    position: static;
-    display: block;
-    margin-top: 20px; /* Adjust this value to position the icons higher */
-    z-index: auto; /* Reset the z-index for smaller screens */
-  }
+.icon_contact {
+  display: flex;
+  align-items: center; /* Align items vertically */
+  padding-left: 240px;
+  position: absolute; /* Position the container */
 }
