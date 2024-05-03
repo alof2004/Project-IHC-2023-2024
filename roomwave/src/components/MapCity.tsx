@@ -8,6 +8,8 @@ import HeartIcon from "./HeartIcon";
 import StarRating from "./StarRating";
 import { useNavigate } from "react-router-dom";
 import { isToday } from "date-fns";
+import { useParams } from "react-router-dom";
+
 import '../css/RoomsListPage.css'
 import '../css/Map.css'
 
@@ -57,12 +59,17 @@ interface Room {
  const MyMapApp: React.FC = () => {
   const [selectedRoom, setSelectedRoom] = useState<Room | null>(null);
   const [popupOpen, setPopupOpen] = useState(false);
+  const { city } = useParams<{ city: string }>();
+
 
   const MyComponent: React.FC = () => {
     const map = useMap();
 
     useEffect(() => {
-      details.forEach((room) => {
+      // Filter rooms based on the city
+      const filteredRooms = details.filter(room => room.cidade.toLowerCase() === (city ?? "").toLowerCase());
+
+      filteredRooms.forEach((room) => {
         const marker = L.marker([room.latitude, room.longitude], { icon }).addTo(map);
         
         marker.on('click', () => {
@@ -84,17 +91,16 @@ interface Room {
           setPopupOpen(false);
         });
         
-        
-  
         return () => {
           marker.remove(); // Cleanup marker when component unmounts
         };
       });
-    }, [map, details, navigate]);
+    }, [map, city, navigate]); // Add city as a dependency
 
     return null;
   };
 
+  const filteredRooms = details.filter(room => room.cidade.toLowerCase() === (city ?? "").toLowerCase());
   const getFavoriteRooms = () => {
     const favoriteRooms = localStorage.getItem('favoriteRooms');
     return favoriteRooms? JSON.parse(favoriteRooms) : [];
@@ -107,10 +113,12 @@ interface Room {
   const selectedRoomStartDate = new Date(selectedRoom?.data_entrada || '');
   const isAvailableToday = isToday(today) && today >= selectedRoomStartDate && today <= selectedRoomEndDate;
   let nextAvailableDate = null; // You might need to calculate this based on your data
+  const centerRoom = filteredRooms[0];
 
   return (
     <MapContainer
-      center={[40.393944738596296, -8.450301889205338]} // Example center coordinates, replace with actual city center
+    
+      center={centerRoom? [centerRoom.latitude, centerRoom.longitude] : [40.393944738596296, -8.450301889205338]}  // Example center coordinates, replace with actual city center
       zoom={13}
       style={{ height: "100vh" }}
       dragging={false}
