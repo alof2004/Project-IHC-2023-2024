@@ -67,7 +67,7 @@ const LoginBox: React.FC = () => {
           <input type="text" placeholder="E-mail" value={email} onChange={(e) => setEmail(e.target.value)} />
           <input type="password" placeholder="Palavra-passe" value={password} onChange={(e) => setPassword(e.target.value)} />
           <button type="submit">Login</button>
-          {error && <p className="error">{error}</p>}
+          {error && <p className="error" style={{color:"white"}}>{error}</p>}
           <div className="button-container">
             <Link to="/signup/landlord" className="signup">
             <button className="senhorio">Criar conta como senhorio</button>

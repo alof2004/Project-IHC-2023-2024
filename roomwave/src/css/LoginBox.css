@@ -7,7 +7,6 @@
   
   .button-container button {
     width: 48%;
-    margin: 5px;
   }
   
   .button-container button:hover,
@@ -151,4 +150,3 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-  
