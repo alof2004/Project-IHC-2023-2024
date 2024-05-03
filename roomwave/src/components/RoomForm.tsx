@@ -31,7 +31,7 @@ function RoomForm(){
     const [gastos, setGastos] = useState('');
     const [animais, setAnimais] = useState('');
     const [fumadores, setFumadores] = useState('');
-    const [area, setArea] = useState('');
+    const [area, setArea] = useState<number | null>(null);
     const [vista, setVista] = useState('');
     const [rendaInclui, setRendaInclui] = useState<string[]>([]);
     const [equipamentoDisponivel, setEquipamentoDisponivel] = useState<string[]>([]);
@@ -123,16 +123,16 @@ function RoomForm(){
             casasDeBanho,//ta
             wc, //ta
             ambiente,
-            price,
+            price,//ta
             pessoasPermitidas,
             gastos,
             animais,
             fumadores,
-            area,
+            area,//ta
             vista,
             rendaInclui,
             equipamentoDisponivel,
-            tipoQuarto,
+            tipoQuarto,//ta
             genero,
             alojamento,//ta
             andar,
@@ -387,6 +387,108 @@ function RoomForm(){
                 />
             </div>
 
+            <div className="location-info-container1">
+
+                <div className="label-container5">
+                    <label htmlFor="tipodequarto" className="label1">Tipo de Quarto</label>
+                    <select
+                        value={tipoQuarto}
+                        onChange={(e) => setTipoQuarto(e.target.value)}
+                        required
+                        title="Indique se o alojamento é um T0/T1/T2/T3/..."
+                    >
+                        <option value="">Selecione...</option>
+                        <option value="T0">T0</option>
+                        <option value="T1">T1</option>
+                        <option value="T2">T2</option>
+                        <option value="T3">T3</option>
+                        <option value="T4+">T4+</option>
+                    </select>
+                </div>
+
+                <div className="label-container3">
+                    <label htmlFor="price" className="label1">Preço</label>
+                    <input
+                        type="number"
+                        placeholder="Preço"
+                        value={price || ''}
+                        onChange={(e) => setPrice(parseFloat(e.target.value))}
+                        required
+                        title="Indique o custo por mês"
+                    />
+                </div>
+
+                <div className="label-container3">
+                    <label htmlFor="area" className="label1">Área</label>
+                    <input
+                        type="number"
+                        placeholder="Área"
+                        value={area || ''}
+                        onChange={(e) => setArea(parseFloat(e.target.value))}
+                        required
+                        title="Indique a área do quarto (em m^2)"
+                    />
+                </div>
+
+                <div className="label-container4">
+                    <label htmlFor="Cama" className="label1">Cama</label>
+                    <select
+                        value={cama}
+                        onChange={(e) => setCama(e.target.value)}
+                        required
+                        title="Insira o tipo de cama (casal/solteiro/beliche)"
+                    >
+                        <option value="">Selecione...</option>
+                        <option value="Casal">Casal</option>
+                        <option value="Solteiro">Solteiro</option>
+                        <option value="Beliche">Beliche</option>
+                    </select>
+                </div>
+
+                <div className="label-container3">
+                    <label htmlFor="cozinha" className="label1">Cozinha</label>
+                    <select
+                        value={cozinha}
+                        onChange={(e) => setCozinha(e.target.value)}
+                        required
+                        title="Indique se o alojamento tem cozinha"
+                    >
+                        <option value="">Selecione...</option>
+                        <option value="Sim">Sim</option>
+                        <option value="Não">Não</option>
+                    </select>
+                </div>
+
+                <div className="label-container4">
+                    <label htmlFor="WC" className="label1">WC</label>
+                    <select
+                        value={wc}
+                        onChange={(e) => setWC(e.target.value)}
+                        required
+                        title="Insira o tipo de WC (individual/partilhado)"
+                    >
+                        <option value="">Selecione...</option>
+                        <option value="Individual">Individual</option>
+                        <option value="Partilhado">Partilhado</option>
+                    </select>
+                </div>
+
+                <div className="label-container3">
+                    <label htmlFor="alojamento" className="label1">Alojamento</label>
+                    <select
+                        value={alojamento}
+                        onChange={(e) => setAlojamento(e.target.value)}
+                        required
+                        title="Indique o tipo de alojamento"
+                    >
+                        <option value="">Selecione...</option>
+                        <option value="Apartamento">Apartamento</option>
+                        <option value="Casa">Casa</option>
+                    </select>
+                </div>
+
+            </div>
+
             <input
                 type="text"
                 placeholder="Ambiente"
@@ -397,27 +499,11 @@ function RoomForm(){
             />
             <input
                 type="text"
-                placeholder="Tipo de quarto"
-                value={tipoQuarto}
-                onChange={(e) => setTipoQuarto(e.target.value)}
-                required
-                title="T1,T2,T3,T4"
-            />
-            <input
-                type="text"
                 placeholder="Géneros"
                 value={genero.join(',')}
                 onChange={(e) => setGenero(e.target.value.split(','))}
                 required
                 title="Insira os géneros permitidos"
-            />
-            <input
-                type="text"
-                placeholder="Alojamento"
-                value={alojamento}
-                onChange={(e) => setAlojamento(e.target.value)}
-                required
-                title="Apartamento/Casa/..."
             />
             <input
                 type="number"
@@ -458,14 +544,6 @@ function RoomForm(){
                 onChange={(e) => setFumadores(e.target.value)}
                 required
                 title="Insira as regras sobre fumadores"
-            />
-            <input
-                type="text"
-                placeholder="Área"
-                value={area}
-                onChange={(e) => setArea(e.target.value)}
-                required
-                title="Insira a área"
             />
             <input
                 type="text"
