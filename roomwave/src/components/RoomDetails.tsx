@@ -111,7 +111,7 @@ function RoomDetails(){
                             <div className='info_contact'>  
                                 <Button />
                                 <div className="icon_contact" style={{ marginTop: '20px', display: 'flex', alignItems: 'center' }}>
-                                    <div className='heart_icon' style={{ marginRight: '10px' }}>
+                                    <div className='heart_icon' style={{ marginRight: '10px', marginTop:"10px" }}>
                                         <HeartIcon roomId={parseInt(ID ?? '')} isFavorite={false} />
                                     </div>
                                     <div className='share_icon' style={{ marginLeft: '10px' }}>

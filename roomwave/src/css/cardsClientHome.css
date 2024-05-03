@@ -6,5 +6,5 @@
   .btn.btn-light.btn-xl {
     background-color: transparent!important; /* Override the background color */
     border: none!important; /* Remove the border */
-    margin: 20px !important; /* Remove padding */
+    margin: 5px !important; /* Remove padding */
   }  
