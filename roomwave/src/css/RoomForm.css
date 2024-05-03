@@ -102,7 +102,6 @@ body, html {
 .dropdown-container {
     position: relative;
     width: 200px;
-    margin-bottom: 20px;
 }
 
 /* Input Field */
@@ -134,9 +133,10 @@ body, html {
 
 /* Label */
 .dropdown-label {
-    margin-bottom: 5px;
     font-weight: bold;
     color: white;
+    height: 30px; /* Adjust the height of the label */
+    line-height: 30px; /* Align text vertically in the middle */
     vertical-align: middle; /* Align vertically with the label below */
     margin-right: 9px;
 }
@@ -254,4 +254,46 @@ body, html {
     word-wrap: break-word; /* Break long words that exceed textarea width */
     border-radius: 20px; /* Adicione cantos arredondados */
     border: 1px solid #000000; /* Adicione uma borda sólida para melhorar a aparência */
+}
+
+.location-info-container1 {
+    width: 1200p;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    justify-content: center;
+    gap: 15px;
+}
+
+.label-container2 {
+    margin-right: 20px;
+    margin-bottom: 20px;
+    /* Adjust width as needed */
+    width: auto;
+}
+.label-container3 {
+    margin-top: -10px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    /* Adjust width as needed */
+    width: auto;
+    width: 120px;
+}
+
+.label-container4 {
+    margin-top: -10px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    /* Adjust width as needed */
+    width: auto;
+    width: 100px;
+}
+
+.label-container5 {
+    margin-top: -10px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    /* Adjust width as needed */
+    width: auto;
+    width: 170px;
 }

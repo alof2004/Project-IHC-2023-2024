@@ -20,7 +20,7 @@ function RoomForm(){
     const [longitude, setLongitude] = useState<number | null>(null);
     const [description, setDescription] = useState('');
     const [transportes, setTransportes] = useState('');
-    const [servicos, setServicos] = useState<string[]>([]);
+    const [mobilia, setServicos] = useState('');
     const [descricaoProprietaria, setDescricaoProprietaria] = useState('');
     const [cama, setCama] = useState('');
     const [cozinha, setCozinha] = useState('');
@@ -39,6 +39,12 @@ function RoomForm(){
     const [tipoQuarto, setTipoQuarto] = useState('');
     const [wc, setWC] = useState('');
     const [alojamento, setAlojamento] = useState('');
+    const [andar, setAndar] = useState('');
+    const [avaliado, setAvaliado] = useState('');
+    const [avaliacao, setAvaliacao] = useState<number | null>(null);
+    const [data_entrada, setDataEntrada] = useState('');
+    const [data_saida, setDataSaida] = useState('');
+    const [idade, setIdade] = useState('');
     const navigate = useNavigate();
     const { user } = useUser();
 
@@ -110,11 +116,12 @@ function RoomForm(){
             longitude, //ta
             description, //ta
             transportes, //ta
-            servicos,
-            descricaoProprietaria,
-            cama,
-            cozinha,
-            casasDeBanho,
+            mobilia,//ta
+            descricaoProprietaria,//ta
+            cama,//ta
+            cozinha,//ta
+            casasDeBanho,//ta
+            wc, //ta
             ambiente,
             price,
             pessoasPermitidas,
@@ -125,6 +132,15 @@ function RoomForm(){
             vista,
             rendaInclui,
             equipamentoDisponivel,
+            tipoQuarto,
+            genero,
+            alojamento,//ta
+            andar,
+            avaliado,
+            avaliacao,
+            data_entrada,
+            data_saida,
+            idade
         };
     
         console.log(formData);
@@ -233,84 +249,144 @@ function RoomForm(){
                 </div>
             </div>
             
+            <label htmlFor="localizacao" className="label1">Title</label>
+            <input
+                type="text"
+                placeholder="Title"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                maxLength={80}
+                required
+                title="Escreva uma pequena frase que descreva o quarto (Esta frase é a que irá aparecer destacada no anuncio do seu quarto)"
+            />
+
+
+            <div className="location-info-container1">
+                <div className="label-container2">
+                    <div className="dropdown-container">
+                        <label className="dropdown-label">Transport Distance</label>
+                        <input
+                            type="text"
+                            value={transportes}
+                            placeholder="Select Distance"
+                            readOnly
+                            onClick={handleToggle}
+                            className="dropdown-input"
+                            title="A que distãncia se encontra o transporte público mais perto (autocarro)"
+                        />
+                        {isOpen && (
+                            <div className="options-container">
+                                {distances.map((distance, index) => (
+                                    <div
+                                        key={index}
+                                        className="option-item"
+                                        onClick={() => handleSelectDistance(distance)}
+                                    >
+                                        {distance === 500 ? '+500m' : `${distance}m`}
+                                    </div>
+                                ))}
+                            </div>
+                        )}
+                    </div>
+                </div>
+                <div className="label-container3">
+                    <label htmlFor="mobilia" className="label1">Mobilado</label>
+                    <select
+                        value={mobilia}
+                        onChange={(e) => setServicos(e.target.value)}
+                        required
+                        title="Indique se o quarto se encontra mobilado (Pode indicar a mobilia na descrição)"
+                    >
+                        <option value="">Selecione...</option>
+                        <option value="Sim">Sim</option>
+                        <option value="Não">Não</option>
+                    </select>
+                </div>
+
+                <div className="label-container4">
+                    <label htmlFor="Cama" className="label1">Cama</label>
+                    <select
+                        value={cama}
+                        onChange={(e) => setCama(e.target.value)}
+                        required
+                        title="Insira o tipo de cama (casal/solteiro/beliche)"
+                    >
+                        <option value="">Selecione...</option>
+                        <option value="Casal">Casal</option>
+                        <option value="Solteiro">Solteiro</option>
+                        <option value="Beliche">Beliche</option>
+                    </select>
+                </div>
+
+                <div className="label-container3">
+                    <label htmlFor="cozinha" className="label1">Cozinha</label>
+                    <select
+                        value={cozinha}
+                        onChange={(e) => setCozinha(e.target.value)}
+                        required
+                        title="Indique se o alojamento tem cozinha"
+                    >
+                        <option value="">Selecione...</option>
+                        <option value="Sim">Sim</option>
+                        <option value="Não">Não</option>
+                    </select>
+                </div>
+
+                <div className="label-container5">
+                    <label htmlFor="Casas de banho" className="label1">Casas de Banho</label>
+                    <input
+                        type="number"
+                        placeholder="Número de casa de banho"
+                        value={casasDeBanho || ''}
+                        onChange={(e) => setCasasDeBanho(parseFloat(e.target.value))}
+                        required
+                        title="Número de casas de banho"
+                    />
+                </div>
+
+                <div className="label-container4">
+                    <label htmlFor="WC" className="label1">WC</label>
+                    <select
+                        value={wc}
+                        onChange={(e) => setWC(e.target.value)}
+                        required
+                        title="Insira o tipo de WC (individual/partilhado)"
+                    >
+                        <option value="">Selecione...</option>
+                        <option value="Individual">Individual</option>
+                        <option value="Partilhado">Partilhado</option>
+                    </select>
+                </div>
+
+                <div className="label-container3">
+                    <label htmlFor="alojamento" className="label1">Alojamento</label>
+                    <select
+                        value={alojamento}
+                        onChange={(e) => setAlojamento(e.target.value)}
+                        required
+                        title="Indique o tipo de alojamento"
+                    >
+                        <option value="">Selecione...</option>
+                        <option value="Apartamento">Apartamento</option>
+                        <option value="Casa">Casa</option>
+                    </select>
+                </div>
+
+            </div>
+
             <div className="descricao-label-container">
                 <label htmlFor="descricao" className="descricao-label">Descrição</label>
                 <textarea
                     id="descricao"
                     placeholder="Descrição"
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
+                    value={descricaoProprietaria}
+                    onChange={(e) => setDescricaoProprietaria(e.target.value)}
                     required
                     className="descricao-input"
-                    title="Insira uma breve descrição objetiva do quarto"
+                    title="Insira aqui uma descrição do quarto"
                 />
             </div>
 
-            <div className="dropdown-container">
-                <label className="dropdown-label">Transport Distance</label>
-                <input
-                    type="text"
-                    value={transportes}
-                    placeholder="Select Distance"
-                    readOnly
-                    onClick={handleToggle}
-                    className="dropdown-input"
-                />
-                {isOpen && (
-                    <div className="options-container">
-                        {distances.map((distance, index) => (
-                            <div
-                                key={index}
-                                className="option-item"
-                                onClick={() => handleSelectDistance(distance)}
-                            >
-                                {distance === 500 ? '+500m' : `${distance}m`}
-                            </div>
-                        ))}
-                    </div>
-                )}
-            </div>
-            
-            <input
-                type="text"
-                placeholder="Serviços (separados por vírgula)"
-                value={servicos.join(',')}
-                onChange={(e) => setServicos(e.target.value.split(','))}
-                required
-                title="Insira os serviços/equipamentos/mobília disponibilizados, separados por vírgulas"
-            />
-            <input
-                type="text"
-                placeholder="Descrição da Proprietária"
-                value={descricaoProprietaria}
-                onChange={(e) => setDescricaoProprietaria(e.target.value)}
-                required
-                title="Insira a sua breve descrição"
-            />
-            <input
-                type="text"
-                placeholder="Cama"
-                value={cama}
-                onChange={(e) => setCama(e.target.value)}
-                required
-                title="Casal/Solteiro/Beliche/..."
-            />
-            <input
-                type="text"
-                placeholder="Cozinha"
-                value={cozinha}
-                onChange={(e) => setCozinha(e.target.value)}
-                required
-                title="Insira a disponibilidade da cozinha"
-            />
-            <input
-                type="number"
-                placeholder="Casas de Banho"
-                value={casasDeBanho || ''}
-                onChange={(e) => setCasasDeBanho(parseFloat(e.target.value))}
-                required
-                title="Insira o número de casas de banho"
-            />
             <input
                 type="text"
                 placeholder="Ambiente"
@@ -334,22 +410,6 @@ function RoomForm(){
                 onChange={(e) => setGenero(e.target.value.split(','))}
                 required
                 title="Insira os géneros permitidos"
-            />
-            <input
-                type="text"
-                placeholder="Wc"
-                value={tipoQuarto}
-                onChange={(e) => setTipoQuarto(e.target.value)}
-                required
-                title="T1,T2,T3,T4"
-            />
-            <input
-                type="text"
-                placeholder="Tipo de quarto"
-                value={wc}
-                onChange={(e) => setWC(e.target.value)}
-                required
-                title="Partilhado/Individual/..."
             />
             <input
                 type="text"
