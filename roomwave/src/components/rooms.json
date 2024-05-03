@@ -53,16 +53,16 @@
             "Possibilidade de ambos os géneros puderem ocupar o quarto;"
         ],
         "Equipamento_disponivel": [
-            "Frigorífico;",
-            "Máquina de lavar roupa;",
-            "Máquina de lavar loiça;",
-            "Micro-ondas;",
-            "Forno;",
-            "Placa de fogão;",
-            "Exaustor;",
-            "Máquina de café;",
-            "Torradeira;",
-            "Ferro de engomar;"
+            "Frigorífico",
+            "Máquina de lavar roupa",
+            "Máquina de lavar loiça",
+            "Micro-ondas",
+            "Forno",
+            "Placa de fogão",
+            "Exaustor",
+            "Máquina de café",
+            "Torradeira",
+            "Ferro de engomar"
         ],
         "Genero": [
             "Masculino",
