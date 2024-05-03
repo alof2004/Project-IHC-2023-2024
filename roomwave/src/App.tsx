@@ -21,7 +21,6 @@ import FavoritesPage from './components/FavoritesPage';
 
 
 
-
 function App() {
  const { isLoggedIn } = useAuth();
  return (

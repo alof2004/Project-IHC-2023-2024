@@ -69,7 +69,7 @@ const SearchForm = () => {
         value={searchQuery}
         onChange={handleChange}
       />
-      <StyledButton type="submit">Go</StyledButton>
+      <StyledButton type="submit">Ir</StyledButton>
     </StyledForm>
   );
 };

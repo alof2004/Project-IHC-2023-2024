@@ -1,0 +1,14 @@
+.logout-alert {
+  background-color: #f8d7da; /* Cor de fundo vermelho claro */
+  color: #721c24; /* Cor do texto vermelho escuro */
+  padding: 15px;
+  border-radius: 5px;
+  border: 1px solid #f5c6cb; /* Borda vermelha */
+  margin-top: 10px; /* Espaçamento superior */
+  display: flex;
+  align-items: center;
+}
+
+.logout-alert p {
+  margin: 0; /* Remover margem do parágrafo interno */
+}
