@@ -6,6 +6,9 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Footer from './footer';
 import CardsClientHome from './cardsClientHome';
+import ImageHome from './ImageHome';
+import ImageHomeesquerda from './ImageHomeesqueda';
+import LastImageHome from './LastImageHome';
 
 
 function HomeClient() {
@@ -76,6 +79,9 @@ function HomeClient() {
       </header>
         </div>
         <CardsClientHome />
+        <ImageHome />
+        <ImageHomeesquerda />
+        <LastImageHome />
         <Footer />
     </div>
     );
