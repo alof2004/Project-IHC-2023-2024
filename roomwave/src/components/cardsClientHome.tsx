@@ -60,7 +60,7 @@ const RoomSlider = () => {
             <Row>
               {Array.isArray(page) && page.map((room) => (                
                 <Col key={room.id} md={4}>
-                  <Card className="shadow-lg border-0 position-relative" style={{ width: '80%', height: "1350px", borderRadius: "60px" }}>
+                  <Card className="shadow-lg border-0 position-relative" style={{ width: '90%', height: "1350px", borderRadius: "60px" }}>
                     <div className="room-image-container">
                       <Card.Img className="room-image" style={{ width: "100%", height: "500px", objectFit: "cover" }} variant="top" src={room.imagem1} />
                     </div>
