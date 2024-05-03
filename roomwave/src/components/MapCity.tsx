@@ -65,19 +65,32 @@ interface Room {
       details.forEach((room) => {
         const marker = L.marker([room.latitude, room.longitude], { icon }).addTo(map);
         
-        marker.on('mouseover', () => {
+        marker.on('click', () => {
+          navigate(`/room/${room.id}`);
+        }).on('mouseover', () => {
           setSelectedRoom(room);
           setPopupOpen(true);
-        }).on('mouseout', () => {
+        }).on('mouseout', (e) => {
+          // Check if the mouse is moving within the popup or its content
+          const relatedTarget = (e as any).originalEvent.relatedTarget as HTMLElement;
+          const popupContent = document.querySelector('.custom-popup-content');
+          const popup = document.querySelector('.leaflet-popup-pane');
+        
+          if (popupContent && popupContent.contains(relatedTarget) || popup && popup.contains(relatedTarget)) {
+            return;
+          }
+        
           setSelectedRoom(null);
           setPopupOpen(false);
         });
-
+        
+        
+  
         return () => {
           marker.remove(); // Cleanup marker when component unmounts
         };
       });
-    }, [map, details]);
+    }, [map, details, navigate]);
 
     return null;
   };
@@ -109,8 +122,61 @@ interface Room {
       <MyComponent />
       {popupOpen && selectedRoom && (
         <Popup position={[selectedRoom.latitude, selectedRoom.longitude]} className="custom-popup" >
-          {/* Popup content goes here */}
-        </Popup>
+                <div className="custom-popup-content" style={{width:"1000px"}}>
+                    <div key={selectedRoom.id} className="projcard projcard-blue-1" style={{margin:"0px!important"}} onClick={() => navigate(`/room/${selectedRoom.id}`)}>
+                        <div className="projcard-innerbox">
+                        <img className="projcard-img" src={selectedRoom.imagem1} alt={`Room ${selectedRoom.id}`} />
+                        <div className="projcard-textbox">
+                            <div className="projcard-title">{selectedRoom.description}</div>
+                            <div className="projcard-subtitle"><span className="location-label" style={{color:"#FF7A41",fontWeight:"bold"}}>Localização: </span>{selectedRoom.localizacao}</div>
+                            <div className="projcard-subtitle" style={{ fontFamily: "Circular, Helvetica, sans-serif", color: isAvailableToday ? 'green' : 'red' }}>
+                                {isAvailableToday ? (
+                                    <span>Disponível hoje</span>
+                                ) : (
+                                    <span>Indisponível até {nextAvailableDate}</span>
+                                )}
+                            </div>
+                            <div className="projcard-subtitle"><StarRating rating={(selectedRoom.Avaliacao)} /> {/* Display the star rating */}
+                            </div>
+
+                            <div className="projcard-description">{selectedRoom.description}</div>
+                            <div className="containerList">
+                                <div className="row-list">
+                                    <div className="projcard-description-items">
+                                        <img className="mini" src="../../src/images/bed.png" /> Cama {selectedRoom.Cama}
+                                    </div>
+                                    <div className="projcard-description-items">
+                                        <img className="mini" src="../../src/images/building.png" />Andar: {selectedRoom.Andar}
+                                    </div>
+                                </div>
+                                <div className="row-list">
+                                    <div className="projcard-description-items">
+                                        <img className="mini" src="../../src/images/area.png" /> Área total: {selectedRoom.area} m²
+                                    </div>
+                                    <div className="projcard-description-items">
+                                        <img className="mini" src="../../src/images/WC.png" />WC {selectedRoom.WC}
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="projcard-tagbox">
+                            {selectedRoom.mobilia.map((service, index) => (
+                                <span key={index} className="projcard-tag">{service}</span>
+                            ))}
+                            </div>
+                        </div>
+                        </div>
+                        <div className="projcard-price" style={{float:"right", padding:"10px 10px 0px 0px", fontSize:"20px"}}>{selectedRoom.price}€ / mês
+                        <br /> 
+                        <span style={{fontSize:"15px"}}>Despesas {selectedRoom.gastos}</span>
+                        </div>
+                        <div className="centered-heart">
+                        <div onClick={(e) => { e.stopPropagation(); e.preventDefault(); }}>
+                            <HeartIcon roomId={selectedRoom.id} isFavorite={isFavorite} />
+                        </div>
+                        </div>
+                    </div>        
+                </div>
+                    </Popup>
       )}
     </MapContainer>
   );
