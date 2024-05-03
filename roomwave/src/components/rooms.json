@@ -75,7 +75,8 @@
         "Avaliado": "Sim",
         "Avaliacao": 4,
         "data_entrada": "2024-05-01T00:00:00.000Z",
-        "data_saida": "2024-06-01T00:00:00.000Z"
+        "data_saida": "2024-06-01T00:00:00.000Z",
+        "telefone":912345678
     },
     {
         "id": 2,
@@ -135,7 +136,8 @@
         "Avaliado": "Não",
         "Avaliacao": 1,
         "data_entrada": "2024-05-10T00:00:00.000Z",
-        "data_saida": "2024-08-10T00:00:00.000Z"
+        "data_saida": "2024-08-10T00:00:00.000Z",
+        "telefone":912345678
     },
     {
         "id": 3,
@@ -196,7 +198,8 @@
         "Avaliado": "Sim",
         "Avaliacao": 4.7,
         "data_entrada": "2024-06-01T00:00:00.000Z",
-        "data_saida": "2024-09-01T00:00:00.000Z"
+        "data_saida": "2024-09-01T00:00:00.000Z",
+        "telefone":912345678
     },
     {
         "id": 4,
@@ -256,6 +259,7 @@
         "Avaliado": "Não",
         "Avaliacao": 0,
         "data_entrada": "2024-07-01T00:00:00.000Z",
-        "data_saida": "2024-08-31T00:00:00.000Z"
+        "data_saida": "2024-08-31T00:00:00.000Z",
+        "telefone":912345678
     }
 ]
