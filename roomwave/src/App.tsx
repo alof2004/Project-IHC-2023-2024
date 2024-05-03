@@ -18,6 +18,7 @@ import Ajuda from './components/Ajuda';
 import { FavoriteRoomsProvider } from './components/FavoriteRoomsContext';
 import { UserProvider } from './components/UserContext';
 import FavoritesPage from './components/FavoritesPage';
+import Perfil from './components/Perfil';
 
 
 
@@ -46,6 +47,7 @@ function App() {
             <Route path="/ajuda" element={<Ajuda />} />
             <Route path="/favorites" element={<FavoritesPage/>} />
             <Route path="/room/:ID" element={<RoomDetails/>} />
+            <Route path="/perfil" element={<Perfil/>} />
           </Routes>
         </div>
         </FavoriteRoomsProvider>

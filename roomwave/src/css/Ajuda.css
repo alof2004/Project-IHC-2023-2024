@@ -1,4 +1,11 @@
 /* Estilos específicos para el contenedor de ayuda */
+
+.box{
+    background-color: #f0f0f0;
+    width: 50%;
+    margin-left: 25%;
+    border-radius: 20px;
+  }
 .help-wrapper {
     width: 50%; /* Por ejemplo, ancho del 50% de la ventana */
     margin: auto; /* Esto centrará horizontalmente el contenedor */
@@ -11,7 +18,7 @@
     margin-bottom: 5rem;
     text-align: center;
     font-family: 'Abril Fatface', cursive;
-    font-size: 1.6rem; /* Corregido el tamaño de fuente */
+    font-size: 4rem; /* Corregido el tamaño de fuente */
     color: #FF7A41;
     position: relative; /* Para colocar el icono del acordeón */
   }
@@ -51,12 +58,13 @@
     align-items: center;
     outline: none; /* Eliminar el resaltado predeterminado */
     box-shadow: none; /* Eliminar el resaltado predeterminado */
+    
   }
   
   .help-wrapper .title:after {
     content: '\25bc';
     display: inline-block;
-    font-size: 1rem; /* Tamaño de fuente ajustado */
+    font-size: 2rem; /* Tamaño de fuente ajustado */
   }
   
   /* Estilos específicos para el contenido de los ítems del acordeón */
@@ -71,7 +79,7 @@
     max-height: 0; /* Ocultar el contenido por defecto */
     overflow: hidden;
     transition: max-height 0.3s ease-out; /* Transición suave para mostrar/ocultar contenido */
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
   
   /* Estilos específicos para mostrar el contenido cuando se selecciona */
@@ -82,8 +90,7 @@
   
   /* Estilos específicos para resaltar el título cuando se selecciona */
   .help-wrapper input[type='radio']:checked + .item .title {
-    background-color: #ffffff;
+    background-color: #000000;
     color: #FF7A41;
-    border: #000000;
   }
   

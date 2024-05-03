@@ -21,6 +21,10 @@ function NavBarClient() {
     }, 1000); // Tempo em milissegundos para manter o alerta visível antes de fechar
   };
 
+  function handleperfil(): void {
+    navigate('/perfil'); 
+  }
+
   return (
     <><nav className="navbar border-bottom navbar-expand-lg myCustomNavbar" data-bs-theme="dark">
       <div className="container-fluid">
@@ -40,7 +44,7 @@ function NavBarClient() {
                 <img src="../../src/images/perfil_icon.png" width="30" height="30" alt="Profile Icon" />
                 Perfil
                 <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <Link className="dropdown-item" to="#">O meu Perfil</Link>
+                  <button className="dropdown-item" onClick={handleperfil}>O meu Perfil</button>
                   <button className="dropdown-item" onClick={handleLogout}>Log-Out</button> {/* Usando um botão com um manipulador de evento onClick */}
                 </div>
               </a>
