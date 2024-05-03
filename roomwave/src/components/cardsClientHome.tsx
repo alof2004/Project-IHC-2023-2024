@@ -60,9 +60,9 @@ const RoomSlider = () => {
             <Row>
               {Array.isArray(page) && page.map((room) => (                
                 <Col key={room.id} md={4}>
-                  <Card className="shadow-lg border-0 position-relative" style={{ width: '700px', height: "1350px", borderRadius: "60px" }}>
+                  <Card className="shadow-lg border-0 position-relative" style={{ width: '80%', height: "1350px", borderRadius: "60px" }}>
                     <div className="room-image-container">
-                      <Card.Img className="room-image" style={{ width: "640px", height: "400px", objectFit: "cover" }} variant="top" src={room.imagem1} />
+                      <Card.Img className="room-image" style={{ width: "100%", height: "500px", objectFit: "cover" }} variant="top" src={room.imagem1} />
                     </div>
                     <Card.Body className="p-2">
                       <div className="text-center">
@@ -85,10 +85,11 @@ const RoomSlider = () => {
         ))}
       </Carousel>
       <div className="d-flex justify-content-between align-items-center">
-        <button className="btn btn-light btn-lg " onClick={handlePrevPage} disabled={activePage === 0}><FiChevronLeft size={50} /></button>
-        <span className="mx-3" style={{ fontSize: "30px" }}><strong>Anterior</strong></span>
+        <button className="btn btn-light btn-lg " onClick={handlePrevPage} disabled={activePage === 0}><FiChevronLeft size={50} />
+        <span className="mx-3" style={{ fontSize: "30px" }}><strong>Anterior</strong></span></button>
+        <button className="btn btn-light btn-lg" onClick={handleNextPage} disabled={activePage === pages.length - 1}><FiChevronRight size={50} />
         <span className="mx-3" style={{ fontSize: "30px" }}><strong>Próxima</strong></span>
-        <button className="btn btn-light btn-lg" onClick={handleNextPage} disabled={activePage === pages.length - 1}><FiChevronRight size={50} /></button>
+        </button>
       </div>
     </div>
   );
