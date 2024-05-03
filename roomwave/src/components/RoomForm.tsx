@@ -44,7 +44,6 @@ function RoomForm(){
     const [avaliacao, setAvaliacao] = useState<number | null>(null);
     const [data_entrada, setDataEntrada] = useState('');
     const [data_saida, setDataSaida] = useState('');
-    const [idade, setIdade] = useState('');
     const navigate = useNavigate();
     const { user } = useUser();
 
@@ -102,45 +101,44 @@ function RoomForm(){
         // Construct an object with the form data
         const formData = {
             id: newRoomId,//ta
-            proprietaria, //mais ou menos
+            proprietaria, //ta
             //imagem1,
             //imagem2,
             //imagem3,
             //imagem4,
-            images: images, //ta
-            localizacao, //ta
-            locaisProximos, //ta
-            cidade, //ta
-            pais, //ta
-            latitude, //ta
-            longitude, //ta
-            description, //ta
-            transportes, //ta
-            mobilia,//ta
-            descricaoProprietaria,//ta
-            cama,//ta
-            cozinha,//ta
-            casasDeBanho,//ta
-            wc, //ta
-            ambiente,
-            price,//ta
+            images: images,             //ta
+            localizacao,                //ta
+            locaisProximos,             //ta
+            cidade,                     //ta
+            pais,                       //ta
+            latitude,                   //ta
+            longitude,                  //ta
+            description,                //ta
+            transportes,                //ta
+            mobilia,                    //ta
+            descricaoProprietaria,      //ta
+            cama,                       //ta
+            cozinha,                    //ta
+            casasDeBanho,               //ta
+            wc,                         //ta
+            ambiente,                   //ta
+            price,                      //ta
             pessoasPermitidas,
-            gastos,
-            animais,
-            fumadores,
-            area,//ta
+            gastos,                     //ta
+            animais,                    //ta
+            fumadores,                  //ta
+            area,                       //ta
             vista,
             rendaInclui,
             equipamentoDisponivel,
-            tipoQuarto,//ta
+            tipoQuarto,                 //ta
             genero,
-            alojamento,//ta
-            andar,
+            alojamento,                 //ta
+            andar,                      //ta
             avaliado,
             avaliacao,
             data_entrada,
             data_saida,
-            idade
         };
     
         console.log(formData);
@@ -430,65 +428,70 @@ function RoomForm(){
                     />
                 </div>
 
-                <div className="label-container4">
-                    <label htmlFor="Cama" className="label1">Cama</label>
+                <div className="label-container3">
+                    <label htmlFor="Andar" className="label1">Andar</label>
                     <select
-                        value={cama}
-                        onChange={(e) => setCama(e.target.value)}
+                        value={andar}
+                        onChange={(e) => setAndar(e.target.value)}
                         required
-                        title="Insira o tipo de cama (casal/solteiro/beliche)"
+                        title="Indique o andar onde se encontrar o quarto"
                     >
                         <option value="">Selecione...</option>
-                        <option value="Casal">Casal</option>
-                        <option value="Solteiro">Solteiro</option>
-                        <option value="Beliche">Beliche</option>
+                        <option value="Rés do chão">Rés do chão</option>
+                        <option value="1º">1º andar</option>
+                        <option value="2º">2º andar</option>
+                        <option value="3º">3º andar</option>
+                        <option value="4º">4º andar</option>
+                        <option value="5º">5º andar</option>
+                        <option value="+5ª">+5º andar</option>
                     </select>
                 </div>
 
                 <div className="label-container3">
-                    <label htmlFor="cozinha" className="label1">Cozinha</label>
+                    <label htmlFor="gastos" className="label1">Gastos</label>
                     <select
-                        value={cozinha}
-                        onChange={(e) => setCozinha(e.target.value)}
+                        value={gastos}
+                        onChange={(e) => setGastos(e.target.value)}
                         required
-                        title="Indique se o alojamento tem cozinha"
+                        title="Indique se os gastos estão incluidos"
                     >
                         <option value="">Selecione...</option>
-                        <option value="Sim">Sim</option>
-                        <option value="Não">Não</option>
+                        <option value="Incluidos">Incluidos</option>
+                        <option value="Não incluidos">Não incluidos</option>
                     </select>
                 </div>
 
-                <div className="label-container4">
-                    <label htmlFor="WC" className="label1">WC</label>
+                <div className="label-container6">
+                    <label htmlFor="Animais" className="label1">Animais</label>
                     <select
-                        value={wc}
-                        onChange={(e) => setWC(e.target.value)}
+                        value={animais}
+                        onChange={(e) => setAnimais(e.target.value)}
                         required
-                        title="Insira o tipo de WC (individual/partilhado)"
+                        title="Indique se são permitodos animais no alojamento"
                     >
                         <option value="">Selecione...</option>
-                        <option value="Individual">Individual</option>
-                        <option value="Partilhado">Partilhado</option>
+                        <option value="Permitidos">Permitidos</option>
+                        <option value="Não permitidos">Não Permitidos</option>
                     </select>
                 </div>
 
                 <div className="label-container3">
-                    <label htmlFor="alojamento" className="label1">Alojamento</label>
+                    <label htmlFor="fumadores" className="label1">Fumadores</label>
                     <select
-                        value={alojamento}
-                        onChange={(e) => setAlojamento(e.target.value)}
+                        value={fumadores}
+                        onChange={(e) => setFumadores(e.target.value)}
                         required
-                        title="Indique o tipo de alojamento"
+                        title="Indique se é permitido fumar dentro do alojamento"
                     >
                         <option value="">Selecione...</option>
-                        <option value="Apartamento">Apartamento</option>
-                        <option value="Casa">Casa</option>
+                        <option value="Permitido">Permitido</option>
+                        <option value="Não permitido">Não Permitido</option>
                     </select>
                 </div>
 
             </div>
-
+            
+            <label htmlFor="ambiente" className="label1">Ambiente</label>
             <input
                 type="text"
                 placeholder="Ambiente"
@@ -497,6 +500,7 @@ function RoomForm(){
                 required
                 title="Descreva o ambiente"
             />
+
             <input
                 type="text"
                 placeholder="Géneros"
@@ -504,46 +508,6 @@ function RoomForm(){
                 onChange={(e) => setGenero(e.target.value.split(','))}
                 required
                 title="Insira os géneros permitidos"
-            />
-            <input
-                type="number"
-                placeholder="Preço"
-                value={price || ''}
-                onChange={(e) => setPrice(parseFloat(e.target.value))}
-                required
-                title="Insira o preço"
-            />
-            <input
-                type="text"
-                placeholder="Pessoas Permitidas (separadas por vírgula)"
-                value={pessoasPermitidas.join(',')}
-                onChange={(e) => setPessoasPermitidas(e.target.value.split(','))}
-                required
-                title="Descreva as pessoas que permite no seu apartamento, separadas por vírgulas"
-            />
-            <input
-                type="text"
-                placeholder="Gastos"
-                value={gastos}
-                onChange={(e) => setGastos(e.target.value)}
-                required
-                title="Gastos incluidos ou não incluidos?"
-            />
-            <input
-                type="text"
-                placeholder="Animais"
-                value={animais}
-                onChange={(e) => setAnimais(e.target.value)}
-                required
-                title="Insira se aceita ou nao animais"
-            />
-            <input
-                type="text"
-                placeholder="Fumadores"
-                value={fumadores}
-                onChange={(e) => setFumadores(e.target.value)}
-                required
-                title="Insira as regras sobre fumadores"
             />
             <input
                 type="text"
