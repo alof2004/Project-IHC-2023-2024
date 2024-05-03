@@ -478,3 +478,16 @@
   padding-left: 240px;
   position: absolute; /* Position the container */
 }
+
+@media screen and (max-width: 768px) {
+  /* Adjust layout for smaller screens */
+  .icon_contact {
+    padding-left: 0; /* Remove padding */
+    justify-content: center; /* Center items horizontally */
+  }
+
+  .heart_icon,
+  .share_icon {
+    margin-left: 10px; /* Adjust margin as needed */
+  }
+}
