@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../css/ClientForm.css';
 import { useUser } from "./UserContext";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 
 
@@ -16,8 +16,22 @@ function ClientForm(){
     const [phone, setPhoneNumber] = useState('');
     const [type, setType] = useState('client'); // Assuming the user's type is 'client'
     const { loginUser } = useUser();
+    const location = useLocation();
     const navigate = useNavigate();
-
+  
+  
+    const redirectToSavedPath = () => {
+      const savedPath = localStorage.getItem('redirectPath');
+      console.log('Attempting to navigate to:', savedPath); // Debugging line
+      if (savedPath) {
+        navigate(savedPath);
+        localStorage.removeItem('redirectPath');
+      }
+      else{
+        navigate("../../homeClient")
+      }
+    };
+  
     // Function to handle form submission
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();  // Prevent the default form submission behavior
@@ -39,7 +53,7 @@ function ClientForm(){
         localStorage.setItem('userData', JSON.stringify(formData));
         console.log('Form data saved to local storage');
         loginUser(formData);
-        navigate("../../homeClient")
+        redirectToSavedPath();
 
 
     };

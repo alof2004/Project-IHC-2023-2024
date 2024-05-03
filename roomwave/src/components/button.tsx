@@ -33,7 +33,7 @@ Button.defaultProps = {
 
 const ButtonComponent = () => (
  <Fragment>
-    <Button role="button">Contactar!</Button>
+    <Button role="button">Contactar</Button>
  </Fragment>
 );
 

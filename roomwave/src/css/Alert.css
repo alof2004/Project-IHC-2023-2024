@@ -1,12 +1,15 @@
 .logout-alert {
   background-color: #f8d7da; /* Cor de fundo vermelho claro */
   color: #721c24; /* Cor do texto vermelho escuro */
+  height: 80px;
   padding: 15px;
   border-radius: 5px;
   border: 1px solid #f5c6cb; /* Borda vermelha */
   margin-top: 10px; /* Espaçamento superior */
   display: flex;
   align-items: center;
+  font-size: 20px;
+  padding:10px
 }
 
 .logout-alert p {

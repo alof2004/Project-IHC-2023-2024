@@ -26,34 +26,50 @@ const LoginBox: React.FC = () => {
   const { loginUser } = useUser();
   const navigate = useNavigate();
 
+  const redirectToSavedPath = () => {
+    const savedPath = localStorage.getItem('redirectPath');
+    console.log('Attempting to navigate to:', savedPath); // Debugging line
+    if (savedPath) {
+      navigate(savedPath);
+      localStorage.removeItem('redirectPath');
+      console.log('Navigated to:', savedPath); // Debugging line
+    } else {
+      console.log('No saved path found.'); // Debugging line
+    }
+  };
+
   useEffect(() => {
     setUserData(userData);
   }, [userData]); // Add userData as a dependency  
+    const handleLogin = (e: React.FormEvent) => {
+      e.preventDefault();
 
-  const handleLogin = (e: React.FormEvent) => {
-    e.preventDefault();
-  
-    // Check if email and password match any user data
-    const user = userDataState.find((user) => user.email === email && user.password === password);
-  
-    if (user) {
-      login(user.type);
-      const userData = { email: user.email, password: user.password, type: user.type, birthdate: user.birthdate, phone: user.phone, firstname: user.firstname, lastname: user.lastname, job: user.job};
-      console.log("userData:", userData);
-      loginUser(userData);
-      localStorage.setItem("userData", JSON.stringify(userData));
-      console.log("user.email:", user.email);
-      if (user.type === "client") {
-        console.log(user)
-        navigate("/homeClient");
-      } else if (user.type === "senhorio") {
-        navigate("/homeLandlord");
+      // Check if email and password match any user data
+      const user = userDataState.find((user) => user.email === email && user.password === password);
+
+      if (user) {
+        login(user.type);
+        const userData = { email: user.email, password: user.password, type: user.type, birthdate: user.birthdate, phone: user.phone, firstname: user.firstname, lastname: user.lastname, job: user.job};
+        console.log("userData:", userData);
+        loginUser(userData);
+        localStorage.setItem("userData", JSON.stringify(userData));
+        console.log("user.email:", user.email);
+
+        // Navigate based on user type
+        if (user.type === "client") {
+          console.log(user)
+          navigate("/homeClient");
+        } else if (user.type === "senhorio") {
+          navigate("/homeLandlord");
+        }
+
+        // Only navigate to the saved path if the user type is not handled by the above conditions
+        redirectToSavedPath();
+      } else {
+        setError("Invalid email or password");
       }
-    } else {
-      setError("Invalid email or password");
-    }
-  };
-  
+    };
+      
 
   useEffect(() => {
     console.log("isLoggedIn after login:", isLoggedIn); // Log the value of isLoggedIn after logging in
