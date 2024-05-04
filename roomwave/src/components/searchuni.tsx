@@ -30,24 +30,27 @@ const universities = [
 ];
 
 const StyledForm = styled.form`
+  flex-direction: column; /* Align items vertically */
   position: relative;
-  width: 33rem;
+  width: 45rem;
   background: var(--color-brand);
-  margin-left: 50%;
+  margin-left: 25%;
   margin-top: 100px;
   background: var(--color-dark);
+  
 `;
 
 const StyledInput = styled.input`
-  height: var(--height);
+  flex-grow: 1; /* Make input grow to fill available space */
+  height: 50px;
   font-family: var(--font-fam);
   border: 0;
   color: var(--color-dark);
   font-size: 1.8rem;
   outline: 0;
-  width: 100%;
   padding: 0 1.6rem;
-  border-radius: var(--rad);
+  width: 80%;
+  border-radius: 15px;
   appearance: none;
   position: relative;
   &::placeholder {
@@ -72,6 +75,24 @@ const StyledOption = styled.option`
   &:hover {
     background-color: var(--color-light);
   }
+`;
+
+const StyledButton = styled.button`
+  height: 50px;
+  padding: 0 1.6rem;
+  margin-left: 0.8rem;
+  border-radius: 15px;
+  background-color: #FF7A41;
+  color: var(--color-dark);
+  font-size: 1.8rem;
+  border: none;
+  cursor: pointer;
+`;
+
+const StyledLabel = styled.label`
+  color: var(--color-light);
+  font-size: 1.6rem;
+  margin-bottom: 0.8rem;
 `;
 
 const SearchForm = () => {
@@ -100,7 +121,7 @@ const SearchForm = () => {
 
   return (
     <StyledForm onSubmit={handleSubmit} role="search">
-      <label htmlFor="search" className="sr-only">Pesquise pelo seu estabelecimento</label>
+      <StyledLabel htmlFor="search">Pesquise pelo seu estabelecimento</StyledLabel>
       <StyledInput
         id="search"
         type="search"
@@ -119,7 +140,7 @@ const SearchForm = () => {
           ))}
         </StyledDatalist>
       )}
-      <button type="submit">Ir</button>
+      <StyledButton type="submit">Ir</StyledButton>
     </StyledForm>
   );
 };

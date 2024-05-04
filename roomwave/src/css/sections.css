@@ -112,7 +112,7 @@ input[type="text"] {
 
 button {
     padding: 10px 20px;
-    background-color: #007bff;
+    background-color: #FF7A41;
     border: none;
     color: white;
     border-radius: 0 4px 4px 0;
@@ -120,7 +120,7 @@ button {
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #FF7A41;
 }
 
 
@@ -133,7 +133,7 @@ button:hover {
     font-size: 1.7rem;
     border-radius: 5rem;
     width: 40%;
-    margin-left: 50%;
+    margin-left: 25% !important
 }
 
 .principal_search h1{
