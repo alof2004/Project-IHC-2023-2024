@@ -1,51 +1,58 @@
-import React, { useState } from 'react';
+import React from 'react';
 import '../css/Ajuda.css';
 import NavBar from './NavBar';
 
-const ShoppingHelp = () => {
-  const accordionItems = [
-    { title: 'Your Account', 
-    content: 'Sua conta de usuário é o seu espaço pessoal onde você pode gerenciar suas informações, configurações e atividades. Aqui está uma visão geral do que você pode encontrar em sua conta: 1. **Informações Pessoais:** Na seção de informações pessoais, você pode visualizar e editar seu nome, endereço de e-mail, senha e outras informações de contato. 2. **Detalhes de Pagamento:** Se você fez compras em nosso site, poderá encontrar os detalhes de pagamento e histórico de transações nesta seção. Você também pode adicionar ou editar métodos de pagamento aqui.3. **Endereços de Entrega:** Se você costuma fazer pedidos de produtos físicos, esta seção permitirá que você gerencie seus endereços de entrega, adicionando, removendo ou atualizando-os conforme necessário.4. **Histórico de Pedidos:** Aqui, você pode visualizar um registro completo de todos os pedidos que você fez em nossa loja, incluindo detalhes como itens comprados, datas de compra e status do pedido.5. **Configurações de Comunicação:** Se você deseja receber atualizações, ofertas especiais ou newsletters, pode ajustar suas preferências de comunicação nesta seção.Lembre-se de que sua conta é privada e segura. Certifique-se de proteger suas informações de login e senha e nunca compartilhe-as com outras pessoas. Se precisar de ajuda ou tiver alguma dúvida sobre sua conta, não hesite em nos contatar através de nosso suporte ao cliente.',
-    file: '/caminho/do/arquivo1.pdf' },
-    { title: 'Payment & Pricing', content: 'Conteúdo de pagamento e preços', file: '/caminho/do/arquivo2.pdf' },
-    { title: 'Returns & Refunds', content: 'Conteúdo de devoluções e reembolsos', file: '/caminho/do/arquivo3.pdf' },
-    { title: 'Shipping & Pickup', content: 'Conteúdo de envio e retirada', file: '/caminho/do/arquivo4.pdf' },
-    { title: 'Viewing & Changing Orders', content: 'Conteúdo de visualização e alteração de pedidos', file: '/caminho/do/arquivo5.pdf' }
-  ];
-
-  // Estado para rastrear se cada item do acordeão está aberto ou fechado
-  const [accordionState, setAccordionState] = useState<{ [key: string]: boolean }>({});
-
-  // Função para alternar o estado de um item do acordeão
-  const toggleAccordionItem = (item: string) => {
-    setAccordionState(prevState => ({
-      ...prevState,
-      [item]: !prevState[item] // Inverte o estado atual
-    }));
-  };
-
+function Ajuda() {
   return (
-    <>
-      <NavBar /> {/* Adicionando margem inferior */}
-      <div className='box'>
-      <div className="help-wrapper">
-        <h1 className="main-title">Ajuda</h1>
-        {accordionItems.map((item, index) => (
-          <div key={index} className="accordion-item">
-            <input type="radio" id={`radio${item.title}`} name="accordion" defaultChecked={index === 0} style={{ display: 'none' }} />
-            <label className="item" htmlFor={`radio${item.title}`} onClick={() => toggleAccordionItem(item.title)}>
-              <div className="title">{item.title}</div>
-              <div className={`content ${accordionState[item.title] ? 'active' : ''}`}>
-                {item.content}
-                <a href={item.file} download={`${item.title}.pdf`} className="download-button">Baixar</a>
-              </div>
-            </label>
+    <><NavBar /><div className="App">
+      <header className="App-header">
+        <h1>Centro de Ajuda</h1>
+      </header>
+      <section id="faq">
+        <h2>Contacto</h2>
+          <h3 style={{marginBottom:"40px"}}>Entre em contato com nossa equipe através dos seguintes meios:</h3>
+        <div className="contact-info">
+          <div className="email-info">
+            <h3>contato@empresa.com</h3>
+            <p>E-mail:</p>
           </div>
-        ))}
-      </div>
-      </div>
-    </>
+          <div className="phone-info">
+            <h3>+55 11 1234-5678</h3>
+            <p>Número de telefone:</p>
+          </div>
+        </div>
+        <h2 style={{marginBottom:"30px"}}>Perguntas Frequentes</h2>
+        <ul>
+          <li>
+            <h3>Em que consiste o RoomWave?</h3>
+            <p>O roomWave é uma plataforma que tenta facilitar a vida de qualquer pessoa à procura de um quarto em Portugal e também de senhorios que procurem publicitar os seus quartos.
+Para além disso, os senhorios podem sujeitar os seus quartos à avaliação de um dos nossos certificadores para ganhar o nosso fidedigno certificado “RoomWave’s Choice” que certifica ao cliente que o quarto publicitado corresponde à realidade.</p>
+          </li>
+          <li>
+            <h3>Como encontro um quarto ideal para mim?</h3>
+            <p>Na nossa plataforma os quartos estão distribuídos por distrito, então pode segurar o rato por cima da barra de pesquisa no canto superior direito e escolher a cidade pretendida. Depois disso será redirecionado para uma página com a lista de quartos nessa cidade, onde pode filtrar por orçamento, disponibilidade, género e muito mais.
+Depois basta clicar num quarto que goste e entrar em contacto com o senhorio, seja através do seu número de telemóvel / email ou atráves do nosso sistema de chat.</p>
+          </li>
+          <li>
+            <h3>Sou senhorio e quero adicionar um quarto na plataforma, o que faço?</h3>
+            <p>O processo de inserir um quarto na nossa plataforma é bastante simples, depois de se ter registado como senhorio irá aparecer uma opção na barra superior “Adicionar Quarto”. Ao clicar aí, irá ser redirecionado para uma página com um pequeno formulário onde poderá inserir algumas informações sobre o quarto e também algumas fotos. Pode também colocar o seu quarto para avaliação de um dos nossos certificadores. No fim é só clicar no botão “Inserir Quarto” e o seu quarto será automaticamente adicionado  à plataforma. </p>
+          </li>
+        </ul>
+      </section>
+      <section id="contact">
+        <h2>Contacta diretamente através do nosso formulário</h2>
+        <form className="contact-form">
+          <label htmlFor="name">Nome:</label>
+          <input type="text" id="name" name="name" className="input-field" />
+          <label htmlFor="email">E-mail:</label>
+          <input type="email" id="email" name="email" className="input-field" />
+          <label htmlFor="message">Mensagem:</label>
+          <textarea id="message" name="message" className="textarea-field"></textarea>
+          <button type="submit" className="submit-button">Enviar</button>
+        </form>
+      </section>
+    </div></>
   );
-};
+}
 
-export default ShoppingHelp;
+export default Ajuda;

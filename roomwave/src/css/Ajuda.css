@@ -1,96 +1,120 @@
-/* Estilos específicos para el contenedor de ayuda */
+.App {
+  background-color: white;
+  width: 90%;
+  margin-left:6% ;
+  margin-top: 6%;
+  border-radius: 20px;
+  
+}
 
-.box{
-    background-color: #f0f0f0;
-    width: 50%;
-    margin-left: 25%;
-    border-radius: 20px;
-  }
-.help-wrapper {
-    width: 50%; /* Por ejemplo, ancho del 50% de la ventana */
-    margin: auto; /* Esto centrará horizontalmente el contenedor */
-    box-sizing: border-box; /* Usando border-box para incluir padding y border en el tamaño total */
-  }
-  
-  /* Estilos específicos para el título principal */
-  .help-wrapper .main-title {
-    margin-top: 200px;
-    margin-bottom: 5rem;
-    text-align: center;
-    font-family: 'Abril Fatface', cursive;
-    font-size: 4rem; /* Corregido el tamaño de fuente */
-    color: #FF7A41;
-    position: relative; /* Para colocar el icono del acordeón */
-  }
-  
-  .help-wrapper .main-title:before,
-  .help-wrapper .main-title:after {
-    position: absolute;
-    bottom: -0.1rem; /* Posición ajustada para el icono del acordeón */
-    display: block;
-    margin: 0 0.2rem;
-    width: 20px; /* Ancho ajustado para el icono del acordeón */
-    height: 1px; /* Altura ajustada para el icono del acordeón */
-    background-color: #FF7A41;
-  }
-  
-  .help-wrapper .main-title:after {
-    transform: rotate(90deg); /* Rotar el icono del acordeón */
-  }
-  
-  /* Estilos específicos para cada ítem del acordeón */
-  .help-wrapper .item {
-    display: block;
-    margin-bottom: 0.1rem;
-  }
-  
-  /* Estilos específicos para los títulos de los ítems del acordeón */
-  .help-wrapper .title {
-    padding: 0.5rem 0.3rem; /* Aumentar el relleno para hacer clic más fácil */
-    border-radius: 0.3rem;
-    color: #FF7A41;
-    border: 1px solid transparent; /* Establecer borde transparente por defecto */
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.2s;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    outline: none; /* Eliminar el resaltado predeterminado */
-    box-shadow: none; /* Eliminar el resaltado predeterminado */
-    
-  }
-  
-  .help-wrapper .title:after {
-    content: '\25bc';
-    display: inline-block;
-    font-size: 2rem; /* Tamaño de fuente ajustado */
-  }
-  
-  /* Estilos específicos para el contenido de los ítems del acordeón */
-  .help-wrapper .content {
-    width: 95%;
-    margin: 0 auto;
-    padding: 0.5rem 0.3rem; /* Aumentar el relleno para hacer clic más fácil */
-    line-height: 1.6;
-    color: #000000;
-    border: 1px solid transparent; /* Establecer borde transparente por defecto */
-    border-width: 0 1px;
-    max-height: 0; /* Ocultar el contenido por defecto */
-    overflow: hidden;
-    transition: max-height 0.3s ease-out; /* Transición suave para mostrar/ocultar contenido */
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
-  
-  /* Estilos específicos para mostrar el contenido cuando se selecciona */
-  .help-wrapper input[type='radio']:checked + .item .content {
-    max-height: 1000px; /* Altura máxima para mostrar el contenido */
-    overflow: auto; /* Habilitar el desplazamiento si el contenido es demasiado grande */
-  }
-  
-  /* Estilos específicos para resaltar el título cuando se selecciona */
-  .help-wrapper input[type='radio']:checked + .item .title {
-    background-color: #000000;
-    color: #FF7A41;
-  }
-  
+.App-header {
+  background-color: #282c34;
+  min-height: 8vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.App-header h1{
+  margin-left:10px;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin-right: 20px;
+}
+
+section {
+  margin-bottom: 30px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input, textarea {
+  margin-bottom: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.contact-info {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.email-info,
+.phone-info {
+  text-align: center;
+}
+
+
+
+.email-info h3,
+.phone-info h3 {
+  margin-bottom: 5px;
+}
+
+.email-info p,
+.phone-info p {
+  color: #525252;
+  font-size: 30px;
+}
+.contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.input-field,
+.textarea-field {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.textarea-field {
+  height: 150px; /* Ajuste a altura conforme necessário */
+}
+
+.submit-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.submit-button:hover {
+  background-color: #0056b3;
+}
