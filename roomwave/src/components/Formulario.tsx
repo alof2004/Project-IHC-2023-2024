@@ -78,7 +78,7 @@ const CenteredForm = () => {
           </div>
           <button type="submit">Enviar</button>
         </form>
-        {isSubmitted && <div className="success-message">Obrigado! Sua mensagem foi enviada com sucesso.</div>}
+        {isSubmitted && <div className="success-message">Obrigado!A sua mensagem foi enviada com sucesso.</div>}
       </div>
     </section>
   );
