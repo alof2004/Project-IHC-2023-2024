@@ -64,7 +64,6 @@ const SearchForm = () => {
         id="search"
         type="search"
         placeholder="Pesquise pelo seu estabelecimento"
-        autoFocus
         required
         value={searchQuery}
         onChange={handleChange}
