@@ -1,10 +1,30 @@
 [{
     "email": "admin",
     "password": "admin",
+    "type": "avaliador",
+    "birthdate": "1990-01-01",
+    "phone": "123456789",
+    "firstname": "admin",
+    "lastname": "admin",
+    "job": "admin"
+},{
+    "email": "client",
+    "password": "client",
     "type": "client",
     "birthdate": "1990-01-01",
     "phone": "123456789",
     "firstname": "admin",
     "lastname": "admin",
     "job": "admin"
-}]
+},
+{
+    "email": "landlord",
+    "password": "landlord",
+    "type": "landlord",
+    "birthdate": "1990-01-01",
+    "phone": "123456789",
+    "firstname": "admin",
+    "lastname": "admin",
+    "job": "admin"
+}
+]

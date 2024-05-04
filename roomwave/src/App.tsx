@@ -19,6 +19,7 @@ import { FavoriteRoomsProvider } from './components/FavoriteRoomsContext';
 import { UserProvider } from './components/UserContext';
 import FavoritesPage from './components/FavoritesPage';
 import Perfil from './components/Perfil';
+import HomeAvaliador from './components/HomeAvaliador';
 
 
 
@@ -34,6 +35,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/homeClient" element={<HomeClient />} />
             <Route path="/homeLandlord" element={<HomeLandlord />} />
+            <Route path="/homeAvaliador" element={<HomeAvaliador />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup/client" element={<SignupClient />} />
             <Route path="/signup/landlord" element={<SignupLandlord />} />

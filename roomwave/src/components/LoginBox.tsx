@@ -62,6 +62,9 @@ const LoginBox: React.FC = () => {
         } else if (user.type === "senhorio") {
           navigate("/homeLandlord");
         }
+        else if (user.type === "avaliador") {
+          navigate("/homeAvaliador");
+        }
 
         // Only navigate to the saved path if the user type is not handled by the above conditions
         redirectToSavedPath();
