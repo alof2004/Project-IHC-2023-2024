@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
+import '../css/Formulario.css'; // Certifique-se de criar este arquivo CSS com os estilos fornecidos
 
-const ContactForm = () => {
+const CenteredForm = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     message: ''
   });
 
-  const handleChange = (e) => {
+  const handleChange = (e: { target: { name: any; value: any; }; }) => {
     const { name, value } = e.target;
     setFormData(prevState => ({
       ...prevState,
@@ -15,49 +16,44 @@ const ContactForm = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: { preventDefault: () => void; }) => {
     e.preventDefault();
-    // Aqui você pode implementar a lógica para enviar o formulário, como enviar uma solicitação HTTP para o servidor
-    console.log(formData);
-    // Limpar o formulário depois de enviar
-    setFormData({
-      name: '',
-      email: '',
-      message: ''
-    });
+    // Lógica para lidar com o envio do formulário aqui
   };
 
   return (
-    <div>
-      <h2>Entre em contato</h2>
+    <div className="centered-form">
       <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="name">Nome:</label>
+        <div className="form-group">
+          <label htmlFor="name">Seu Nome:</label>
           <input
             type="text"
             id="name"
             name="name"
+            placeholder="Digite seu nome..."
             value={formData.name}
             onChange={handleChange}
             required
           />
         </div>
-        <div>
-          <label htmlFor="email">Email:</label>
+        <div className="form-group">
+          <label htmlFor="email">Seu Email:</label>
           <input
             type="email"
             id="email"
             name="email"
+            placeholder="Digite seu email..."
             value={formData.email}
             onChange={handleChange}
             required
           />
         </div>
-        <div>
-          <label htmlFor="message">Mensagem:</label>
+        <div className="form-group">
+          <label htmlFor="message">Sua Mensagem:</label>
           <textarea
             id="message"
             name="message"
+            placeholder="Digite sua mensagem..."
             value={formData.message}
             onChange={handleChange}
             required
@@ -69,4 +65,4 @@ const ContactForm = () => {
   );
 };
 
-export default ContactForm;
+export default CenteredForm;
