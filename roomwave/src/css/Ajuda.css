@@ -2,13 +2,13 @@
   background-color: white;
   width: 90%;
   margin-left:6% ;
-  margin-top: 6%;
+  margin-top: 4%;
   border-radius: 20px;
   
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #FF7A41;
   min-height: 8vh;
   display: flex;
   flex-direction: column;
@@ -40,7 +40,6 @@ section {
 form {
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
 label {
@@ -86,35 +85,4 @@ button:hover {
 .phone-info p {
   color: #525252;
   font-size: 30px;
-}
-.contact-form {
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.input-field,
-.textarea-field {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 20px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
-.textarea-field {
-  height: 150px; /* Ajuste a altura conforme necessário */
-}
-
-.submit-button {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.submit-button:hover {
-  background-color: #0056b3;
 }

@@ -1,7 +1,8 @@
 .centered-form {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
+  margin-left: 25%;
 }
 
 .centered-form form {
@@ -38,7 +39,7 @@
 .centered-form button {
   width: 100%;
   padding: 10px;
-  background-color: #d08505;
+  background-color: #FF7A41;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -48,4 +49,12 @@
 
 .centered-form button:hover {
   background-color: #482600;
+}
+
+.success-message{
+  color: rgb(0, 0, 0);
+  font-size: 20px;
+  text-align: center;
+  background-color: rgb(149, 227, 149);
+  width: 70%;
 }

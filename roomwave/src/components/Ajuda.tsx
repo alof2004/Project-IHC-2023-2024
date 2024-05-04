@@ -2,6 +2,7 @@ import React from 'react';
 import '../css/Ajuda.css';
 import NavBar from './NavBar';
 import Form from './Formulario';
+import Footer from './footer';
 
 function Ajuda() {
   return (
@@ -44,7 +45,9 @@ Depois basta clicar num quarto que goste e entrar em contacto com o senhorio, se
         <h2>Contacta diretamente através do nosso formulário</h2>
         <Form />
       </section>
-    </div></>
+    </div>
+    <Footer />
+    </>
   );
 }
 
