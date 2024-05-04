@@ -20,6 +20,7 @@ import { UserProvider } from './components/UserContext';
 import FavoritesPage from './components/FavoritesPage';
 import Perfil from './components/Perfil';
 import HomeAvaliador from './components/HomeAvaliador';
+import RoomsUniListPage from './components/RoomsUniListPage';
 
 
 
@@ -50,6 +51,7 @@ function App() {
             <Route path="/favorites" element={<FavoritesPage/>} />
             <Route path="/room/:ID" element={<RoomDetails/>} />
             <Route path="/perfil" element={<Perfil/>} />
+            <Route path="/uni/:uni" element={<RoomsUniListPage/>} />
           </Routes>
         </div>
         </FavoriteRoomsProvider>
