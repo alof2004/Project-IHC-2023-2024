@@ -29,7 +29,7 @@ const RoomSlider = () => {
 
   const renderCertificationIcon = (rating: number) => {
     if (rating > 0) {
-      return <FaAward className="certificate-icon position-absolute" color="#28a745" size={120} style={{ top: '10px', right: '10px' }} />;
+      return <FaAward className="certificate-icon position-absolute" color="#FF7A41" size={120} style={{ top: '10px', right: '10px' }} />;
     }
     return null;
   };
@@ -72,7 +72,7 @@ const RoomSlider = () => {
                         <h1 style={{ fontSize: "50px" }}>Quarto de {room.Proprietaria}</h1>
                         <div className="text-sm"><strong>Descrição:</strong> {room.description}</div>
                         <div className="text-sm"><strong>Localização:</strong> {room.localizacao}, {room.cidade}, {room.país}</div>
-                        <div className="text-sm"><strong>Preço:</strong> <span style={{ color: 'orange' }}>{room.price}€</span></div>
+                        <div className="text-sm"><strong>Preço:</strong> <span style={{ color: '#FF7A41' }}>{room.price}€</span></div>
                         <div className="text-sm"><strong>Avaliação:</strong> {renderRatingStars(room.Avaliacao)}</div>
                         <div className="text-sm"><strong>Pessoas permitidas:</strong> {room.Pessoas_permitidas.join(', ')}</div>
                         <div className="text-sm"><strong>Animais permitidos:</strong> {room.Animais}</div>
