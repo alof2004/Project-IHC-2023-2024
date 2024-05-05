@@ -50,7 +50,7 @@ const StyledInput = styled.input`
   outline: 0;
   padding: 0 1.6rem;
   width: 80%;
-  border-radius: 15px;
+  border-radius: 10px;
   appearance: none;
   position: relative;
   &::placeholder {
@@ -80,8 +80,8 @@ const StyledOption = styled.option`
 const StyledButton = styled.button`
   height: 50px;
   padding: 0 1.6rem;
-  margin-left: 0.8rem;
-  border-radius: 15px;
+  margin-left: 0.1rem;
+  border-radius: 10px;
   background-color: #FF7A41;
   color: var(--color-dark);
   font-size: 1.8rem;

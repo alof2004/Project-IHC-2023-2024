@@ -15,11 +15,11 @@ function Ajuda() {
           <h3 style={{marginBottom:"40px"}}>Entre em contato com nossa equipe através dos seguintes meios:</h3>
         <div className="contact-info">
           <div className="email-info">
-            <h3>contato@empresa.com</h3>
+            <h3>RoomWave@empresa.com</h3>
             <p>E-mail:</p>
           </div>
           <div className="phone-info">
-            <h3>+55 11 1234-5678</h3>
+            <h3>+351 915 525 048 3</h3>
             <p>Número de telefone:</p>
           </div>
         </div>
