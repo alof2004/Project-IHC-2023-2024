@@ -1,13 +1,22 @@
 import '../App.css'; // Adjust the path as necessary
 import '../css/NavBar.css'; // Adjust the path as necessary
-import { Link } from 'react-router-dom'; // Assuming you're using React Router
+import { Link, useLocation } from 'react-router-dom'; // Assuming you're using React Router
 import { useUser } from "./UserContext"; // Assuming you have a UserContext
 import NavBarClient from './NavBarClient';
 
 function NavBar() {
   const { user } = useUser();
+  const location = useLocation();
   console.log(user);
   
+  const handleClick = () => {
+    localStorage.setItem('redirectPath', location.pathname);
+    if (location.pathname === "/login") {
+      localStorage.setItem('redirectPath', "/Home");
+    }
+    console.log(location.pathname);
+  };
+
   if (localStorage.getItem("userData") === null) {
     return (
       <nav className="navbar border-bottom navbar-expand-lg myCustomNavbar" data-bs-theme="dark">
@@ -17,7 +26,7 @@ function NavBar() {
           </Link>
           <div className="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
             <ul className="navbar-nav">
-              <li className="nav-item nav-item-flex">
+              <li className="nav-item nav-item-flex" onClick={handleClick}>
                 <Link to="/login" className="nav-link">
                   <img src="../src/images/perfil_icon.png" width="30" height="30" alt="Profile Icon"/>
                   Log-In

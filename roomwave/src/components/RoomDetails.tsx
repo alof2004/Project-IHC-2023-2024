@@ -64,12 +64,11 @@ function RoomDetails(){
     const location = useLocation();
     const navigate = useNavigate();
 
-    useEffect(() => {
-    // Save the current path to local storage or session storage
-    localStorage.setItem('redirectPath', location.pathname);
-    console.log(location.pathname);
-    }, [location]);
-        
+    const handleClick = () => {
+        localStorage.setItem('redirectPath', location.pathname);
+        console.log(location.pathname);
+    }
+
     console.log(ID);
     if (!room) {
         console.log(room)
@@ -101,7 +100,7 @@ function RoomDetails(){
                         </div>                    
                         ) : (
                         <Link to="/login" style={{ textDecoration: 'none', color: 'inherit' }}>
-                            <div className='title_info_number'>
+                            <div onClick={handleClick} className='title_info_number'>
                             <img src="../../src/images/telefone_icon.png" width='80px' height='50px' alt="telefone icon" />
                             <span>Faça login para contactar o senhorio</span>
                             </div>  
