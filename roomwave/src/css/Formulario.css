@@ -36,6 +36,11 @@
   border-radius: 5px;
 }
 
+.centered-form ::placeholder{
+  color:rgb(0, 0, 0);
+  font-weight:  bold;
+}
+
 .centered-form button {
   width: 100%;
   padding: 10px;
