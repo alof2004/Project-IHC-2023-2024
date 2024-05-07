@@ -11,12 +11,17 @@ function Perfil() {
   useEffect(() => {
     // Obtém os dados do usuário armazenados no localStorage
     const storedData = localStorage.getItem('userData');
+    const storedPhoto = localStorage.getItem('userPhoto');
 
     // Verifica se há dados armazenados
     if (storedData) {
       // Converte os dados armazenados de volta para um objeto JavaScript
       const parsedData = JSON.parse(storedData);
       setUserData(parsedData);
+    }
+
+    if (storedPhoto) {
+      setPhoto(storedPhoto);
     }
   }, []);
 
@@ -27,6 +32,9 @@ function Perfil() {
       // Converte o arquivo para uma URL de objeto e define como a foto do usuário
       const imageUrl = URL.createObjectURL(file);
       setPhoto(imageUrl);
+
+      // Armazena a URL da imagem no localStorage
+      localStorage.setItem('userPhoto', imageUrl);
     }
   };
 
