@@ -25,10 +25,9 @@ function LandlordForm(){
     
       const redirectToSavedPath = () => {
         const savedPath = localStorage.getItem('redirectPath');
-        if (savedPath && savedPath != "/Home" && savedPath != "/" && savedPath != "/login" && savedPath != "/signup/client" && savedPath != "signup/landlord")  {
+        if (savedPath && savedPath != "/Home" && savedPath != "/" && savedPath != "/login" && savedPath != "/signup/client" && savedPath != "/signup/landlord")  {
             navigate(savedPath);
-          // Clear the saved path from storage
-          localStorage.removeItem('redirectPath');
+            localStorage.removeItem('redirectPath');
         }
         else{
           navigate("../../homeLandlord")
