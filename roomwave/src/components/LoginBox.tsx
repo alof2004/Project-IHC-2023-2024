@@ -91,7 +91,7 @@ const LoginBox: React.FC = () => {
             <Link to="/signup/landlord" className="signup">
             <button className="senhorio">Criar conta como senhorio</button>
             </Link>
-            <Link to="/signup/client" className="signup">
+            <Link to="/signup/client" className="signup" style={{marginRight:"3px"}}>
             <button className="cliente">Criar conta como cliente</button>
             </Link>
           </div>

@@ -14,7 +14,7 @@ const RoomSlider = () => {
 
 
   useEffect(() => {
-    const visitedRooms = JSON.parse(localStorage.getItem('visitedRooms') || '[]').map(id => Number(id));
+    const visitedRooms = JSON.parse(localStorage.getItem('visitedRooms') || '[]').map((id: any) => Number(id));
     setVisitedRoomIds(visitedRooms);
   }, []);
 
