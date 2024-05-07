@@ -31,7 +31,7 @@ function LandlordForm(){
           localStorage.removeItem('redirectPath');
         }
         else{
-          navigate("../../homeClient")
+          navigate("../../homeLandlord")
         }
       };
     

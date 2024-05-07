@@ -69,6 +69,20 @@ function RoomDetails(){
         console.log(location.pathname);
     }
 
+    const saveVisitedRoom = (roomId: string) => {
+        const visitedRooms = JSON.parse(localStorage.getItem('visitedRooms') || '[]');
+        if (!visitedRooms.includes(roomId)) {
+            visitedRooms.push(roomId);
+            localStorage.setItem('visitedRooms', JSON.stringify(visitedRooms));
+        }
+    };
+
+    useEffect(() => {
+        if (ID) {
+            saveVisitedRoom(ID);
+        }
+    }, [ID]);
+
     console.log(ID);
     if (!room) {
         console.log(room)
