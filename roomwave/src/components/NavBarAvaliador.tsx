@@ -23,7 +23,7 @@ function NavBarAvaliador() {
   };
 
   function handleperfil(): void {
-    navigate('/perfil'); 
+    navigate('/perfilcertificador'); 
   }
 
   return (

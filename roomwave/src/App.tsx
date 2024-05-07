@@ -24,6 +24,8 @@ import RoomsUniListPage from './components/RoomsUniListPage';
 
 
 
+
+
 function App() {
  const { isLoggedIn } = useAuth();
  return (
@@ -52,6 +54,7 @@ function App() {
             <Route path="/room/:ID" element={<RoomDetails/>} />
             <Route path="/perfil" element={<Perfil/>} />
             <Route path="/uni/:uni" element={<RoomsUniListPage/>} />
+            
           </Routes>
         </div>
         </FavoriteRoomsProvider>
