@@ -25,7 +25,7 @@ function LandlordForm(){
     
       const redirectToSavedPath = () => {
         const savedPath = localStorage.getItem('redirectPath');
-        if (savedPath) {
+        if (savedPath && savedPath!= "/Home" && savedPath!= "/") {
           navigate(savedPath);
           // Clear the saved path from storage
           localStorage.removeItem('redirectPath');
