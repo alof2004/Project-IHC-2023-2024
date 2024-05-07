@@ -2,15 +2,11 @@
   .button-container {
     display: flex;
     margin-top: 17px; /* Add margin to separate button containers */
-    width: 145%;
-    justify-content: left;
-    margin-left:-2%;
+    width: 100%;
+    justify-content: center;
   }
   
-  .button-container button {
-    width: 60%;
-    margin-left: 10px;
-  }
+  
   
   .button-container button:hover,
   .button-container button:active,
@@ -20,6 +16,8 @@
   
   .signup{
     margin-right: 5%;
+    width: 100%;
+
   }
   
   .message {

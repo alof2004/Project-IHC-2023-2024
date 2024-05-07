@@ -58,7 +58,10 @@ const RoomSlider = () => {
     setActivePage((prevPage) => prevPage - 1);
   };
   const pages = splitRoomsIntoPages(roomData.filter(room => visitedRoomIds.includes(room.id)), itemsPerPage);
-
+  if (pages.length === 0) {
+    return (<></>);
+  }
+  else
   return (
     <div className="px-0">
       <h1 style={{ marginLeft: "4%", marginTop: "4%", fontSize: "60px" }}>Quartos vistos recentemente...</h1>
