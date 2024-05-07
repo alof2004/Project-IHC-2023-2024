@@ -250,30 +250,6 @@ function RoomForm(){
                         <option value="Viseu">Viseu</option>
                     </select>
                 </div>
-                
-                <div className="label-container1">
-                    <label htmlFor="latitude" className="label1">Latitude</label>
-                    <input
-                        type="number"
-                        id="latitude"
-                        placeholder="Latitude"
-                        value={latitude || ''}
-                        onChange={(e) => setLatitude(parseFloat(e.target.value))}
-                        required
-                    />
-                </div>
-                
-                <div className="label-container1">
-                    <label htmlFor="longitude" className="label1">Longitude</label>
-                    <input
-                        type="number"
-                        id="longitude"
-                        placeholder="Longitude"
-                        value={longitude || ''}
-                        onChange={(e) => setLongitude(parseFloat(e.target.value))}
-                        required
-                    />
-                </div>
 
                 <div className="label-container1">
                     <label htmlFor="longitude" className="label1">Data de entrada</label>
@@ -594,7 +570,10 @@ function RoomForm(){
                 <div className="equipment-options">
                     {uniqueEquipmentNames.map((equipment, index) => (
                         <div key={index} className="equipment-option">
+                        <div className="divlabel">
                             <label htmlFor={`equipment-${index}`}>{equipment}</label>
+                        </div>
+                        <div className="divcheckbox">
                             <input
                                 type="checkbox"
                                 id={`equipment-${index}`}
@@ -602,6 +581,7 @@ function RoomForm(){
                                 onChange={() => toggleEquipment(equipment)}
                                 checked={equipamentoDisponivel.includes(equipment)}
                             />
+                        </div>
                         </div>
                     ))}
                 </div>
