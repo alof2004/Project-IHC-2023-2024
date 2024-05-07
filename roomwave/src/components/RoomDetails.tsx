@@ -77,8 +77,8 @@ function RoomDetails(){
     return (
         <div>
         <NavBar />
-        <div className='text'>
-            <div className='tudo' style={{margin:"30px auto", backgroundColor:"#d6d6d6", width:"100%", maxWidth:"90%", borderRadius:"20px"}}>
+        <div className='text' style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+    <div className='tudo' style={{ margin: "30px auto", backgroundColor: "#d6d6d6", width: "100%", maxWidth: "90%", borderRadius: "20px" }}>
             <Link to="/">                   
                  <img src='../../src/images/return.png' className='return-button' alt="return"/>
             </Link>
@@ -107,17 +107,17 @@ function RoomDetails(){
                         </Link>
                         )}
 
-                            <div className='info_contact'>  
-                                <Button />
-                                <div className="icon_contact" style={{ marginTop: '20px', display: 'flex', alignItems: 'center' }}>
-                                    <div className='heart_icon' style={{ marginRight: '10px', marginTop:"10px" }}>
-                                        <HeartIcon roomId={parseInt(ID ?? '')} isFavorite={false} />
-                                    </div>
-                                    <div className='share_icon' style={{ marginLeft: '10px' }}>
-                                        <img src='../../src/images/share.png' alt="share" style={{ width: '100%', height: '100%' }} />
-                                    </div>
+                        <div className='info_contact'>  
+                            <Button />
+                            <div className="icon_contact" style={{ marginTop: '20px', display: 'flex', alignItems: 'center' }}>
+                                <div className='heart_icon' style={{ marginRight: '10px', marginTop:"10px" }}>
+                                    <HeartIcon roomId={parseInt(ID?? '')} isFavorite={false} />
+                                </div>
+                                <div className='share_icon' style={{ marginLeft: '10px' }}>
+                                    <img src='../../src/images/share.png' alt="share" style={{ width: '100%', height: '100%' }} />
                                 </div>
                             </div>
+                        </div>
 
             </div>
             
@@ -141,11 +141,11 @@ function RoomDetails(){
             <div className='description_info'>
                 <h2 style={{fontSize:"50px", marginBottom:"30px"}}>Informações sobre o quarto</h2>
                 <p> 
-                    A habitação dispõem de uma área de {room.area}m2 e é rodeada por um ambiente {room.Ambiente}. Inclui uma {room.mobilia.join(", ")} e, o mais importante, uma cama {room.Cama}. <br />
-                    Janela {room.Ambiente}. A cozinha é {room.Cozinha}, a casa tem disponiveis {room.casas_de_banho} casas de banho.<br />
-                    Na sua proximidade encontra vários edifícios como: {room.mobilia.join(", ")}.
+                    A habitação dispõem de uma área de {room.area}m2 e é rodeada por um ambiente {room.Ambiente}. Inclui uma {room.mobilia.join(", ").toLowerCase()} e, o mais importante, uma cama {room.Cama.toLowerCase()}. <br />
+                    Ambiente {room.Ambiente}. A cozinha é {room.Cozinha}, a casa tem disponiveis {room.casas_de_banho} casas de banho.<br />
+                    Na sua proximidade encontra vários edifícios como: {room.Locais_proximos.join(", ")}.
                     Autocarros {room.Transportes}. {room.Descrição_Proprietaria}<br />
-                    Pessoas do género {room.Pessoas_permitidas[0]} são permitidas ,bem como {room.Pessoas_permitidas[1]}.Animais são {room.Animais} e o acesso a fumadores é {room.Fumadores}.<br />
+                    Pessoas do género(s) {room.Pessoas_permitidas[0]} são permitidas, bem como {room.Pessoas_permitidas[1]}.Animais são {room.Animais} e o acesso a fumadores é {room.Fumadores}.<br />
                     Os gastos são {room.gastos}<br />
                 </p>
             </div>

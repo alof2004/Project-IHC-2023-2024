@@ -5,6 +5,7 @@ import { FaAward } from 'react-icons/fa';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import roomData from './rooms.json';
 import '../css/cardsClientHome.css'
+import { Link } from 'react-router-dom';
 
 const RoomSlider = () => {
   const itemsPerPage = 3;
@@ -53,44 +54,46 @@ const RoomSlider = () => {
 
   return (
     <div className="px-0">
-    <h1 style={{marginLeft:"4%", marginTop:"4%",fontSize:"60px"}}>Quartos vistos recentemente...</h1>
-    <div className="room-slider-container"> {/* Ensure this container spans the full width */}
-    <div className="d-flex justify-content-between align-items-center">
-    <button className="btn btn-light btn-xl" onClick={handlePrevPage} disabled={activePage === 0}><FiChevronLeft size={100} style={{backgroundColor:"transparent", border:"none"}} /></button>
-      <Carousel style={{width:"90%"}} className="room-slider-carousel" activeIndex={activePage} onSelect={() => {}}>
-          {pages.map((page, index) => (
-            <Carousel.Item key={index}>
-              <Row>
-                {Array.isArray(page) && page.map((room) => (                
-                  <Col key={room.id} md={4}>
-<Card className="shadow-lg border-0 position-relative" style={{ width: '90%', height: "1450px", borderRadius: "60px" }}>
-                    <div className="room-image-container">
-                      <Card.Img className="room-image" style={{ width: "100%", height: "500px", objectFit: "cover" }} variant="top" src={room.imagem1} />
-                    </div>
-                    <Card.Body className="p-2">
-                      <div className="text-center">
-                        <h1 style={{ fontSize: "50px" }}>Quarto de {room.Proprietaria}</h1>
-                        <div className="text-sm"><strong>Descrição:</strong> {room.description}</div>
-                        <div className="text-sm"><strong>Localização:</strong> {room.localizacao}, {room.cidade}, {room.país}</div>
-                        <div className="text-sm"><strong>Preço:</strong> <span style={{ color: '#FF7A41' }}>{room.price}€</span></div>
-                        <div className="text-sm"><strong>Avaliação:</strong> {renderRatingStars(room.Avaliacao)}</div>
-                        <div className="text-sm"><strong>Pessoas permitidas:</strong> {room.Pessoas_permitidas.join(', ')}</div>
-                        <div className="text-sm"><strong>Animais permitidos:</strong> {room.Animais}</div>
-                        <div className="text-sm"><strong>Gastos incluídos:</strong> {room.gastos === 'incluídas' ? 'Sim' : 'Não'}</div>
-                      </div>
-                    </Card.Body>
-                    {renderCertificationIcon(room.Avaliacao)}
-                  </Card>
-                  </Col>
-                ))}
-              </Row>
-            </Carousel.Item>
-          ))}
-        </Carousel>
-        
-        <button className="btn btn-light btn-xl" onClick={handleNextPage} disabled={activePage === pages.length - 1}><FiChevronRight size={100} />
-        </button>
-      </div>
+      <h1 style={{ marginLeft: "4%", marginTop: "4%", fontSize: "60px" }}>Quartos vistos recentemente...</h1>
+      <div className="room-slider-container"> {/* Ensure this container spans the full width */}
+        <div className="d-flex justify-content-between align-items-center">
+          <button className="btn btn-light btn-xl" onClick={handlePrevPage} disabled={activePage === 0}><FiChevronLeft size={100} style={{ backgroundColor: "transparent", border: "none" }} /></button>
+          <Carousel style={{ width: "90%" }} className="room-slider-carousel" activeIndex={activePage} onSelect={() => { }}>
+            {pages.map((page, index) => (
+              <Carousel.Item key={index}>
+                <Row>
+                  {Array.isArray(page) && page.map((room) => (
+                    <Col key={room.id} md={4}>
+                      <Link to={`/room/${room.id}`} style={{ textDecoration: 'none' }}> {/* Wrap Card component with Link */}
+                        <Card className="shadow-lg border-0 position-relative" style={{ width: '90%', height: "1450px", borderRadius: "60px" }}>
+                          <div className="room-image-container">
+                            <Card.Img className="room-image" style={{ width: "100%", height: "500px", objectFit: "cover" }} variant="top" src={room.imagem1} />
+                          </div>
+                          <Card.Body className="p-2">
+                            <div className="text-center">
+                              <h1 style={{ fontSize: "50px" }}>Quarto de {room.Proprietaria}</h1>
+                              <div className="text-sm"><strong>Descrição:</strong> {room.description}</div>
+                              <div className="text-sm"><strong>Localização:</strong> {room.localizacao}, {room.cidade}, {room.país}</div>
+                              <div className="text-sm"><strong>Preço:</strong> <span style={{ color: '#FF7A41' }}>{room.price}€</span></div>
+                              <div className="text-sm"><strong>Avaliação:</strong> {renderRatingStars(room.Avaliacao)}</div>
+                              <div className="text-sm"><strong>Pessoas permitidas:</strong> {room.Pessoas_permitidas.join(', ')}</div>
+                              <div className="text-sm"><strong>Animais permitidos:</strong> {room.Animais}</div>
+                              <div className="text-sm"><strong>Gastos incluídos:</strong> {room.gastos === 'incluídas' ? 'Sim' : 'Não'}</div>
+                            </div>
+                          </Card.Body>
+                          {renderCertificationIcon(room.Avaliacao)}
+                        </Card>
+                      </Link>
+                    </Col>
+                  ))}
+                </Row>
+              </Carousel.Item>
+            ))}
+          </Carousel>
+
+          <button className="btn btn-light btn-xl" onClick={handleNextPage} disabled={activePage === pages.length - 1}><FiChevronRight size={100} />
+          </button>
+        </div>
       </div>
     </div>
   );
