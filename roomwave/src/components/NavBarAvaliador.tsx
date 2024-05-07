@@ -6,7 +6,7 @@ import LogoutAlert from './logoutAlert';
 
 
 
-function NavBarClient() {
+function NavBarAvaliador() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showLogoutAlert, setShowLogoutAlert] = useState(false); // Estado para controlar a exibição do alerta de logout
   const navigate = useNavigate();
@@ -17,6 +17,7 @@ function NavBarClient() {
     setTimeout(() => {
       setShowLogoutAlert(false); // Fecha o alerta após 3 
       localStorage.removeItem("userData"); // Remove o item "userData" do localStorage
+      localStorage.removeItem("visitedRooms"); // Remove o item "visitedRooms" do localStorage
       navigate('/login'); // Redireciona para a página de login após 
     }, 1000); // Tempo em milissegundos para manter o alerta visível antes de fechar
   };
@@ -58,4 +59,4 @@ function NavBarClient() {
   );
 }
 
-export default NavBarClient;
+export default NavBarAvaliador;
