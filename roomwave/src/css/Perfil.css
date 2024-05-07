@@ -1,12 +1,13 @@
 .profile-container {
-    max-width: 50%;
+    max-width: 60%;
     margin-top: 8%;
-    margin-left: 30%;
+    margin-left: 21%;
     padding: 20px;
+    margin-bottom: 8%;
     background-color: #f9f9f9;
     border-radius: 20px;
     box-shadow: 20px 30px 4px rgba(0, 0, 0, 0.1);
-    height: 1000px;
+    height: 800px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
 
@@ -41,10 +42,11 @@
   
   .photo-container {
     text-align: center;
-    width: 18%;
+    width: 20%;
     margin-left: 30px;
     background-color: rgb(249, 116, 44);
     margin-right: 30px;
+    height: 375px;
   }
   
   .photo-container img {
@@ -56,6 +58,7 @@
   .custom-file-upload {
     display: inline-block;
     margin-left: 5px;
+    margin-right: 5px;
     cursor: pointer;
     padding: 10px 20px;
     margin-top: 48%;
@@ -73,3 +76,41 @@
   .custom-file-upload input[type="file"] {
     display: none;
   }
+
+
+  /* Adicione estas regras CSS ao seu arquivo Perfil.css */
+
+.profile-info input {
+  margin-bottom: 10px;
+  padding: 8px;
+  width: 90%;
+  box-sizing: border-box;
+  background-color: #cdcdcd;
+  border-color: #000000;
+  border-radius: 10px;
+}
+
+.profile-info button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: rgb(249, 116, 44);
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.profile-info button:hover {
+  background-color: #0056b3;
+}
+
+.edit-mode .profile-info input {
+  background-color: #f0f0f0; /* Altera a cor de fundo dos campos de entrada durante o modo de edição */
+}
+
+.edit-mode .profile-info button {
+  background-color: #28a745; /* Altera a cor de fundo dos botões durante o modo de edição */
+}
+
+.edit-mode .profile-info button:hover {
+  background-color: #218838; /* Altera a cor de fundo dos botões durante o modo de edição */
+}
