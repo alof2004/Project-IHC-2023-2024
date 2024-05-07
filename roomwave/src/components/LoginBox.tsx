@@ -29,7 +29,7 @@ const LoginBox: React.FC = () => {
   const redirectToSavedPath = () => {
     const savedPath = localStorage.getItem('redirectPath');
     console.log('Attempting to navigate to:', savedPath); // Debugging line
-    if (savedPath && savedPath != "/Home" && savedPath != "/")  {
+    if (savedPath && savedPath != "/Home" && savedPath != "/" && savedPath != "/login")  {
       navigate(savedPath);
       localStorage.removeItem('redirectPath');
       console.log('Navigated to:', savedPath); // Debugging line
