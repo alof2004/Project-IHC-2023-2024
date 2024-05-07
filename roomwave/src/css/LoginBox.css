@@ -1,12 +1,14 @@
 
   .button-container {
     display: flex;
-    justify-content: space-between;
-    margin-top: 15px; /* Add margin to separate button containers */
+    margin-top: 17px; /* Add margin to separate button containers */
+    margin-left: -10px;
+    width: 145%;
   }
   
   .button-container button {
-    width: 50%;
+    width: 60%;
+    margin-left: 10px;
   }
   
   .button-container button:hover,
@@ -15,6 +17,12 @@
     background: #ff9f39;
   }
   
+  .signup{
+    margin-right: 5%;
+  }
+  .client{
+    margin-left: 100px;
+  }
   .message {
     margin: 15px 0 0;
     color: #b3b3b3;
@@ -38,7 +46,7 @@
     z-index: 1;
     background: #333333;
     max-width: 1200px; /* Adjust the max-width to make the form larger horizontally */
-    width: 100%; /* Ensure the form takes up the full width */
+    width: 110%; /* Ensure the form takes up the full width */
     height: auto; /* Remove fixed height */
     margin: 0 auto; /* Center horizontally */
     padding: 35px;
@@ -101,7 +109,7 @@
   .container {
     position: relative;
     z-index: 1;
-    max-width: 300px;
+    max-width: 500px;
     margin: 0 auto;
   }
   
