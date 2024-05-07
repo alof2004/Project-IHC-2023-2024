@@ -101,7 +101,10 @@
   margin-top: 20px;
 
 }
+.info_contact{
+  margin-top: 20px;
 
+}
 .heart_icon,
 .share_icon {
   display: inline-block;
@@ -109,6 +112,7 @@
 }
 
 .icon_contact{
+  margin-left: 30px;
   width: 100%;
 }
 
@@ -191,7 +195,6 @@
     height: 80px;
     align-items: center;
     justify-content: center;
-    margin-left: 200px;
     margin-right: 200px;
     margin-top: 18px;
     width: 300px;
@@ -300,7 +303,7 @@
    }
    
    
-   @media screen and (max-width: 2200px) {
+   @media screen and (max-width: 2700px) {
   
     .price_info{
       margin-left:80px;
@@ -344,32 +347,29 @@
       flex-direction: column; /* Empilha os elementos verticalmente */
       text-align: center; /* Centraliza o texto */
       margin-bottom: 10px;
-      margin-left: 0px;
+      margin-left: 20px;
     }
 
     .title_info_number {
       text-align: center; /* Centraliza o texto */
       justify-content: center; /* Centraliza o conteúdo */
       margin-top: 30px;
-      margin-left: 0px;
+      margin-left: 5px;
     
     }
 
-    .info_contact{
-      width: 0px;
-    }
-  
+
     .heart_icon,
     .share_icon {
-      display: inline;
       margin-left: 180px;
     }
 
     .icon_contact{
+      margin-top: 10px !important;
       margin-right: 30%;
-      display: flex;
       
     }
+
     
   
     .info_contact_second {
@@ -398,6 +398,7 @@
        .price_info{
         margin-top: 400px;
        }
+       
     }  
     
 }
@@ -449,7 +450,6 @@
 
 /* Ensure heart icon and share icon are displayed on the same line */
 .icon_contact {
-  display: flex;
   align-items: center; /* Align items vertically */
 }
 
@@ -477,14 +477,28 @@
   display: flex;
   align-items: center; /* Align items vertically */
   padding-left: 240px;
-  position: absolute; /* Position the container */
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1800px) {
   /* Adjust layout for smaller screens */
   .icon_contact {
     padding-left: 0; /* Remove padding */
-    justify-content: center; /* Center items horizontally */
+  }
+
+  .heart_icon,
+  .share_icon {
+    margin-left: 10px; /* Adjust margin as needed */
+  }
+}
+
+.tudo{
+  padding-right: 100px;
+}
+
+@media screen and (min-width: 1800px) {
+  /* Adjust layout for smaller screens */
+  .icon_contact {
+    padding-left: 0; /* Remove padding */
   }
 
   .heart_icon,
