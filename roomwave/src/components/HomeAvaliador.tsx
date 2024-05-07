@@ -1,8 +1,14 @@
+import NavBar from "./NavBar";
+import Footer from "./footer";
+
+
 function HomeAvaliador() {
     return (
-        <div>
-            <h1>HomeAvaliador</h1>
-        </div>
+        <><div>
+            <NavBar />
+
+        </div><Footer /></>
     );
 }
+
 export default HomeAvaliador;
