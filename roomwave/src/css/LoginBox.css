@@ -2,8 +2,9 @@
   .button-container {
     display: flex;
     margin-top: 17px; /* Add margin to separate button containers */
-    margin-left: -10px;
     width: 145%;
+    justify-content: left;
+    margin-left:-2%;
   }
   
   .button-container button {
