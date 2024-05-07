@@ -10,13 +10,10 @@ import { Link } from 'react-router-dom';
 const RoomSlider = () => {
   const itemsPerPage = 3;
   const [activePage, setActivePage] = useState(0);
-  const [visitedRoomIds, setVisitedRoomIds] = useState<number[]>([]);
+  const userData = JSON.parse(localStorage.getItem('userData') || '{}');
+  const userPhoneNumber = userData.phone || ''; // Assuming phoneNumber is stored in userData
 
-
-  useEffect(() => {
-    const visitedRooms = JSON.parse(localStorage.getItem('visitedRooms') || '[]').map((id: any) => Number(id));
-    setVisitedRoomIds(visitedRooms);
-  }, []);
+  const filteredRooms = roomData.filter(room => room.telefone === userPhoneNumber);
 
   const renderRatingStars = (rating: number) => {
     const stars = [];
@@ -57,7 +54,7 @@ const RoomSlider = () => {
   const handlePrevPage = () => {
     setActivePage((prevPage) => prevPage - 1);
   };
-  const pages = splitRoomsIntoPages(roomData.filter(room => visitedRoomIds.includes(room.id)), itemsPerPage);
+  const pages = filteredRooms;
   if (pages.length === 0) {
     return (<></>);
   }
