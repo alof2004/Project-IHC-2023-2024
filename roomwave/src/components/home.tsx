@@ -30,10 +30,14 @@ function Home() {
     if (tipo === "client") {
       navigate('/homeClient');
     }
-    else {
+    else if (tipo === "landlord") {
       navigate('/homeLandlord');
     }
-    
+    else {
+      navigate('/homeAvaliador');
+    }
+  }
+
   return (
     <div>
       <NavBar />
