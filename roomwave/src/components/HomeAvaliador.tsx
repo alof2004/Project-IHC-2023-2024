@@ -1,11 +1,12 @@
 import NavBar from "./NavBar";
+import NavBarAvaliador from "./NavBarAvaliador";
 import Footer from "./footer";
 
 
 function HomeAvaliador() {
     return (
         <><div>
-            <NavBar />
+            <NavBarAvaliador />
 
         </div><Footer /></>
     );
