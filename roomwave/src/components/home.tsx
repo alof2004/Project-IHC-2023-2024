@@ -9,7 +9,6 @@ import ImageHomeesquerda from './ImageHomeesqueda';
 import LastImageHome from './LastImageHome';
 
 function Home() {
-  localStorage.removeItem("userData");
   const [selectedCity, setSelectedCity] = useState('');
   const navigate = useNavigate();
 
@@ -24,6 +23,20 @@ function Home() {
   const lastSegment = url.substring(url.lastIndexOf('/') + 1);
   console.log(lastSegment); // Output: "Guarda"
 
+
+  if (localStorage.getItem("userData") != null) {
+    const userData = JSON.parse(localStorage.getItem("userData") || '{}');
+    const tipo = userData.type;
+    if (tipo === "client") {
+      navigate('/homeClient');
+    }
+    else if (tipo === "landlord") {
+      navigate('/homeLandlord');
+    }
+    else {
+      navigate('/homeAvaliador');
+    }
+  }
 
   return (
     <div>

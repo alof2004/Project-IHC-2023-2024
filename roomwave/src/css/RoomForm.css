@@ -329,15 +329,14 @@ body, html {
 }
 
 .equipment-option {
+    flex: 0 0 calc(25% - 10px); /* Adjust width based on the number of columns you want */
     display: flex;
     flex-direction: column; /* Display items in a column */
     align-items: center; /* Center items horizontally */
-    margin-right: 10px;
-    margin-bottom: 5px;
+    margin-bottom: 15px;
 }
-
 .equipment-option input[type="checkbox"] {
-    transform: scale(0.8); /* Adjust the scale factor as needed */
+    transform: scale(1); /* Adjust the scale factor as needed */
     margin-bottom: 5px; /* Add space between checkbox and label */
 }
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Card, Carousel, Row, Col } from 'react-bootstrap';
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import { FaAward } from 'react-icons/fa';
@@ -10,6 +10,14 @@ import { Link } from 'react-router-dom';
 const RoomSlider = () => {
   const itemsPerPage = 3;
   const [activePage, setActivePage] = useState(0);
+  const [visitedRoomIds, setVisitedRoomIds] = useState<number[]>([]);
+
+
+  useEffect(() => {
+    const visitedRooms = JSON.parse(localStorage.getItem('visitedRooms') || '[]');
+    setVisitedRoomIds(visitedRooms);
+  }, []);
+
 
   const renderRatingStars = (rating: number) => {
     const stars = [];
@@ -50,12 +58,12 @@ const RoomSlider = () => {
   const handlePrevPage = () => {
     setActivePage((prevPage) => prevPage - 1);
   };
-  const pages = splitRoomsIntoPages(roomData, itemsPerPage);
+  const pages = splitRoomsIntoPages(roomData.filter(room => visitedRoomIds.includes(room.id)), itemsPerPage);
 
   return (
     <div className="px-0">
       <h1 style={{ marginLeft: "4%", marginTop: "4%", fontSize: "60px" }}>Quartos vistos recentemente...</h1>
-      <div className="room-slider-container"> {/* Ensure this container spans the full width */}
+      <div className="room-slider-container">
         <div className="d-flex justify-content-between align-items-center">
           <button className="btn btn-light btn-xl" onClick={handlePrevPage} disabled={activePage === 0}><FiChevronLeft size={100} style={{ backgroundColor: "transparent", border: "none" }} /></button>
           <Carousel style={{ width: "90%" }} className="room-slider-carousel" activeIndex={activePage} onSelect={() => { }}>
@@ -64,7 +72,7 @@ const RoomSlider = () => {
                 <Row>
                   {Array.isArray(page) && page.map((room) => (
                     <Col key={room.id} md={4}>
-                      <Link to={`/room/${room.id}`} style={{ textDecoration: 'none' }}> {/* Wrap Card component with Link */}
+                      <Link to={`/room/${room.id}`} style={{ textDecoration: 'none' }}>
                         <Card className="shadow-lg border-0 position-relative" style={{ width: '90%', height: "1450px", borderRadius: "60px" }}>
                           <div className="room-image-container">
                             <Card.Img className="room-image" style={{ width: "100%", height: "500px", objectFit: "cover" }} variant="top" src={room.imagem1} />
