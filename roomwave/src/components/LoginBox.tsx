@@ -29,7 +29,7 @@ const LoginBox: React.FC = () => {
   const redirectToSavedPath = () => {
     const savedPath = localStorage.getItem('redirectPath');
     console.log('Attempting to navigate to:', savedPath); // Debugging line
-    if (savedPath && savedPath != "/Home" && savedPath != "/" && savedPath != "/login")  {
+    if (savedPath && savedPath != "/Home" && savedPath != "/" && savedPath != "/login" && savedPath != "/signup/client" && savedPath != "signup/landlord")  {
       navigate(savedPath);
       localStorage.removeItem('redirectPath');
       console.log('Navigated to:', savedPath); // Debugging line
@@ -59,7 +59,7 @@ const LoginBox: React.FC = () => {
         if (user.type === "client") {
           console.log(user)
           navigate("/homeClient");
-        } else if (user.type === "senhorio") {
+        } else if (user.type === "landlord") {
           navigate("/homeLandlord");
         }
         else if (user.type === "avaliador") {
