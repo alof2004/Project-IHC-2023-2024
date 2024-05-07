@@ -23,7 +23,7 @@ function ClientForm(){
     const redirectToSavedPath = () => {
       const savedPath = localStorage.getItem('redirectPath');
       console.log('Attempting to navigate to:', savedPath); // Debugging line
-      if (savedPath) {
+      if (savedPath && savedPath!= "/Home" && savedPath!= "/") {
         navigate(savedPath);
         localStorage.removeItem('redirectPath');
       }
