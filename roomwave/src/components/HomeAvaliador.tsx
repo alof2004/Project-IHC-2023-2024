@@ -3,6 +3,8 @@ import '../css/HomeAvaliador.css';
 import NavBarAvaliador from './NavBarAvaliador';
 import { useUser } from "./UserContext";
 import { useNavigate } from 'react-router-dom';
+import NavBar from "./NavBar";
+import Footer from "./footer";
 
 
 function HomeAvaliador() {
@@ -15,4 +17,5 @@ function HomeAvaliador() {
         </div>
     );
 }
+
 export default HomeAvaliador;

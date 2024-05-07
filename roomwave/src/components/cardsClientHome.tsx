@@ -14,10 +14,9 @@ const RoomSlider = () => {
 
 
   useEffect(() => {
-    const visitedRooms = JSON.parse(localStorage.getItem('visitedRooms') || '[]');
+    const visitedRooms = JSON.parse(localStorage.getItem('visitedRooms') || '[]').map((id: any) => Number(id));
     setVisitedRoomIds(visitedRooms);
   }, []);
-
 
   const renderRatingStars = (rating: number) => {
     const stars = [];
