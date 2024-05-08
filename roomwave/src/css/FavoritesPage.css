@@ -12,7 +12,7 @@
 .favorites-container-1 {
   flex-wrap: wrap;
   justify-content: center;
-  width: 95%;
+  width: 85%;
   align-items: center;
   margin: 0 auto; /* This centers the element horizontally */
     margin-top: 20px;

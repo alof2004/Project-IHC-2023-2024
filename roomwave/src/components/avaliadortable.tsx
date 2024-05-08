@@ -22,7 +22,7 @@ const AvaliadorTable = () => {
       <style>
         {`
           .table {
-            width: 95%;
+            width: 85%;
             margin-left: auto;
             margin-right: auto;
             margin-top: 50px;
