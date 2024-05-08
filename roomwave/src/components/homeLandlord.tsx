@@ -9,6 +9,7 @@ import CardsClientHome from './cardsLandlord';
 import ImageHome from './ImageHome';
 import ImageHomeesquerda from './ImageHomeesqueda';
 import LastImageHome from './LastImageHome';
+import NavBarLandLord from './NavBarLandLord';
 
 
 function homeLandlord() {
@@ -30,7 +31,7 @@ function homeLandlord() {
 
     return (
         <div>
-            <NavBarClient />
+            <NavBarLandLord />
     <div>
         </div>
         <CardsClientHome />
