@@ -3,7 +3,7 @@ import '../css/Perfil.css';
 import NavBarClient from './NavBarClient';
 import Footer from './footer';
 
-function Perfil() {
+function PerfilClient() {
   const [userData, setUserData] = useState<any>(null); // Definindo o tipo como 'any'
   const [photo, setPhoto] = useState<string | null>(null); // Estado para armazenar a foto do usuário
   const [isEditing, setIsEditing] = useState<boolean>(false); // Estado para controlar se o perfil está em modo de edição
@@ -104,4 +104,4 @@ function Perfil() {
   );
 }
 
-export default Perfil;
+export default PerfilClient;

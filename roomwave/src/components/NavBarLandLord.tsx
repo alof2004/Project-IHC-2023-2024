@@ -7,7 +7,7 @@ import LogoutAlert from './logoutAlert';
 
 
 
-function NavBarClient() {
+function NavBarLandLord() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showLogoutAlert, setShowLogoutAlert] = useState(false); // Estado para controlar a exibição do alerta de logout
   const navigate = useNavigate();
@@ -24,13 +24,13 @@ function NavBarClient() {
   };
 
   function handleperfil(): void {
-    navigate('/perfilcertificator'); 
+    navigate('/perfillandlord'); 
   }
 
   return (
     <><nav className="navbar border-bottom navbar-expand-lg myCustomNavbar" data-bs-theme="dark">
       <div className="container-fluid">
-        <Link to="/HomeClient" className="navbar-brand">
+        <Link to="/HomeLandlord" className="navbar-brand">
           <img src="../src/images/roomWaveLogo.png" width="95" height="50" alt="Logo" />
         </Link>
         <div className="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
@@ -66,4 +66,4 @@ function NavBarClient() {
   );
 }
 
-export default NavBarClient;
+export default NavBarLandLord;

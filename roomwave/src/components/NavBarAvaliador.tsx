@@ -30,13 +30,13 @@ function NavBarClient() {
   return (
     <><nav className="navbar border-bottom navbar-expand-lg myCustomNavbar" data-bs-theme="dark">
       <div className="container-fluid">
-        <Link to="/HomeClient" className="navbar-brand">
+        <Link to="/HomeAvaliador" className="navbar-brand">
           <img src="../src/images/roomWaveLogo.png" width="95" height="50" alt="Logo" />
         </Link>
         <div className="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
           <ul className="navbar-nav">
             <li className="nav-item nav-item-flex">
-              <Link to="../../../favorites" className="nav-link">
+              <Link to="../../../HomeAvaliador" className="nav-link">
                 <img src="../../src/images/quarto.png" width="30" height="35" alt="Home Icon" />
                   Quartos por Avaliar
               </Link>

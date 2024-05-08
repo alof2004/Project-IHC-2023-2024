@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import '../css/Perfil.css';
-import NavBarClient from './NavBarClient';
 import Footer from './footer';
+import NavBarAvaliador from './NavBarAvaliador';
+import NavBarLandLord from './NavBarLandLord';
 
-function Perfil() {
+function PerfilCertificator() {
   const [userData, setUserData] = useState<any>(null); // Definindo o tipo como 'any'
   const [photo, setPhoto] = useState<string | null>(null); // Estado para armazenar a foto do usuário
   const [isEditing, setIsEditing] = useState<boolean>(false); // Estado para controlar se o perfil está em modo de edição
@@ -62,7 +63,7 @@ function Perfil() {
 
   return (
     <>
-      <NavBarClient />
+      <NavBarLandLord />
       <div className="profile-container">
         <h2>Perfil do Certificador</h2>
         <div className="content-container">
@@ -104,4 +105,4 @@ function Perfil() {
   );
 }
 
-export default Perfil;
+export default PerfilCertificator;
