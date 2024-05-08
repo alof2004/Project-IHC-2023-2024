@@ -22,7 +22,7 @@ function RoomForm(){
     const [longitude, setLongitude] = useState<number | null>(null);
     const [description, setDescription] = useState('');
     const [transportes, setTransportes] = useState('');
-    const [mobilia, setServicos] = useState('');
+    const [mobilia, setServicos] = useState<string[]>([]);
     const [descricaoProprietaria, setDescricaoProprietaria] = useState('');
     const [cama, setCama] = useState('');
     const [cozinha, setCozinha] = useState('');
@@ -112,6 +112,24 @@ function RoomForm(){
     const handleToggleOptions = () => {
         setShowEquipmentOptions(prevState => !prevState);
     };
+
+
+    const uniqueMobiliaNames = Array.from(new Set(jsonData.flatMap(property => property.mobilia)));
+
+    const toggleMobilia = (mobil: string) => {
+        if (mobilia.includes(mobil)) {
+            setServicos(prevState => prevState.filter(item => item !== mobil));
+        } else {
+            setServicos(prevState => [...prevState, mobil]);
+        }
+    };
+
+    const [showMobiliaOptions, setShowMobiliaOptions] = useState(false);
+
+    const handleToggleOptionsMobil = () => {
+        setShowMobiliaOptions(prevState => !prevState);
+    };
+
 
     const handleClick = () => {
         if (!clicked) {
@@ -331,19 +349,6 @@ function RoomForm(){
                         )}
                     </div>
                 </div>
-                <div className="label-container3">
-                    <label htmlFor="mobilia" className="label1">Mobilado</label>
-                    <select
-                        value={mobilia}
-                        onChange={(e) => setServicos(e.target.value)}
-                        required
-                        title="Indique se o quarto se encontra mobilado (Pode indicar a mobilia na descrição)"
-                    >
-                        <option value="">Selecione...</option>
-                        <option value="Mobilado">Mobilado</option>
-                        <option value="Não mobilado">Não mobilado</option>
-                    </select>
-                </div>
 
                 <div className="label-container4">
                     <label htmlFor="Cama" className="label1">Cama</label>
@@ -443,6 +448,30 @@ function RoomForm(){
                                 value={equipment}
                                 onChange={() => toggleEquipment(equipment)}
                                 checked={equipamentoDisponivel.includes(equipment)}
+                            />
+                        </div>
+                        </div>
+                    ))}
+                </div>
+            )}
+
+            <button type="button" className='bb' onClick={handleToggleOptionsMobil}>
+                {showMobiliaOptions ? 'Esconde as opções' : 'Adiciona as mobilias disponíveis no alojamento'}
+            </button>
+            {showMobiliaOptions && (
+                <div className="equipment-options">
+                    {uniqueMobiliaNames.map((mobil, index) => (
+                        <div key={index} className="equipment-option">
+                        <div className="divlabel">
+                            <label htmlFor={`mobil-${index}`}>{mobil}</label>
+                        </div>
+                        <div className="divcheckbox">
+                            <input
+                                type="checkbox"
+                                id={`mobil-${index}`}
+                                value={mobil}
+                                onChange={() => toggleEquipment(mobil)}
+                                checked={mobilia.includes(mobil)}
                             />
                         </div>
                         </div>
