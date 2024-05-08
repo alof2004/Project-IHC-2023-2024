@@ -53,43 +53,8 @@ function HomeAvaliador() {
                 {favoriteRoomDetails.length > 0 ? (
                     favoriteRoomDetails.map(room => {
                         const isFavorite = getRoomstoAval().includes(room.id);
-                        // Determine if the room is favorited
                         return (
                             <div key={room.id} className="projcard projcard-blue mudar" onClick={() => navigate(`/room/${room.id}`)}>
-                                <div className="projcard-innerbox">
-                                    <img className="projcard-img" src={room.imagem1} alt={`Room ${room.id}`} />
-                                    <div className="projcard-textbox">
-                                        <div className="projcard-title">{room.description}</div>
-                                        <div className="projcard-subtitle">{room.localizacao}</div>
-                                        <div className="projcard-description">{room.description}</div>
-                                        <div className="containerList">
-                                            <div className="row-list">
-                                                <div className="projcard-description-items">
-                                                    <img className="mini" src="../../src/images/bed.png" /> Cama {room.Cama}
-                                                </div>
-                                                <div className="projcard-description-items">
-                                                    <img className="mini" src="../../src/images/building.png" />Andar: {room.Andar}
-                                                </div>
-                                            </div>
-                                            <div className="row-list">
-                                                <div className="projcard-description-items">
-                                                    <img className="mini" src="../../src/images/area.png" /> Área total: {room.area} m²
-                                                </div>
-                                                <div className="projcard-description-items">
-                                                    <img className="mini" src="../../src/images/WC.png" />{room.WC}
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="projcard-tagbox">
-                                            {room.mobilia.map((service, index) => (
-                                                <span key={index} className="projcard-tag">{service}</span>
-                                            ))}
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="projcard-price" style={{ float: "right", padding: "10px 10px 0px 0px", fontSize: "20px" }}>{room.price}€ / mês</div>
-                                <div className="centered-heart">
-                                </div>
                             </div>
                         );
                     })

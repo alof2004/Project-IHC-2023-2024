@@ -1,10 +1,5 @@
 import React, { useState } from 'react';
-
-const data = [
-  { id: 1, nome: 'Item 1', localizacao: 'Localização 1', distrito: 'Distrito 1', telefone: '123456789', avaliado: true },
-  { id: 2, nome: 'Item 2', localizacao: 'Localização 2', distrito: 'Distrito 2', telefone: '987654321', avaliado: false },
-  // Adicione mais dados conforme necessário
-];
+import rooms from './rooms.json';
 
 const AvaliadorTable = () => {
   const [currentPage, setCurrentPage] = useState(0);
@@ -39,9 +34,10 @@ const AvaliadorTable = () => {
             padding: 11px;
             border: 1px solid #ddd;
             display: flex;
-            align-items: center; /* Centraliza conteúdo verticalmente */
+            align-items: center; /* Centralize vertically */
+            justify-content: center; /* Centralize horizontally */
             font-size: 25px;
-            text-align: center; /* Centraliza texto horizontalmente */
+            text-align: center;
           }
 
           .table-header {
@@ -54,26 +50,30 @@ const AvaliadorTable = () => {
 
           .options {
             display: flex;
-            justify-content: space-around; /* Centraliza os botões horizontalmente */
+            justify-content: space-around;
           }
 
           .options button {
-            border:1px solid black;
+            border: 2px solid black;
+            margin: 5px;
+            border-radius: 10px;
             cursor: pointer;
-            background-color:transparent;
+            background-color: transparent;
           }
 
           .options button img {
             width: 30px;
-            height: 0px; /* Altura definida como 0px para ocultar os ícones */
+            height: 30px;
           }
 
           .label {
-            display: inline-block;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             padding: 5px 10px;
-            border-radius: 20px; /* Borda arredondada */
-            color: white;
+            border-radius: 20px;
             font-size: 18px;
+            color: white;
           }
 
           .verde {
@@ -82,6 +82,10 @@ const AvaliadorTable = () => {
 
           .vermelho {
             background-color: red;
+          }
+
+          .imgIcon{
+            margin-bottom: 5px;
           }
         `}
       </style>
@@ -96,22 +100,22 @@ const AvaliadorTable = () => {
           <div>Opções</div>
         </div>
         <div className="table-body">
-          {data.slice(currentPage * 5, (currentPage + 1) * 5).map(item => (
+          {rooms.slice(currentPage * 5, (currentPage + 1) * 5).map(item => (
             <div className="table-row" key={item.id}>
               <div>{item.id}</div>
-              <div>{item.nome}</div>
+              <div>{item.Proprietaria}</div>
               <div>{item.localizacao}</div>
-              <div>{item.distrito}</div>
+              <div>{item.cidade}</div>
               <div>{item.telefone}</div>
               <div>
-                <span className={`label ${item.avaliado ? 'verde' : 'vermelho'}`}>
-                  {item.avaliado ? 'Avaliado' : 'Não avaliado'}
+                <span className={`label ${item.Avaliacao ? 'verde' : 'vermelho'}`}>
+                  {item.Avaliacao ? 'Avaliado' : 'Não avaliado'}
                 </span>
               </div>
               <div className="options">
-                <button><img style={{width:"30px", height:"30px"}} src="../../src/images/olho.png" alt="Ícone Ver"/></button>
-                <button><img style={{width:"30px", height:"30px"}}src="../../src/images/lapis.png" alt="Ícone Editar"/></button>
-                <button><img style={{width:"30px", height:"30px"}}src="../../src/images/lixo.png" alt="Ícone Eliminar"/></button>
+                <button><img className="imgIcon" style={{width:"30px", height:"30px"}} src="../../src/images/olho.png" alt="Ícone Ver"/></button>
+                <button><img className="imgIcon" style={{width:"30px", height:"30px"}}src="../../src/images/lapis.png" alt="Ícone Editar"/></button>
+                <button><img className="imgIcon" style={{width:"30px", height:"30px"}}src="../../src/images/lixo.png" alt="Ícone Eliminar"/></button>
               </div>
             </div>
           ))}
@@ -119,7 +123,7 @@ const AvaliadorTable = () => {
       </div>
       <div className="pagination">
         <button onClick={handlePreviousPage} disabled={currentPage === 0}>Anterior</button>
-        <button onClick={handleNextPage} disabled={(currentPage + 1) * 5 >= data.length}>Próximo</button>
+        <button onClick={handleNextPage} disabled={(currentPage + 1) * 5 >= rooms.length}>Próximo</button>
       </div>
     </div>
   );
