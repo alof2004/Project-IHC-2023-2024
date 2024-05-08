@@ -131,17 +131,24 @@ function RoomsListPage() {
     };
     
     useEffect(() => {
-        const roomsDataString = localStorage.getItem('roomsData');
-        if (roomsDataString) {
-            const storedRoomsData = JSON.parse(roomsDataString);
-            const mergedRoomsData = [...roomsData,...storedRoomsData];
-            console.log('Merged Rooms Data:', mergedRoomsData); // Debug log
-            const filtered = mergedRoomsData.filter(room => room.cidade === city);
-            console.log('Filtered Rooms:', filtered); // Debug log
-            setRooms(filtered);
-            setFilteredRooms(filtered);
+        // Check if roomsData exists and is an array
+        if (Array.isArray(roomsData)) {
+            // Filter rooms based on the city from the URL
+            const filteredRoomsByCity = roomsData.filter(room => room.cidade === city);
+            const storedRooms = localStorage.getItem('rooms');
+            let rooms = [];
+    
+            // Parse the stored rooms if they exist
+            if (storedRooms) {
+                rooms = JSON.parse(storedRooms);
+            }
+    
+            // Merge stored rooms with rooms from JSON file
+            const allRooms = [...rooms,...filteredRoomsByCity];
+            setRooms(allRooms);
+            setFilteredRooms(allRooms);
         }
-    }, [city]);
+    }, [city]); // Depend on city to re-fetch rooms when it changes
     
 
     useEffect(() => {
@@ -441,18 +448,11 @@ function RoomsListPage() {
                         // Format the next available date
                         nextAvailableDate = format(nextAvailableDate, 'dd/MM/yyyy');
                     }
-                    const hasImages = room.imagem1 || room.imagem2 || room.imagem3 || room.imagem4;
-        
-                    // Define the default image URL
-                    const defaultImage = '../../src/images/default.jpg'; // Replace 'path_to_default_image' with the actual path to your default image
-                    
-                    // If there are no image URLs available, use the default image
-                    const imageUrl = hasImages ? room.imagem1 : defaultImage;
                     
                     return (
                     <div key={room.id} className="projcard projcard-blue" onClick={() => navigate(`/room/${room.id}`)}>
                         <div className="projcard-innerbox">
-                        <img className="projcard-img" src={imageUrl} alt={`Room ${room.id}`} />                        
+                        <img className="projcard-img" src={room.imagem1} alt={`Room ${room.id}`} />
                         <div className="projcard-textbox">
                             <div className="projcard-title">{room.description}</div>
                             <div className="projcard-subtitle"><span className="location-label" style={{color:"#FF7A41",fontWeight:"bold"}}>Localização: </span>{room.localizacao}</div>
