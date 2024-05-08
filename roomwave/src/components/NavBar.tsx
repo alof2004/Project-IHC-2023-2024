@@ -8,14 +8,6 @@ function NavBar() {
   const { user } = useUser();
   const location = useLocation();
   console.log(user);
-  
-  const handleClick = () => {
-    localStorage.setItem('redirectPath', location.pathname);
-    if (location.pathname === "/login") {
-      localStorage.setItem('redirectPath', "/Home");
-    }
-    console.log(location.pathname);
-  };
 
   if (localStorage.getItem("userData") === null) {
     return (
@@ -26,7 +18,7 @@ function NavBar() {
           </Link>
           <div className="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
             <ul className="navbar-nav">
-              <li className="nav-item nav-item-flex" onClick={handleClick}>
+              <li className="nav-item nav-item-flex">
                 <Link to="/login" className="nav-link">
                   <img src="../src/images/perfil_icon.png" width="30" height="30" alt="Profile Icon"/>
                   Log-In
