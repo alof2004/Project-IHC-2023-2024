@@ -60,7 +60,22 @@ interface Room {
 
 function RoomDetails(){
     const { ID } = useParams();
-    const room: Room | undefined = details.find((room) => room.id.toString() === ID);
+    const [room, setRoom] = useState<Room | undefined>(undefined);
+    const defaultImage = '../../src/images/default.jpg'; // Replace 'path_to_default_image' with the actual path to your default image
+
+    useEffect(() => {
+        if (ID && parseInt(ID) < 100) {
+            const foundRoom = details.find((room) => room.id.toString() === ID);
+            setRoom(foundRoom);
+        } else {
+            const rooms = localStorage.getItem('roomsData');
+            const parsedRooms = JSON.parse(rooms || '[]');
+            const foundRoom = parsedRooms.find((room: Room) => room.id.toString() === ID);
+            setRoom(foundRoom);
+        }
+    }, [ID]);
+
+
     const userData = localStorage.getItem('userData');
     const location = useLocation();
     const navigate = useNavigate();
@@ -137,11 +152,13 @@ function RoomDetails(){
             </div>
             
             <div >
-                <Carousel room={{ imagem1: '../../src/images/quarto1.jpg', 
-                                  imagem2: '../../src/images/quarto1_2.jpg', 
-                                  imagem3: '../../src/images/quarto1_3.jpg', 
-                                  imagem4: '../../src/images/quarto1_4.jpg' 
-                                }} />
+                <Carousel room={{ 
+                    
+                    imagem1: room?.imagem1 ?? '',
+                    imagem2: room?.imagem2 ?? '',
+                    imagem3: room?.imagem3 ?? '',
+                    imagem4: room?.imagem4 ?? '',      
+                    }} />
                 <div className='price_info'>
                     <h1>
                         <span style={{ fontSize:"50px",color:"#FF7A41", fontWeight:"bold" }}>

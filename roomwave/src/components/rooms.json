@@ -265,7 +265,7 @@
     {
         "id": 5,
         "Proprietaria": "Mariana Santos",
-        "imagem1": "../../src/images/quarto5.jpg",
+        "imagem1": "../../src/images/quarto5_1.jpg",
         "imagem2": "../../src/images/quarto5_2.jpg",
         "imagem3": "../../src/images/quarto5_3.jpg",
         "imagem4": "../../src/images/quarto5_4.jpg",
@@ -327,7 +327,7 @@
     {
         "id": 6,
         "Proprietaria": "Ana Moura",
-        "imagem1": "../../src/images/quarto6.jpg",
+        "imagem1": "../../src/images/quarto6_1.jpg",
         "imagem2": "../../src/images/quarto6_2.jpg",
         "imagem3": "../../src/images/quarto6_3.jpg",
         "imagem4": "../../src/images/quarto6_4.jpg",
@@ -389,7 +389,7 @@
     {
         "id": 7,
         "Proprietaria": "João Almeida",
-        "imagem1": "../../src/images/quarto7.jpg",
+        "imagem1": "../../src/images/quarto7_1.jpg",
         "imagem2": "../../src/images/quarto7_2.jpg",
         "localizacao": "Avenida da Forca Aerea Portugues",
         "Locais_proximos": [
@@ -451,7 +451,7 @@
     {
         "id": 8,
         "Proprietaria": "Bruno Teixeira",
-        "imagem1": "../../src/images/quarto8.jpg",
+        "imagem1": "../../src/images/quarto8_1.jpg",
         "imagem2": "../../src/images/quarto8_2.jpg",
         "localizacao": "Rua 25 abril"        ,
         "Locais_proximos": [
@@ -513,8 +513,8 @@
     {
         "id": 9,
         "Proprietaria": "José Morais",
-        "imagem1": "../../src/images/quarto8.jpg",
-        "imagem2": "../../src/images/quarto8_2.jpg",
+        "imagem1": "../../src/images/quarto9.jpg",
+        "imagem2": "../../src/images/quarto9_2.jpg",
         "localizacao": "Rua António Sérgio",
         "Locais_proximos": [
             "Escola Superior Educação de Beja",

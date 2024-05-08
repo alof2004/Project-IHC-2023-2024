@@ -7,23 +7,33 @@ interface Room {
   imagem4: string;
 }
 
-function Carousel({ room }: { room: Room }) {
-  const [mainImage, setMainImage] = useState(room.imagem1);
-  const [otherImages, setOtherImages] = useState([room.imagem2, room.imagem3, room.imagem4]);
+function Carousel({ room }: { room: Room | undefined }) {
+  // Initialize state with default values
+  const [mainImage, setMainImage] = useState<string | undefined>(room?.imagem1);
+  const [otherImages, setOtherImages] = useState<(string | undefined)[]>([room?.imagem2, room?.imagem3, room?.imagem4]);
 
-  const handleImageClick = (clickedImage: string) => {
-    setMainImage(clickedImage);
-    setOtherImages([...otherImages.filter(image => image !== clickedImage), mainImage]);
+  const handleImageClick = (clickedImage: string | undefined) => {
+    if (clickedImage) {
+      setMainImage(prevMainImage => clickedImage);
+      setOtherImages(prevOtherImages => {
+        const newOtherImages = prevOtherImages.filter(image => image!== clickedImage);
+        return [...newOtherImages, mainImage];
+      });
+    }
   };
+  const defaultImage = '../../src/images/default.jpg'; // Adjust this path as necessary
+
+  // Filter out undefined images from otherImages array
+  const filteredOtherImages = otherImages.filter(image => image!== undefined);
 
   return (
     <div className="room-images">
-      <img src={mainImage} alt="pic1" className="main-image" />
+      <img src={mainImage || defaultImage} alt="pic1" className="main-image" />
       <div className="other-images">
-        {otherImages.map((image, index) => (
+        {filteredOtherImages.map((image, index) => (
           <img
             key={index}
-            src={image}
+            src={image || defaultImage}
             alt={`pic${index + 2}`}
             className="vertical-image"
             onClick={() => handleImageClick(image)}
