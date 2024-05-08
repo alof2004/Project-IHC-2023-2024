@@ -15,10 +15,13 @@ function HomeAvaliador() {
 
     const getRoomstoAval = () => {
         const rooms = localStorage.getItem('roomsData');
+        console.log(rooms)
         if (rooms) {
             const parsedRooms = JSON.parse(rooms);
             // Filter rooms with "Avaliado" equal to "aguardar"
-            return parsedRooms.filter((room: { Avaliado: string }) => room.Avaliado === "aguardar");
+            const filteredRooms = parsedRooms.filter((room: { avaliado: string }) => room.avaliado === "aguardar");
+            console.log(filteredRooms); // Adicione este console.log para ver os quartos selecionados
+            return filteredRooms;
         } else {
             return [];
     }
@@ -26,12 +29,16 @@ function HomeAvaliador() {
     // Load favorite rooms from local storage on component mount
     useEffect(() => {
         const storedFavorites = getRoomstoAval
+        console.log(storedFavorites)
         setRoomstoAval(storedFavorites);
     }, []); /* This centers the element horizontally */
+    console.log(RoomstoAval)
 
 
     // Filter the rooms based on favorite room IDs
     const favoriteRoomDetails = roomsData.filter(room => RoomstoAval.includes(room.id));
+
+    console.log(favoriteRoomDetails)
 
     return (
         <><div>
