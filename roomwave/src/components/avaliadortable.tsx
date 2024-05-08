@@ -1,7 +1,7 @@
 import React from 'react';
 import '../css/avaliadortable.css';
 
-const avaliadortable: React.FC = () => {
+const Avaliadortable: React.FC = () => {
   return (
     <div className="br-table" data-search="data-search" data-selection="data-selection" data-collapse="data-collapse" data-random="data-random">
       <div className="table-header">
@@ -103,4 +103,4 @@ const avaliadortable: React.FC = () => {
   );
 }
 
-export default avaliadortable;
+export default Avaliadortable;

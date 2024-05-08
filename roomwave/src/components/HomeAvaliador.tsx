@@ -6,7 +6,7 @@ import { useUser } from "./UserContext";
 import { useNavigate } from 'react-router-dom';
 import roomsData from './rooms.json';
 import Footer from "./footer";
-import avaliadortable from "./avaliadortable";
+import Avaliadortable from "./avaliadortable";
 
 
 function HomeAvaliador() {
@@ -90,7 +90,7 @@ function HomeAvaliador() {
                     <div className="no-favorites">
                     </div>
                 )}
-                <avaliadortable />
+                <Avaliadortable />
             </div>
             <table />
         </div><div style={{marginTop:"100%"}}> 
