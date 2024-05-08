@@ -1,68 +1,128 @@
-import React, { useState, useEffect } from 'react';
-import './styles.css'; // Import your CSS file
+import React, { useState } from 'react';
 
-function ResponsiveTable() {
-  const [isResponsive, setIsResponsive] = useState(false);
+const data = [
+  { id: 1, nome: 'Item 1', localizacao: 'Localização 1', distrito: 'Distrito 1', telefone: '123456789', avaliado: true },
+  { id: 2, nome: 'Item 2', localizacao: 'Localização 2', distrito: 'Distrito 2', telefone: '987654321', avaliado: false },
+  // Adicione mais dados conforme necessário
+];
 
-  useEffect(() => {
-    const handleResize = () => {
-      setIsResponsive(window.innerWidth <= 767);
-    };
+const AvaliadorTable = () => {
+  const [currentPage, setCurrentPage] = useState(0);
 
-    // Add event listener for window resize
-    window.addEventListener('resize', handleResize);
+  const handleNextPage = () => {
+    setCurrentPage(currentPage + 1);
+  };
 
-    // Initial check on component mount
-    handleResize();
-
-    // Cleanup on component unmount
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  const handlePreviousPage = () => {
+    setCurrentPage(currentPage - 1);
+  };
 
   return (
-    <div className="container">
-      <h2>Responsive Tables Using LI <small>Triggers on 767px</small></h2>
-      <div className={isResponsive ? 'responsive-table-wrapper' : ''}>
-        {isResponsive ? (
-          <ul className="responsive-table">
-            <li className="table-header">
-              <div className="col col-1">Job Id</div>
-              <div className="col col-2">Customer Name</div>
-              <div className="col col-3">Amount Due</div>
-              <div className="col col-4">Payment Status</div>
-            </li>
-            <li className="table-row">
-              <div className="col col-1" data-label="Job Id">42235</div>
-              <div className="col col-2" data-label="Customer Name">John Doe</div>
-              <div className="col col-3" data-label="Amount">$350</div>
-              <div className="col col-4" data-label="Payment Status">Pending</div>
-            </li>
-            {/* Additional table rows */}
-          </ul>
-        ) : (
-          <table className="responsive-table">
-            <thead>
-              <tr>
-                <th>Job Id</th>
-                <th>Customer Name</th>
-                <th>Amount Due</th>
-                <th>Payment Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td data-label="Job Id">42235</td>
-                <td data-label="Customer Name">John Doe</td>
-                <td data-label="Amount">$350</td>
-                <td data-label="Payment Status">Pending</td>
-              </tr>
-              {/* Additional table rows */}
-            </tbody>
-          </table>
-        )}
+    <div className="table-container">
+      <style>
+        {`
+          .table {
+            width: 95%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 50px;
+          }
+
+          .table-header,
+          .table-row {
+            display: flex;
+          }
+
+          .table-header div,
+          .table-row div {
+            flex: 1;
+            padding: 11px;
+            border: 1px solid #ddd;
+            display: flex;
+            align-items: center; /* Centraliza conteúdo verticalmente */
+            font-size: 25px;
+            text-align: center; /* Centraliza texto horizontalmente */
+          }
+
+          .table-header {
+            background-color: #f2f2f2;
+          }
+
+          .table-row:nth-child(even) {
+            background-color: #f2f2f2;
+          }
+
+          .options {
+            display: flex;
+            justify-content: space-around; /* Centraliza os botões horizontalmente */
+          }
+
+          .options button {
+            border:1px solid black;
+            cursor: pointer;
+            background-color:transparent;
+          }
+
+          .options button img {
+            width: 30px;
+            height: 0px; /* Altura definida como 0px para ocultar os ícones */
+          }
+
+          .label {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 20px; /* Borda arredondada */
+            color: white;
+            font-size: 18px;
+          }
+
+          .verde {
+            background-color: green;
+          }
+
+          .vermelho {
+            background-color: red;
+          }
+        `}
+      </style>
+      <div className="table">
+        <div className="table-header">
+          <div>ID</div>
+          <div>Nome</div>
+          <div>Localização</div>
+          <div>Distrito</div>
+          <div>Número de telefone</div>
+          <div>Avaliado</div>
+          <div>Opções</div>
+        </div>
+        <div className="table-body">
+          {data.slice(currentPage * 5, (currentPage + 1) * 5).map(item => (
+            <div className="table-row" key={item.id}>
+              <div>{item.id}</div>
+              <div>{item.nome}</div>
+              <div>{item.localizacao}</div>
+              <div>{item.distrito}</div>
+              <div>{item.telefone}</div>
+              <div>
+                <span className={`label ${item.avaliado ? 'verde' : 'vermelho'}`}>
+                  {item.avaliado ? 'Avaliado' : 'Não avaliado'}
+                </span>
+              </div>
+              <div className="options">
+                <button><img style={{width:"30px", height:"30px"}} src="../../src/images/olho.png" alt="Ícone Ver"/></button>
+                <button><img style={{width:"30px", height:"30px"}}src="../../src/images/lapis.png" alt="Ícone Editar"/></button>
+                <button><img style={{width:"30px", height:"30px"}}src="../../src/images/lixo.png" alt="Ícone Eliminar"/></button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="pagination">
+        <button onClick={handlePreviousPage} disabled={currentPage === 0}>Anterior</button>
+        <button onClick={handleNextPage} disabled={(currentPage + 1) * 5 >= data.length}>Próximo</button>
       </div>
     </div>
   );
-}
+};
 
-export default ResponsiveTable;
+export default AvaliadorTable;

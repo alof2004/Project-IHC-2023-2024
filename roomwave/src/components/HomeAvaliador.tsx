@@ -37,8 +37,8 @@ function HomeAvaliador() {
     return (
         <><div>
             <NavBarAvaliador />
-            <div className="favorites-container">
-                <div className='titulos gradient-effect'>
+            <div className="favorites-container-1">
+                <div className='titulos gradient-effect-1'>
                     <h2>Quartos à espera de avaliação</h2>
                     <h5>Existem {favoriteRoomDetails.length} a aguardar avaliação</h5>
                 </div>
@@ -93,7 +93,7 @@ function HomeAvaliador() {
             </div>
         </div>
         <Avaliadortable />
-            <div style={{marginTop:"100%"}}> 
+            <div style={{marginTop:"10%"}}> 
                 <Footer />
             </div></>
     );
