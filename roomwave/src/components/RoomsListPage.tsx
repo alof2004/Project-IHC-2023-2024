@@ -134,16 +134,13 @@ function RoomsListPage() {
     };
     
     useEffect(() => {
-        // Retrieve the roomsData from localStorage
         const roomsDataString = localStorage.getItem('roomsData');
         if (roomsDataString) {
-            // Parse the stringified array back into a JavaScript object
             const storedRoomsData = JSON.parse(roomsDataString);
-    
-            // Assuming you want to merge the roomsData from JSON with the roomsData from localStorage
-            const mergedRoomsData = [...roomsData, ...storedRoomsData];
-            console.log(mergedRoomsData);
+            const mergedRoomsData = [...roomsData,...storedRoomsData];
+            console.log('Merged Rooms Data:', mergedRoomsData); // Debug log
             const filtered = mergedRoomsData.filter(room => room.cidade === city);
+            console.log('Filtered Rooms:', filtered); // Debug log
             setRooms(filtered);
             setFilteredRooms(filtered);
         }

@@ -149,51 +149,54 @@ function RoomForm(){
         
         // Construct an object with the form data
         const formData = {
-            id: 100,              //ta
-            proprietaria,               //ta
-            telefone,                   //ta
-            images: images,             //ta
-            localizacao,                //ta
-            locaisProximos,             //ta
-            cidade,                     //ta
-            pais,                       //ta
-            latitude,                   //ta
-            longitude,                  //ta
-            description,                //ta
-            transportes,                //ta
-            mobilia,                    //ta
-            descricaoProprietaria,      //ta
-            cama,                       //ta
-            cozinha,                    //ta
-            casasDeBanho,               //ta
-            wc,                         //ta
-            ambiente,                   //ta
-            price,                      //ta
-            pessoasPermitidas: genero,  //waiting (ns se é para existir)
-            gastos,                     //ta
-            animais,                    //ta
-            fumadores,                  //ta
-            area,                       //ta
-            vista,                      //ta
-            rendaInclui,                //waiting (ns se é para existir)
-            equipamentoDisponivel,      //ta
-            tipoQuarto,                 //ta
-            genero,                     //ta
-            alojamento,                 //ta
-            andar,                      //ta
-            avaliado,                   //ta
-            avaliacao,                  //ta
-            data_entrada,               //ta
-            data_saida,                 //ta
+            id: 100,
+            Proprietaria: proprietaria,
+            imagem1: images[0] || "", // Assuming images is an array of image URLs
+            imagem2: images[1] || "",
+            imagem3: images[2] || "",
+            imagem4: images[3] || "",
+            localizacao: localizacao,
+            Locais_proximos: locaisProximos,
+            cidade: cidade,
+            país: pais,
+            latitude: latitude,
+            longitude: longitude,
+            description: description,
+            Transportes: transportes,
+            mobilia: mobilia,
+            Descrição_Proprietaria: descricaoProprietaria,
+            Cama: cama,
+            Cozinha: cozinha,
+            casas_de_banho: casasDeBanho,
+            Ambiente: ambiente,
+            price: price,
+            Pessoas_permitidas: genero, // This should be an array of strings, e.g., ["Masculino", "Feminino"]
+            gastos: gastos,
+            Animais: animais,
+            Fumadores: fumadores,
+            area: area,
+            Vista: vista,
+            Renda_inclui: rendaInclui, // This should be an array of strings
+            Equipamento_disponivel: equipamentoDisponivel,
+            Genero: genero, // This should be an array of strings
+            TipoQuarto: tipoQuarto,
+            WC: wc,
+            Alojamento: alojamento,
+            Andar: andar,
+            Avaliado: avaliado,
+            Avaliacao: avaliacao,
+            data_entrada: data_entrada,
+            data_saida: data_saida,
+            telefone: telefone
         };
+        
     
         console.log(formData);
         const user = JSON.parse(localStorage.getItem('userData') || '{}');
-        formData.proprietaria = user?.firstname + " " + user?.lastname;
+        formData.Proprietaria = user?.firstname + " " + user?.lastname;
         formData.telefone = user?.phone ?? '';
-        formData.avaliacao= 0;
-        formData.rendaInclui=[];
-        formData.pais="Portugal";
+        formData.Avaliacao= 0;
+        formData.Renda_inclui=[];
         // Assuming you have a mechanism to store all rooms in an array in localStorage
         const roomsData = JSON.parse(localStorage.getItem('roomsData') || '[]');
         const newNumber = generateRoomId();
@@ -434,7 +437,6 @@ function RoomForm(){
                 />
             </div>
             <label className="label1">Equipamento disponível:</label>
-            {showEquipmentOptions && (
                 <div className="equipment-options">
                     {uniqueEquipmentNames.map((equipment, index) => (
                         <div key={index} className="equipment-option">
@@ -453,12 +455,8 @@ function RoomForm(){
                         </div>
                     ))}
                 </div>
-            )}
 
-            <button type="button" className='bb' onClick={handleToggleOptionsMobil}>
-                {showMobiliaOptions ? 'Esconde as opções' : 'Adiciona as mobilias disponíveis no alojamento'}
-            </button>
-            {showMobiliaOptions && (
+                <label className="label1">Mobilia disponível:</label>
                 <div className="equipment-options">
                     {uniqueMobiliaNames.map((mobil, index) => (
                         <div key={index} className="equipment-option">
@@ -477,7 +475,6 @@ function RoomForm(){
                         </div>
                     ))}
                 </div>
-            )}
 
             <div className="location-info-container2">
 
