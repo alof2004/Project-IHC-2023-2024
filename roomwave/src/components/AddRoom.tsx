@@ -1,4 +1,4 @@
-import NavBar from './NavBar';
+import NavBarLandLord from './NavBarLandLord';
 import RoomForm from './RoomForm';
 import React from 'react';
 import { Link } from 'react-router-dom';
@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 function AddRoom() {
     return (
         <div>
-            <NavBar />
+            <NavBarLandLord />
             <RoomForm/>
         </div>
     );
