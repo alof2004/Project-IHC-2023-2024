@@ -23,7 +23,7 @@ function NavBarAvaliador() {
   };
 
   function handleperfil(): void {
-    navigate('/perfilcertificador'); 
+    navigate('/perfilcertificator'); 
   }
 
   return (
@@ -45,7 +45,7 @@ function NavBarAvaliador() {
               </a>
             </li>
             <li className="nav-item nav-item-flex">
-              <Link to="../../../Ajuda" className="nav-link">
+              <Link to="../../../AjudaCertificador" className="nav-link">
                 <img src="../src/images/ajuda_icon.png" width="25" height="25" alt="Help Icon" />
                 Ajuda
               </Link>

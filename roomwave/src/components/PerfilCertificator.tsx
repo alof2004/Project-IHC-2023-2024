@@ -64,7 +64,7 @@ function Perfil() {
     <>
       <NavBarClient />
       <div className="profile-container">
-        <h2>Perfil do Senhorio</h2>
+        <h2>Perfil do Certificador</h2>
         <div className="content-container">
           <div className="photo-container">
             {photo ? (

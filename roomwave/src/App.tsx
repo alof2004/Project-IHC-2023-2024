@@ -21,6 +21,8 @@ import FavoritesPage from './components/FavoritesPage';
 import Perfil from './components/Perfil';
 import HomeAvaliador from './components/HomeAvaliador';
 import RoomsUniListPage from './components/RoomsUniListPage';
+import PerfilLandlord from './components/PerfilLandlord';
+import AjudaLandlord from './components/AjudaLandlord';
 
 
 
@@ -54,6 +56,9 @@ function App() {
             <Route path="/room/:ID" element={<RoomDetails/>} />
             <Route path="/perfil" element={<Perfil/>} />
             <Route path="/uni/:uni" element={<RoomsUniListPage/>} />
+            <Route path="/perfillandlord" element={<PerfilLandlord/>} />
+            <Route path="/perfilclient" element={<PerfilLandlord/>} />
+            <Route path="/perfilcertificator" element={<PerfilLandlord/>} />
             
           </Routes>
         </div>
