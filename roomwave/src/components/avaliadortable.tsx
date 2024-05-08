@@ -1,106 +1,128 @@
-import React from 'react';
-import '../css/avaliadortable.css';
+import React, { useState } from 'react';
 
-const Avaliadortable: React.FC = () => {
+const data = [
+  { id: 1, nome: 'Item 1', localizacao: 'Localização 1', distrito: 'Distrito 1', telefone: '123456789', avaliado: true },
+  { id: 2, nome: 'Item 2', localizacao: 'Localização 2', distrito: 'Distrito 2', telefone: '987654321', avaliado: false },
+  // Adicione mais dados conforme necessário
+];
+
+const AvaliadorTable = () => {
+  const [currentPage, setCurrentPage] = useState(0);
+
+  const handleNextPage = () => {
+    setCurrentPage(currentPage + 1);
+  };
+
+  const handlePreviousPage = () => {
+    setCurrentPage(currentPage - 1);
+  };
+
   return (
-    <div className="br-table" data-search="data-search" data-selection="data-selection" data-collapse="data-collapse" data-random="data-random">
-      <div className="table-header">
-        <div className="top-bar">
-          <div className="table-title">Resultado da Pesquisa</div>
-          <div className="actions-trigger text-nowrap">
-            <button className="br-button circle" type="button" id="button-dropdown-density" title="Ver mais opções" data-toggle="dropdown" data-target="target01-98928" aria-label="Definir densidade da tabela" aria-haspopup="true" aria-live="polite">
-              <i className="fas fa-ellipsis-v" aria-hidden="true"></i>
-            </button>
-            <div className="br-list" id="target01-98928" role="menu" aria-labelledby="button-dropdown-density" hidden={true}>
-              <button className="br-item" type="button" data-density="small" role="menuitem">Densidade alta</button>
-              <span className="br-divider"></span>
-              <button className="br-item" type="button" data-density="medium" role="menuitem">Densidade média</button>
-              <span className="br-divider"></span>
-              <button className="br-item" type="button" data-density="large" role="menuitem">Densidade baixa</button>
-            </div>
-          </div>
-          <div className="search-trigger"></div>
+    <div className="table-container">
+      <style>
+        {`
+          .table {
+            width: 95%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 50px;
+          }
+
+          .table-header,
+          .table-row {
+            display: flex;
+          }
+
+          .table-header div,
+          .table-row div {
+            flex: 1;
+            padding: 11px;
+            border: 1px solid #ddd;
+            display: flex;
+            align-items: center; /* Centraliza conteúdo verticalmente */
+            font-size: 25px;
+            text-align: center; /* Centraliza texto horizontalmente */
+          }
+
+          .table-header {
+            background-color: #f2f2f2;
+          }
+
+          .table-row:nth-child(even) {
+            background-color: #f2f2f2;
+          }
+
+          .options {
+            display: flex;
+            justify-content: space-around; /* Centraliza os botões horizontalmente */
+          }
+
+          .options button {
+            border:1px solid black;
+            cursor: pointer;
+            background-color:transparent;
+          }
+
+          .options button img {
+            width: 30px;
+            height: 0px; /* Altura definida como 0px para ocultar os ícones */
+          }
+
+          .label {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 20px; /* Borda arredondada */
+            color: white;
+            font-size: 18px;
+          }
+
+          .verde {
+            background-color: green;
+          }
+
+          .vermelho {
+            background-color: red;
+          }
+        `}
+      </style>
+      <div className="table">
+        <div className="table-header">
+          <div>ID</div>
+          <div>Nome</div>
+          <div>Localização</div>
+          <div>Distrito</div>
+          <div>Número de telefone</div>
+          <div>Avaliado</div>
+          <div>Opções</div>
         </div>
-        <div className="search-bar">
-          <div className="br-input">
-            <label htmlFor="table-searchbox-98928">Buscar na tabela</label>
-            <input id="table-searchbox-98928" type="search" placeholder="Buscar na tabela" aria-labelledby="button-input-search" aria-label="Buscar na tabela"/>
-            <button className="br-button" type="button" aria-label="Buscar">
-              <i className="fas fa-search" aria-hidden="true"></i>
-            </button>
-          </div>
-          <button className="br-button circle" type="button" data-dismiss="search" aria-label="Fechar busca">
-            <i className="fas fa-times" aria-hidden="true"></i>
-          </button>
-        </div>
-        <div className="selected-bar">
-          <div className="info"><span className="count">0</span><span className="text">item selecionado</span></div>
-          <div className="actions-trigger text-nowrap">
-            <button className="br-button circle inverted" type="button" id="button-dropdown-selection" data-toggle="dropdown" data-target="target02-98928" aria-controls="target02-98928" aria-label="Ver mais opções de ação" aria-haspopup="true">
-              <i className="fas fa-ellipsis-v" aria-hidden="true"></i>
-            </button>
-            <div className="br-list" id="target02-98928" role="menu" aria-labelledby="button-dropdown-selection" hidden={true}>
-              <button className="br-item" type="button" data-toggle="" role="menuitem">Ação 1</button>
-              <span className="br-divider"></span>
-              <button className="br-item" type="button" role="menuitem">Ação 2</button>
+        <div className="table-body">
+          {data.slice(currentPage * 5, (currentPage + 1) * 5).map(item => (
+            <div className="table-row" key={item.id}>
+              <div>{item.id}</div>
+              <div>{item.nome}</div>
+              <div>{item.localizacao}</div>
+              <div>{item.distrito}</div>
+              <div>{item.telefone}</div>
+              <div>
+                <span className={`label ${item.avaliado ? 'verde' : 'vermelho'}`}>
+                  {item.avaliado ? 'Avaliado' : 'Não avaliado'}
+                </span>
+              </div>
+              <div className="options">
+                <button><img style={{width:"30px", height:"30px"}} src="../../src/images/olho.png" alt="Ícone Ver"/></button>
+                <button><img style={{width:"30px", height:"30px"}}src="../../src/images/lapis.png" alt="Ícone Editar"/></button>
+                <button><img style={{width:"30px", height:"30px"}}src="../../src/images/lixo.png" alt="Ícone Eliminar"/></button>
+              </div>
             </div>
-          </div>
+          ))}
         </div>
       </div>
-      <table>
-        <caption>Título da Tabela</caption>
-        <thead>
-          <tr>
-            <td className="column-collapse" scope="col" aria-hidden="true"></td>
-            <th className="column-checkbox" scope="col">
-              <div className="br-checkbox hidden-label">
-                <input id="check-all-98928" name="check-all-98928" type="checkbox" aria-label="Selecionar tudo" data-parent="check-01-98928"/>
-                <label htmlFor="check-all-98928">Selecionar todas as linhas</label>
-              </div>
-            </th>
-            <th scope="col">Título coluna 1</th>
-            <th scope="col">Título coluna 2</th>
-            <th scope="col" className="text-right">Ações</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <button className="br-button circle small" type="button" id="button-line-1-98928" aria-label="Expandir/Retrair Rótulo 01" data-toggle="collapse" data-target="collapse-1-4-98928" aria-describedby="collapse-1-4-98928">
-                <i className="fas fa-chevron-down" aria-hidden="true"></i>
-              </button>
-            </td>
-            <td>
-              <div className="br-checkbox hidden-label">
-                <input id="check-line-1-98928" name="check-line-1-98928" type="checkbox" aria-label="Selecionar linha 1" data-child="check-01-98928"/>
-                <label htmlFor="check-line-1-98928">Selecionar linha 1</label>
-              </div>
-            </td>
-            <td data-th="Título coluna 1">Linha 1 coluna 1</td>
-            <td data-th="Título coluna 2">Linha 1 coluna 2</td>
-            <td data-th="Título coluna 3" className="text-right">
-              <button className="br-button circle secondary small" type="button" aria-label="Ícone ilustrativo">
-                <i className="fas fa-eye" aria-hidden="true"></i>
-              </button>
-              <button className="br-button circle secondary small" type="button" aria-label="Ícone ilustrativo">
-                <i className="fas fa-pen" aria-hidden="true"></i>
-              </button>
-              <button className="br-button circle primary small" type="button" aria-label="Ícone ilustrativo">
-                <i className="fas fa-trash" aria-hidden="true"></i>
-              </button>
-            </td>
-          </tr>
-          <tr className="collapse">
-            <td id="collapse-1-4-98928" aria-hidden="true" hidden={true} colSpan={6}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ultricies aliquet lacinia. Vestibulum in interdum eros. Donec vel tempus diam. Aenean pulvinar mattis nisi in laoreet. Integer felis mi, vehicula sed pretium sit amet, pellentesque vel nisl. Curabitur metus ante, pellentesque in lectus a, sagittis imperdiet mi.</td>
-          </tr>
-          {/* Outras linhas da tabela */}
-        </tbody>
-      </table>
-      <div className="table-footer">
-        {/* Conteúdo do rodapé da tabela */}
+      <div className="pagination">
+        <button onClick={handlePreviousPage} disabled={currentPage === 0}>Anterior</button>
+        <button onClick={handleNextPage} disabled={(currentPage + 1) * 5 >= data.length}>Próximo</button>
       </div>
     </div>
   );
-}
+};
 
-export default Avaliadortable;
+export default AvaliadorTable;
