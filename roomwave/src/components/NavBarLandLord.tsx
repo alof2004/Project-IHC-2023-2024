@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import '../App.css'; // Adjust the path as necessary
 import { Link } from 'react-router-dom'; // Assuming you're using React Router
@@ -6,7 +7,7 @@ import LogoutAlert from './logoutAlert';
 
 
 
-function NavBarAvaliador() {
+function NavBarClient() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showLogoutAlert, setShowLogoutAlert] = useState(false); // Estado para controlar a exibição do alerta de logout
   const navigate = useNavigate();
@@ -23,7 +24,7 @@ function NavBarAvaliador() {
   };
 
   function handleperfil(): void {
-    navigate('/perfillandlord'); 
+    navigate('/perfilcertificator'); 
   }
 
   return (
@@ -34,6 +35,12 @@ function NavBarAvaliador() {
         </Link>
         <div className="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
           <ul className="navbar-nav">
+            <li className="nav-item nav-item-flex">
+              <Link to="../../../favorites" className="nav-link">
+                <img src="../../src/images/casa.png" width="30" height="30" alt="Home Icon" />
+                Meus Quartos
+              </Link>
+            </li>
             <li className="nav-item dropdown">
               <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{ paddingLeft: "2px" }} href='#'>
                 <img src="../../src/images/perfil_icon.png" width="30" height="30" alt="Profile Icon" />
@@ -45,7 +52,7 @@ function NavBarAvaliador() {
               </a>
             </li>
             <li className="nav-item nav-item-flex">
-              <Link to="../../../AjudaCertificador" className="nav-link">
+              <Link to="../../../NavBarLandLord" className="nav-link">
                 <img src="../src/images/ajuda_icon.png" width="25" height="25" alt="Help Icon" />
                 Ajuda
               </Link>
@@ -59,4 +66,4 @@ function NavBarAvaliador() {
   );
 }
 
-export default NavBarAvaliador;
+export default NavBarClient;
