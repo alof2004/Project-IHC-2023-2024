@@ -16,3 +16,8 @@
     border: 1px solid #ccc; /* Add border for styling */
     border-radius: 0.25rem; /* Add border-radius for styling */
   }
+
+  .shadow-host-companion{
+    display: none;
+
+  }
