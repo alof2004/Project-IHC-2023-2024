@@ -49,6 +49,7 @@ function RoomForm(){
     const [requestaval, setRequestAval] = useState('');
     const navigate = useNavigate();
     const { user } = useUser();
+    const [clicked, setClicked] = useState(false);
 
 
 
@@ -113,6 +114,18 @@ function RoomForm(){
         setShowEquipmentOptions(prevState => !prevState);
     };
 
+    const handleClick = () => {
+        if (!clicked) {
+            setAvaliado('aguardar');
+            setClicked(true);
+            console.log(id + ' A aguardar avaliacao');
+          } else {
+            setAvaliado('Não');
+            setClicked(false);
+          }
+      };
+    
+
     // Function to handle form submission
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault(); // Prevent the default form submission behavior
@@ -162,7 +175,6 @@ function RoomForm(){
         
         formData.proprietaria = user?.firstname + " " + user?.lastname;
         formData.telefone = user?.phone ?? '';
-        formData.avaliado = "Não";
         formData.avaliacao= 0;
         formData.rendaInclui=[];
         formData.pais="Portugal";
@@ -415,6 +427,30 @@ function RoomForm(){
                 />
             </div>
 
+            <button type="button" className='bb' onClick={handleToggleOptions}>
+                {showEquipmentOptions ? 'Esconde as opções' : 'Adiciona os equipamentos disponíveis no alojamento'}
+            </button>
+            {showEquipmentOptions && (
+                <div className="equipment-options">
+                    {uniqueEquipmentNames.map((equipment, index) => (
+                        <div key={index} className="equipment-option">
+                        <div className="divlabel">
+                            <label htmlFor={`equipment-${index}`}>{equipment}</label>
+                        </div>
+                        <div className="divcheckbox">
+                            <input
+                                type="checkbox"
+                                id={`equipment-${index}`}
+                                value={equipment}
+                                onChange={() => toggleEquipment(equipment)}
+                                checked={equipamentoDisponivel.includes(equipment)}
+                            />
+                        </div>
+                        </div>
+                    ))}
+                </div>
+            )}
+
             <div className="location-info-container2">
 
                 <div className="label-container3">
@@ -563,29 +599,7 @@ function RoomForm(){
                 title="Descreva a vista"
             />
 
-            <button type="button" className='bb' onClick={handleToggleOptions}>
-                {showEquipmentOptions ? 'Esconde as opções' : 'Adiciona os equipamentos disponíveis no alojamento'}
-            </button>
-            {showEquipmentOptions && (
-                <div className="equipment-options">
-                    {uniqueEquipmentNames.map((equipment, index) => (
-                        <div key={index} className="equipment-option">
-                        <div className="divlabel">
-                            <label htmlFor={`equipment-${index}`}>{equipment}</label>
-                        </div>
-                        <div className="divcheckbox">
-                            <input
-                                type="checkbox"
-                                id={`equipment-${index}`}
-                                value={equipment}
-                                onChange={() => toggleEquipment(equipment)}
-                                checked={equipamentoDisponivel.includes(equipment)}
-                            />
-                        </div>
-                        </div>
-                    ))}
-                </div>
-            )}
+<button type="button" className='bb' onClick={handleClick} style={{ backgroundColor: clicked ? 'green' : '' }}>Deseja que o seu Quarto seja avaliado pelos nossos um dos nossos funcionários?</button>
 
             <button type="submit">Submit</button>
         </form>
