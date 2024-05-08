@@ -6,6 +6,7 @@ import { useUser } from "./UserContext";
 import { useNavigate } from 'react-router-dom';
 import roomsData from './rooms.json';
 import Footer from "./footer";
+import avaliadortable from "./avaliadortable";
 
 
 function HomeAvaliador() {
@@ -37,60 +38,64 @@ function HomeAvaliador() {
         <><div>
             <NavBarAvaliador />
             <div className="favorites-container">
-        <div className='titulos gradient-effect'>
-        <h2>Quartos à espera de avaliação</h2>
-        <h5>Existem {favoriteRoomDetails.length} a aguardar avaliação</h5>
-        </div>
-
-            {favoriteRoomDetails.length > 0 ? (
-                favoriteRoomDetails.map(room => {
-                    const isFavorite = getRoomstoAval().includes(room.id);
-                    // Determine if the room is favorited
-                    return (
-                    <div key={room.id} className="projcard projcard-blue mudar" onClick={() => navigate(`/room/${room.id}`)}>
-                        <div className="projcard-innerbox">
-                        <img className="projcard-img" src={room.imagem1} alt={`Room ${room.id}`} />
-                        <div className="projcard-textbox">
-                            <div className="projcard-title">{room.description}</div>
-                            <div className="projcard-subtitle">{room.localizacao}</div>
-                            <div className="projcard-description">{room.description}</div>
-                            <div className="containerList">
-                                <div className="row-list">
-                                    <div className="projcard-description-items">
-                                        <img className="mini" src="../../src/images/bed.png" /> Cama {room.Cama}
-                                    </div>
-                                    <div className="projcard-description-items">
-                                        <img className="mini" src="../../src/images/building.png" />Andar: {room.Andar}
-                                    </div>
-                                </div>
-                                <div className="row-list">
-                                    <div className="projcard-description-items">
-                                        <img className="mini" src="../../src/images/area.png" /> Área total: {room.area} m²
-                                    </div>
-                                    <div className="projcard-description-items">
-                                        <img className="mini" src="../../src/images/WC.png" />{room.WC}
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="projcard-tagbox">
-                            {room.mobilia.map((service, index) => (
-                                <span key={index} className="projcard-tag">{service}</span>
-                            ))}
-                            </div>
-                        </div>
-                        </div>
-                        <div className="projcard-price" style={{float:"right", padding:"10px 10px 0px 0px", fontSize:"20px"}}>{room.price}€ / mês</div>
-                        <div className="centered-heart">
-                        </div>
-                    </div>
-                    );
-                })
-                ) : (
-                <div className="no-favorites">
+                <div className='titulos gradient-effect'>
+                    <h2>Quartos à espera de avaliação</h2>
+                    <h5>Existem {favoriteRoomDetails.length} a aguardar avaliação</h5>
                 </div>
-            )}
-        </div>
-        </div><Footer /></>
+
+                {favoriteRoomDetails.length > 0 ? (
+                    favoriteRoomDetails.map(room => {
+                        const isFavorite = getRoomstoAval().includes(room.id);
+                        // Determine if the room is favorited
+                        return (
+                            <div key={room.id} className="projcard projcard-blue mudar" onClick={() => navigate(`/room/${room.id}`)}>
+                                <div className="projcard-innerbox">
+                                    <img className="projcard-img" src={room.imagem1} alt={`Room ${room.id}`} />
+                                    <div className="projcard-textbox">
+                                        <div className="projcard-title">{room.description}</div>
+                                        <div className="projcard-subtitle">{room.localizacao}</div>
+                                        <div className="projcard-description">{room.description}</div>
+                                        <div className="containerList">
+                                            <div className="row-list">
+                                                <div className="projcard-description-items">
+                                                    <img className="mini" src="../../src/images/bed.png" /> Cama {room.Cama}
+                                                </div>
+                                                <div className="projcard-description-items">
+                                                    <img className="mini" src="../../src/images/building.png" />Andar: {room.Andar}
+                                                </div>
+                                            </div>
+                                            <div className="row-list">
+                                                <div className="projcard-description-items">
+                                                    <img className="mini" src="../../src/images/area.png" /> Área total: {room.area} m²
+                                                </div>
+                                                <div className="projcard-description-items">
+                                                    <img className="mini" src="../../src/images/WC.png" />{room.WC}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="projcard-tagbox">
+                                            {room.mobilia.map((service, index) => (
+                                                <span key={index} className="projcard-tag">{service}</span>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="projcard-price" style={{ float: "right", padding: "10px 10px 0px 0px", fontSize: "20px" }}>{room.price}€ / mês</div>
+                                <div className="centered-heart">
+                                </div>
+                            </div>
+                        );
+                    })
+                ) : (
+                    <div className="no-favorites">
+                    </div>
+                )}
+                <avaliadortable />
+            </div>
+            <table />
+        </div><div style={{marginTop:"100%"}}> 
+                <Footer />
+            </div></>
     );
 }
 
