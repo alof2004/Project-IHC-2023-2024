@@ -24,6 +24,7 @@ import RoomsUniListPage from './components/RoomsUniListPage';
 import PerfilLandlord from './components/PerfilLandlord';
 import AjudaLandlord from './components/AjudaLandlord';
 import PerfilCertificator from './components/PerfilCertificator';
+import Avaliar from './components/Avaliar';
 
 
 
@@ -59,6 +60,7 @@ function App() {
             <Route path="/perfillandlord" element={<PerfilLandlord/>} />
             <Route path="/perfilclient" element={<PerfilLandlord/>} />
             <Route path="/perfilcertificator" element={<PerfilCertificator/>} /> 
+            <Route path="/avaliar:ID" element={<Avaliar/>} />
           </Routes>
         </FavoriteRoomsProvider>
       </AuthProvider>
