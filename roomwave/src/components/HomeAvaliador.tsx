@@ -90,10 +90,10 @@ function HomeAvaliador() {
                     <div className="no-favorites">
                     </div>
                 )}
-                <Avaliadortable />
             </div>
-            <table />
-        </div><div style={{marginTop:"100%"}}> 
+        </div>
+        <Avaliadortable />
+            <div style={{marginTop:"100%"}}> 
                 <Footer />
             </div></>
     );
