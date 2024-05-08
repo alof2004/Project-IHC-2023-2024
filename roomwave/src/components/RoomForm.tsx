@@ -468,7 +468,7 @@ function RoomForm(){
                                 type="checkbox"
                                 id={`mobil-${index}`}
                                 value={mobil}
-                                onChange={() => toggleEquipment(mobil)}
+                                onChange={() => toggleMobilia(mobil)}
                                 checked={mobilia.includes(mobil)}
                             />
                         </div>
