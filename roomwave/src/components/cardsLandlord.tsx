@@ -13,8 +13,7 @@ const RoomSlider = () => {
   const userData = JSON.parse(localStorage.getItem('userData') || '{}');
   const userPhoneNumber = userData.phone || ''; // Assuming phoneNumber is stored in userData
 
-  const filteredRooms = roomData.filter(room => room.telefone === userPhoneNumber);
-
+  const filteredRooms = roomData.filter(room => room.telefone === parseInt(userPhoneNumber));
   const renderRatingStars = (rating: number) => {
     const stars = [];
     const fullStars = Math.floor(rating);
@@ -54,14 +53,20 @@ const RoomSlider = () => {
   const handlePrevPage = () => {
     setActivePage((prevPage) => prevPage - 1);
   };
-  const pages = filteredRooms;
+  const pages = splitRoomsIntoPages(filteredRooms, itemsPerPage);
   if (pages.length === 0) {
-    return (<></>);
+    return (
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', paddingTop:"50px" }}>
+      <Link to="/addroom">
+      <button className='arrendar'>
+        <h1 style={{ fontSize: "60px" }}>Ainda não adicionou quartos na nossa plataforma</h1><h1 style={{fontSize:"60px"}}>Clique aqui para adicionar</h1></button>
+      </Link>
+      </div>);
   }
   else
   return (
     <div className="px-0">
-      <h1 style={{ marginLeft: "4%", marginTop: "4%", fontSize: "60px" }}>Quartos vistos recentemente...</h1>
+      <h1 style={{ marginLeft: "4%", marginTop: "4%", fontSize: "60px" }}>Os meus quartos:</h1>
       <div className="room-slider-container">
         <div className="d-flex justify-content-between align-items-center">
           <button className="btn btn-light btn-xl" onClick={handlePrevPage} disabled={activePage === 0}><FiChevronLeft size={100} style={{ backgroundColor: "transparent", border: "none" }} /></button>

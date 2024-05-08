@@ -54,6 +54,7 @@ interface Room {
     Avaliacao: number;
     data_entrada: string;
     data_saida: string;
+    telefone: number;
    }
 
 
@@ -110,7 +111,7 @@ function RoomDetails(){
                     {userData ? (
                         <div className='title_info_number'>
                             <img src="../../src/images/telefone_icon.png" width='80px' height='50px' alt="telefone icon" />
-                            <span>Telefone: 914439900</span>
+                            <span>Telefone: {room.telefone}</span>
                         </div>                    
                         ) : (
                         <Link to="/login" style={{ textDecoration: 'none', color: 'inherit' }}>

@@ -5,7 +5,7 @@ import HomeText from './HomeText';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Footer from './footer';
-import CardsClientHome from './cardsClientHome';
+import CardsClientHome from './cardsLandlord';
 import ImageHome from './ImageHome';
 import ImageHomeesquerda from './ImageHomeesqueda';
 import LastImageHome from './LastImageHome';

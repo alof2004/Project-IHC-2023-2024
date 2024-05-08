@@ -91,13 +91,22 @@ const StyledButton = styled.button`
 
 const StyledLabel = styled.label`
   color: var(--color-light);
-  font-size: 1.6rem;
+  font-size: 1.9rem;
   margin-bottom: 0.8rem;
+  
+`;
+
+const ErrorMessage = styled.p`
+  color: #ff0000 !important;
+  font-family: var(--font-fam);
+  font-size: 1.5rem !important;
+  margin-top: 0.3rem !important; 
 `;
 
 const SearchForm = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [showDatalist, setShowDatalist] = useState(false);
+  const [showError, setShowError] = useState(false);
   const navigate = useNavigate(); // Use the navigate function
 
   useEffect(() => {
@@ -108,15 +117,25 @@ const SearchForm = () => {
     }
   }, [searchQuery]);
 
+  useEffect(() => {
+    console.log("Component re-rendered");
+  }, [showError]);
+  
   const handleSubmit = (event: { preventDefault: () => void; }) => {
     event.preventDefault();
     console.log('Search query:', searchQuery);
-    // Navigate to the room based on the selected university
-    navigate(`/uni/${searchQuery}`);
+
+    // Check if the selected university is valid
+    if (universities.includes(searchQuery)) {
+      navigate(`/uni/${searchQuery}`);
+    } else {
+      setShowError(true);
+    }
   };
 
   const handleChange = (event: { target: { value: React.SetStateAction<string>; }; }) => {
     setSearchQuery(event.target.value);
+    setShowError(false); // Hide error message when input changes
   };
 
   return (
@@ -129,8 +148,9 @@ const SearchForm = () => {
         required
         value={searchQuery}
         onChange={handleChange}
-        list={showDatalist? "universities" : ""}
+        list={showDatalist ? "universities" : ""}
       />
+      <StyledButton type="submit">Ir</StyledButton>
       {showDatalist && (
         <StyledDatalist id="universities">
           {universities.map((university, index) => (
@@ -140,7 +160,7 @@ const SearchForm = () => {
           ))}
         </StyledDatalist>
       )}
-      <StyledButton type="submit">Ir</StyledButton>
+      {showError && <ErrorMessage>Seleciona uma universidade da lista.</ErrorMessage>}
     </StyledForm>
   );
 };

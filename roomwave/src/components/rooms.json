@@ -204,10 +204,10 @@
     {
         "id": 4,
         "Proprietaria": "Carlos Ferreira",
-        "imagem1": "../src/images/quarto4.jpg",
-        "imagem2": "../src/images/quarto4_2.jpg",
-        "imagem3": "../src/images/quarto4_3.jpg",
-        "imagem4": "../src/images/quarto4_4.jpg",
+        "imagem1": "../../src/images/quarto4.jpg",
+        "imagem2": "../../src/images/quarto4_2.jpg",
+        "imagem3": "../../src/images/quarto4_3.jpg",
+        "imagem4": "../../src/images/quarto4_4.jpg",
         "localizacao": "Rua das Palmeiras Nº5",
         "Locais_proximos": [
             "Universidade do Porto",
