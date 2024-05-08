@@ -9,7 +9,7 @@ import Modal from './Modal';
 import HeartIcon from './HeartIcon';
 import NavBar from './NavBar';
 import MyMapApp from './Map';
-import { format, isToday } from 'date-fns';
+import { format, isToday, set } from 'date-fns';
 import StarRating from './StarRating';
 import MapModal from './MapModal';
 
@@ -134,10 +134,21 @@ function RoomsListPage() {
     };
     
     useEffect(() => {
-        const filtered = roomsData.filter(room => room.cidade === city);
-        setRooms(filtered);
-        setFilteredRooms(filtered);
+        // Retrieve the roomsData from localStorage
+        const roomsDataString = localStorage.getItem('roomsData');
+        if (roomsDataString) {
+            // Parse the stringified array back into a JavaScript object
+            const storedRoomsData = JSON.parse(roomsDataString);
+    
+            // Assuming you want to merge the roomsData from JSON with the roomsData from localStorage
+            const mergedRoomsData = [...roomsData, ...storedRoomsData];
+            console.log(mergedRoomsData);
+            const filtered = mergedRoomsData.filter(room => room.cidade === city);
+            setRooms(filtered);
+            setFilteredRooms(filtered);
+        }
     }, [city]);
+    
 
     useEffect(() => {
         const newFilteredRooms = rooms.filter(room => {

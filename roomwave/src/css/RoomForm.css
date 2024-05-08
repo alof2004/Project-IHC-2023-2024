@@ -14,8 +14,8 @@ body, html {
 }
 
 .addroom-form {
-    width: 1250px; 
-    padding: 20px;
+    width: 1750px; 
+    padding: 40px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     background-color: #333333;
@@ -31,7 +31,7 @@ body, html {
 
 .addroom-form input, select {
     width: calc(100% - 24px); 
-    height: 40px;
+    height: 45px;
     margin-bottom: 30px;
     padding: 0 8px; 
     border: 1px solid #ddd;
@@ -76,7 +76,7 @@ body, html {
 
 
 .name-space {
-    margin: 0 5px; /* Adjust the margin as needed */
+    margin:0 5px; /* Adjust the margin as needed */
 }
 
 .job-pass {
@@ -187,7 +187,7 @@ body, html {
     color: white;
     vertical-align: middle; /* Align vertically with the label below */
     margin-right: 9px;
-    margin-top: 0px;
+    margin-top: 20px;
 }
 
 .image-upload-label{
@@ -262,7 +262,6 @@ body, html {
 }
 
 .location-info-container1 {
-    width: 1200px;
     display: flex;
     flex-wrap: wrap;
     margin-top: 20px;
@@ -291,7 +290,7 @@ body, html {
     margin-bottom: 20px;
     /* Adjust width as needed */
     width: auto;
-    width: 120px;
+    width: 150px;
 }
 
 .label-container4 {
@@ -300,7 +299,7 @@ body, html {
     margin-bottom: 20px;
     /* Adjust width as needed */
     width: auto;
-    width: 100px;
+    width: 150px;
 }
 
 .label-container5 {
@@ -341,7 +340,7 @@ body, html {
 }
 
 .equipment-option label {
-    font-size: 0.9em; /* Adjust the font size as needed */
+    font-size: 1.3em; /* Adjust the font size as needed */
 }
 
 .selected-equipment {

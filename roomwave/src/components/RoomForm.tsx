@@ -59,9 +59,8 @@ function RoomForm(){
         const roomsData = JSON.parse(localStorage.getItem('roomsData') || '[]');
         // If there are no rooms, start with ID 1
         if (roomsData.length === 0) {
-            return 1;
+            return null;
         }
-        // Otherwise, find the highest ID and increment it
         const highestId = Math.max(...roomsData.map((room: { id: number }) => room.id));
         return highestId + 1;
     };
@@ -130,10 +129,9 @@ function RoomForm(){
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault(); // Prevent the default form submission behavior
         
-        const newRoomId = generateRoomId();
         // Construct an object with the form data
         const formData = {
-            id: newRoomId,              //ta
+            id: 100,              //ta
             proprietaria,               //ta
             telefone,                   //ta
             images: images,             //ta
@@ -172,7 +170,7 @@ function RoomForm(){
         };
     
         console.log(formData);
-        
+        const user = JSON.parse(localStorage.getItem('userData') || '{}');
         formData.proprietaria = user?.firstname + " " + user?.lastname;
         formData.telefone = user?.phone ?? '';
         formData.avaliacao= 0;
@@ -180,6 +178,10 @@ function RoomForm(){
         formData.pais="Portugal";
         // Assuming you have a mechanism to store all rooms in an array in localStorage
         const roomsData = JSON.parse(localStorage.getItem('roomsData') || '[]');
+        const newNumber = generateRoomId();
+        if (newNumber) {
+            formData.id = newNumber;
+        }
         roomsData.push(formData);
         localStorage.setItem('roomsData', JSON.stringify(roomsData));
         console.log('New room added:', formData);
@@ -191,7 +193,7 @@ function RoomForm(){
         <form className="addroom-form" onSubmit={handleSubmit}>
             <h2>Room Form</h2>
 
-            <label htmlFor="localizacao" className="label1">Morada(Rua)</label>
+            <label htmlFor="localizacao" className="label1">Morada (Rua)</label>
             <input
                 type="text"
                 placeholder="Morada"
@@ -289,10 +291,10 @@ function RoomForm(){
 
             </div>
             
-            <label htmlFor="localizacao" className="label1">Title</label>
+            <label htmlFor="localizacao" className="label1">Titulo</label>
             <input
                 type="text"
-                placeholder="Title"
+                placeholder="Escreva uma pequena frase que descreva o quarto (Esta frase é a que irá aparecer destacada no anuncio do seu quarto)"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 maxLength={80}
@@ -304,11 +306,11 @@ function RoomForm(){
             <div className="location-info-container1">
                 <div className="label-container2">
                     <div className="dropdown-container">
-                        <label className="dropdown-label">Transport Distance</label>
+                        <label className="dropdown-label" style={{marginTop:"13px"}}>Transport Distance</label>
                         <input
                             type="text"
                             value={transportes}
-                            placeholder="Select Distance"
+                            placeholder="Seleciona a distância da casa ao transporte público mais próximo (autocarro, metro, comboio)" 
                             readOnly
                             onClick={handleToggle}
                             className="dropdown-input"
@@ -426,10 +428,7 @@ function RoomForm(){
                     title="Insira aqui uma descrição do quarto"
                 />
             </div>
-
-            <button type="button" className='bb' onClick={handleToggleOptions}>
-                {showEquipmentOptions ? 'Esconde as opções' : 'Adiciona os equipamentos disponíveis no alojamento'}
-            </button>
+            <label className="label1">Equipamento disponível:</label>
             {showEquipmentOptions && (
                 <div className="equipment-options">
                     {uniqueEquipmentNames.map((equipment, index) => (
