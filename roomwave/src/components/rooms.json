@@ -37,7 +37,7 @@
             "Jovens profissionais e universitários"
         ],
         "gastos": "incluídas",
-        "Animais": "Admitidos",
+        "Animais": "permitidos",
         "Fumadores": "interdito",
         "area": 15,
         "Vista": "virada a sul para praceta muito sossegada e ainda para a ria de Aveiro",
@@ -261,5 +261,316 @@
         "data_entrada": "2024-07-01T00:00:00.000Z",
         "data_saida": "2024-08-31T00:00:00.000Z",
         "telefone":912345678
+    },
+    {
+        "id": 5,
+        "Proprietaria": "Mariana Santos",
+        "imagem1": "../../src/images/quarto5.jpg",
+        "imagem2": "../../src/images/quarto5_2.jpg",
+        "imagem3": "../../src/images/quarto5_3.jpg",
+        "imagem4": "../../src/images/quarto5_4.jpg",
+        "localizacao": "Rua de Manuel Luiz Nogueira",
+        "Locais_proximos": [
+            "Universidade de Aveiro",
+            "Supermercado Lidl",
+            "Farmácia Central"
+        ],
+        "cidade": "Aveiro",
+        "país": "Portugal",
+        "latitude": 40.644647,
+        "longitude":  -8.653521,
+        "description": "Quarto com cama de casal e varanda",
+        "Transportes": " a 100 m",
+        "mobilia": [
+            "Cama de casal",
+            "Mesa de estudo",
+            "Guarda-roupa",
+            "Poltrona",
+            "Mesa de cabeceira"
+        ],
+        "Descrição_Proprietaria": "Apartamento bem localizado, próximo a áreas verdes e universidade.",
+        "Cama": "de casal",
+        "Cozinha": "Compartilhada",
+        "casas_de_banho": 1,
+        "Ambiente": "calmo",
+        "price": 360,
+        "Pessoas_permitidas": [
+            "Masculino e Feminino",
+            "Estudantes universitários"
+        ],
+        "gastos": "não incluídos",
+        "Animais": "não permitidos",
+        "Fumadores": "não permitidos",
+        "area": 15,
+        "Vista": "para a rua",
+        "Renda_inclui": [],
+        "Equipamento_disponivel": [
+            "Frigorífico",
+            "Micro-ondas",
+            "Forno",
+            "Placa de fogão"
+        ],
+        "Genero": [
+            "Masculino",
+            "Feminino"
+        ],
+        "TipoQuarto": "Individual",
+        "WC": "Partilhado",
+        "Alojamento": "Apartamento",
+        "Andar": "2º",
+        "Avaliado": "Não",
+        "Avaliacao": 0,
+        "data_entrada": "2024-07-01T00:00:00.000Z",
+        "data_saida": "2024-08-31T00:00:00.000Z",
+        "telefone":912345678
+    },
+    {
+        "id": 6,
+        "Proprietaria": "Ana Moura",
+        "imagem1": "../../src/images/quarto6.jpg",
+        "imagem2": "../../src/images/quarto6_2.jpg",
+        "imagem3": "../../src/images/quarto6_3.jpg",
+        "imagem4": "../../src/images/quarto6_4.jpg",
+        "localizacao": "Rua Banda da Amizade",
+        "Locais_proximos": [
+            "Universidade de Aveiro",
+            "Supermercado Lidl",
+            "Estação de Comboios"
+        ],
+        "cidade": "Aveiro",
+        "país": "Portugal",
+        "latitude":  40.634234,
+        "longitude":   -8.646222,
+        "description": "Quarto com cama de casal e varanda",
+        "Transportes": " a 100 m",
+        "mobilia": [
+            "Cama de casal",
+            "Mesa de estudo",
+            "Guarda-roupa",
+            "Poltrona",
+            "Mesa de cabeceira"
+        ],
+        "Descrição_Proprietaria": "Apartamento bem localizado, próximo a áreas verdes e universidade.",
+        "Cama": "de casal",
+        "Cozinha": "Compartilhada",
+        "casas_de_banho": 1,
+        "Ambiente": "calmo",
+        "price": 500,
+        "Pessoas_permitidas": [
+            "Masculino e Feminino",
+            "Estudantes universitários"
+        ],
+        "gastos": "não incluídos",
+        "Animais": "não permitidos",
+        "Fumadores": "não permitidos",
+        "area": 15,
+        "Vista": "para a rua",
+        "Renda_inclui": [],
+        "Equipamento_disponivel": [
+            "Frigorífico",
+            "Micro-ondas",
+            "Forno",
+            "Placa de fogão"
+        ],
+        "Genero": [
+            "Masculino",
+            "Feminino"
+        ],
+        "TipoQuarto": "Individual",
+        "WC": "Partilhado",
+        "Alojamento": "Apartamento",
+        "Andar": "1º",
+        "Avaliado": "Não",
+        "Avaliacao": 0,
+        "data_entrada": "2024-03-01T00:00:00.000Z",
+        "data_saida": "2024-08-31T00:00:00.000Z",
+        "telefone":916161615
+    },
+    {
+        "id": 7,
+        "Proprietaria": "João Almeida",
+        "imagem1": "../../src/images/quarto7.jpg",
+        "imagem2": "../../src/images/quarto7_2.jpg",
+        "localizacao": "Avenida da Forca Aerea Portugues",
+        "Locais_proximos": [
+            "Universidade de Aveiro",
+            "Supermercado Lidl",
+            "Estação de Comboios"
+        ],
+        "cidade": "Aveiro",
+        "país": "Portugal",
+        "latitude":  40.688993,
+        "longitude":   -8.603370,
+        "description": "Quarto com cama de casal e varanda",
+        "Transportes": " a 300 m",
+        "mobilia": [
+            "Cama de casal",
+            "Mesa de estudo",
+            "Guarda-roupa",
+            "Poltrona",
+            "Mesa de cabeceira"
+        ],
+        "Descrição_Proprietaria": "Apartamento bem localizado, próximo a áreas verdes e universidade.",
+        "Cama": "de casal",
+        "Cozinha": "Compartilhada",
+        "casas_de_banho": 1,
+        "Ambiente": "calmo",
+        "price": 500,
+        "Pessoas_permitidas": [
+            "Masculino e Feminino",
+            "Estudantes universitários",
+            "Casais"
+        ],
+        "gastos": "não incluídos",
+        "Animais": "não permitidos",
+        "Fumadores": "não permitidos",
+        "area": 15,
+        "Vista": "para a rua",
+        "Renda_inclui": [],
+        "Equipamento_disponivel": [
+            "Frigorífico",
+            "Micro-ondas",
+            "Forno",
+            "Placa de fogão"
+        ],
+        "Genero": [
+            "Masculino",
+            "Feminino",
+            "Casais"
+        ],
+        "TipoQuarto": "Individual",
+        "WC": "Partilhado",
+        "Alojamento": "Apartamento",
+        "Andar": "1º",
+        "Avaliado": "Não",
+        "Avaliacao": 0,
+        "data_entrada": "2024-03-01T00:00:00.000Z",
+        "data_saida": "2024-08-31T00:00:00.000Z",
+        "telefone":916161614
+    },
+    {
+        "id": 8,
+        "Proprietaria": "Bruno Teixeira",
+        "imagem1": "../../src/images/quarto8.jpg",
+        "imagem2": "../../src/images/quarto8_2.jpg",
+        "localizacao": "Rua 25 abril"        ,
+        "Locais_proximos": [
+            "Escola Superior Educação de Beja",
+            "Supermercado Lidl",
+            "Estação de Comboios"
+        ],
+        "cidade": "Beja",
+        "país": "Portugal",
+        "latitude":   38.011626,
+        "longitude":  -7.867885,
+        "description": "Quarto com cama de casal e varanda",
+        "Transportes": " a 300 m",
+        "mobilia": [
+            "Cama de casal",
+            "Mesa de estudo",
+            "Guarda-roupa",
+            "Poltrona",
+            "Mesa de cabeceira"
+        ],
+        "Descrição_Proprietaria": "Apartamento bem localizado, próximo a áreas verdes e universidade.",
+        "Cama": "de casal",
+        "Cozinha": "Compartilhada",
+        "casas_de_banho": 1,
+        "Ambiente": "calmo",
+        "price": 350,
+        "Pessoas_permitidas": [
+            "Masculino e Feminino",
+            "Estudantes universitários",
+            "Casais"
+        ],
+        "gastos": "não incluídos",
+        "Animais": "não permitidos",
+        "Fumadores": "não permitidos",
+        "area": 15,
+        "Vista": "para a rua",
+        "Renda_inclui": [],
+        "Equipamento_disponivel": [
+            "Frigorífico",
+            "Micro-ondas",
+            "Forno",
+            "Placa de fogão"
+        ],
+        "Genero": [
+            "Masculino",
+            "Feminino",
+            "Casais"
+        ],
+        "TipoQuarto": "Individual",
+        "WC": "Partilhado",
+        "Alojamento": "Apartamento",
+        "Andar": "1º",
+        "Avaliado": "Não",
+        "Avaliacao": 0,
+        "data_entrada": "2024-03-01T00:00:00.000Z",
+        "data_saida": "2024-08-31T00:00:00.000Z",
+        "telefone":916161614
+    },
+    {
+        "id": 9,
+        "Proprietaria": "José Morais",
+        "imagem1": "../../src/images/quarto8.jpg",
+        "imagem2": "../../src/images/quarto8_2.jpg",
+        "localizacao": "Rua António Sérgio",
+        "Locais_proximos": [
+            "Escola Superior Educação de Beja",
+            "Supermercado Lidl",
+            "Estação de Comboios"
+        ],
+        "cidade": "Beja",
+        "país": "Portugal",
+        "latitude":   40.923277,
+        "longitude":  -8.556163,
+        "description": "Quarto com cama de casal e varanda",
+        "Transportes": " a 300 m",
+        "mobilia": [
+            "Cama de casal",
+            "Mesa de estudo",
+            "Guarda-roupa",
+            "Poltrona",
+            "Mesa de cabeceira",
+            "Armário"
+        ],
+        "Descrição_Proprietaria": "Apartamento bem localizado, próximo a áreas verdes e universidade.",
+        "Cama": "de casal",
+        "Cozinha": "Compartilhada",
+        "casas_de_banho": 1,
+        "Ambiente": "calmo",
+        "price": 350,
+        "Pessoas_permitidas": [
+            "Masculino e Feminino",
+            "Estudantes universitários",
+            "Casais"
+        ],
+        "gastos": "não incluídos",
+        "Animais": "não permitidos",
+        "Fumadores": "não permitidos",
+        "area": 15,
+        "Vista": "para a rua",
+        "Renda_inclui": [],
+        "Equipamento_disponivel": [
+            "Frigorífico",
+            "Micro-ondas",
+            "Forno",
+            "Placa de fogão"
+        ],
+        "Genero": [
+            "Masculino",
+            "Feminino",
+            "Casais"
+        ],
+        "TipoQuarto": "Individual",
+        "WC": "Partilhado",
+        "Alojamento": "Apartamento",
+        "Andar": "1º",
+        "Avaliado": "Não",
+        "Avaliacao": 0,
+        "data_entrada": "2024-03-01T00:00:00.000Z",
+        "data_saida": "2024-09-31T00:00:00.000Z",
+        "telefone":916161619
     }
 ]
