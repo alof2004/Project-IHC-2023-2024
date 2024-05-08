@@ -60,7 +60,7 @@ function App() {
             <Route path="/perfillandlord" element={<PerfilLandlord/>} />
             <Route path="/perfilclient" element={<PerfilLandlord/>} />
             <Route path="/perfilcertificator" element={<PerfilCertificator/>} /> 
-            <Route path="/avaliar:ID" element={<Avaliar/>} />
+            <Route path="/avaliar/:ID" element={<Avaliar/>} />
           </Routes>
         </FavoriteRoomsProvider>
       </AuthProvider>
