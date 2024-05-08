@@ -388,8 +388,8 @@ function RoomsListPage() {
                 <div>
                     <select className="button-79" onChange={(e) => handleFilter({ animais: e.target.value })}>
                         <option onClick={()=> handleFilter({animais: ''})} value="">Animais</option>
-                        <option onClick={()=> handleFilter({animais: 'admitos'})} value="admitidos">Animais Permitidos</option>
-                        <option onClick={()=> handleFilter({animais: 'proíbidos'})} value="proíbidos">Animais Proíbidos</option>
+                        <option onClick={()=> handleFilter({animais: 'permitidos'})} value="permitidos">Animais Permitidos</option>
+                        <option onClick={()=> handleFilter({animais: 'não permitidos'})} value="não permitidos">Animais Proíbidos</option>
                     </select>
                 </div>
                 <div>

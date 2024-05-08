@@ -36,7 +36,6 @@ function App() {
       <UserProvider>
       <AuthProvider>
         <FavoriteRoomsProvider>
-        <div>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/homeClient" element={<HomeClient />} />
@@ -59,10 +58,8 @@ function App() {
             <Route path="/uni/:uni" element={<RoomsUniListPage/>} />
             <Route path="/perfillandlord" element={<PerfilLandlord/>} />
             <Route path="/perfilclient" element={<PerfilLandlord/>} />
-            <Route path="/perfilcertificator" element={<PerfilCertificator/>} />
-            
+            <Route path="/perfilcertificator" element={<PerfilCertificator/>} /> 
           </Routes>
-        </div>
         </FavoriteRoomsProvider>
       </AuthProvider>
       </UserProvider>

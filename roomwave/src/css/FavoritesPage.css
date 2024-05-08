@@ -9,6 +9,18 @@
     border-radius: 10px;
 }
 
+.favorites-container-1 {
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 95%;
+  align-items: center;
+  margin: 0 auto; /* This centers the element horizontally */
+    margin-top: 20px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+
 
 .return{
     width: 100%;
@@ -58,4 +70,13 @@
     background-size: 200% auto;
     animation: gradientChange 5s ease infinite;
   }
+
+  .gradient-effect-1 {
+    background: linear-gradient(9deg, rgba(224,79,39,1) 0%, rgba(255,136,0) 50%, rgb(218, 93, 35) 100%);
+    color: white;
+    text-shadow: 2px 2px 2px #000000;
+    background-size: 100% auto;
+    animation: gradientChange 5s ease infinite;
+  }
+  
   

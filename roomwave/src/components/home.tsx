@@ -1,6 +1,6 @@
 import NavBar from './NavBar';
 import HomeText from './HomeText';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../css/Home.css';
 import Footer from './footer';
@@ -23,10 +23,12 @@ function Home() {
   const lastSegment = url.substring(url.lastIndexOf('/') + 1);
   console.log(lastSegment); // Output: "Guarda"
 
-
+  useEffect(() => {
   if (localStorage.getItem("userData") != null) {
     const userData = JSON.parse(localStorage.getItem("userData") || '{}');
     const tipo = userData.type;
+    console.log(tipo);
+    if (tipo!= null) {
     if (tipo === "client") {
       navigate('/homeClient');
     }
@@ -37,6 +39,7 @@ function Home() {
       navigate('/homeAvaliador');
     }
   }
+  }});
 
   return (
     <div>
