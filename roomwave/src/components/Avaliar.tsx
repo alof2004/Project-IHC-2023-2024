@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
 import NavBarAvaliador from './NavBarAvaliador';
+import '../css/Avaliar.css';
 
-const ZungApp: React.FC = () => {
+function Avaliar() {
     const responses: string[] = [
-        'Muito Mau',
-        'Mau',
-        'Aceitável',
+        'Muito Fraco',
+        'Fraco',
+        'Razoável',
         'Bom',
         'Muito Bom'
     ];
 
     const survey: { scores: number[], statement: string }[] = [
-        { scores: [1, 2, 3, 4, 5], statement: 'I feel down-hearted and blue' },
+        { scores: [1, 2, 3, 4, 5], statement: 'Limpeza geral do quarto' },
         { scores: [5, 4, 3, 2, 1], statement: 'Morning is when I feel the best' },
         { scores: [1, 2, 3, 4, 5], statement: 'I have crying spells or feel like it' },
         { scores: [1, 2, 3, 4, 5], statement: 'I have trouble sleeping at night' },
@@ -47,13 +48,17 @@ const ZungApp: React.FC = () => {
     const score = (): number => {
         let totalScore: number = 0;
         let totalChecks: number = 0;
-
+    
         scores.forEach((score: number) => {
             totalScore += score;
             totalChecks++;
         });
-
-        setChecks(totalChecks);
+    
+        // Only update checks when necessary
+        if (totalChecks !== checks) {
+            setChecks(totalChecks);
+        }
+    
         return totalScore;
     };
 
@@ -72,7 +77,6 @@ const ZungApp: React.FC = () => {
         <>
             <NavBarAvaliador />
             <div className="zung container">
-                <style>{`@import url('//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/css/bootstrap.css');`}</style>
                 <div className="page-header">
                     <h1>Zung Self-Rating Depression Scale</h1>
                 </div>
@@ -106,20 +110,12 @@ const ZungApp: React.FC = () => {
                         <h3 className="panel-title">Score</h3>
                     </div>
                     <div className="panel-body">
-                        <p>Your score: <strong>{score()}</strong> &nbsp;<span className={`badge ${range().stateClass}`}><span className={`glyphicon ${range().iconClass}`}></span>{range().description}</span>&nbsp;&nbsp;<a className="send btn btn-xs btn-primary" href={mailto()} style={{ display: checks === survey.length ? 'block' : 'none' }}><span className="glyphicon glyphicon-envelope"></span>Send Score</a></p>
+                        <p>Your score: <strong>{score()}</strong> &nbsp;</p>
                     </div>
-                </div>
-                <div className="text-muted">
-                    <p>Adapted from Zung<a href="#note-2"><sup>2</sup></a>.</p>
-                    <p><strong>References:</strong></p>
-                    <ol>
-                        <li><a id="note-1"></a> Carroll BJ, Fielding JM, Blashki TG. Depression rating scales: a critical review. Arch Gen Psychiatry. 1973; 28:361-366.</li>
-                        <li><a id="note-2"></a> Zung WWK. A self-rating depression scale. Arch Gen Psychiatry. 1965; 12:63-70</li>
-                    </ol>
                 </div>
             </div>
         </>
     );
 }
 
-export default ZungApp;
+export default Avaliar;
