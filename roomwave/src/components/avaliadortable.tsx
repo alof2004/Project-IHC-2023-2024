@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
-import rooms from './rooms.json';
+import roomsData from './rooms.json';
+import { useNavigate } from 'react-router-dom';
 
 const AvaliadorTable = () => {
   const [currentPage, setCurrentPage] = useState(0);
+  const navigate = useNavigate();
+  const [rooms, setRooms] = useState(roomsData);
 
   const handleNextPage = () => {
     setCurrentPage(currentPage + 1);
@@ -11,6 +14,22 @@ const AvaliadorTable = () => {
   const handlePreviousPage = () => {
     setCurrentPage(currentPage - 1);
   };
+
+  const handleAvaliarClick = (roomId: number) => {
+    navigate(`/avaliar/${roomId}`);
+  };
+
+  const handleRoom = (roomId: number) => {
+    navigate(`/room/${roomId}`);
+  };
+
+  const handleDeleteClick = (roomId: number) => {
+    // Remove the room from the state
+    const updatedRooms = rooms.filter(room => room.id !== roomId);
+    setRooms(updatedRooms);
+  };
+
+  const roomsAwaitingEvaluation = rooms.filter(room => !room.Avaliacao);
 
   return (
     <div className="table-container">
@@ -89,6 +108,12 @@ const AvaliadorTable = () => {
           }
         `}
       </style>
+      <div className="favorites-container-1">
+                <div className='titulos gradient-effect-1'>
+                    <h2>Quartos à espera de avaliação</h2>
+                    <h5>Existem {roomsAwaitingEvaluation.length} a aguardar avaliação</h5>
+                </div>
+      </div>
       <div className="table">
         <div className="table-header">
           <div>ID</div>
@@ -113,9 +138,9 @@ const AvaliadorTable = () => {
                 </span>
               </div>
               <div className="options">
-                <button><img className="imgIcon" style={{width:"30px", height:"30px"}} src="../../src/images/olho.png" alt="Ícone Ver"/></button>
-                <button><img className="imgIcon" style={{width:"30px", height:"30px"}}src="../../src/images/lapis.png" alt="Ícone Editar"/></button>
-                <button><img className="imgIcon" style={{width:"30px", height:"30px"}}src="../../src/images/lixo.png" alt="Ícone Eliminar"/></button>
+                <button onClick={() => handleRoom(item.id)}><img className="imgIcon" style={{width:"30px", height:"30px"}} src="../../src/images/olho.png" alt="Ícone Ver"/></button>
+                <button onClick={() => handleAvaliarClick(item.id)}><img className="imgIcon" style={{width:"30px", height:"30px"}}src="../../src/images/lapis.png" alt="Ícone Editar"/></button>
+                <button onClick={() => handleDeleteClick(item.id)}><img className="imgIcon" style={{width:"30px", height:"30px"}}src="../../src/images/lixo.png" alt="Ícone Eliminar"/></button>
               </div>
             </div>
           ))}

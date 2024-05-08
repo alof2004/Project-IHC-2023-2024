@@ -9,6 +9,7 @@ import Footer from "./footer";
 import Avaliadortable from "./avaliadortable";
 
 
+
 function HomeAvaliador() {
     const [RoomstoAval, setRoomstoAval] = useState<number[]>([]);
     const { user } = useUser();
@@ -35,6 +36,7 @@ function HomeAvaliador() {
     }, []); /* This centers the element horizontally */
     console.log(RoomstoAval)
 
+    
 
     // Filter the rooms based on favorite room IDs
     const favoriteRoomDetails = roomsData.filter(room => RoomstoAval.includes(room.id));
@@ -45,11 +47,6 @@ function HomeAvaliador() {
         <><div>
             <NavBarAvaliador />
             <div className="favorites-container-1">
-                <div className='titulos gradient-effect-1'>
-                    <h2>Quartos à espera de avaliação</h2>
-                    <h5>Existem {favoriteRoomDetails.length} a aguardar avaliação</h5>
-                </div>
-
                 {favoriteRoomDetails.length > 0 ? (
                     favoriteRoomDetails.map(room => {
                         const isFavorite = getRoomstoAval().includes(room.id);
