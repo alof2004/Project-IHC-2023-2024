@@ -31,7 +31,6 @@ import Avaliar from './components/Avaliar';
 
 
 function App() {
- const { isLoggedIn } = useAuth();
  return (
     <Router>
       <UserProvider>

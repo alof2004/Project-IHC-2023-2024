@@ -55,10 +55,6 @@ interface Room {
  data_saida: string;
 }
 
-interface PriceRangeProps {
-    onRangeChange: (newRange: [number, number]) => void;
-}
-
 function RoomsListPage() {
     const { city } = useParams(); // Get the current city from the URL
     const [rooms, setRooms] = useState<Room[]>([]);
@@ -88,6 +84,7 @@ function RoomsListPage() {
     const [startDate, setStartDate] = useState('');
     const [endDate, setEndDate] = useState('');
     const [modalShow, setModalShow] = React.useState(false);
+
 
 
     const isAvailableToday = (room: Room): boolean => {
@@ -444,11 +441,18 @@ function RoomsListPage() {
                         // Format the next available date
                         nextAvailableDate = format(nextAvailableDate, 'dd/MM/yyyy');
                     }
+                    const hasImages = room.imagem1 || room.imagem2 || room.imagem3 || room.imagem4;
+        
+                    // Define the default image URL
+                    const defaultImage = '../../src/images/default.jpg'; // Replace 'path_to_default_image' with the actual path to your default image
+                    
+                    // If there are no image URLs available, use the default image
+                    const imageUrl = hasImages ? room.imagem1 : defaultImage;
                     
                     return (
                     <div key={room.id} className="projcard projcard-blue" onClick={() => navigate(`/room/${room.id}`)}>
                         <div className="projcard-innerbox">
-                        <img className="projcard-img" src={room.imagem1} alt={`Room ${room.id}`} />
+                        <img className="projcard-img" src={imageUrl} alt={`Room ${room.id}`} />                        
                         <div className="projcard-textbox">
                             <div className="projcard-title">{room.description}</div>
                             <div className="projcard-subtitle"><span className="location-label" style={{color:"#FF7A41",fontWeight:"bold"}}>Localização: </span>{room.localizacao}</div>
