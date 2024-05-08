@@ -35,8 +35,14 @@ function NavBarLandLord() {
         </Link>
         <div className="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
           <ul className="navbar-nav">
+          <li className="nav-item nav-item-flex">
+              <Link to="../../../AddRoom" className="nav-link">
+                <img src="../../src/images/mais.png" width="30" height="30" alt="Home Icon" />
+                Adicionar quarto
+              </Link>
+            </li>
             <li className="nav-item nav-item-flex">
-              <Link to="../../../" className="nav-link">
+              <Link to="../../../homelandlord" className="nav-link">
                 <img src="../../src/images/casa.png" width="30" height="30" alt="Home Icon" />
                 Meus Quartos
               </Link>
