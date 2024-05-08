@@ -9,10 +9,10 @@ import {useParams } from 'react-router-dom'; // Import useNavigate
 import { useLocation, useNavigate } from 'react-router-dom';
 
 
-import Button from './button';
 import Footer from './footer';
 import TemplateDemo from './Table_location';
 import HeartIcon from './HeartIconDetails';
+import Button from '@mui/material/Button';
 
 
 interface Room {
@@ -93,6 +93,8 @@ function RoomDetails(){
         }
     };
 
+    const isAvaliador = userData && JSON.parse(userData).role === 'avaliador';
+
     useEffect(() => {
         if (ID) {
             saveVisitedRoom(ID);
@@ -112,7 +114,10 @@ function RoomDetails(){
             <Link to="/">                   
                  <img src='../../src/images/return.png' className='return-button' alt="return"/>
             </Link>
-            <div className='title_info_more_number_proprietaria'> 
+            {isAvaliador && (
+                        <Button style={{width:"300px", height:"100px", fontSize:"20px", marginTop:"50px", marginLeft:"30px", color:"white", backgroundColor:"#76b476"}} variant="contained" onClick={() => navigate(`/avaliar/${ID}`)}>AVALIAR QUARTO</Button>
+                    )}
+                                <div className='title_info_more_number_proprietaria'> 
                         <div className='title_info_proprietaria'>
                             <h1>
                                 Quarto de {''} 
