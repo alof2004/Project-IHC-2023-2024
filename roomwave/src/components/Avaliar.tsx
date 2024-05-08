@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import NavBarAvaliador from './NavBarAvaliador';
 import '../css/Avaliar.css';
 
 function Avaliar() {
+    const { id } = useParams();
+    const navigate = useNavigate();
+
     const responses: string[] = [
         'Muito Fraco',
         'Fraco',
@@ -13,33 +18,18 @@ function Avaliar() {
 
     const survey: { scores: number[], statement: string }[] = [
         { scores: [1, 2, 3, 4, 5], statement: 'Limpeza geral do quarto' },
-        { scores: [5, 4, 3, 2, 1], statement: 'Morning is when I feel the best' },
-        { scores: [1, 2, 3, 4, 5], statement: 'I have crying spells or feel like it' },
-        { scores: [1, 2, 3, 4, 5], statement: 'I have trouble sleeping at night' },
-        { scores: [5, 4, 3, 2, 1], statement: 'I eat as much as I used to' },
-        { scores: [5, 4, 3, 2, 1], statement: 'I still enjoy sex' },
-        { scores: [1, 2, 3, 4, 5], statement: 'I notice that I am losing weight' },
-        { scores: [1, 2, 3, 4, 5], statement: 'I have trouble with constipation' },
-        { scores: [1, 2, 3, 4, 5], statement: 'My heart beats faster than usual' },
-        { scores: [1, 2, 3, 4, 5], statement: 'I get tired for no reason' },
-        { scores: [5, 4, 3, 2, 1], statement: 'My mind is as clear as it used to be' },
-        { scores: [5, 4, 3, 2, 1], statement: 'I find it easy to do the things I used to' },
-        { scores: [1, 2, 3, 4, 5], statement: 'I am restless and can\'t keep still' },
-        { scores: [5, 4, 3, 2, 1], statement: 'I feel hopeful about the future' },
-        { scores: [1, 2, 3, 4, 5], statement: 'I am more irritable than usual' },
-        { scores: [5, 4, 3, 2, 1], statement: 'I find it easy to make decisions' },
-        { scores: [5, 4, 3, 2, 1], statement: 'I feel that I am useful and needed' },
-        { scores: [5, 4, 3, 2, 1], statement: 'My life is pretty full' },
-        { scores: [1, 2, 3, 4, 5], statement: 'I feel that others would be better off if I were dead' },
-        { scores: [5, 4, 3, 2, 1], statement: 'I still enjoy the things I used to do' }
-    ];
-
-    const ranges: { lower: number, upper: number, description: string, stateClass: string, iconClass: string }[] = [
-        { lower: 0, upper: 24, description: 'Muito Mau', stateClass: 'badge-danger', iconClass: 'glyphicon-exclamation-sign' },
-        { lower: 25, upper: 39, description: 'Mau', stateClass: 'badge-warning', iconClass: 'glyphicon-info-sign' },
-        { lower: 40, upper: 54, description: 'Aceitável', stateClass: 'badge-caution', iconClass: 'glyphicon-thumbs-up' },
-        { lower: 55, upper: 69, description: 'Bom', stateClass: 'badge-success', iconClass: 'glyphicon-ok-sign' },
-        { lower: 70, upper: 80, description: 'Muito Bom', stateClass: 'badge-primary', iconClass: 'glyphicon-star' }
+        { scores: [1, 2, 3, 4, 5], statement: 'Qualidade da iluminação' },
+        { scores: [1, 2, 3, 4, 5], statement: 'Qualidade dos móveis' },
+        { scores: [1, 2, 3, 4, 5], statement: 'Qualidade da vista a partir do quarto' },
+        { scores: [1, 2, 3, 4, 5], statement: 'Facilidade de acesso a tomadas elétricas no quarto' },
+        { scores: [1, 2, 3, 4, 5], statement: 'Nível de privacidade no quarto' },
+        { scores: [1, 2, 3, 4, 5], statement: 'Condição e limpeza da(s) casa(s) de banho' },
+        { scores: [1, 2, 3, 4, 5], statement: 'Segurança (trancas, segurança contra incêndios, etc...)' },
+        { scores: [1, 2, 3, 4, 5], statement: 'Qualidade do isolamento acústico' },
+        { scores: [1, 2, 3, 4, 5], statement: 'Poluição sonora exterior (rua)' },
+        { scores: [1, 2, 3, 4, 5], statement: 'Quantidade de luz natural' },
+        { scores: [1, 2, 3, 4, 5], statement: 'Facilidade de ajuste e controle da temperatura da água' },
+        { scores: [1, 2, 3, 4, 5], statement: 'Conforto das (cadeira(s),cama(s),sofá(s),etc...)' },
     ];
 
     const [scores, setScores] = useState<number[]>(Array(survey.length).fill(0));
@@ -49,9 +39,9 @@ function Avaliar() {
         let totalScore: number = 0;
         let totalChecks: number = 0;
     
-        scores.forEach((score: number) => {
+        scores.forEach((score: number, index: number) => {
             totalScore += score;
-            totalChecks++;
+            totalChecks = index + 1; // Increment totalChecks for each question
         });
     
         // Only update checks when necessary
@@ -59,18 +49,23 @@ function Avaliar() {
             setChecks(totalChecks);
         }
     
-        return totalScore;
+        const averageScore = totalScore / totalChecks;
+        return Math.round(averageScore * 10) / 10;
     };
 
-    const range = (): { lower: number, upper: number, description: string, stateClass: string, iconClass: string } => {
-        const currentScore: number = score();
-        return ranges.find(range => range.lower <= currentScore && range.upper >= currentScore) || ranges[0];
-    };
-
-    const mailto = (): string => {
-        const subject: string = 'Zung Self-Rating Score';
-        const body: string = `My Zung Self-Rating Depression Scale Score is ${score()}`;
-        return `mailto:?subject=${subject}&body=${body}`;
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        const info = {
+            id : id,
+            avaliacao : score()
+        }
+        // Save the room ID and score to local storage
+        console.log(info);
+        const avaliados = JSON.parse(localStorage.getItem('avaliados') || '[]');
+        avaliados.push(info);
+        localStorage.setItem('avaliados', JSON.stringify(avaliados)); // Save updated data to local storage
+        console.log('New room added:', info);
+        navigate("../../homeAvaliador");
     };
 
     return (
@@ -78,41 +73,44 @@ function Avaliar() {
             <NavBarAvaliador />
             <div className="zung container">
                 <div className="page-header">
-                    <h1>Zung Self-Rating Depression Scale</h1>
+                    <h1>Formulário de avaliação do Quarto</h1>
                 </div>
-                <table className="table table-striped table-hover table-responsive">
-                    <thead>
-                        <tr>
-                            <th colSpan={2}>Check the appropriate column</th>
-                            {responses.map((response, index) => <th key={index} className="response">{response}</th>)}
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {survey.map((s, index) => (
-                            <tr key={index}>
-                                <th>{index + 1}</th>
-                                <td>{s.statement}</td>
-                                {s.scores.map((score, i) => (
-                                    <td key={i} className="response">
-                                        <input type="radio" name={`q${index + 1}`} value={score} onChange={(e) => {
-                                            const updatedScores = [...scores];
-                                            updatedScores[index] = parseInt(e.target.value);
-                                            setScores(updatedScores);
-                                        }} />
-                                    </td>
-                                ))}
+                <form onSubmit={handleSubmit}> {/* Adding onSubmit handler to the form */}
+                    <table className="table table-striped table-hover table-responsive">
+                        <thead>
+                            <tr>
+                                <th colSpan={2}>Check the appropriate column</th>
+                                {responses.map((response, index) => <th key={index} className="response">{response}</th>)}
                             </tr>
-                        ))}
-                    </tbody>
-                </table>
-                <div className="panel panel-default">
-                    <div className="panel-heading">
-                        <h3 className="panel-title">Score</h3>
+                        </thead>
+                        <tbody>
+                            {survey.map((s, index) => (
+                                <tr key={index}>
+                                    <th>{index + 1}</th>
+                                    <td>{s.statement}</td>
+                                    {s.scores.map((score, i) => (
+                                        <td key={i} className="response">
+                                            <input type="radio" name={`q${index + 1}`} value={score} onChange={(e) => {
+                                                const updatedScores = [...scores];
+                                                updatedScores[index] = parseInt(e.target.value);
+                                                setScores(updatedScores);
+                                            }} />
+                                        </td>
+                                    ))}
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                    <div className="panel panel-default">
+                        <div className="panel-heading">
+                            <h3 className="panel-title">Score</h3>
+                        </div>
+                        <div className="panel-body">
+                            <p>Room final score: <strong>{score()}</strong> &nbsp;</p>
+                            <button className="btn btn-primary" type="submit">Submit</button>
+                        </div>
                     </div>
-                    <div className="panel-body">
-                        <p>Your score: <strong>{score()}</strong> &nbsp;</p>
-                    </div>
-                </div>
+                </form>
             </div>
         </>
     );
