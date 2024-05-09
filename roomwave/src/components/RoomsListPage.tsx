@@ -242,7 +242,7 @@ function RoomsListPage() {
                 <NavBar/>
             </div>      
             <div className="filter-container" style={{display:"flex", margin:"30px 30px 20px 20px", backgroundColor:"#dedede", borderRadius:"10px", padding:"20px"}}>
-                <div  style={{ margin: '0px', paddingTop:"10px", paddingBottom:"10px" }}>
+                <div  style={{ margin: '0px', paddingTop:"50px", paddingBottom:"10px" }}>
                 <button className="button-style mapa1" onClick={() => setModalShow(true)} >Ver no Mapa</button>
                 <MapModal
                     show={modalShow}

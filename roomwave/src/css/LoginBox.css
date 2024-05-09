@@ -7,7 +7,12 @@
   }
   
   
-  
+  .login-page{
+    width: 20%;
+    margin-left: 32%;
+  }
+
+
   .button-container button:hover,
   .button-container button:active,
   .button-container button:focus {
@@ -15,9 +20,8 @@
   }
   
   .signup{
-    margin-right: 5%;
-    width: 100%;
-
+    margin-right: 2%;
+    width: 90%;
   }
   
   .message {
@@ -43,7 +47,7 @@
     z-index: 1;
     background: #333333;
     max-width: 1400px; /* Adjust the max-width to make the form larger horizontally */
-    width: 110%; /* Ensure the form takes up the full width */
+    width: 180%; /* Ensure the form takes up the full width */
     height: auto; /* Remove fixed height */
     margin: 0 auto; /* Center horizontally */
     padding: 35px;
@@ -62,7 +66,7 @@
     margin: 0 0 20px;
     padding: 15px;
     box-sizing: border-box;
-    font-size: 14px;
+    font-size: 20px;
   }
   
   .form button {
@@ -74,7 +78,7 @@
     border: 0;
     padding: 15px;
     color: #FFFFFF;
-    font-size: 14px;
+    font-size: 20px;
     cursor: pointer;
     border-radius: 5px;
   }
