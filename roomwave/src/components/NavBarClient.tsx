@@ -19,6 +19,7 @@ function NavBarClient() {
       localStorage.removeItem("userData"); // Remove o item "userData" do localStorage
       localStorage.removeItem("visitedRooms"); // Remove o item "visitedRooms" do localStorage
       localStorage.removeItem("favorites")
+    
       navigate('/login'); // Redireciona para a página de login após 
     }, 1000); // Tempo em milissegundos para manter o alerta visível antes de fechar
   };
