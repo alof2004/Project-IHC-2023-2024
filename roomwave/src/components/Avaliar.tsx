@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import NavBarAvaliador from './NavBarAvaliador';
 import '../css/Avaliar.css';
 import { parse } from 'path';
+import Footer from './footer';
 
 function Avaliar() {
     const { ID } = useParams();
@@ -127,6 +128,7 @@ function Avaliar() {
                     </div>
                 </form>
             </div>
+            <Footer />
         </>
     );
 }
