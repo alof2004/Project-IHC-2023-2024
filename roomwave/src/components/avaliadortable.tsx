@@ -154,7 +154,7 @@ const AvaliadorTable = () => {
               <div>{item.cidade}</div>
               <div>{item.telefone}</div>
               <div>
-              <span className={`label ${evaluatedRooms.includes(item.id) || item.Avaliado==="Sim"? 'verde' : 'vermelho'}`}>
+              <span className={`label ${evaluatedRooms.includes(item.id) || item.Avaliado==="Sim" ? 'verde' : 'vermelho'}`}>
                 {evaluatedRooms.includes(item.id)? 'Avaliado' : 'Não avaliado'}
               </span>
               </div>
