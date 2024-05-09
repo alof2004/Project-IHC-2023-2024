@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import NavBarAvaliador from './NavBarAvaliador';
 import '../css/Avaliar.css';
 import { parse } from 'path';
+import Footer from './footer';
 
 function Avaliar() {
     const { ID } = useParams();
@@ -88,7 +89,7 @@ function Avaliar() {
     return (
         <>
             <NavBarAvaliador />
-            <div className="zung container">
+            <div className="zung-container">
                 <form className="aaa" onSubmit={handleSubmit}> {/* Adding onSubmit handler to the form */}
                     <h2>Formulário de avaliação do Quarto</h2>
                     <table className="table table-striped table-hover table-responsive">
@@ -127,6 +128,7 @@ function Avaliar() {
                     </div>
                 </form>
             </div>
+            <Footer />
         </>
     );
 }
