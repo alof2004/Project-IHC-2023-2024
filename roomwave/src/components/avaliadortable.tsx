@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import roomsData from './rooms.json';
 import { useNavigate } from 'react-router-dom';
 
@@ -6,6 +6,7 @@ const AvaliadorTable = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const navigate = useNavigate();
   const [rooms, setRooms] = useState(roomsData);
+  const [evaluatedRooms, setEvaluatedRooms] = useState<number[]>([]);
 
   const handleNextPage = () => {
     setCurrentPage(currentPage + 1);
@@ -28,6 +29,13 @@ const AvaliadorTable = () => {
     const updatedRooms = rooms.filter(room => room.id !== roomId);
     setRooms(updatedRooms);
   };
+
+  useEffect(() => {
+    // Retrieve evaluated rooms from local storage
+    const avaliados = JSON.parse(localStorage.getItem('avaliados') || '[]');
+    setEvaluatedRooms(avaliados.map((room: { id: any; }) => room.id)); // Convert to an array of IDs for easier comparison
+  }, []);
+  
 
   const roomsAwaitingEvaluation = rooms.filter(room => !room.Avaliacao);
 
@@ -106,6 +114,19 @@ const AvaliadorTable = () => {
           .imgIcon{
             margin-bottom: 5px;
           }
+
+          .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 100px;
+            
+          }
+
+          .pagination button {
+            margin: 0 30px; /* Adjust this value to set the space between buttons */
+            font-size: 30px;
+          }
+
         `}
       </style>
       <div className="favorites-container-1">
@@ -125,7 +146,7 @@ const AvaliadorTable = () => {
           <div>Opções</div>
         </div>
         <div className="table-body">
-          {rooms.slice(currentPage * 5, (currentPage + 1) * 5).map(item => (
+          {rooms.slice(currentPage * 10, (currentPage + 1) * 10).map(item => (
             <div className="table-row" key={item.id}>
               <div>{item.id}</div>
               <div>{item.Proprietaria}</div>
@@ -133,9 +154,9 @@ const AvaliadorTable = () => {
               <div>{item.cidade}</div>
               <div>{item.telefone}</div>
               <div>
-                <span className={`label ${item.Avaliacao ? 'verde' : 'vermelho'}`}>
-                  {item.Avaliacao ? 'Avaliado' : 'Não avaliado'}
-                </span>
+              <span className={`label ${evaluatedRooms.includes(item.id) || item.Avaliado==="Sim" ? 'verde' : 'vermelho'}`}>
+                {evaluatedRooms.includes(item.id)? 'Avaliado' : 'Não avaliado'}
+              </span>
               </div>
               <div className="options">
                 <button onClick={() => handleRoom(item.id)}><img className="imgIcon" style={{width:"30px", height:"30px"}} src="../../src/images/olho.png" alt="Ícone Ver"/></button>
