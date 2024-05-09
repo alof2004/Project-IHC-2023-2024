@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import roomsData from './rooms.json';
 import { useNavigate } from 'react-router-dom';
 
@@ -6,6 +6,7 @@ const AvaliadorTable = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const navigate = useNavigate();
   const [rooms, setRooms] = useState(roomsData);
+  const [evaluatedRooms, setEvaluatedRooms] = useState<number[]>([]);
 
   const handleNextPage = () => {
     setCurrentPage(currentPage + 1);
@@ -28,6 +29,13 @@ const AvaliadorTable = () => {
     const updatedRooms = rooms.filter(room => room.id !== roomId);
     setRooms(updatedRooms);
   };
+
+  useEffect(() => {
+    // Retrieve evaluated rooms from local storage
+    const avaliados = JSON.parse(localStorage.getItem('avaliados') || '[]');
+    setEvaluatedRooms(avaliados.map((room: { id: any; }) => room.id)); // Convert to an array of IDs for easier comparison
+  }, []);
+  
 
   const roomsAwaitingEvaluation = rooms.filter(room => !room.Avaliacao);
 
@@ -146,9 +154,9 @@ const AvaliadorTable = () => {
               <div>{item.cidade}</div>
               <div>{item.telefone}</div>
               <div>
-                <span className={`label ${item.Avaliacao ? 'verde' : 'vermelho'}`}>
-                  {item.Avaliacao ? 'Avaliado' : 'Não avaliado'}
-                </span>
+              <span className={`label ${evaluatedRooms.includes(item.id) || item.Avaliado==="Sim" ? 'verde' : 'vermelho'}`}>
+                {evaluatedRooms.includes(item.id)? 'Avaliado' : 'Não avaliado'}
+              </span>
               </div>
               <div className="options">
                 <button onClick={() => handleRoom(item.id)}><img className="imgIcon" style={{width:"30px", height:"30px"}} src="../../src/images/olho.png" alt="Ícone Ver"/></button>
