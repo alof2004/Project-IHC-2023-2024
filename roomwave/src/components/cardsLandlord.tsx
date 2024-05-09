@@ -14,6 +14,14 @@ const RoomSlider = () => {
   const userPhoneNumber = userData.phone || ''; // Assuming phoneNumber is stored in userData
 
   const filteredRooms = roomData.filter(room => room.telefone === parseInt(userPhoneNumber));
+  const roomsJSON = localStorage.getItem('roomsData');
+  const roomsJSONParsed = roomsJSON? JSON.parse(roomsJSON) : [];
+  // Filter rooms from local storage based on the phone number
+  const localStorageRooms = roomsJSONParsed.filter((room: { telefone: number; }) => room.telefone === parseInt(userPhoneNumber));
+
+  // Merge filtered rooms with rooms from local storage
+  const allRooms = [...filteredRooms,...localStorageRooms];
+
   const renderRatingStars = (rating: number) => {
     const stars = [];
     const fullStars = Math.floor(rating);
@@ -53,7 +61,7 @@ const RoomSlider = () => {
   const handlePrevPage = () => {
     setActivePage((prevPage) => prevPage - 1);
   };
-  const pages = splitRoomsIntoPages(filteredRooms, itemsPerPage);
+  const pages = splitRoomsIntoPages(allRooms, itemsPerPage);
   if (pages.length === 0) {
     return (
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', paddingTop:"50px" }}>

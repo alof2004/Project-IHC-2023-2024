@@ -7,6 +7,8 @@ const AvaliadorTable = () => {
   const navigate = useNavigate();
   const [rooms, setRooms] = useState(roomsData);
   const [evaluatedRooms, setEvaluatedRooms] = useState<number[]>([]);
+  const roomsJSON = localStorage.getItem('roomsData');
+  const roomsJSONParsed = roomsJSON ? JSON.parse(roomsJSON) : [];
 
   const handleNextPage = () => {
     setCurrentPage(currentPage + 1);
@@ -33,10 +35,17 @@ const AvaliadorTable = () => {
   useEffect(() => {
     // Retrieve evaluated rooms from local storage
     const avaliados = JSON.parse(localStorage.getItem('avaliados') || '[]');
-    setEvaluatedRooms(avaliados.map((room: { id: any; }) => room.id)); // Convert to an array of IDs for easier comparison
+    // Retrieve rooms data from local storage
+    const roomsJSON = localStorage.getItem('roomsData');
+    const roomsJSONParsed = roomsJSON? JSON.parse(roomsJSON) : [];
+    // Merge the parsed rooms data with the initial roomsData
+    const mergedRooms = [...roomsData,...roomsJSONParsed];
+    // Set the merged rooms data as the state
+    setRooms(mergedRooms);
+    // Ensure evaluatedRooms is an array of strings for accurate comparison
+    setEvaluatedRooms(avaliados.map((room: { id: number; }) => Number(room.id)));
   }, []);
   
-
   const roomsAwaitingEvaluation = rooms.filter(room => !room.Avaliacao);
 
   return (
@@ -125,6 +134,7 @@ const AvaliadorTable = () => {
           .pagination button {
             margin: 0 30px; /* Adjust this value to set the space between buttons */
             font-size: 30px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
           }
 
         `}
@@ -154,8 +164,8 @@ const AvaliadorTable = () => {
               <div>{item.cidade}</div>
               <div>{item.telefone}</div>
               <div>
-              <span className={`label ${evaluatedRooms.includes(item.id) || item.Avaliado==="Sim" ? 'verde' : 'vermelho'}`}>
-                {evaluatedRooms.includes(item.id)? 'Avaliado' : 'Não avaliado'}
+              <span className={`label ${evaluatedRooms.includes(Number(item.id)) || item.Avaliado === "Sim"? 'verde' : 'vermelho'}`}>
+                {evaluatedRooms.includes(Number(item.id)) || item.Avaliado === "Sim"? 'Avaliado' : 'Não avaliado'}
               </span>
               </div>
               <div className="options">
