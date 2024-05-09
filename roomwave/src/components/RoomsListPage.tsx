@@ -490,6 +490,11 @@ function RoomsListPage() {
                                 <span key={index} className="projcard-tag">{service}</span>
                             ))}
                             </div>
+                            <div className="projcard-tagbox-1">
+                            {room.Locais_proximos.map((service, index) => (
+                                <span key={index} className="projcard-tag-1">{service}</span>
+                            ))}
+                            </div>
                         </div>
                         </div>
                         <div className="projcard-price" style={{float:"right", padding:"10px 10px 0px 0px", fontSize:"20px"}}>{room.price}€ / mês
