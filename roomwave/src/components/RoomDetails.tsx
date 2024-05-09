@@ -93,7 +93,7 @@ function RoomDetails(){
         }
     };
 
-    const isAvaliador = userData && JSON.parse(userData).role === 'avaliador';
+    const isAvaliador = userData && JSON.parse(userData).type === 'avaliador';
 
     useEffect(() => {
         if (ID) {

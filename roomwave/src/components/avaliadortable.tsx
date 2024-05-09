@@ -40,6 +40,16 @@ const AvaliadorTable = () => {
     const roomsJSONParsed = roomsJSON? JSON.parse(roomsJSON) : [];
     // Merge the parsed rooms data with the initial roomsData
     const mergedRooms = [...roomsData,...roomsJSONParsed];
+    // Sort the rooms so that non-evaluated rooms come first
+    mergedRooms.sort((a, b) => {
+      if (!a.Avaliado && b.Avaliado) {
+        return -1;
+      } else if (a.Avaliado && !b.Avaliado) {
+        return 1;
+      } else {
+        return 0;
+      }
+    });
     // Set the merged rooms data as the state
     setRooms(mergedRooms);
     // Ensure evaluatedRooms is an array of strings for accurate comparison
