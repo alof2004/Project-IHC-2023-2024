@@ -13,6 +13,7 @@ import Footer from './footer';
 import TemplateDemo from './Table_location';
 import HeartIcon from './HeartIconDetails';
 import Button from '@mui/material/Button';
+import Button1 from './button';
 
 
 interface Room {
@@ -143,7 +144,7 @@ function RoomDetails(){
                         )}
 
                         <div className='info_contact'>  
-                            <Button />
+                            <Button1 />
                             <div className="icon_contact" style={{ marginTop: '20px', display: 'flex', alignItems: 'center' }}>
                                 <div className='heart_icon' style={{ marginRight: '10px', marginTop:"10px" }}>
                                     <HeartIcon roomId={parseInt(ID?? '')} isFavorite={false} />
