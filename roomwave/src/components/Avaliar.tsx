@@ -87,10 +87,8 @@ function Avaliar() {
         <>
             <NavBarAvaliador />
             <div className="zung container">
-                <div className="page-header">
-                    <h1>Formulário de avaliação do Quarto</h1>
-                </div>
-                <form onSubmit={handleSubmit}> {/* Adding onSubmit handler to the form */}
+                <form className="aaa" onSubmit={handleSubmit}> {/* Adding onSubmit handler to the form */}
+                    <h2>Formulário de avaliação do Quarto</h2>
                     <table className="table table-striped table-hover table-responsive">
                         <thead>
                             <tr>
@@ -105,7 +103,7 @@ function Avaliar() {
                                     <td>{s.statement}</td>
                                     {s.scores.map((score, i) => (
                                         <td key={i} className="response">
-                                            <input type="radio" name={`q${index + 1}`} value={score} onChange={(e) => {
+                                            <input required type="radio" name={`q${index + 1}`} value={score} onChange={(e) => {
                                                 const updatedScores = [...scores];
                                                 updatedScores[index] = parseInt(e.target.value);
                                                 setScores(updatedScores);
@@ -118,11 +116,11 @@ function Avaliar() {
                     </table>
                     <div className="panel panel-default">
                         <div className="panel-heading">
-                            <h3 className="panel-title">Score</h3>
+                            <h3 className="panel-title">Avaliação</h3>
                         </div>
                         <div className="panel-body">
-                            <p>Room final score: <strong>{score()}</strong> &nbsp;</p>
-                            <button className="btn btn-primary" type="submit">Submit</button>
+                            <p>Avaliação média do quarto: <strong>{score()}</strong> &nbsp;</p>
+                            <button className="btn btn-primary" type="submit">Submeter Avaliação</button>
                         </div>
                     </div>
                 </form>
