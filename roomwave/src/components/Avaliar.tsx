@@ -3,9 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import NavBarAvaliador from './NavBarAvaliador';
 import '../css/Avaliar.css';
+import { parse } from 'path';
 
 function Avaliar() {
     const { ID } = useParams();
+    const parsedID = ID ? parseInt(ID) : undefined;
     const navigate = useNavigate();
 
     const responses: string[] = [
@@ -56,14 +58,29 @@ function Avaliar() {
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const info = {
-            id : ID,
+            id : parsedID,
             avaliacao : score()
         }
         // Save the room ID and score to local storage
         console.log(info);
-        const avaliados = JSON.parse(localStorage.getItem('avaliados') || '[]');
-        avaliados.push(info);
-        localStorage.setItem('avaliados', JSON.stringify(avaliados)); // Save updated data to local storage
+
+        const roomsData = JSON.parse(localStorage.getItem('roomsData') || '[]');
+        const roomIndex = roomsData.findIndex((room: any) => room.id === parsedID);
+
+        console.log('Room index:', roomIndex);
+        console.log('ID:', ID);
+
+        if (roomIndex !== -1) {
+            // If room with the same ID is found, update avaliado and avaliacao
+            roomsData.avaliado = 'Sim';
+            roomsData.avaliacao = info.avaliacao;
+            localStorage.setItem('roomsData', JSON.stringify(roomsData));
+        } else {
+            // If room with the same ID is not found, add it to avaliados
+            const avaliados = JSON.parse(localStorage.getItem('avaliados') || '[]');
+            avaliados.push(info);
+            localStorage.setItem('avaliados', JSON.stringify(avaliados));
+        }
         console.log('New room added:', info);
         navigate("../../homeAvaliador");
     };
