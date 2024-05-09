@@ -16,10 +16,8 @@ const RoomSlider = () => {
   const filteredRooms = roomData.filter(room => room.telefone === parseInt(userPhoneNumber));
   const roomsJSON = localStorage.getItem('roomsData');
   const roomsJSONParsed = roomsJSON? JSON.parse(roomsJSON) : [];
-  // Filter rooms from local storage based on the phone number
-  const localStorageRooms = roomsJSONParsed.filter((room: { telefone: number; }) => room.telefone === parseInt(userPhoneNumber));
 
-  // Merge filtered rooms with rooms from local storage
+  const localStorageRooms = roomsJSONParsed.filter((room: { telefone: string; }) => room.telefone === userPhoneNumber);
   const allRooms = [...filteredRooms,...localStorageRooms];
 
   const renderRatingStars = (rating: number) => {
