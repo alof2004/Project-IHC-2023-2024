@@ -18,52 +18,53 @@ const Footer: React.FC = () => {
 					color: "#FF7A41",
 					textAlign: "center",
 					marginTop: "20px",
+					marginBottom: "20px",
 				}}
 			>
-				Uma Habitação pelo teu dinheiro
+				Facilitamos a sua vida
 			</h1>
 			<FooterContainer>
 				<Row>
 					<Column>
 						<Heading>About Us</Heading>
 						<FooterLink href="#">
-							Aim
+							Story
 						</FooterLink>
 						<FooterLink href="#">
-							Vision
+							Clients
 						</FooterLink>
 						<FooterLink href="#">
-							Testimonials
+							Help
 						</FooterLink>
 					</Column>
 					<Column>
 						<Heading>Services</Heading>
 						<FooterLink href="#">
-							Writing
+							Marketing
 						</FooterLink>
 						<FooterLink href="#">
-							Internships
+							Consulting
 						</FooterLink>
 						<FooterLink href="#">
-							Coding
+							Rent
 						</FooterLink>
 						<FooterLink href="#">
-							Teaching
+							Sales
 						</FooterLink>
 					</Column>
 					<Column>
 						<Heading>Contact Us</Heading>
 						<FooterLink href="#">
-							Uttar Pradesh
+							Telefone
 						</FooterLink>
 						<FooterLink href="#">
-							Ahemdabad
+							Email
 						</FooterLink>
 						<FooterLink href="#">
-							Indore
+							Formulario
 						</FooterLink>
 						<FooterLink href="#">
-							Mumbai
+							Chat
 						</FooterLink>
 					</Column>
 					<Column>
