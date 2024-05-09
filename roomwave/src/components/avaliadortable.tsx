@@ -32,6 +32,19 @@ const AvaliadorTable = () => {
     setRooms(updatedRooms);
   };
 
+  useEffect(() => {
+    // Retrieve evaluated rooms from local storage
+    const avaliados = JSON.parse(localStorage.getItem('avaliados') || '[]');
+    // Retrieve rooms data from local storage
+    const roomsJSON = localStorage.getItem('roomsData');
+    const roomsJSONParsed = roomsJSON? JSON.parse(roomsJSON) : [];
+    // Merge the parsed rooms data with the initial roomsData
+    const mergedRooms = [...roomsData,...roomsJSONParsed];
+    // Set the merged rooms data as the state
+    setRooms(mergedRooms);
+    // Ensure evaluatedRooms is an array of strings for accurate comparison
+    setEvaluatedRooms(avaliados.map((room: { id: number; }) => Number(room.id)));
+  }, []);
   
   const roomsAwaitingEvaluation = rooms.filter(room => !room.Avaliacao);
 
