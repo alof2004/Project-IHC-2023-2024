@@ -497,7 +497,7 @@ function RoomsListPage() {
                             </div>
                         </div>
                         </div>
-                        <div className="projcard-price" style={{float:"right", padding:"10px 10px 0px 0px", fontSize:"20px"}}>{room.price}€ / mês
+                        <div className="projcard-price" style={{float:"right", padding:"10px 10px 0px 0px", color:"black", fontSize:"20px"}}>{room.price}€ / mês
                         <br /> 
                         <span style={{fontSize:"15px"}}>Despesas {room.gastos}</span>
                         </div>
