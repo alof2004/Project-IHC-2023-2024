@@ -5,7 +5,7 @@ import NavBarAvaliador from './NavBarAvaliador';
 import '../css/Avaliar.css';
 
 function Avaliar() {
-    const { id } = useParams();
+    const { ID } = useParams();
     const navigate = useNavigate();
 
     const responses: string[] = [
@@ -56,7 +56,7 @@ function Avaliar() {
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const info = {
-            id : id,
+            id : ID,
             avaliacao : score()
         }
         // Save the room ID and score to local storage
