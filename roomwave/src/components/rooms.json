@@ -72,7 +72,7 @@
         "WC": "Partilhado",
         "Alojamento": "Apartamento",
         "Andar": "2º",
-        "Avaliado": "Sim",
+        "Avaliado": "Não",
         "Avaliacao": 4,
         "data_entrada": "2024-05-01T00:00:00.000Z",
         "data_saida": "2024-06-01T00:00:00.000Z",
@@ -141,7 +141,7 @@
     },
     {
         "id": 3,
-        "Proprietaria": "João Silva",
+        "Proprietaria": "João Regina",
         "imagem1": "../src/images/quarto3.jpg",
         "imagem2": "../src/images/quarto3_2.jpg",
         "imagem3": "../src/images/quarto3_3.jpg",
@@ -195,7 +195,7 @@
         "WC": "Partilhado",
         "Alojamento": "Apartamento",
         "Andar": "1º",
-        "Avaliado": "Sim",
+        "Avaliado": "Não",
         "Avaliacao": 4.7,
         "data_entrada": "2024-06-01T00:00:00.000Z",
         "data_saida": "2024-09-01T00:00:00.000Z",
@@ -2114,7 +2114,7 @@
     
     {
         "id": 34,
-        "Proprietaria": "João Ferreira",
+        "Proprietaria": "João Brás",
         "imagem1": "../../src/images/default.jpg",
         "imagem2": "../../src/images/default.jpg",
         "localizacao": "Avenida Central",
