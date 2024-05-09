@@ -111,7 +111,7 @@ function RoomDetails(){
         <NavBar />
         <div className='text' style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
     <div className='tudo' style={{ margin: "30px auto", backgroundColor: "#d6d6d6", width: "100%", maxWidth: "90%", borderRadius: "20px" }}>
-            <Link to="/">                   
+            <Link to={`../../rooms/${room.cidade}`}>
                  <img src='../../src/images/return.png' className='return-button' alt="return"/>
             </Link>
             {isAvaliador && (

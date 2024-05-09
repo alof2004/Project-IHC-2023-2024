@@ -42,7 +42,7 @@
     position: relative;
     z-index: 1;
     background: #333333;
-    max-width: 1200px; /* Adjust the max-width to make the form larger horizontally */
+    max-width: 1400px; /* Adjust the max-width to make the form larger horizontally */
     width: 110%; /* Ensure the form takes up the full width */
     height: auto; /* Remove fixed height */
     margin: 0 auto; /* Center horizontally */
