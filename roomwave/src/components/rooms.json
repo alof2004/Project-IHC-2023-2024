@@ -422,7 +422,7 @@
             "Casais"
         ],
         "gastos": "não incluídos",
-        "Animais": "não permitidos",
+        "Animais": "permitidos",
         "Fumadores": "não permitidos",
         "area": 15,
         "Vista": "para a rua",
