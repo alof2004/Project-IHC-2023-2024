@@ -88,7 +88,7 @@ function Avaliar() {
     return (
         <>
             <NavBarAvaliador />
-            <div className="zung container">
+            <div className="zung-container">
                 <form className="aaa" onSubmit={handleSubmit}> {/* Adding onSubmit handler to the form */}
                     <h2>Formulário de avaliação do Quarto</h2>
                     <table className="table table-striped table-hover table-responsive">
