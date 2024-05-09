@@ -72,15 +72,13 @@ function Avaliar() {
 
         if (roomIndex !== -1) {
             // If room with the same ID is found, update avaliado and avaliacao
-            roomsData.avaliado = 'Sim';
-            roomsData.avaliacao = info.avaliacao;
+            roomsData[roomIndex].Avaliado = 'Sim';
+            roomsData[roomIndex].Avaliacao = score();
             localStorage.setItem('roomsData', JSON.stringify(roomsData));
-        } else {
-            // If room with the same ID is not found, add it to avaliados
-            const avaliados = JSON.parse(localStorage.getItem('avaliados') || '[]');
-            avaliados.push(info);
-            localStorage.setItem('avaliados', JSON.stringify(avaliados));
         }
+        const avaliados = JSON.parse(localStorage.getItem('avaliados') || '[]');
+        avaliados.push(info);
+        localStorage.setItem('avaliados', JSON.stringify(avaliados));
         console.log('New room added:', info);
         navigate("../../homeAvaliador");
     };
