@@ -114,6 +114,19 @@ const AvaliadorTable = () => {
           .imgIcon{
             margin-bottom: 5px;
           }
+
+          .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 100px;
+            
+          }
+
+          .pagination button {
+            margin: 0 30px; /* Adjust this value to set the space between buttons */
+            font-size: 30px;
+          }
+
         `}
       </style>
       <div className="favorites-container-1">
@@ -133,7 +146,7 @@ const AvaliadorTable = () => {
           <div>Opções</div>
         </div>
         <div className="table-body">
-          {rooms.slice(currentPage * 5, (currentPage + 1) * 5).map(item => (
+          {rooms.slice(currentPage * 10, (currentPage + 1) * 10).map(item => (
             <div className="table-row" key={item.id}>
               <div>{item.id}</div>
               <div>{item.Proprietaria}</div>
