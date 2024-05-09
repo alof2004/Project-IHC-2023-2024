@@ -4,7 +4,7 @@ import Form from './Formulario';
 import Footer from './footer';
 import NavBarLandLord from './NavBarLandLord';
 
-function Ajuda() {
+function AjudaLandlord() {
   return (
     <><NavBarLandLord /><div className="App">
       <header className="App-header">
@@ -51,4 +51,4 @@ Depois basta clicar num quarto que goste e entrar em contacto com o senhorio, se
   );
 }
 
-export default Ajuda;
+export default AjudaLandlord;

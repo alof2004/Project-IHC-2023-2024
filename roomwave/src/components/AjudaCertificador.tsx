@@ -5,7 +5,7 @@ import Form from './Formulario';
 import Footer from './footer';
 import NavBarAvaliador from './NavBarAvaliador';
 
-function Ajuda() {
+function AjudaAvaliador() {
   return (
     <><NavBarAvaliador /><div className="App">
       <header className="App-header">
@@ -52,4 +52,4 @@ Depois basta clicar num quarto que goste e entrar em contacto com o senhorio, se
   );
 }
 
-export default Ajuda;
+export default AjudaAvaliador;
