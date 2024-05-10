@@ -116,7 +116,7 @@ function RoomDetails(){
                  <img src='../../src/images/return.png' className='return-button' alt="return"/>
             </Link>
             {isAvaliador && (
-                        <Button style={{width:"300px", height:"100px", fontSize:"40px", marginTop:"50px", marginLeft:"30px", color:"white", backgroundColor:"#76b476"}} variant="contained" onClick={() => navigate(`/avaliar/${ID}`)}>AVALIAR QUARTO</Button>
+                        <Button style={{width:"400px", height:"100px", fontSize:"40px", marginTop:"50px", marginLeft:"30px", color:"white", backgroundColor:"#76b476"}} variant="contained" onClick={() => navigate(`/avaliar/${ID}`)}>AVALIAR QUARTO</Button>
                     )}
                                 <div className='title_info_more_number_proprietaria'> 
                         <div className='title_info_proprietaria'>
@@ -172,7 +172,7 @@ function RoomDetails(){
                         </span>
                         <span style={{fontSize:"80px"}}>
                              {room?.price}€
-                        </span>  + gastos {room?.gastos ?? ''}
+                        </span>  + despesas {room?.gastos ?? ''}
                     </h1>
                 </div>
             </div>
@@ -180,11 +180,11 @@ function RoomDetails(){
                 <h2 style={{fontSize:"50px", marginBottom:"30px"}}>Informações sobre o quarto</h2>
                 <p> 
                     A habitação dispõem de uma área de {room.area}m2 e é rodeada por um ambiente {room.Ambiente}. Inclui uma {room.mobilia.join(", ").toLowerCase()} e, o mais importante, uma cama {room.Cama.toLowerCase()}. <br />
-                    Ambiente {room.Ambiente}. A cozinha é {room.Cozinha}, a casa tem disponiveis {room.casas_de_banho} casas de banho.<br />
+                    Ambiente {room.Ambiente}. A cozinha é {room.Cozinha.toLowerCase()}, a casa tem disponiveis {room.casas_de_banho} casas de banho.<br />
                     Na sua proximidade encontra vários edifícios como: {room.Locais_proximos.join(", ")}.
                     Autocarros {room.Transportes}. {room.Descrição_Proprietaria}<br />
-                    Pessoas do género(s) {room.Pessoas_permitidas[0]} são permitidas, bem como {room.Pessoas_permitidas[1]}.Animais são {room.Animais} e o acesso a fumadores é {room.Fumadores}.<br />
-                    Os gastos são {room.gastos}<br />
+                    Pessoas do género(s) {room.Pessoas_permitidas[0]} são permitidas, bem como {room.Pessoas_permitidas[1]}. Animais são {room.Animais} e o acesso a fumadores é {room.Fumadores}.<br />
+                    As despesas estão {room.gastos}<br />
                 </p>
             </div>
                 <div className='description_info'>
