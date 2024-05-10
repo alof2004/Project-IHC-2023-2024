@@ -72,7 +72,7 @@
         "WC": "Partilhado",
         "Alojamento": "Apartamento",
         "Andar": "2º",
-        "Avaliado": "Não",
+        "Avaliado": "Sim",
         "Avaliacao": 4,
         "data_entrada": "2024-05-01T00:00:00.000Z",
         "data_saida": "2024-06-01T00:00:00.000Z",
@@ -134,7 +134,7 @@
         "Alojamento": "Apartamento",
         "Andar": "3º",
         "Avaliado": "Não",
-        "Avaliacao": 1,
+        "Avaliacao": 0,
         "data_entrada": "2024-05-10T00:00:00.000Z",
         "data_saida": "2024-08-10T00:00:00.000Z",
         "telefone":989929229
@@ -195,7 +195,7 @@
         "WC": "Partilhado",
         "Alojamento": "Apartamento",
         "Andar": "1º",
-        "Avaliado": "Não",
+        "Avaliado": "Sim",
         "Avaliacao": 4.7,
         "data_entrada": "2024-06-01T00:00:00.000Z",
         "data_saida": "2024-09-01T00:00:00.000Z",
@@ -2541,6 +2541,194 @@
         "data_entrada": "2026-11-01T00:00:00.000Z",
         "data_saida": "2027-05-31T00:00:00.000Z",
         "telefone": 909043333
+    },
+    {
+        "id": 41,
+        "Proprietaria": "Marta Silva",
+        "imagem1": "../src/images/quarto41.jpg",
+        "imagem2": "../src/images/quarto41_2.jpg",
+        "imagem3": "../src/images/quarto41_3.jpg",
+        "imagem4": "../src/images/quarto41_4.jpg",
+        "localizacao": "Avenida da Liberdade, nº 123",
+        "Locais_proximos": [
+            "Estação de Metrô Avenida",
+            "Mercado da Ribeira",
+            "Parque Eduardo VII",
+            "Universidade de Lisboa"
+        ],
+        "cidade": "Lisboa",
+        "país": "Portugal",
+        "latitude": 38.717052,
+        "longitude": -9.146632,
+        "description": "Quarto luminoso com cama de casal e vista para o jardim",
+        "Transportes": "a 100 m da estação de metrô",
+        "mobilia": [
+            "Cama de casal",
+            "Mesa de trabalho",
+            "Armário",
+            "Poltrona confortável",
+            "Mesa de cabeceira"
+        ],
+        "Descrição_Proprietaria": "Apartamento bem localizado e tranquilo, ideal para estudantes ou profissionais.",
+        "Cama": "de casal",
+        "Cozinha": "Privada e não equipada",
+        "casas_de_banho": 1,
+        "Ambiente": "tranquilo",
+        "price": 300,
+        "Pessoas_permitidas": [
+            "Masculino",
+            "Feminino"
+        ],
+        "gastos": "não incluídos",
+        "Animais": "permitidos",
+        "Fumadores": "não permitidos",
+        "area": 18,
+        "Vista": "para o jardim",
+        "Renda_inclui": [],
+        "Equipamento_disponivel": [
+            "Geladeira",
+            "Máquina de lavar roupa",
+            "Forno",
+            "Micro-ondas"
+        ],
+        "Genero": [
+            "Masculino",
+            "Feminino"
+        ],
+        "TipoQuarto": "Duplo",
+        "WC": "Partilhado",
+        "Alojamento": "Apartamento",
+        "Andar": "2º",
+        "Avaliado": "Sim",
+        "Avaliacao": 4.5,
+        "data_entrada": "2024-07-01T00:00:00.000Z",
+        "data_saida": "2024-10-01T00:00:00.000Z",
+        "telefone": 930303904
+    },
+    {
+        "id": 42,
+        "Proprietaria": "Ana Costa",
+        "imagem1": "../src/images/quarto42.jpg",
+        "imagem2": "../src/images/quarto42_2.jpg",
+        "imagem3": "../src/images/quarto42_3.jpg",
+        "imagem4": "../src/images/quarto42_4.jpg",
+        "localizacao": "Rua da Universidade, nº 50",
+        "Locais_proximos": [
+            "Estação de Metrô Avenida",
+            "Mercado da Ribeira",
+            "Parque Eduardo VII",
+            "Universidade de Lisboa",
+            "Instituto Superior Técnico"
+        ],
+        "cidade": "Lisboa",
+        "país": "Portugal",
+        "latitude": 38.736946,
+        "longitude": -9.138748,
+        "description": "Quarto acolhedor com cama de casal e área de estudo",
+        "Transportes": "a 300 m da estação de metrô",
+        "mobilia": [
+            "Cama de casal",
+            "Mesa de estudo",
+            "Armário",
+            "Cadeira confortável",
+            "Mesa de cabeceira"
+        ],
+        "Descrição_Proprietaria": "Apartamento tranquilo e bem cuidado, ideal para estudantes universitários.",
+        "Cama": "de casal",
+        "Cozinha": "Privada e não equipada",
+        "casas_de_banho": 1,
+        "Ambiente": "acolhedor",
+        "price": 280,
+        "Pessoas_permitidas": [
+            "Masculino",
+            "Feminino"
+        ],
+        "gastos": "não incluídos",
+        "Animais": "não permitidos",
+        "Fumadores": "não permitidos",
+        "area": 16,
+        "Vista": "para a rua",
+        "Renda_inclui": [],
+        "Equipamento_disponivel": [
+            "Geladeira",
+            "Máquina de lavar roupa",
+            "Forno",
+            "Micro-ondas"
+        ],
+        "Genero": [
+            "Masculino",
+            "Feminino"
+        ],
+        "TipoQuarto": "Individual",
+        "WC": "Partilhado",
+        "Alojamento": "Apartamento",
+        "Andar": "3º",
+        "Avaliado": "Sim",
+        "Avaliacao": 4.8,
+        "data_entrada": "2024-08-01T00:00:00.000Z",
+        "data_saida": "2024-11-01T00:00:00.000Z",
+        "telefone": 935353506
+    },
+    {
+        "id": 43,
+        "Proprietaria": "Pedro Santos",
+        "imagem1": "../src/images/quarto43.jpg",
+        "imagem2": "../src/images/quarto43_1.jpg",
+        "imagem3": "../src/images/quarto43_3.jpg",
+        "imagem4": "../src/images/quarto43_4.jpg",
+        "localizacao": "Rua dos Estudantes, nº 20",
+        "Locais_proximos": [
+            "Universidade de Lisboa",
+            "Instituto Superior Técnico",
+            "Faculdade de Ciências"
+        ],
+        "cidade": "Lisboa",
+        "país": "Portugal",
+        "latitude": 38.736186,
+        "longitude": -9.134269,
+        "description": "Quarto moderno com cama individual e área de estudo",
+        "Transportes": "a 100 m da paragem de autocarro",
+        "mobilia": [
+            "Cama individual",
+            "Mesa de estudo",
+            "Armário",
+            "Cadeira ergonômica",
+            "Mesa de cabeceira"
+        ],
+        "Descrição_Proprietaria": "Ambiente amigável e propício ao estudo, ideal para estudantes universitários.",
+        "Cama": "individual",
+        "Cozinha": "Privada e não equipada",
+        "casas_de_banho": 1,
+        "Ambiente": "moderno",
+        "price": 260,
+        "Pessoas_permitidas": [
+            "Masculino",
+            "Feminino"
+        ],
+        "gastos": "não incluídos",
+        "Animais": "não permitidos",
+        "Fumadores": "não permitidos",
+        "area": 14,
+        "Vista": "para a rua",
+        "Renda_inclui": [],
+        "Equipamento_disponivel": [
+            "Geladeira",
+            "Máquina de lavar roupa",
+            "Forno",
+            "Micro-ondas"
+        ],
+        "Genero": [
+            "Masculino",
+            "Feminino"
+        ],
+        "TipoQuarto": "Individual",
+        "WC": "Partilhado",
+        "Alojamento": "Apartamento",
+        "Andar": "2º",
+        "Avaliado": "Sim",
+        "Avaliacao": 4.6,
+        "data_entrada": "2024-04-15T00:00:00.000Z",
+        "data_saida": "2024-10-15T00:00:00.000Z",
+        "telefone": 937373720
     }
-    
 ]
