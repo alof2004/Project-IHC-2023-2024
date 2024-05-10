@@ -259,7 +259,7 @@ function RoomsListPage() {
                     {isOptionsVisible && (
                         <div
                         style={{
-                            width: '28rem',
+                            width: '32rem',
                             padding: '20px',
                             margin: '10px',
                             marginBottom: '0px',
@@ -299,7 +299,7 @@ function RoomsListPage() {
                     {isOptionsVisible1 && (
                         <div
                         style={{
-                            width: '28rem',
+                            width: '32rem',
                             padding: '20px',
                             margin: '10px',
                             marginBottom: '0px',
@@ -339,7 +339,7 @@ function RoomsListPage() {
                     {isOptionsVisible2 && (
                         <div
                         style={{
-                            width: '28rem',
+                            width: '32rem',
                             padding: '20px',
                             margin: '10px',
                             marginBottom: '0px',

@@ -2,7 +2,7 @@
 body {
 	font-family: 'Open Sans', arial, sans-serif;
 	color: #333;
-	font-size: 14px;
+	font-size: 12px;
 }
 .projcard-container {
 	margin: 50px 0;
@@ -30,7 +30,7 @@ body {
 	border-radius: 10px;
 	background-color: #ffffff !important;
 	border: 3px solid #fff !important;
-	font-size: 18px;
+	font-size: 26px;
 	overflow: hidden;
 	cursor: pointer;
 	box-shadow: 0 4px 21px -10px rgba(0, 0, 0, .90);
@@ -79,7 +79,7 @@ body {
 	bottom: 7%;
 	left: 430px;
 	width: calc(100% - 550px);
-	font-size: 17px;
+	font-size: 18px;
 }
 
 .projcard-textbox::before,
@@ -112,7 +112,7 @@ body {
 }
 .projcard-subtitle {
 	font-family: 'Voces', 'Open Sans', arial, sans-serif;
-	color: #888;
+	color: #4e4e4e;
 }
 .projcard-bar {
 	left: -2px;
@@ -131,7 +131,7 @@ body {
 .projcard-description {
 	width: 80%;
 	z-index: 10;
-	font-size: 15px;
+	font-size: 18px;
 	color: #424242;
 	height: 40px;
 	overflow: hidden;
@@ -363,7 +363,7 @@ progress {
 	background-color: #ffcc00; /* Change to your desired hover color */
   }
 .button-style {
-	width: 28rem;
+	width: 32rem;
 	padding: 20px;
 	margin: 10px;
 	margin-top: 0;
