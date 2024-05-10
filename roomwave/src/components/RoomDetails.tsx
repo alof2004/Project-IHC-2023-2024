@@ -116,7 +116,7 @@ function RoomDetails(){
                  <img src='../../src/images/return.png' className='return-button' alt="return"/>
             </Link>
             {isAvaliador && (
-                        <Button style={{width:"300px", height:"100px", fontSize:"20px", marginTop:"50px", marginLeft:"30px", color:"white", backgroundColor:"#76b476"}} variant="contained" onClick={() => navigate(`/avaliar/${ID}`)}>AVALIAR QUARTO</Button>
+                        <Button style={{width:"300px", height:"100px", fontSize:"40px", marginTop:"50px", marginLeft:"30px", color:"white", backgroundColor:"#76b476"}} variant="contained" onClick={() => navigate(`/avaliar/${ID}`)}>AVALIAR QUARTO</Button>
                     )}
                                 <div className='title_info_more_number_proprietaria'> 
                         <div className='title_info_proprietaria'>
@@ -124,7 +124,7 @@ function RoomDetails(){
                                 Quarto de {''} 
                                 <span style={{ color: "#FF7A41" }}>{room?.Proprietaria || ''}</span>
                             </h1>
-                            <h2 style={{ marginTop: "30px", fontSize: "30px" }}>
+                            <h2 style={{ marginTop: "30px", fontSize: "40px" }}>
                                 Localização: {''} 
                                 <span>{room?.localizacao}, {room?.cidade}</span>
                             </h2>
@@ -187,27 +187,6 @@ function RoomDetails(){
                     Os gastos são {room.gastos}<br />
                 </p>
             </div>
-
-            <div className='description_info'>
-                    <h2 className="title_info" style={{ fontSize: "50px", marginBottom: "30px", marginRight: "20px" }}>A Renda inclui:</h2>
-
-                    <div className="boxoptions">
-                        <div className="column column-left"> 
-                            <ul>
-                                {room.Renda_inclui.slice(0, 5).map((Renda_inclui, index) => (
-                                    <li key={index}><span className="icon"><img src='../../src/images/plus.png' style={{ width: "35px", height: "35px" }} alt="plus icon" /></span>{Renda_inclui}</li>
-                                ))}
-                            </ul>
-                        </div>
-                        <div className="column column-right"> 
-                            <ul>
-                                {room.Renda_inclui.slice(5, 10).map((Renda_inclui, index) => (
-                                    <li key={index}><span className="icon"><img src='../../src/images/plus.png' style={{ width: "35px", height: "35px" }} alt="plus icon" /></span>{Renda_inclui}</li>
-                                ))}
-                            </ul>
-                        </div>
-                    </div>
-                </div>
                 <div className='description_info'>
                     <h2 className="title_info" style={{ fontSize: "50px", marginBottom: "30px", marginRight: "20px" }}>Sobre a habitação:</h2>
 
