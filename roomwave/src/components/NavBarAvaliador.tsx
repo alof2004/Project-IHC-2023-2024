@@ -4,6 +4,7 @@ import '../App.css'; // Adjust the path as necessary
 import { Link } from 'react-router-dom'; // Assuming you're using React Router
 import { useNavigate } from 'react-router-dom';
 import LogoutAlert from './logoutAlert';
+import NavBarLandLord from './NavBarLandLord';
 
 
 
@@ -11,6 +12,7 @@ function NavBarClient() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showLogoutAlert, setShowLogoutAlert] = useState(false); // Estado para controlar a exibição do alerta de logout
   const navigate = useNavigate();
+  const userData = localStorage.getItem("userData"); // Obtém o item "userData" do localStorage
 
   const handleLogout = () => {
     setIsLoggedIn(false);
@@ -26,7 +28,13 @@ function NavBarClient() {
   function handleperfil(): void {
     navigate('/perfilcertificator'); 
   }
-
+  if (userData && JSON.parse(userData).type === "client"){
+    return (<NavBarClient/>)
+  }
+  if (userData && JSON.parse(userData).type === "landlord"){
+    return (<NavBarLandLord/>)
+  }
+  else{
   return (
     <><nav className="navbar border-bottom navbar-expand-lg myCustomNavbar" data-bs-theme="dark">
       <div className="container-fluid">
@@ -64,6 +72,7 @@ function NavBarClient() {
         <LogoutAlert show={showLogoutAlert} /> {/* Passa o estado showLogoutAlert como prop */}
       </div></>
   );
+}
 }
 
 export default NavBarClient;
