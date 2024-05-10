@@ -327,7 +327,7 @@ function RoomForm(){
             <div className="location-info-container1">
                 <div className="label-container2">
                     <div className="dropdown-container">
-                        <label className="dropdown-label" style={{marginTop:"13px"}}>Transport Distance</label>
+                        <label className="dropdown-label" style={{marginTop:"13px"}}>Distancia aos meios de transporte</label>
                         <input
                             type="text"
                             value={transportes}
@@ -588,6 +588,7 @@ function RoomForm(){
                         const selectedOptions = Array.from(e.target.selectedOptions, option => option.value);
                         if (selectedOptions.includes("Indiferente")) {
                             setGenero(["Masculino", "Feminino"]);
+                            setGenero(["Indiferente"])
                         } else {
                             setGenero(selectedOptions);
                         }
@@ -607,7 +608,7 @@ function RoomForm(){
             <label htmlFor="ambiente" className="label1">Ambiente</label>
             <input
                 type="text"
-                placeholder="Ambiente"
+                placeholder="Descreva o ambiente"
                 value={ambiente}
                 onChange={(e) => setAmbiente(e.target.value)}
                 required
@@ -617,7 +618,7 @@ function RoomForm(){
             <label htmlFor="vista" className="label1">Vista</label>
             <input
                 type="text"
-                placeholder="Vista"
+                placeholder="Descreva a paisagem à sua volta"
                 value={vista}
                 onChange={(e) => setVista(e.target.value)}
                 required

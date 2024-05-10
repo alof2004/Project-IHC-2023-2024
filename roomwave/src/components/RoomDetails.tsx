@@ -13,6 +13,7 @@ import Footer from './footer';
 import TemplateDemo from './Table_location';
 import HeartIcon from './HeartIconDetails';
 import Button from '@mui/material/Button';
+import Button1 from './button';
 
 
 interface Room {
@@ -111,7 +112,7 @@ function RoomDetails(){
         <NavBar />
         <div className='text' style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
     <div className='tudo' style={{ margin: "30px auto", backgroundColor: "#d6d6d6", width: "100%", maxWidth: "90%", borderRadius: "20px" }}>
-            <Link to="/">                   
+            <Link to={`../../rooms/${room.cidade}`}>
                  <img src='../../src/images/return.png' className='return-button' alt="return"/>
             </Link>
             {isAvaliador && (
@@ -143,7 +144,7 @@ function RoomDetails(){
                         )}
 
                         <div className='info_contact'>  
-                            <Button />
+                            <Button1 />
                             <div className="icon_contact" style={{ marginTop: '20px', display: 'flex', alignItems: 'center' }}>
                                 <div className='heart_icon' style={{ marginRight: '10px', marginTop:"10px" }}>
                                     <HeartIcon roomId={parseInt(ID?? '')} isFavorite={false} />
