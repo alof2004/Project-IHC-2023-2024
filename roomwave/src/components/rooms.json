@@ -2730,5 +2730,68 @@
         "data_entrada": "2024-04-15T00:00:00.000Z",
         "data_saida": "2024-10-15T00:00:00.000Z",
         "telefone": 937373720
+    },
+    {
+        "id": 44,
+        "Proprietaria": "Carolina Pereira",
+        "imagem1": "../src/images/quarto44.jpg",
+        "imagem2": "../src/images/quarto44_2.jpg",
+        "imagem3": "../src/images/quarto44_3.jpg",
+        "imagem4": "../src/images/quarto44_4.jpg",
+        "localizacao": "Rua das Universidades, nº 15",
+        "Locais_proximos": [
+            "Universidade de Lisboa",
+            "Instituto Superior Técnico",
+            "Padaria Portuguesa"
+        ],
+        "cidade": "Lisboa",
+        "país": "Portugal",
+        "latitude": 38.734562,
+        "longitude": -9.136732,
+        "description": "Quarto confortável com cama de solteiro e espaço de estudo",
+        "Transportes": "a 150 m da estação de metrô",
+        "mobilia": [
+            "Cama de solteiro",
+            "Mesa de estudo",
+            "Armário",
+            "Cadeira",
+            "Mesa de cabeceira"
+        ],
+        "Descrição_Proprietaria": "Ambiente calmo e propício ao estudo, ótimo para estudantes universitários.",
+        "Cama": "de solteiro",
+        "Cozinha": "Privada e não equipada",
+        "casas_de_banho": 1,
+        "Ambiente": "confortável",
+        "price": 270,
+        "Pessoas_permitidas": [
+            "Masculino",
+            "Feminino"
+        ],
+        "gastos": "não incluídos",
+        "Animais": "não permitidos",
+        "Fumadores": "não permitidos",
+        "area": 15,
+        "Vista": "para a rua",
+        "Renda_inclui": [],
+        "Equipamento_disponivel": [
+            "Geladeira",
+            "Máquina de lavar roupa",
+            "Forno",
+            "Micro-ondas"
+        ],
+        "Genero": [
+            "Masculino",
+            "Feminino"
+        ],
+        "TipoQuarto": "Individual",
+        "WC": "Partilhado",
+        "Alojamento": "Apartamento",
+        "Andar": "1º",
+        "Avaliado": "Não",
+        "Avaliacao": 4.4,
+        "data_entrada": "2024-08-15T00:00:00.000Z",
+        "data_saida": "2024-11-15T00:00:00.000Z",
+        "telefone": 939393939
     }
+    
 ]
