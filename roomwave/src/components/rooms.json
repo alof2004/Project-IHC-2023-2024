@@ -2545,10 +2545,10 @@
     {
         "id": 41,
         "Proprietaria": "Marta Silva",
-        "imagem1": "../src/images/quarto41.jpg",
-        "imagem2": "../src/images/quarto41_2.jpg",
-        "imagem3": "../src/images/quarto41_3.jpg",
-        "imagem4": "../src/images/quarto41_4.jpg",
+        "imagem1": "../../src/images/default.jpg",
+        "imagem2": "../../src/images/default.jpg",
+        "imagem3": "../../src/images/default.jpg",
+        "imagem4": "../../src/images/default.jpg",
         "localizacao": "Avenida da Liberdade, nº 123",
         "Locais_proximos": [
             "Estação de Metrô Avenida",
@@ -2608,10 +2608,10 @@
     {
         "id": 42,
         "Proprietaria": "Ana Costa",
-        "imagem1": "../src/images/quarto42.jpg",
-        "imagem2": "../src/images/quarto42_2.jpg",
-        "imagem3": "../src/images/quarto42_3.jpg",
-        "imagem4": "../src/images/quarto42_4.jpg",
+        "imagem1": "../../src/images/default.jpg",
+        "imagem2": "../../src/images/default.jpg",
+        "imagem3": "../../src/images/default.jpg",
+        "imagem4": "../../src/images/default.jpg",
         "localizacao": "Rua da Universidade, nº 50",
         "Locais_proximos": [
             "Estação de Metrô Avenida",
@@ -2672,10 +2672,10 @@
     {
         "id": 43,
         "Proprietaria": "Pedro Santos",
-        "imagem1": "../src/images/quarto43.jpg",
-        "imagem2": "../src/images/quarto43_1.jpg",
-        "imagem3": "../src/images/quarto43_3.jpg",
-        "imagem4": "../src/images/quarto43_4.jpg",
+        "imagem1": "../../src/images/default.jpg",
+        "imagem2": "../../src/images/default.jpg",
+        "imagem3": "../../src/images/default.jpg",
+        "imagem4": "../../src/images/default.jpg",
         "localizacao": "Rua dos Estudantes, nº 20",
         "Locais_proximos": [
             "Universidade de Lisboa",
@@ -2734,10 +2734,10 @@
     {
         "id": 44,
         "Proprietaria": "Carolina Pereira",
-        "imagem1": "../src/images/quarto44.jpg",
-        "imagem2": "../src/images/quarto44_2.jpg",
-        "imagem3": "../src/images/quarto44_3.jpg",
-        "imagem4": "../src/images/quarto44_4.jpg",
+        "imagem1": "../../src/images/default.jpg",
+        "imagem2": "../../src/images/default.jpg",
+        "imagem3": "../../src/images/default.jpg",
+        "imagem4": "../../src/images/default.jpg",
         "localizacao": "Rua das Universidades, nº 15",
         "Locais_proximos": [
             "Universidade de Lisboa",
