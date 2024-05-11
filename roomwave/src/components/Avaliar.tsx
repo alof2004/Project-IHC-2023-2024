@@ -38,6 +38,8 @@ function Avaliar() {
     const [scores, setScores] = useState<number[]>(Array(survey.length).fill(0));
     const [checks, setChecks] = useState<number>(0);
 
+    const [descricao, setDescricao] = useState('');
+
     const score = (): number => {
         let totalScore: number = 0;
         let totalChecks: number = 0;
@@ -73,17 +75,32 @@ function Avaliar() {
 
         if (roomIndex !== -1) {
             // If room with the same ID is found, update avaliado and avaliacao
-            roomsData.avaliado = 'Sim';
-            roomsData.avaliacao = info.avaliacao;
+            roomsData.Avaliado = 'Sim';
+            roomsData.Avaliacao = info.avaliacao;
             localStorage.setItem('roomsData', JSON.stringify(roomsData));
+            const avaliados = JSON.parse(localStorage.getItem('avaliados') || '[]');
+            avaliados.push(info);
+            localStorage.setItem('avaliados', JSON.stringify(avaliados));
         } else {
             // If room with the same ID is not found, add it to avaliados
             const avaliados = JSON.parse(localStorage.getItem('avaliados') || '[]');
             avaliados.push(info);
             localStorage.setItem('avaliados', JSON.stringify(avaliados));
         }
+
+        const avals = {
+            id: parsedID,
+            scores: scores,
+            descricao: descricao
+        };
+
+        const detailedEval = JSON.parse(localStorage.getItem('detailedEval') || '[]');
+        detailedEval.push(avals)
+        localStorage.setItem('detailedEval', JSON.stringify(detailedEval));
+
         console.log('New room added:', info);
         navigate("../../homeAvaliador");
+
     };
 
     return (
@@ -117,6 +134,20 @@ function Avaliar() {
                             ))}
                         </tbody>
                     </table>
+
+                    <div className="descricao-label-container">
+                        <label htmlFor="descricao" className="descricao-label">Descrição</label>
+                        <textarea
+                            id="descricao"
+                            placeholder="Descrição"
+                            value={descricao}
+                            onChange={(e) => setDescricao(e.target.value)}
+                            required
+                            className="descricao-input"
+                            title="Insira aqui uma descrição do quarto"
+                        />
+                    </div>
+
                     <div className="panel panel-default">
                         <div className="panel-heading">
                             <h3 className="panel-title">Avaliação</h3>

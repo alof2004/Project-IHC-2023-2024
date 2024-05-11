@@ -68,3 +68,15 @@ body, html {
 .aaa button:hover {
     background-color: #ac5530; 
 }
+
+.descricao-label-container {
+    margin-top:10px;
+    margin-bottom: 30px;
+}
+
+.descricao-label {
+    font-weight: bold;
+    color: white;
+    height: 30px; /* Adjust the height of the label */
+    line-height: 30px; /* Align text vertically in the middle */
+}
