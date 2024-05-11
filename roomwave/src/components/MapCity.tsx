@@ -128,6 +128,15 @@ interface Room {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       <MyComponent />
+      <style>
+        {
+          `
+          .projcard-blue-1 {
+            height: 400px;
+            font-size: 16px;
+          `
+        }
+      </style>
       {popupOpen && selectedRoom && (
         <Popup position={[selectedRoom.latitude, selectedRoom.longitude]} className="custom-popup" >
                 <div className="custom-popup-content" style={{width:"1000px"}}>
@@ -147,7 +156,6 @@ interface Room {
                             <div className="projcard-subtitle"><StarRating rating={(selectedRoom.Avaliacao)} /> {/* Display the star rating */}
                             </div>
 
-                            <div className="projcard-description">{selectedRoom.description}</div>
                             <div className="containerList">
                                 <div className="row-list">
                                     <div className="projcard-description-items">

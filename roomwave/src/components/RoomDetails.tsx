@@ -158,13 +158,12 @@ function RoomDetails(){
             </div>
             
             <div >
-                <Carousel room={{ 
-                    
-                    imagem1: room?.imagem1 ?? '',
-                    imagem2: room?.imagem2 ?? '',
-                    imagem3: room?.imagem3 ?? '',
-                    imagem4: room?.imagem4 ?? '',      
-                    }} />
+            <Carousel room={{ 
+                imagem1: room?.imagem1 || defaultImage,
+                imagem2: room?.imagem2 || defaultImage,
+                imagem3: room?.imagem3 || defaultImage,
+                imagem4: room?.imagem4 || defaultImage,
+            }} />
                 <div className='price_info'>
                     <h1>
                         <span style={{ fontSize:"50px",color:"#FF7A41", fontWeight:"bold" }}>

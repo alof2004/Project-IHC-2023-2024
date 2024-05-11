@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 interface Room {
   imagem1: string;
@@ -10,13 +10,17 @@ interface Room {
 function Carousel({ room }: { room: Room | undefined }) {
   // Initialize state with default values
   const [mainImage, setMainImage] = useState<string | undefined>(room?.imagem1);
-  const [otherImages, setOtherImages] = useState<(string | undefined)[]>([room?.imagem2, room?.imagem3, room?.imagem4]);
+  const [otherImages, setOtherImages] = useState<(string | undefined)[]>([
+    room?.imagem2,
+    room?.imagem3,
+    room?.imagem4,
+  ]);
 
   const handleImageClick = (clickedImage: string | undefined) => {
     if (clickedImage) {
-      setMainImage(prevMainImage => clickedImage);
-      setOtherImages(prevOtherImages => {
-        const newOtherImages = prevOtherImages.filter(image => image!== clickedImage);
+      setMainImage(clickedImage);
+      setOtherImages((prevOtherImages) => {
+        const newOtherImages = prevOtherImages.filter((image) => image !== clickedImage);
         return [...newOtherImages, mainImage];
       });
     }
@@ -24,11 +28,19 @@ function Carousel({ room }: { room: Room | undefined }) {
   const defaultImage = '../../src/images/default.jpg'; // Adjust this path as necessary
 
   // Filter out undefined images from otherImages array
-  const filteredOtherImages = otherImages.filter(image => image!== undefined);
+  const filteredOtherImages = otherImages.filter((image) => image !== undefined);
 
   return (
     <div className="room-images">
-      <img src={mainImage || defaultImage} alt="pic1" className="main-image" />
+      <img
+        src={mainImage || defaultImage}
+        alt="pic1"
+        className="main-image"
+        onError={(e) => {
+          // Set source to default image if the main image fails to load
+          e.currentTarget.src = defaultImage;
+        }}
+      />
       <div className="other-images">
         {filteredOtherImages.map((image, index) => (
           <img
@@ -37,6 +49,10 @@ function Carousel({ room }: { room: Room | undefined }) {
             alt={`pic${index + 2}`}
             className="vertical-image"
             onClick={() => handleImageClick(image)}
+            onError={(e) => {
+              // Set source to default image if any of the other images fail to load
+              e.currentTarget.src = defaultImage;
+            }}
           />
         ))}
       </div>

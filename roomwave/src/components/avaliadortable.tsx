@@ -9,6 +9,8 @@ const AvaliadorTable = () => {
   const [evaluatedRooms, setEvaluatedRooms] = useState<number[]>([]);
   const roomsJSON = localStorage.getItem('roomsData');
   const roomsJSONParsed = roomsJSON ? JSON.parse(roomsJSON) : [];
+  const [selectedDistrict, setSelectedDistrict] = useState<string | null>(null); // Step 1: Add a state for selected district
+  const [showUnevaluated, setShowUnevaluated] = useState<boolean>(false); // Step 1: Add state for showing unevaluated rooms
 
   const handleNextPage = () => {
     setCurrentPage(currentPage + 1);
@@ -56,12 +58,22 @@ const AvaliadorTable = () => {
   
   
   // Filter rooms that have been evaluated
-  const evaluatedRoomsList = rooms.filter(room => evaluatedRooms.includes(Number(room.id)));
+  const toggleShowUnevaluated = () => {
+    setShowUnevaluated(!showUnevaluated);
+  };
+  const unevaluatedRooms = rooms.filter(room => !evaluatedRooms.includes(Number(room.id)));
+
+  // Step 3: Update combinedRooms based on the showUnevaluated state
+  const combinedRooms = showUnevaluated ? unevaluatedRooms : rooms;
+
+  // Filter rooms by district
+  const filteredRooms = selectedDistrict ? combinedRooms.filter(room => room.cidade === selectedDistrict) : combinedRooms;
 
   // Filter rooms that are awaiting evaluation
   const roomsAwaitingEvaluation = rooms.filter(room =>!evaluatedRooms.includes(Number(room.id)));
-  const combinedRooms = [...roomsAwaitingEvaluation, ...evaluatedRoomsList];
+  console.log(selectedDistrict)
 
+  // Update the combinedRooms calculation to use filteredRooms instead of rooms
   const getRating = (roomId: number) => {
     // Retrieve evaluated rooms from local storage
     const avaliados = JSON.parse(localStorage.getItem('avaliados') || '[]');
@@ -71,18 +83,16 @@ const AvaliadorTable = () => {
     if (room) {
       // Return the rating from avaliados if the room is evaluated
       return room.avaliacao;
-    } else {
-      // Retrieve rooms data from local storage
-      const roomsJSON = localStorage.getItem('roomsData');
-      const roomsJSONParsed = roomsJSON ? JSON.parse(roomsJSON) : [];
-      // Find the room in roomsData JSON
-      const roomData = roomsJSONParsed.find((room: { id: number; }) => room.id === roomId);
-      console.log(roomData);
-      return roomData ? roomData.Avaliacao : null;
-    }
+     } else {
+        // Find the room in roomsData array
+        const roomData = roomsData.find(room => room.id === roomId);
+        // Return the rating from roomsData if found, otherwise return null or another appropriate value
+        return roomData ? roomData.Avaliacao : null;
+      }
   };
   
-  
+  const districts = Array.from(new Set(combinedRooms.map(room => room.cidade))).sort();
+
   return (
     <div className="table-container">
       <style>
@@ -143,16 +153,23 @@ const AvaliadorTable = () => {
             align-items: center;
             padding: 5px 10px;
             border-radius: 20px;
-            font-size: 18px;
+            font-size: 25px;
             color: white;
           }
 
           .verde {
             background-color: green;
+            box-shadow: 
+            -0px 5px 14px #537a43, /* First shadow */
+            0px -5px 14px #537a43; /* Second shadow */            
+
           }
 
           .vermelho {
             background-color: red;
+            box-shadow: 
+            -0px 5px 14px #b45f5f, /* First shadow */
+            0px -5px 14px #b45f5f; /* Second shadow */     
           }
 
           .imgIcon{
@@ -172,6 +189,30 @@ const AvaliadorTable = () => {
             box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
           }
 
+          .toggled {
+            background-color: #FF7A41; /* Change this to the color you want */
+            color:#FF7A49 #; /* Change this to the text color you want */
+            border:none;
+          }
+          
+          .cidades{
+            background-color: #FF7A41; /* Change this to the color you want */
+            width: 400px;
+            height: 68px;
+            color: white;
+            font-size: 25px;
+            font-weight: bold;
+            border: none;
+            margin-bottom: 40px;
+
+          }
+          .button-79{
+            font-size: 25px;
+            border: none;
+            margin-bottom: 40px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+          }
+
         `}
       </style>
       <div className="favorites-container-1">
@@ -181,6 +222,18 @@ const AvaliadorTable = () => {
                 </div>
       </div>
       <div className="table">
+      <select className="cidades" onChange={(e) => setSelectedDistrict(e.target.value)} defaultValue={''}>
+        <option value={''}>Todos os distritos</option>
+        {districts.map((district, index) => (
+          <option key={index} value={district}>{district}</option>
+        ))}
+      </select>
+      <button
+        className={`button-79 sort ${showUnevaluated ? 'toggled' : ''}`}
+        onClick={toggleShowUnevaluated}
+      >
+        {showUnevaluated ? 'Mostrar quartos não avaliados' : 'Mostrar quartos não avaliados'}
+      </button>
         <div className="table-header">
           <div>ID</div>
           <div>Nome</div>
@@ -192,7 +245,7 @@ const AvaliadorTable = () => {
           <div>Opções</div>
         </div>
         <div className="table-body">
-        {combinedRooms.slice(currentPage * 10, (currentPage + 1) * 10).map(item => (
+        {filteredRooms.slice(currentPage * 10, (currentPage + 1) * 10).map(item => (
           <div className="table-row" key={item.id}>
             <div>{item.id}</div>
             <div>{item.Proprietaria}</div>
@@ -208,7 +261,7 @@ const AvaliadorTable = () => {
             <div>{evaluatedRooms.includes(Number(item.id)) ? getRating(item.id) || 'N/A' : 'N/A'}</div>
             <div className="options">
               <button onClick={() => handleRoom(item.id)}><img className="imgIcon" style={{ width: "30px", height: "30px" }} src="../../src/images/olho.png" alt="Ícone Ver" /></button>
-              <button onClick={() => handleAvaliarClick(item.id)}><img className="imgIcon" style={{ width: "30px", height: "30px" }} src="../../src/images/lapis.png" alt="Ícone Editar" /></button>
+              <button onClick={() => handleAvaliarClick(item.id)} disabled={evaluatedRooms.includes(Number(item.id))}><img className="imgIcon" style={{ width: "30px", height: "30px" }} src="../../src/images/lapis.png" alt="Ícone Editar" /></button>
               <button onClick={() => handleDeleteClick(item.id)}><img className="imgIcon" style={{ width: "30px", height: "30px" }} src="../../src/images/lixo.png" alt="Ícone Eliminar" /></button>
             </div>
           </div>
