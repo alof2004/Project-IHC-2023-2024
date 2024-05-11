@@ -35,6 +35,8 @@ function Avaliar() {
         { scores: [1, 2, 3, 4, 5], statement: 'Conforto das (cadeira(s),cama(s),sofá(s),etc...)' },
     ];
 
+    const questions = survey.map(item => item.statement);
+
     const [scores, setScores] = useState<number[]>(Array(survey.length).fill(0));
     const [checks, setChecks] = useState<number>(0);
 
@@ -91,6 +93,7 @@ function Avaliar() {
         const avals = {
             id: parsedID,
             scores: scores,
+            questions: questions,
             descricao: descricao
         };
 
