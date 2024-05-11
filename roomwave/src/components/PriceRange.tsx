@@ -16,7 +16,7 @@ const PriceRange: React.FC<PriceRangeProps> = ({ onRangeChange }) => {
 };
 
  return (
-    <div style={{ width: "32rem", padding: "20px", margin: "10px", marginTop: "0px", marginBottom:"0px", backgroundColor: "#252525", color: "white", borderRadius: "0px", borderBottom:"1px solid #eee" }}>
+    <div style={{ width: "34rem", padding: "20px", margin: "10px", marginTop: "0px", marginBottom:"0px", backgroundColor: "#252525", color: "white", borderRadius: "0px", borderBottom:"1px solid #eee" }}>
       <h3> Filtrar por preço </h3>
       <Slider 
         value={range} 
