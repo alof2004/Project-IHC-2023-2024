@@ -35,19 +35,54 @@ const AvaliadorTable = () => {
   useEffect(() => {
     // Retrieve evaluated rooms from local storage
     const avaliados = JSON.parse(localStorage.getItem('avaliados') || '[]');
+    // Extract the IDs from the array of objects
+    const evaluatedRoomIds = avaliados.map((room: { id: any; }) => Number(room.id));
     // Retrieve rooms data from local storage
     const roomsJSON = localStorage.getItem('roomsData');
-    const roomsJSONParsed = roomsJSON? JSON.parse(roomsJSON) : [];
+    const roomsJSONParsed = roomsJSON ? JSON.parse(roomsJSON) : [];
     // Merge the parsed rooms data with the initial roomsData
-    const mergedRooms = [...roomsData,...roomsJSONParsed];
+    const mergedRooms = [...roomsData, ...roomsJSONParsed];
     // Set the merged rooms data as the state
     setRooms(mergedRooms);
-    // Ensure evaluatedRooms is an array of strings for accurate comparison
-    setEvaluatedRooms(avaliados.map((room: { id: number; }) => Number(room.id)));
+  
+    // Add rooms that have "Sim" in the JSON to the evaluatedRooms array
+    const evaluatedRoomsFromJSON = mergedRooms.filter(room => room.Avaliado === "Sim");
+    const evaluatedRoomIdsFromJSON = evaluatedRoomsFromJSON.map(room => Number(room.id));
+    // Combine the evaluated room IDs from local storage and JSON data
+    const combinedEvaluatedRoomIds = [...evaluatedRoomIds, ...evaluatedRoomIdsFromJSON];
+    setEvaluatedRooms(combinedEvaluatedRoomIds);
+  
   }, []);
   
-  const roomsAwaitingEvaluation = rooms.filter(room => !room.Avaliacao);
+  
+  // Filter rooms that have been evaluated
+  const evaluatedRoomsList = rooms.filter(room => evaluatedRooms.includes(Number(room.id)));
 
+  // Filter rooms that are awaiting evaluation
+  const roomsAwaitingEvaluation = rooms.filter(room =>!evaluatedRooms.includes(Number(room.id)));
+  const combinedRooms = [...roomsAwaitingEvaluation, ...evaluatedRoomsList];
+
+  const getRating = (roomId: number) => {
+    // Retrieve evaluated rooms from local storage
+    const avaliados = JSON.parse(localStorage.getItem('avaliados') || '[]');
+    // Find the room in avaliados array
+    const room = avaliados.find((room: { id: number; }) => room.id === roomId);
+    
+    if (room) {
+      // Return the rating from avaliados if the room is evaluated
+      return room.avaliacao;
+    } else {
+      // Retrieve rooms data from local storage
+      const roomsJSON = localStorage.getItem('roomsData');
+      const roomsJSONParsed = roomsJSON ? JSON.parse(roomsJSON) : [];
+      // Find the room in roomsData JSON
+      const roomData = roomsJSONParsed.find((room: { id: number; }) => room.id === roomId);
+      console.log(roomData);
+      return roomData ? roomData.Avaliacao : null;
+    }
+  };
+  
+  
   return (
     <div className="table-container">
       <style>
@@ -153,35 +188,38 @@ const AvaliadorTable = () => {
           <div>Distrito</div>
           <div>Número de telefone</div>
           <div>Avaliado</div>
+          <div>Avaliação</div>
           <div>Opções</div>
         </div>
         <div className="table-body">
-          {rooms.slice(currentPage * 10, (currentPage + 1) * 10).map(item => (
-            <div className="table-row" key={item.id}>
-              <div>{item.id}</div>
-              <div>{item.Proprietaria}</div>
-              <div>{item.localizacao}</div>
-              <div>{item.cidade}</div>
-              <div>{item.telefone}</div>
-              <div>
-              <span className={`label ${evaluatedRooms.includes(Number(item.id)) || item.Avaliado === "Sim"? 'verde' : 'vermelho'}`}>
-                {evaluatedRooms.includes(Number(item.id)) || item.Avaliado === "Sim"? 'Avaliado' : 'Não avaliado'}
+        {combinedRooms.slice(currentPage * 10, (currentPage + 1) * 10).map(item => (
+          <div className="table-row" key={item.id}>
+            <div>{item.id}</div>
+            <div>{item.Proprietaria}</div>
+            <div>{item.localizacao}</div>
+            <div>{item.cidade}</div>
+            <div>{item.telefone}</div>
+            <div>
+              <span className={`label ${evaluatedRooms.includes(Number(item.id)) || item.Avaliado === "Sim" ? 'verde' : 'vermelho'}`}>
+                {evaluatedRooms.includes(Number(item.id)) || item.Avaliado === "Sim" ? 'Avaliado' : 'Não avaliado'}
               </span>
-              </div>
-              <div className="options">
-                <button onClick={() => handleRoom(item.id)}><img className="imgIcon" style={{width:"30px", height:"30px"}} src="../../src/images/olho.png" alt="Ícone Ver"/></button>
-                <button onClick={() => handleAvaliarClick(item.id)}><img className="imgIcon" style={{width:"30px", height:"30px"}}src="../../src/images/lapis.png" alt="Ícone Editar"/></button>
-                <button onClick={() => handleDeleteClick(item.id)}><img className="imgIcon" style={{width:"30px", height:"30px"}}src="../../src/images/lixo.png" alt="Ícone Eliminar"/></button>
-              </div>
             </div>
-          ))}
-        </div>
+            {/* Render the rating */}
+            <div>{evaluatedRooms.includes(Number(item.id)) ? getRating(item.id) || 'N/A' : 'N/A'}</div>
+            <div className="options">
+              <button onClick={() => handleRoom(item.id)}><img className="imgIcon" style={{ width: "30px", height: "30px" }} src="../../src/images/olho.png" alt="Ícone Ver" /></button>
+              <button onClick={() => handleAvaliarClick(item.id)}><img className="imgIcon" style={{ width: "30px", height: "30px" }} src="../../src/images/lapis.png" alt="Ícone Editar" /></button>
+              <button onClick={() => handleDeleteClick(item.id)}><img className="imgIcon" style={{ width: "30px", height: "30px" }} src="../../src/images/lixo.png" alt="Ícone Eliminar" /></button>
+            </div>
+          </div>
+        ))}
       </div>
       <div className="pagination">
         <button onClick={handlePreviousPage} disabled={currentPage === 0}>Anterior</button>
         <button onClick={handleNextPage} disabled={(currentPage + 1) * 5 >= rooms.length}>Próximo</button>
       </div>
     </div>
+  </div>
   );
 };
 
