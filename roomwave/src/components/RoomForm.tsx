@@ -223,7 +223,14 @@ function RoomForm(){
 
     return ( 
         <div className="addroom-container">
+        <div className="progress-bar">
+            <div className={`step ${step >= 1 ? 'active' : ''}`}>Step 1</div>
+            <div className={`step ${step >= 2 ? 'active' : ''}`}>Step 2</div>
+            <div className={`step ${step >= 3 ? 'active' : ''}`}>Step 3</div>
+            <div className={`step ${step === 4 ? 'active' : ''}`}>Step 4</div>
+        </div>
         {step === 1 && (
+        <div>
             <form className="addroom-form" onSubmit={handleSubmit}>
             <h2>Room Form</h2>
 
@@ -326,8 +333,10 @@ function RoomForm(){
             </div>
             <button type="button" onClick={nextStep}>Próximo</button>
             </form>
+            </div>
             )}
             {step === 2 && (
+            <div>
             <form className="addroom-form" onSubmit={handleSubmit}>
             <label htmlFor="localizacao" className="label1">Titulo</label>
             <input
@@ -456,8 +465,10 @@ function RoomForm(){
             <button type="button" onClick={prevStep}>Anterior</button>
             <button type="button" onClick={nextStep}>Próximo</button>
             </form>
+            </div>
             )}
             {step === 3 && (
+                <div>
             <form className="addroom-form" onSubmit={handleSubmit}>
             <label className="label1">Equipamento disponível:</label>
                 <div className="equipment-options">
@@ -501,8 +512,10 @@ function RoomForm(){
                 <button type="button" onClick={prevStep}>Anterior</button>
                 <button type="button" onClick={nextStep}>Próximo</button>
                 </form>
+                </div>
             )}
             {step === 4 && (
+                <div>
             <form className="addroom-form" onSubmit={handleSubmit}>
 
             <div className="location-info-container2">
@@ -659,6 +672,7 @@ function RoomForm(){
             <button type="submit">Submit</button>
             <button type="button" onClick={prevStep}>Anterior</button>
         </form>
+        </div>
                         
                     )}
     </div>

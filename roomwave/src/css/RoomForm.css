@@ -8,6 +8,7 @@ body, html {
     width: 100%;
     height: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     margin-bottom: 100px;
@@ -358,4 +359,25 @@ body, html {
 }
 .bb{
     margin-bottom: 30px;
+}
+
+.progress-bar {
+    width: 100%;
+    background-color: #f2f2f2;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; /* Distribute space between steps */
+    align-items: center; /* Align items vertically in the center */
+}
+
+.step {
+    flex-grow: 1; /* Allow steps to grow and take up equal space */
+    text-align: center; /* Center align text */
+    border-bottom: 2px solid #ddd; /* Add bottom border to visually separate steps */
+}
+
+.step.active {
+    color: #4caf50; /* Change color for active step */
+    font-weight: bold;
 }
