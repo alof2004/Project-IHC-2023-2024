@@ -26,6 +26,7 @@ import AjudaLandlord from './components/AjudaLandlord';
 import PerfilCertificator from './components/PerfilCertificator';
 import Avaliar from './components/Avaliar';
 import AjudaAvaliador from './components/AjudaCertificador';
+import RoomDetailsSecond from './components/RoomDetails2Version';
 
 
 
@@ -63,7 +64,7 @@ function App() {
             <Route path="/avaliar/:ID" element={<Avaliar/>} />
             <Route path="/ajudalandlord" element={<AjudaLandlord />} />
             <Route path="/ajudaavaliador" element={<AjudaAvaliador />} />
-
+            <Route path="/RoomDetailsSecond" element={<RoomDetailsSecond />} />
 
           </Routes>
         </FavoriteRoomsProvider>

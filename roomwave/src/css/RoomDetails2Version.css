@@ -1,0 +1,22 @@
+.page-container {
+    background: rgb(255, 255, 255);
+    min-height: 100vh;
+    padding: 20px;
+    display: flex;
+    margin-left: 5%;    
+    margin-right: 5%;
+    margin-top:5%;
+    border-radius: 20px;
+    
+  }
+  
+  .content {
+    max-width: 200px; /* Defina a largura máxima do conteúdo */
+  }
+  
+  .return-button {    
+    width: 20%;
+    height: 20%;
+    margin-left: 5%;
+    margin-top: 5%;
+}
