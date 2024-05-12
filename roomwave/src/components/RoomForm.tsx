@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../css/RoomForm.css';
 import { useNavigate } from 'react-router-dom';
 import {useUser} from './UserContext';
 import jsonData from './rooms.json';
+import "leaflet/dist/leaflet.css";
+import L from "leaflet";
+import { MapContainer, TileLayer, useMap, Marker } from "react-leaflet";
 
 function RoomForm(){
     // Define state variables to store form field values
@@ -50,7 +53,6 @@ function RoomForm(){
     const navigate = useNavigate();
     const { user } = useUser();
     const [clicked, setClicked] = useState(false);
-
 
 
 
@@ -142,6 +144,16 @@ function RoomForm(){
           }
       };
     
+    const [step, setStep] = useState(1);
+    const nextStep = () => {
+        setStep(step + 1);
+    };
+    
+    const prevStep = () => {
+        setStep(step - 1);
+    };
+    
+
 
     // Function to handle form submission
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -211,7 +223,8 @@ function RoomForm(){
 
     return ( 
         <div className="addroom-container">
-        <form className="addroom-form" onSubmit={handleSubmit}>
+        {step === 1 && (
+            <form className="addroom-form" onSubmit={handleSubmit}>
             <h2>Room Form</h2>
 
             <label htmlFor="localizacao" className="label1">Morada (Rua)</label>
@@ -311,7 +324,11 @@ function RoomForm(){
                 </div>
 
             </div>
-            
+            <button type="button" onClick={nextStep}>Próximo</button>
+            </form>
+            )}
+            {step === 2 && (
+            <form className="addroom-form" onSubmit={handleSubmit}>
             <label htmlFor="localizacao" className="label1">Titulo</label>
             <input
                 type="text"
@@ -436,6 +453,12 @@ function RoomForm(){
                     title="Insira aqui uma descrição do quarto"
                 />
             </div>
+            <button type="button" onClick={prevStep}>Anterior</button>
+            <button type="button" onClick={nextStep}>Próximo</button>
+            </form>
+            )}
+            {step === 3 && (
+            <form className="addroom-form" onSubmit={handleSubmit}>
             <label className="label1">Equipamento disponível:</label>
                 <div className="equipment-options">
                     {uniqueEquipmentNames.map((equipment, index) => (
@@ -475,6 +498,12 @@ function RoomForm(){
                         </div>
                     ))}
                 </div>
+                <button type="button" onClick={prevStep}>Anterior</button>
+                <button type="button" onClick={nextStep}>Próximo</button>
+                </form>
+            )}
+            {step === 4 && (
+            <form className="addroom-form" onSubmit={handleSubmit}>
 
             <div className="location-info-container2">
 
@@ -625,10 +654,13 @@ function RoomForm(){
                 title="Descreva a vista"
             />
 
-<button type="button" className='bb' onClick={handleClick} style={{ backgroundColor: clicked ? 'green' : '' }}>Deseja que o seu Quarto seja avaliado pelos nossos um dos nossos funcionários?</button>
+            <button type="button" className='bb' onClick={handleClick} style={{ backgroundColor: clicked ? 'green' : '' }}>Deseja que o seu Quarto seja avaliado pelos nossos um dos nossos funcionários?</button>
 
             <button type="submit">Submit</button>
+            <button type="button" onClick={prevStep}>Anterior</button>
         </form>
+                        
+                    )}
     </div>
     );
 }
