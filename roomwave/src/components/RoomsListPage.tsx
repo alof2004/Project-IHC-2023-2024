@@ -352,14 +352,14 @@ function RoomsListPage() {
                         }}
                         >
                         <fieldset>
-                            <div className="form__group">
-                                <label  style={{marginTop:"0px"}} htmlFor="start_date">Data de entrada:</label>
-                                <input style={{marginLeft:"10px"}} type="date" id="start_date" name="start_date" value={startDate} onChange={handleStartDateChange} />
-                            </div>
-                            <div className="form__group">
-                                <label  style={{marginTop:"0px"}}  htmlFor="end_date">Data de saída:</label>
-                                <input style={{marginLeft:"10px"}}  type="date" id="end_date" name="end_date" value={endDate} onChange={handleEndDateChange} />
-                            </div>
+«                            <div className="form__group">
+                            <label style={{marginTop:"0px"}} htmlFor="start_date">Data de entrada:</label>
+                            <input style={{marginLeft:"10px"}} type="date" id="start_date" name="start_date" value={startDate} onChange={handleStartDateChange} />
+                        </div>
+                        <div className="form__group">
+                            <label style={{marginTop:"0px"}}  htmlFor="end_date">Data de saída:</label>
+                            <input style={{marginLeft:"10px"}}  type="date" id="end_date" name="end_date" value={endDate} onChange={handleEndDateChange} />
+                        </div>
                         </fieldset>
                         </div>
                     )}
