@@ -14,8 +14,16 @@ body, html {
     margin-bottom: 100px;
 }
 
+.a4{
+    width:80%;
+}
+
+.goo{
+    margin-bottom:40px;
+}
+
 .addroom-form {
-    width: 1750px; 
+    width: 100%; 
     padding: 40px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -361,23 +369,96 @@ body, html {
     margin-bottom: 30px;
 }
 
-.progress-bar {
-    width: 100%;
-    background-color: #f2f2f2;
-    margin-bottom: 20px;
+.progress {
+    position: relative;
+    width: 80%;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between; /* Distribute space between steps */
-    align-items: center; /* Align items vertically in the center */
-}
+    justify-content:space-between;
+    margin-top: 50px;
+    min-height:40px;
+    margin-bottom:-50px;
+  }
 
-.step {
-    flex-grow: 1; /* Allow steps to grow and take up equal space */
-    text-align: center; /* Center align text */
-    border-bottom: 2px solid #ddd; /* Add bottom border to visually separate steps */
-}
+  .progress-line {
+    position: absolute;
+    width: calc(100%); /* Dividindo igualmente entre os passos */
+    height: 8px;
+    background-color: #ffffff;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 0; /* Set a lower z-index */
+  }
 
-.step.active {
-    color: #4caf50; /* Change color for active step */
-    font-weight: bold;
-}
+    .progress-line.active{
+        background-color: #d7860c;
+    }
+
+  
+  .progress:before {
+    content: "";
+    background-color: #d7860c;
+    position: absolute;
+    width: 90%;
+    height: 5px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    z-index: -1;
+  }
+  
+  .progress-bar {
+    position: absolute;
+    width: 0;
+    height: 10px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    background-color: #11aa75;
+    transition: width 0.4s ease;
+    z-index: -1; /* Set a lower z-index */
+  }
+  
+  .step {
+    width: 40px; /* aumentando o tamanho */
+    height: 40px; /* aumentando o tamanho */
+    font-size: 24px; /* aumentando o tamanho da fonte */
+    background-color: #303030;
+    z-index: 1; /* Set a higher z-index */
+    border-radius: 50%;
+    border: 4px solid #cecece;
+    display: grid;
+    position: relative; /* Add position relative */
+    place-items: center;
+    color: #cecece;
+    transition: border-color 0.5s ease-in-out;
+  }
+  
+  .step.active {
+    border-color: #d7860c;
+    color: #efefef;
+  }
+  
+  button.button {
+    width: 5em;
+    height: 2.2em;
+    font-size: 20px;
+    border-radius: 10px;
+    margin-top: -20px;
+    border: none;
+    outline: none;
+    background-color: #11aa75;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  button.button[disabled] {
+    cursor: not-allowed;
+  }
+  
+  button.button:hover {
+    background-color: #22bb80;
+  }
+  
+  button.button:active {
+    background-color: #119980;
+  }
