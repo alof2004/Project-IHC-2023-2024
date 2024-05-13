@@ -1,0 +1,24 @@
+.rdrYearPicker select {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: transparent;
+  font-size: 1.2em;
+  color: #333;
+  cursor: pointer;
+  outline: none;
+}
+
+.rdrCalendarWrapper, .rdrMonths, .rdrMonth {
+    width: 100%;
+    height: 100%;
+    font-size: 17px;
+
+}
+
+.rdrCalendarWrapper{
+    height:450px
+}
+.rdrDay, .rdrDayHovered ::hover{
+    background-color: white !important;
+}

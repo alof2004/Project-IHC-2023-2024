@@ -31,6 +31,14 @@ const StarRating = ({ rating }: { rating: number }) => {
     const halfStars = rating % 1!== 0? 1 : 0;
     const emptyStars = 5 - fullStars - halfStars;
   
+    if (rating === 0 || rating > 5) {
+      return(
+      <div>
+        <h4>Não foi avaliada.</h4>
+      </div>   
+      ); 
+    }
+    else{
     return (
       <div>
         {[...Array(fullStars)].map((_, i) => (
@@ -44,6 +52,7 @@ const StarRating = ({ rating }: { rating: number }) => {
         ))}
       </div>
     );
+  }
   };
 
 export default StarRating;

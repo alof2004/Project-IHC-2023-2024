@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../css/RoomForm.css';
 import { useNavigate } from 'react-router-dom';
 import {useUser} from './UserContext';
 import jsonData from './rooms.json';
+import "leaflet/dist/leaflet.css";
+import L from "leaflet";
+import { MapContainer, TileLayer, useMap, Marker } from "react-leaflet";
 
 function RoomForm(){
     // Define state variables to store form field values
@@ -50,7 +53,6 @@ function RoomForm(){
     const navigate = useNavigate();
     const { user } = useUser();
     const [clicked, setClicked] = useState(false);
-
 
 
 
@@ -143,6 +145,7 @@ function RoomForm(){
       };
     
 
+
     // Function to handle form submission
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault(); // Prevent the default form submission behavior
@@ -209,9 +212,68 @@ function RoomForm(){
         navigate("../../homeLandlord");
     };
 
+    //const nextStep = () => {
+    //    setStep(step + 1);
+    //};
+    
+    //const prevStep = () => {
+    //    setStep(step - 1);
+    //};
+
+    const [step, setstep] = useState(1);
+    const length = 4; // Defina o número total de etapas aqui
+
+    const handleStepClick = (step: number) => {
+        setstep(step);
+      };
+    
+    const handleButtonstep = (increment: number) => {
+        const newstep = step + increment;
+        setstep(newstep);
+    };
+    
+    
+    const steps = [];
+    for (let i = 1; i <= length; i++) {
+        const isActive = i <= step;
+        const isLActive = i+1 <= step;
+        steps.push(
+            <div>
+          <div
+            key={i}
+            className={`step ${isActive ? 'active' : ''}`}
+            onClick={() => handleStepClick(i)}
+          >
+            Step {i}
+          </div>
+          {i !== length && <div className={`progress-line ${isLActive ? 'active' : ''}`} key={`line-${i}`}></div>}
+          </div>
+        );
+      }
+
+      const isFormValid1 = () => {
+        return localizacao && images.length > 0 && locaisProximos.length > 0 && cidade && data_entrada && data_saida;
+      };
+
+      const isFormValid2 = () => {
+        return description && transportes && cama && cozinha && casasDeBanho && wc && alojamento && descricaoProprietaria;
+      };
+      const isFormValid3 = () => {
+        return equipamentoDisponivel.length >0  && mobilia.length > 0;
+      };
+      const isFormValid4 = () => {
+        return localizacao && images.length > 0 && locaisProximos.length > 0 && cidade && data_entrada && data_saida;
+      };
+
     return ( 
         <div className="addroom-container">
-        <form className="addroom-form" onSubmit={handleSubmit}>
+                <div className="progress" data-step={step}>
+                {steps}
+                    <div className="progress-bar"></div>
+                    </div>
+        {step === 1 && (
+        <div className= "a4">
+            <form className="addroom-form" onSubmit={handleSubmit}>
             <h2>Room Form</h2>
 
             <label htmlFor="localizacao" className="label1">Morada (Rua)</label>
@@ -311,7 +373,34 @@ function RoomForm(){
                 </div>
 
             </div>
-            
+            <button
+                        className="button"
+                        id="prev"
+                        disabled={step === 1}
+                        onClick={() => handleButtonstep(-1)}
+                        style={{ 
+                            float: 'left', 
+                            backgroundColor: step === 1 ? '#985353' : '#e1261c', // Grey when disabled, red when enabled
+                            color: '#fff' 
+                          }} 
+                    >
+                        Back
+                    </button>
+                    <button
+                        className="button"
+                        id="next"
+                        disabled={step === length || !isFormValid1()} // Disable if on last step or form is invalid
+                        onClick={() => handleButtonstep(1)}
+                        style={{ float: 'right', ...(step === length || !isFormValid1() && { backgroundColor: '#71b36e' }) }} // Grey when disabled
+                    >
+                        Next
+                    </button>
+            </form>
+            </div>
+            )}
+            {step === 2 && (
+            <div className= "a4">
+            <form className="addroom-form" onSubmit={handleSubmit}>
             <label htmlFor="localizacao" className="label1">Titulo</label>
             <input
                 type="text"
@@ -436,6 +525,34 @@ function RoomForm(){
                     title="Insira aqui uma descrição do quarto"
                 />
             </div>
+            <button
+                        className="button"
+                        id="prev"
+                        disabled={step === 1}
+                        onClick={() => handleButtonstep(-1)}
+                        style={{ 
+                            float: 'left', 
+                            backgroundColor: step === 1 ? '#985353' : '#e1261c', // Grey when disabled, red when enabled
+                            color: '#fff' 
+                          }} 
+                    >
+                        Back
+                    </button>
+                    <button
+                        className="button"
+                        id="next"
+                        disabled={step === length || !isFormValid2()} // Disable if on last step or form is invalid
+                        onClick={() => handleButtonstep(1)}
+                        style={{ float: 'right', ...(step === length || !isFormValid2() && { backgroundColor: '#71b36e' }) }} // Grey when disabled
+                    >
+                        Next
+                    </button>
+            </form>
+            </div>
+            )}
+            {step === 3 && (
+                <div className= "a4">
+            <form className="addroom-form" onSubmit={handleSubmit}>
             <label className="label1">Equipamento disponível:</label>
                 <div className="equipment-options">
                     {uniqueEquipmentNames.map((equipment, index) => (
@@ -475,6 +592,34 @@ function RoomForm(){
                         </div>
                     ))}
                 </div>
+                <button
+                        className="button"
+                        id="prev"
+                        disabled={step === 1}
+                        onClick={() => handleButtonstep(-1)}
+                        style={{ 
+                            float: 'left', 
+                            backgroundColor: step === 1 ? '#985353' : '#e1261c', // Grey when disabled, red when enabled
+                            color: '#fff' 
+                          }} 
+                    >
+                        Back
+                    </button>
+                    <button
+                        className="button"
+                        id="next"
+                        disabled={step === length || !isFormValid3()} // Disable if on last step or form is invalid
+                        onClick={() => handleButtonstep(1)}
+                        style={{ float: 'right', ...(step === length || !isFormValid3() && { backgroundColor: '#71b36e' }) }} // Grey when disabled
+                    >
+                        Next
+                    </button>
+                </form>
+                </div>
+            )}
+            {step === 4 && (
+                <div className= "a4">
+            <form className="addroom-form" onSubmit={handleSubmit}>
 
             <div className="location-info-container2">
 
@@ -625,10 +770,28 @@ function RoomForm(){
                 title="Descreva a vista"
             />
 
-<button type="button" className='bb' onClick={handleClick} style={{ backgroundColor: clicked ? 'green' : '' }}>Deseja que o seu Quarto seja avaliado pelos nossos um dos nossos funcionários?</button>
-
-            <button type="submit">Submit</button>
+            <button type="button" className='bb' onClick={handleClick} style={{ backgroundColor: clicked ? 'green' : '' }}>Deseja que o seu Quarto seja avaliado pelos nossos um dos nossos funcionários?</button>
+            <div className='goo'>
+                <button type="submit">Submit</button>
+            </div>
+            
+            <button
+                        className="button"
+                        id="prev"
+                        disabled={step === 1}
+                        onClick={() => handleButtonstep(-1)}
+                        style={{ 
+                            float: 'left', 
+                            backgroundColor: step === 1 ? '#985353' : '#e1261c', // Grey when disabled, red when enabled
+                            color: '#fff' 
+                          }} 
+                    >
+                        Back
+                    </button>
         </form>
+        </div>
+                        
+                    )}
     </div>
     );
 }
