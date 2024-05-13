@@ -111,15 +111,6 @@ input[type="text"] {
     box-sizing: border-box;
 }
 
-button {
-    padding: 10px 20px;
-    background-color: #FF7A41;
-    border: none;
-    color: white;
-    border-radius: 0 4px 4px 0;
-    cursor: pointer;
-}
-
 
 .principal_search {
     display: flex;
