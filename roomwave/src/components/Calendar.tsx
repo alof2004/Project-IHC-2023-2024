@@ -37,7 +37,7 @@ function Calendar({ onDateChange }: { onDateChange: (startDate: string, endDate:
   const { startDate, endDate } = state[0];
 
   return (
-    <div>
+    <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
       <DateRange
         editableDateInputs={true} // Allows editing dates in the input fields
         onChange={handleDateChange}
@@ -64,7 +64,7 @@ function Calendar({ onDateChange }: { onDateChange: (startDate: string, endDate:
           onChange={(e) => setState([{ ...state[0], endDate: e.target.value ? new Date(e.target.value) : null }])} // Update the setState function to correctly update the endDate property
         />
       </p>
-      <button className='reset' style={{marginTop:"10px"}} onClick={resetDates}>Reset Dates</button> {/* Button to reset dates */}
+      <button className='button122' style={{marginTop:"10px", borderRadius:"10px", width:"100%"}} onClick={resetDates}>Reset Dates</button> {/* Button to reset dates */}
     </div>
   );
 }

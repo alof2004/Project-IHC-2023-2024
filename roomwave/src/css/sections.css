@@ -111,6 +111,21 @@ input[type="text"] {
     box-sizing: border-box;
 }
 
+.button122 {
+    padding: 10px 20px;
+    background-color: #FF7A41;
+    border: none;
+    color: white;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+}
+
+.button122:hover {
+    background-color: white;
+    color:black;
+    transition: 0.3s;
+}
+
 
 .principal_search {
     display: flex;
