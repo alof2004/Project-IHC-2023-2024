@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import '../css/RoomDetails2Version.css'; // Importando o arquivo CSS
 import { Link } from 'react-router-dom';
 import NavBar from './NavBar';
+import Carousel from './RoomCarousel';
+
 
 interface Room {
     id: number;
@@ -45,6 +47,13 @@ interface Room {
     telefone: number;
    }
 
+   const images = [
+    '../../src/images/quarto1.jpg',
+    '../../src/images/quarto1_2.jpg',
+    '../../src/images/quarto1_3.jpg',
+    '../../src/images/quarto1_4.jpg'
+  ];
+
 const RoomDetailsSecond: React.FC = () => {
     const [room, setRoom] = useState<Room | undefined>(undefined);
 
@@ -58,7 +67,7 @@ return (
                 <Link to={`../../rooms/${room?.cidade}`}>
                     <img src='../../src/images/return.png' className='return-button' alt="return" />
                 </Link>
-
+                <Carousel images={images} />
             </div>
         </div>
     </div>
