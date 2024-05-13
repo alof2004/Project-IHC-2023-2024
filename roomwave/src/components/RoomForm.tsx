@@ -244,7 +244,7 @@ function RoomForm(){
             className={`step ${isActive ? 'active' : ''}`}
             onClick={() => handleStepClick(i)}
           >
-            {i}
+            Step {i}
           </div>
           {i !== length && <div className={`progress-line ${isLActive ? 'active' : ''}`} key={`line-${i}`}></div>}
           </div>
