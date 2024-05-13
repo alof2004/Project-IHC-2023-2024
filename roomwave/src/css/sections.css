@@ -120,10 +120,6 @@ button {
     cursor: pointer;
 }
 
-button:hover {
-    background-color: #FF7A41;
-}
-
 
 .principal_search {
     display: flex;

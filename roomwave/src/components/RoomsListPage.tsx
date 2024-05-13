@@ -357,7 +357,7 @@ function RoomsListPage() {
                             backgroundColor: '#252525',
                             color: 'white',
                             border: 'none',
-                            height: '500px',
+                            height: '550px',
 
                         }}
                         >

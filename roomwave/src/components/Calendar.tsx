@@ -64,7 +64,7 @@ function Calendar({ onDateChange }: { onDateChange: (startDate: string, endDate:
           onChange={(e) => setState([{ ...state[0], endDate: e.target.value ? new Date(e.target.value) : null }])} // Update the setState function to correctly update the endDate property
         />
       </p>
-      <button className='button' onClick={resetDates}>Reset Dates</button> {/* Button to reset dates */}
+      <button className='reset' style={{marginTop:"10px"}} onClick={resetDates}>Reset Dates</button> {/* Button to reset dates */}
     </div>
   );
 }

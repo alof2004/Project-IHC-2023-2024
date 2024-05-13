@@ -19,3 +19,6 @@
 .rdrCalendarWrapper{
     height:450px
 }
+.rdrDay, .rdrDayHovered ::hover{
+    background-color: white !important;
+}
