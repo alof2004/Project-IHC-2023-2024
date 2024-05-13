@@ -12,7 +12,8 @@ import MyMapApp from './Map';
 import { format, isToday, set } from 'date-fns';
 import StarRating from './StarRating';
 import MapModal from './MapModal';
-
+import Calendar  from './Calendar';
+import '../css/Calendar.css';
 
 interface Room {
  id: number;
@@ -117,11 +118,19 @@ function RoomsListPage() {
             setSelectedElectro(prevServices => prevServices.filter(s => s !== service));
         }
     };
+    
+    const onChange = (ranges: any) => {
+        console.log(ranges);
+      };
 
     const handlePriceRangeChange = (newRange: React.SetStateAction<number[]>) => {
         setPriceRange(newRange);
     };
 
+    const handleDateChange = (start: string, end: string) => {
+        setStartDate(start);
+        setEndDate(end);
+      };
     const handleStartDateChange = (e: { target: { value: React.SetStateAction<string>; }; }) => {
         setStartDate(e.target.value);
     };
@@ -259,7 +268,7 @@ function RoomsListPage() {
                     {isOptionsVisible && (
                         <div
                         style={{
-                            width: '32rem',
+                            width: '34rem',
                             padding: '20px',
                             margin: '10px',
                             marginBottom: '0px',
@@ -299,7 +308,7 @@ function RoomsListPage() {
                     {isOptionsVisible1 && (
                         <div
                         style={{
-                            width: '32rem',
+                            width: '34rem',
                             padding: '20px',
                             margin: '10px',
                             marginBottom: '0px',
@@ -339,7 +348,7 @@ function RoomsListPage() {
                     {isOptionsVisible2 && (
                         <div
                         style={{
-                            width: '32rem',
+                            width: '34rem',
                             padding: '20px',
                             margin: '10px',
                             marginBottom: '0px',
@@ -348,19 +357,11 @@ function RoomsListPage() {
                             backgroundColor: '#252525',
                             color: 'white',
                             border: 'none',
+                            height: '500px',
 
                         }}
                         >
-                        <fieldset>
-«                            <div className="form__group">
-                            <label style={{marginTop:"0px"}} htmlFor="start_date">Data de entrada:</label>
-                            <input style={{marginLeft:"10px"}} type="date" id="start_date" name="start_date" value={startDate} onChange={handleStartDateChange} />
-                        </div>
-                        <div className="form__group">
-                            <label style={{marginTop:"0px"}}  htmlFor="end_date">Data de saída:</label>
-                            <input style={{marginLeft:"10px"}}  type="date" id="end_date" name="end_date" value={endDate} onChange={handleEndDateChange} />
-                        </div>
-                        </fieldset>
+                        <Calendar onDateChange={handleDateChange} />
                         </div>
                     )}
                 </div>
