@@ -145,24 +145,29 @@ return (
             <div className='all_info'> 
                 <div className='all_titles'> 
                     <div className='proprietaria_localizacao'>
-                        <h1>
-                            Quarto de {''} 
-                            <span style={{ color: "#FF7A41"}}>{room?.Proprietaria || ''}</span>
+                        <div className='Quarto1'>
+                            <h1>
+                                Quarto de {''} 
+                                <span style={{ color: "#FF7A41"}}>{room?.Proprietaria || ''}</span>
+                            </h1>
+                        </div>
+                        <div className='Quarto2'>
                             {userData ? (
-                            <div className='telefone_contacto_butoes_avaliar'>
-                                <img src="../../src/images/telefone_icon.png" width='80px' height='50px' alt="telefone icon" />
-                                <span>Telefone: {room.telefone}</span>
-                            </div>                    
-                            ) : (
-                            <Link to="/login" style={{ textDecoration: 'none', color: 'inherit' }}>
-                                <div onClick={handleClick} className='senhorio_contacto_butoes_avaliar'>
-                                <img src="../../src/images/telefone_icon.png" width='80px' height='50px' alt="telefone icon" />
-                                <span>Faça login para contactar o senhorio</span>
-                                </div>  
-                            </Link>
-                            )}
-                        </h1>
-                        <h2>
+                                <div className='telefone_contacto_butoes_avaliar'>
+                                    <img src="../../src/images/telefone_icon.png" width='80px' height='50px' alt="telefone icon" />
+                                    <span>Telefone: {room.telefone}</span>
+                                </div>                    
+                                ) : (
+                                <Link to="/login" style={{ textDecoration: 'none', color: 'inherit' }}>
+                                    <div onClick={handleClick} className='senhorio_contacto_butoes_avaliar'>
+                                    <img src="../../src/images/telefone_icon.png" width='70px' height='40px' alt="telefone icon" />
+                                    <span>Faça login para contactar o senhorio</span>
+                                    </div>  
+                                </Link>
+                                )}
+                        </div>
+                    </div>
+                    <h2>
                             Localização: {''} 
                             <span>{room?.localizacao}, {room?.cidade}</span>
                         </h2>
@@ -170,7 +175,6 @@ return (
                             Avaliação atribuida pelo RoomWave: {''} 
                             <StarRatingRoom rating={getRating(parseInt(ID ?? ''))} />
                         </h2>
-                    </div>
                 </div>
 
                 <div className='contacto_butoes_avaliar'>  
