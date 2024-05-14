@@ -366,14 +366,12 @@ const handleDateChange = (start: string, end: string) => {
                     height: '550px',
                     marginLeft: '37%',
                     marginRight: '37%',
-                    alignItems: 'center', // Center vertically
-                    justifyContent: 'center', // Center horizontally
                     scale: '1.5',
                 }}
                 >
                 <Calendar onDateChange={handleDateChange} />
                 </div>
-
+            <div style={{marginTop:"100px"}}>
             <button
                         className="buttonJoao"
                         id="prev"
@@ -396,6 +394,7 @@ const handleDateChange = (start: string, end: string) => {
                     >
                         Next
                     </button>
+            </div>
             </form>
             </div>
             )}
