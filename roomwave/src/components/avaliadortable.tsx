@@ -117,6 +117,7 @@ const AvaliadorTable = () => {
           .label {
             display: inline-block;
             padding: 5px 10px;
+            margin-top: 20px;
             border-radius: 5px;
             color: #fff;
             font-size: 2rem;
@@ -136,7 +137,7 @@ const AvaliadorTable = () => {
             margin-top: 20px;
           }
           .pagination button {
-            margin: 0 5px;
+            margin: 0 20px;
             padding: 10px 15px;
             font-size: 2rem;
             border: none;
@@ -171,9 +172,20 @@ const AvaliadorTable = () => {
             }
           }
           .options button {
-            margin-top: 5px;
+            margin-top: 08px;
             background-color: transparent;
             border: none;
+          }
+          .button-33:hover {
+            box-shadow: rgba(44,187,99,.35) 0 -25px 18px -14px inset,rgba(44,187,99,.25) 0 1px 2px,rgba(44,187,99,.25) 0 2px 4px,rgba(44,187,99,.25) 0 4px 8px,rgba(44,187,99,.25) 0 8px 16px,rgba(44,187,99,.25) 0 16px 32px;
+            transform: scale(1.05) rotate(-1deg);
+            transition: all 0.3s;
+          }
+
+          .button-34:hover {
+            box-shadow: rgba(109, 34, 33, 0.35) 0 -25px 18px -14px inset,rgba(109, 34, 33, 0.35) 0 1px 2px,rgba(109, 34, 33, 0.35) 0 2px 4px,rgba(109, 34, 33, 0.35) 0 4px 8px,rgba(109, 34, 33, 0.35) 0 8px 16px,rgba(109, 34, 33, 0.35) 0 16px 32px;
+            transform: scale(1.05) rotate(+2deg);
+            transition: all 0.3s;
           }
         `}
       </style>
@@ -241,10 +253,10 @@ const AvaliadorTable = () => {
           ))}
         </div>
         <div className="pagination">
-          <button className="button-33" onClick={handlePreviousPage} disabled={currentPage === 0}>
+          <button className="button-34" onClick={handlePreviousPage} disabled={currentPage === 0}>
             Anterior
           </button>
-          <button className="button-34" onClick={handleNextPage} disabled={currentPage === totalPages - 1}>
+          <button className="button-33" onClick={handleNextPage} disabled={currentPage === totalPages - 1}>
             Próxima
           </button>
         </div>

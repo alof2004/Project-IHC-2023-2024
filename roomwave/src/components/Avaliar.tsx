@@ -139,13 +139,12 @@ function Avaliar() {
                     </table>
 
                     <div className="descricao-label-container">
-                        <label htmlFor="descricao" className="descricao-label">Descrição</label>
+                        <label htmlFor="descricao" className="descricao-label">Comentários adicionais:</label>
                         <textarea
                             id="descricao"
-                            placeholder="Descrição"
+                            placeholder="Comentários adicionais..."
                             value={descricao}
                             onChange={(e) => setDescricao(e.target.value)}
-                            required
                             className="descricao-input"
                             title="Insira aqui uma descrição do quarto"
                         />
@@ -156,7 +155,7 @@ function Avaliar() {
                             <h3 className="panel-title">Avaliação</h3>
                         </div>
                         <div className="panel-body">
-                            <p>Avaliação média do quarto: <strong>{score()}</strong> &nbsp;</p>
+                            <p className='panel-tilte'>Avaliação média do quarto: <strong>{score()}</strong> &nbsp;</p>
                             <button className="btn btn-primary" type="submit">Submeter Avaliação</button>
                         </div>
                     </div>

@@ -275,7 +275,7 @@ function RoomsListPage() {
                     {isOptionsVisible && (
                         <div
                         style={{
-                            width: '34rem',
+                            width: '40rem',
                             padding: '20px',
                             margin: '10px',
                             marginBottom: '0px',
@@ -315,7 +315,7 @@ function RoomsListPage() {
                     {isOptionsVisible1 && (
                         <div
                         style={{
-                            width: '34rem',
+                            width: '40rem',
                             padding: '20px',
                             margin: '10px',
                             marginBottom: '0px',
@@ -355,7 +355,7 @@ function RoomsListPage() {
                     {isOptionsVisible2 && (
                         <div
                         style={{
-                            width: '34rem',
+                            width: '40rem',
                             padding: '20px',
                             margin: '10px',
                             marginBottom: '0px',
@@ -520,12 +520,12 @@ function RoomsListPage() {
                                     </div>
                                 </div>
                             </div>
-                            <div className="projcard-tagbox">
+                            <div className="projcard-tagbox"><span style={{fontSize:"20px", fontWeight:"bold"}}>Mobilía  -  </span>
                             {room.mobilia.map((service, index) => (
                                 <span key={index} className="projcard-tag">{service}</span>
                             ))}
                             </div>
-                            <div className="projcard-tagbox-1">
+                            <div className="projcard-tagbox-1"><span style={{fontSize:"20px", fontWeight:"bold"}}>Locais próximos  - </span>
                             {room.Locais_proximos.map((service, index) => (
                                 <span key={index} className="projcard-tag-1">{service}</span>
                             ))}
