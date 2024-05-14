@@ -167,7 +167,7 @@ return (
                             <span>{room?.localizacao}, {room?.cidade}</span>
                         </h2>
                         <h2>
-                            Avaliação atribuida pelo nosso certificador: {''} 
+                            Avaliação atribuida pelo RoomWave: {''} 
                             <StarRatingRoom rating={getRating(parseInt(ID ?? ''))} />
                         </h2>
                     </div>
