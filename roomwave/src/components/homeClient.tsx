@@ -79,9 +79,7 @@ function HomeClient() {
       </header>
         </div>
         <CardsClientHome />
-        <ImageHome />
         <ImageHomeesquerda />
-        <LastImageHome />
         <Footer />
     </div>
     );

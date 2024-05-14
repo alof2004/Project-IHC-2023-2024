@@ -5,7 +5,7 @@ const ImageHome= () => {
     return(
             <section className="about" id="about">
                 <h1 className="heading">
-                    <span>Arrendar pode ser uma </span>boa fonte de  rendimento
+                    <span>Arrendar pode ser uma </span>boa fonte de rendimento
                 </h1>
                 <div className="row">
                     <div className="video-container">
@@ -20,7 +20,7 @@ const ImageHome= () => {
                         acolhedora e confortável que atenda às demandas de indivíduos em trânsito, estudantes em busca de moradia temporária, profissionais 
                         viajantes ou mesmo famílias que precisam de acomodações adicionais.
                         </p>
-                        <a href="#" className="Marcar" >Quero alugar um quarto</a>
+                        <a href="#" className="Marcar" >Quero colocar um quarto para alugar</a>
                     </div>
                 </div>
          </section>

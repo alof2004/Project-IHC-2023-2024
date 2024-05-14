@@ -245,7 +245,6 @@ const handleDateChange = (start: string, end: string) => {
           <div
             key={i}
             className={`step ${isActive ? 'active' : ''}`}
-            onClick={() => handleStepClick(i)}
           >
             {i}
           </div>
@@ -255,17 +254,13 @@ const handleDateChange = (start: string, end: string) => {
       }
 
       const isFormValid1 = () => {
-        return localizacao && images.length > 0 && locaisProximos.length > 0 && cidade && data_entrada && data_saida;
+        return localizacao && images.length > 0 && cidade && data_entrada && data_saida;
       };
-
       const isFormValid2 = () => {
-        return description && transportes && cama && cozinha && casasDeBanho && wc && alojamento && descricaoProprietaria;
+        return description && cozinha && casasDeBanho && alojamento && descricaoProprietaria;
       };
       const isFormValid3 = () => {
-        return equipamentoDisponivel.length >0  && mobilia.length > 0;
-      };
-      const isFormValid4 = () => {
-        return localizacao && images.length > 0 && locaisProximos.length > 0 && cidade && data_entrada && data_saida;
+        return 1 == 1;
       };
 
     return ( 
@@ -357,7 +352,7 @@ const handleDateChange = (start: string, end: string) => {
                     width: '34rem',
                     padding: '20px',
                     margin: '10px',
-                    marginBottom: '100px',
+                    marginBottom: '200px',
                     borderTop: '1px solid #333',
                     marginTop: '150px',
                     backgroundColor: '#333333',
@@ -525,6 +520,7 @@ const handleDateChange = (start: string, end: string) => {
                     title="Insira aqui uma descrição do quarto"
                 />
             </div>
+            <div style={{marginTop:"100px"}}>
             <button
                         className="buttonJoao"
                         id="prev"
@@ -533,7 +529,7 @@ const handleDateChange = (start: string, end: string) => {
                         style={{ 
                             float: 'left', 
                             backgroundColor: step === 1 ? '#985353' : '#e1261c', // Grey when disabled, red when enabled
-                            color: '#fff' 
+                            color: '#fff', 
                           }} 
                     >
                         Back
@@ -547,6 +543,7 @@ const handleDateChange = (start: string, end: string) => {
                     >
                         Next
                     </button>
+                    </div>
             </form>
             </div>
             )}
@@ -592,6 +589,7 @@ const handleDateChange = (start: string, end: string) => {
                         </div>
                     ))}
                 </div>
+                <div style={{marginTop:"100px"}}>
                 <button
                         className="buttonJoao"
                         id="prev"
@@ -614,6 +612,7 @@ const handleDateChange = (start: string, end: string) => {
                     >
                         Next
                     </button>
+                    </div>
                 </form>
                 </div>
             )}
@@ -706,7 +705,7 @@ const handleDateChange = (start: string, end: string) => {
                     <select
                         value={gastos}
                         onChange={(e) => setGastos(e.target.value)}
-                        
+                        required
                         title="Indique se os gastos estão incluidos"
                     >
                         <option value="">Selecione...</option>
@@ -720,7 +719,7 @@ const handleDateChange = (start: string, end: string) => {
                     <select
                         value={animais}
                         onChange={(e) => setAnimais(e.target.value)}
-                        
+                        required
                         title="Indique se são permitodos animais no alojamento"
                     >
                         <option value="">Selecione...</option>
@@ -734,7 +733,7 @@ const handleDateChange = (start: string, end: string) => {
                     <select
                         value={fumadores}
                         onChange={(e) => setFumadores(e.target.value)}
-                        
+                        required
                         title="Indique se é permitido fumar dentro do alojamento"
                     >
                         <option value="">Selecione...</option>
@@ -756,7 +755,7 @@ const handleDateChange = (start: string, end: string) => {
                             setGenero(selectedOptions);
                         }
                     }}
-                    
+                    required
                     title="Insira os géneros permitidos"
                 >
                     <option value="">Selecione...</option>
@@ -788,11 +787,11 @@ const handleDateChange = (start: string, end: string) => {
                 title="Descreva a vista"
             />
 
-            <button type="buttonJoao" className='bb' onClick={handleClick} style={{ backgroundColor: clicked ? 'green' : '' }}>Deseja que o seu Quarto seja avaliado pelos nossos um dos nossos funcionários?</button>
+            <button type= "button" className='button122' onClick={handleClick} style={{ backgroundColor: clicked ? 'green' : 'gray' , borderRadius: "10px", marginBottom:"25px", height:"50px", fontSize: "20px"}}>Deseja que o seu Quarto seja avaliado pelos nossos funcionários?</button>
             <div className='goo'>
-                <button type="submit">Submit</button>
+                <button className='button122' type="submit" style={{ width: '50%' , height: '60px' , fontSize: '30px', borderRadius:"10px"}}>Submit</button>
             </div>
-            
+            <div style={{marginTop:"100px"}}>
             <button
                         className="buttonJoao"
                         id="prev"
@@ -806,6 +805,7 @@ const handleDateChange = (start: string, end: string) => {
                     >
                         Back
                     </button>
+            </div>
         </form>
         </div>
                         

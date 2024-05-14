@@ -37,7 +37,6 @@ function homeLandlord() {
         <img className="w3-image" src="../src/images/homepage.png" alt="Architecture" style={{ width: "100%", height: "auto" }} />
         <CardsClientHome />
         <ImageHome />
-        <ImageHomeesquerda />
         <LastImageHome />
         <Footer />
     </div>
