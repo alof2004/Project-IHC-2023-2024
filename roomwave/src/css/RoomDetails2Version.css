@@ -1,61 +1,26 @@
 .page-container {
-    background: rgb(255, 255, 255);
-    min-height: 100vh;
-    padding: 20px;
-    margin-left: 5%;    
-    margin-right: 5%;
-    margin-top:5%;
-    border-radius: 20px;
-    
-  }
-  
-  .content {
-    padding: 20px;
-    width: 100%;
-  }
-  
-  .return-button {    
-    width: 3%;
-    height: 3%;
-    margin-left: 5%;
-    margin-top: 5%;
-}
-.container {
-  align-items: center;
-  padding: 10px;
-  flex-direction: row;
-  margin-left: 0px;
-  max-width: 1000px;
+  background: rgb(255, 255, 255);
+  min-height: 100vh;
+  padding: 20px;
+  margin-left: 5%;    
+  margin-right: 5%;
+  margin-top: 5%;
+  border-radius: 20px;
+  position: relative; /* Adiciona posição relativa para conter o botão de retorno absoluto */
 }
 
-.texto {
-  flex: 1;
-  padding: 10px;
-}
-
-.botoes {
-  display: flex;
-  margin-left: 100%;
-  padding: 100px;
-  height: 100%;
+.content {
+  padding: 20px;
   width: 100%;
+  position: relative; /* Adiciona posição relativa para conter o botão de retorno absoluto */
 }
 
-.botao {
-  margin-right: 10px;
-  padding: 8px 15px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.botao:hover {
-  background-color: #0056b3;
-}
-
-.favoritos, .compartilhar {
-  font-size: 20px;
+.return-button {    
+  width: 30px;
+  height: 30px;
+  margin-left: 3%;
+  margin-top: 2%;
+  position: absolute;
+  z-index: 1; /* Garante que o botão de retorno esteja acima do carrossel */
 }
 
