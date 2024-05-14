@@ -36,7 +36,7 @@
   top: 0;
   cursor: pointer;
   flex-direction: column;
-  left: calc(87px + 1250px + 20px);  
+  left: calc(87px + 1300px + 20px);  
   position: absolute; /* Posiciona as imagens secundárias em relação ao contêiner .room-images */
   gap: 20px; /* Espaçamento entre as imagens secundárias */
   display: flex;
@@ -101,7 +101,6 @@
 
 .proprietaria_localizacao h2{
   font-size: 30px;
-  display: flex;
 }
 
 .contacto_butoes_avaliar{
@@ -283,3 +282,10 @@
  }
 
  
+.rating_box{
+  display: flex;
+}
+
+.rating_box_margin{
+  padding-top: 7px;
+}

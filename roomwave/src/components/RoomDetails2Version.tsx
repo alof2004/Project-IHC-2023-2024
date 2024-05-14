@@ -168,13 +168,17 @@ return (
                         </div>
                     </div>
                     <h2>
-                            Localização: {''} 
-                            <span>{room?.localizacao}, {room?.cidade}</span>
-                        </h2>
+                        Localização: {''} 
+                        <span>{room?.localizacao}, {room?.cidade}</span>
+                    </h2>
+                    <div className='rating_box'>
                         <h2>
                             Avaliação atribuida pelo RoomWave: {''} 
-                            <StarRatingRoom rating={getRating(parseInt(ID ?? ''))} />
                         </h2>
+                        <div className='rating_box_margin'>
+                            <StarRatingRoom rating={getRating(parseInt(ID || '', 10))} />
+                        </div>
+                    </div>
                 </div>
 
                 <div className='contacto_butoes_avaliar'>  
