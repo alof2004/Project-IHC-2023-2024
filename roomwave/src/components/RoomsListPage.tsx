@@ -229,6 +229,7 @@ function RoomsListPage() {
         }
 
         setFilteredRooms(sortedRoomsCopy);
+        console.log(filteredRooms)
     };
 
     const sortedRooms = filteredRooms.sort((a, b) => {
