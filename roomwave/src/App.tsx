@@ -55,7 +55,7 @@ function App() {
             <Route path="/button" element={<Button />} />
             <Route path="/ajuda" element={<Ajuda />} />
             <Route path="/favorites" element={<FavoritesPage/>} />
-            <Route path="/room/:ID" element={<RoomDetails/>} />
+            <Route path="/roomAntigo/:ID" element={<RoomDetails/>} />
             <Route path="/perfil" element={<Perfil/>} />
             <Route path="/uni/:uni" element={<RoomsUniListPage/>} />
             <Route path="/perfillandlord" element={<PerfilLandlord/>} />
