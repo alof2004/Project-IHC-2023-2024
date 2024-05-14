@@ -107,14 +107,14 @@ const RoomDetailsSecond: React.FC = () => {
         console.log(room)
         return <div>Loading...</div>; // or handle the case when room is not found
     }
-        
+
     const isRated = (roomId: number) => {
         const storedRatings = JSON.parse(localStorage.getItem('avaliados')?? '') || [];
         const rating = storedRatings.find((rating: { id: number; avaliacao: number; }) => rating.id === roomId);
         console.log(rating)
         return rating? rating.avaliacao : null;
     };
-    const rating = isRated(room.id);
+    const rating = isRated(parseInt(ID || ''));
 
 return (
     <>
