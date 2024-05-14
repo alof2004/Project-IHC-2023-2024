@@ -306,7 +306,7 @@
   cursor: pointer;
   display: inline-block;
   font-family: Neucha, sans-serif;
-  font-size: 1rem;
+  font-size: 2rem;
   line-height: 23px;
   outline: none;
   padding: .75rem;
@@ -319,6 +319,7 @@
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+  font-weight: bold;
 }
 
 .button-55:hover {
