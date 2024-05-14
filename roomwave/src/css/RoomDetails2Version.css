@@ -354,7 +354,6 @@ li {
 .wrapper_separator ul {
   display: flex; /* Display flex para alinhar os grupos na horizontal */
   gap: 20rem; /* Espaçamento entre os grupos */
-  margin-left: 5%;
   margin-right: 5%;
 }
 
