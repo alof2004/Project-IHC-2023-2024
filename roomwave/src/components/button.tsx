@@ -1,7 +1,5 @@
 import React, { Fragment, ReactNode, ReactElement } from 'react';
 import { render } from 'react-dom';
-import '../css/RoomDetails.css';
-
 
 interface ButtonProps {
  as?: React.ElementType;

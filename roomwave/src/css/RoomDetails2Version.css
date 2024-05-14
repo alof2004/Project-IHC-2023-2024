@@ -26,16 +26,22 @@
 
 
 .room-images{
+  position: relative;
   max-width: 95%;
+  margin-top: 5%;  
+
 
 }
 .other-images {
   top: 0;
   cursor: pointer;
   flex-direction: column;
-  left: calc(87px + 1200px + 20px);
-
+  left: calc(87px + 1250px + 20px);  
+  position: absolute; /* Posiciona as imagens secundárias em relação ao contêiner .room-images */
+  gap: 20px; /* Espaçamento entre as imagens secundárias */
+  display: flex;
 }
+
 .vertical-image {
   width: 200px;
   height: 120px;

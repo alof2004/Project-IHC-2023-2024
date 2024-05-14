@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'; // Assuming you're using React Router
-import '../css/RoomDetails.css';
 import details from './rooms.json';
 import Carousel from './Carousel';
 import NavBar from './NavBar';
