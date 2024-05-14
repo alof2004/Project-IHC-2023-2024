@@ -9,12 +9,11 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 
 import Footer from './footer';
-import TemplateDemo from './Table_location';
 import HeartIcon from './HeartIconDetails';
 import Button from '@mui/material/Button';
 import Button1 from './button';
 import Carousel2 from './Carousel2';
-import StarRating from './StarRating';
+import StarRatingRoom from './StarRatingRoom';
 
 
 interface Room {
@@ -148,33 +147,33 @@ return (
                     <div className='proprietaria_localizacao'>
                         <h1>
                             Quarto de {''} 
-                            <span style={{ color: "#FF7A41" }}>{room?.Proprietaria || ''}</span>
+                            <span style={{ color: "#FF7A41"}}>{room?.Proprietaria || ''}</span>
+                            {userData ? (
+                            <div className='telefone_contacto_butoes_avaliar'>
+                                <img src="../../src/images/telefone_icon.png" width='80px' height='50px' alt="telefone icon" />
+                                <span>Telefone: {room.telefone}</span>
+                            </div>                    
+                            ) : (
+                            <Link to="/login" style={{ textDecoration: 'none', color: 'inherit' }}>
+                                <div onClick={handleClick} className='senhorio_contacto_butoes_avaliar'>
+                                <img src="../../src/images/telefone_icon.png" width='80px' height='50px' alt="telefone icon" />
+                                <span>Faça login para contactar o senhorio</span>
+                                </div>  
+                            </Link>
+                            )}
                         </h1>
                         <h2>
                             Localização: {''} 
                             <span>{room?.localizacao}, {room?.cidade}</span>
                         </h2>
                         <h2>
-                            Avaliação atribuida pelo nosso certificador: {''} 
-                            <StarRating rating={getRating(parseInt(ID ?? ''))} />
+                            Avaliação atribuida pelo RoomWave: {''} 
+                            <StarRatingRoom rating={getRating(parseInt(ID ?? ''))} />
                         </h2>
                     </div>
                 </div>
 
                 <div className='contacto_butoes_avaliar'>  
-                    {userData ? (
-                        <div className='telefone_contacto_butoes_avaliar'>
-                            <img src="../../src/images/telefone_icon.png" width='80px' height='50px' alt="telefone icon" />
-                            <span>Telefone: {room.telefone}</span>
-                        </div>                    
-                        ) : (
-                        <Link to="/login" style={{ textDecoration: 'none', color: 'inherit' }}>
-                            <div onClick={handleClick} className='senhorio_contacto_butoes_avaliar'>
-                            <img src="../../src/images/telefone_icon.png" width='80px' height='50px' alt="telefone icon" />
-                            <span>Faça login para contactar o senhorio</span>
-                            </div>  
-                        </Link>
-                        )}
                     <Button1 />
                     <div className="icons_all" style={{ marginTop: '20px', display: 'flex', alignItems: 'center' }}>
                         <div className='hearticon_contacto_butoes_avaliar' style={{ marginRight: '10px', marginTop:"10px" }}>
@@ -189,15 +188,12 @@ return (
                     </div>
                 </div>
             </div>
-
-            <div className='img-container'>
                 <Carousel2 room={{ 
                     imagem1: room?.imagem1 || defaultImage,
                     imagem2: room?.imagem2 || defaultImage,
                     imagem3: room?.imagem3 || defaultImage,
                     imagem4: room?.imagem4 || defaultImage,
                 }} />
-            </div>
         </div>
     </div>
     <Footer />

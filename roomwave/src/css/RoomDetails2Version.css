@@ -27,34 +27,32 @@
 
 .room-images{
   max-width: 95%;
+
 }
 .other-images {
-  position: absolute;
-  left: calc(2% + 80% + 2%);
-  top: 0%;
-  display: flex;
+  top: 0;
   cursor: pointer;
   flex-direction: column;
-  margin-left:-20%;
+  left: calc(87px + 1200px + 20px);
+
 }
+.vertical-image {
+  width: 200px;
+  height: 120px;
+}
+
 
 .main-image {
-  max-width: 120%;
-  height: 70%;
-  object-fit: cover;
+  max-width: 100%;
   margin-left: 3%;
   display: flex;
-  margin-top: -10%;
 }
 
-.img-container {
-  max-width: 80%;
-}
 
 @media screen and (max-width: 1104px) {
   .other-images {
     margin-left: 3%;
-    top: 100%;
+    top: 110%;
     position: absolute;
     flex-direction: row;
     left: calc(0% + 0% + 0%);
@@ -64,6 +62,14 @@
     margin-bottom: 30%;
   }
   
+  .all_info{
+    flex-direction: column;
+  }
+
+  .contacto_butoes_avaliar{
+    margin-left: 20%;
+    margin-top: 5%;
+  }
 }
 
 .all_info{
@@ -74,18 +80,25 @@
   display: flex;
 }
 
+.all_titles{
+  width: 70%;
+}
+
 
 .proprietaria_localizacao h1{
-  font-size: 60px;
+  font-size: 50px;
+  gap:40px;
+  display: flex;
+  
 }
 
 .proprietaria_localizacao h2{
-  font-size: 40px;
+  font-size: 30px;
+  display: flex;
 }
 
 .contacto_butoes_avaliar{
-  max-width: 50%;
-  margin-left: 30%;
+  width: 30%;
 }
 
 .hearticon_contacto_butoes_avaliar{
@@ -94,24 +107,23 @@
 }
 
 .shareicon_contacto_butoes_avaliar{
-  width: 90px;
+  width: 80px;
   height: auto;
 }
 .icons_all{
-  width: 40%;
-  margin-left: 32%;
+  margin-left: 23%;
+  gap: 20px;
 }
 
 .senhorio_contacto_butoes_avaliar{
   text-decoration: none;
   background-color:#FF7A41;
-  width: 100%;
   color: black;
   border-radius: 40px;
+  width: 100%;
   padding: 10px;
-  font-size: 30px;
+  font-size: 25px;
   font-weight: bold;
-
 }
 
 .dir-control {
@@ -136,12 +148,11 @@
   padding: calc(var(--verticalPadding) * 1px) calc(var(--horizontalPadding) * 1px);
   position: relative;
   text-decoration: none;
-  height: 80px;
+  height: 60px;
   align-items: center;
   justify-content: center;
-  margin-top: 10%;
-  margin-left: 25%;
   width: 300px;
+  margin-left: 15%;
   transition: transform 0.2s;
   transform: translate(0, calc(var(--y, 0) * 1%)) scale(var(--scale, 1));
  }
@@ -246,3 +257,16 @@
   --textColor: hsl(0, 0%, 5%);
   --bg: #c7edef;
  }
+
+ .telefone_contacto_butoes_avaliar{
+  text-decoration: none;
+  background-color:#FF7A41;
+  width: 100%;
+  color: black;
+  border-radius: 40px;
+  padding: 10px;
+  font-size: 30px;
+  font-weight: bold;
+ }
+
+ 
