@@ -1,12 +1,12 @@
 .page-container {
   background: rgb(255, 255, 255);
-  min-height: 100vh;
-  padding: 20px;
   margin-left: 5%;    
   margin-right: 5%;
   margin-top: 5%;
   border-radius: 20px;
   position: relative; /* Adiciona posição relativa para conter o botão de retorno absoluto */
+  max-width: 95%;
+
 }
 
 .content {
@@ -24,3 +24,44 @@
   z-index: 1; /* Garante que o botão de retorno esteja acima do carrossel */
 }
 
+
+.room-images{
+  max-width: 95%;
+}
+.other-images {
+  position: absolute;
+  left: calc(2% + 80% + 2%);
+  top: 33%;
+  display: flex;
+  cursor: pointer;
+  flex-direction: column;
+  
+}
+
+.main-image {
+  max-width: 120%;
+  height: 70%;
+  object-fit: cover;
+  margin-left: 3%;
+  display: flex;
+}
+
+.img-container {
+  display: flex;
+  max-width: 80%;
+}
+
+@media screen and (max-width: 1104px) {
+  .other-images {
+    margin-left: 3%;
+    top: 100%;
+    position: absolute;
+    flex-direction: row;
+    left: calc(0% + 0% + 0%);
+  }
+
+  .room-images{
+    margin-bottom: 30%;
+  }
+  
+}

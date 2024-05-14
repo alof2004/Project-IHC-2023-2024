@@ -1,7 +1,6 @@
 import '../css/RoomDetails2Version.css'; 
 import { Link } from 'react-router-dom'; // Assuming you're using React Router
 import details from './rooms.json';
-import Carousel from './Carousel';
 import NavBar from './NavBar';
 import { SetStateAction, useEffect, useState } from 'react';
 import Map from './Map';
@@ -14,6 +13,7 @@ import TemplateDemo from './Table_location';
 import HeartIcon from './HeartIconDetails';
 import Button from '@mui/material/Button';
 import Button1 from './button';
+import Carousel2 from './Carousel2';
 
 
 interface Room {
@@ -116,16 +116,17 @@ return (
                     <img src='../../src/images/return.png' className='return-button' alt="return" />
                 </Link>
             </div>
-            <div>
-            <Carousel room={{ 
-                imagem1: room?.imagem1 || defaultImage,
-                imagem2: room?.imagem2 || defaultImage,
-                imagem3: room?.imagem3 || defaultImage,
-                imagem4: room?.imagem4 || defaultImage,
-            }} />
+            <div className='img-container'>
+                <Carousel2 room={{ 
+                    imagem1: room?.imagem1 || defaultImage,
+                    imagem2: room?.imagem2 || defaultImage,
+                    imagem3: room?.imagem3 || defaultImage,
+                    imagem4: room?.imagem4 || defaultImage,
+                }} />
             </div>
         </div>
     </div>
+    <Footer />
     </>
 );
 };
