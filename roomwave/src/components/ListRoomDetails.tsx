@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import roomsData from './rooms.json'; // Adjust the path as necessary
+import roomsData from './rooms.json'; // Verifique o caminho do arquivo conforme necessário
 import '../css/RoomDetails2Version.css';
 
 interface Room {
@@ -50,6 +50,7 @@ const ListRoomDetails = ({ id }: { id: number }) => {
     useEffect(() => {
         const fetchRoomDetails = async () => {
             try {
+                // Aqui, usamos uma função de filtragem para encontrar o quarto com o ID fornecido
                 const foundRoom = roomsData.find(room => room.id === id);
                 setRoom(foundRoom || null);
             } catch (error) {
@@ -61,29 +62,88 @@ const ListRoomDetails = ({ id }: { id: number }) => {
     }, [id]);
 
     if (!room) {
-        return <p>Nenhum quarto encontrado com o ID fornecido.</p>;
+        return <p className="wrapper">Nenhum quarto encontrado com o ID fornecido.</p>;
     }
 
     return (
-        <div className="room-card">
-            <h2>{room.localizacao}</h2>
-            <p>Cidade: {room.cidade}, País: {room.país}</p>
-            <p>Descrição: {room.description}</p>
-            <p>Preço: {room.price}</p>
-            <p>Mobília:</p>
+        <><div className="divider"></div><>
+        <div className="wrapper_separator">
+            <div className="wrapper room-card">
+            <h1>Mobilía:</h1>
+                <ul>
+                    <div className="group">
+                        {room.mobilia.slice(0, 5).map((item, index) => (
+                            <li key={index}>{item}</li>
+                        ))}
+                    </div>
+                    <div className="group">
+                        {room.mobilia.slice(5).map((item, index) => (
+                            <li key={index}>{item}</li>
+                        ))}
+                    </div>
+                </ul>
+            </div>
+            <div className="wrapper room-card">
+            <h1>Equipamentos disponíveis:</h1>
             <ul>
-                {room.mobilia.map((item, index) => (
-                    <li key={index}>{item}</li>
-                ))}
+                <div className="group">
+                    {room.Equipamento_disponivel.slice(0, 5).map((item, index) => (
+                        <li key={index}>{item}</li>
+                    ))}
+                </div>
+                <div className="group">
+                    {room.Equipamento_disponivel.slice(5).map((item, index) => (
+                        <li key={index}>{item}</li>
+                    ))}
+                </div>
             </ul>
-            <p>Equipamento Disponível:</p>
-            <ul>
-                {room.Equipamento_disponivel.map((item, index) => (
-                    <li key={index}>{item}</li>
-                ))}
-            </ul>
-            {/* Adicione outras informações conforme necessário */}
+            </div>
         </div>
+        <div className="divider"></div>
+        <div className="wrapper_separator">
+            <div className="wrapper room-card">
+            <h1>Renda Inclui:</h1>
+                <ul className='ul_top'>
+                    <div className="group">
+                        {room.Renda_inclui.slice(0, 5).map((item, index) => (
+                            <li key={index}>{item}</li>
+                        ))}
+                    </div>
+                    <div className="group">
+                        {room.Renda_inclui.slice(5).map((item, index) => (
+                            <li key={index}>{item}</li>
+                        ))}
+                    </div>
+                </ul>
+            </div>
+            <div className="wrapper room-card">
+            <h1 >Géneros permitidos:</h1>
+            <ul className='ul_top'>
+                <div className="group">
+                    {room.Pessoas_permitidas.slice(0, 3).map((item, index) => (
+                        <li key={index}>{item}</li>
+                    ))}
+                </div>
+                <div className="group">
+                    <h1>Permissão de animais:</h1>
+                    <li>{room.Animais}</li>
+                </div>
+            </ul>
+            <h1>Locais disponiveis:</h1>
+            <ul className='ul_top'>
+                <div className="group">
+                    {room.Locais_proximos.slice(0, 3).map((item, index) => (
+                        <li key={index}>{item}</li>
+                    ))}
+                </div>
+                <div className="group">
+                    <h1>Permissão de fumadores:</h1>
+                    <li>{room.Fumadores}</li>
+                </div>
+            </ul>
+            </div>
+        </div>
+        </></>
     );
 };
 

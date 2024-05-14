@@ -79,8 +79,8 @@ const MyMapApp: React.FC = () => {
   return (
     <MapContainer
       style={{ height: "100vh" }}
-      dragging={false}
       scrollWheelZoom={false}
+
     >
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

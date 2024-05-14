@@ -206,7 +206,30 @@ return (
                     imagem4: room?.imagem4 || defaultImage,
                 }} />
         </div>
+        <div className='price'>
+            <h1>
+                <span style={{ fontSize:"50px",color:"#FF7A41", fontWeight:"bold",marginLeft:"5%"}}>
+                Preço por mês:  
+                </span>
+                <span style={{fontSize:"80px"}}>
+                     {room?.price}€
+                </span>  + despesas {room?.gastos ?? ''}
+            </h1>
+            <h2 style={{fontSize:"50px", marginBottom:"3%",marginLeft:"5%"}}>Informações sobre o quarto</h2>
+            <p style={{fontSize:"30px", marginBottom:"3%",marginLeft:"5%",marginRight:"5%"}} > 
+                A habitação dispõem de uma área de {room.area}m2 e é rodeada por um ambiente {room.Ambiente}. Inclui uma {room.mobilia.join(", ").toLowerCase()} e, o mais importante, uma cama {room.Cama.toLowerCase()}. <br />
+                Ambiente {room.Ambiente}. A cozinha é {room.Cozinha.toLowerCase()}, a casa tem disponiveis {room.casas_de_banho} casas de banho.<br />
+                Na sua proximidade encontra vários edifícios como: {room.Locais_proximos.join(", ")}.
+                Autocarros {room.Transportes}. {room.Descrição_Proprietaria}<br />
+                Pessoas do género(s) {room.Pessoas_permitidas[0]} são permitidas, bem como {room.Pessoas_permitidas[1]}. Animais são {room.Animais} e o acesso a fumadores é {room.Fumadores}.<br />
+                As despesas estão {room.gastos}<br />
+            </p>
+        </div>
         <ListRoomDetails id={parseInt(ID || '', 10)} />
+        <div className='mapcontainer'>
+            <h2 style={{fontSize:"60px", marginBottom:"50px"}}>Localização:</h2>
+            <Map />
+        </div>
     </div>
     <Footer />
     </>

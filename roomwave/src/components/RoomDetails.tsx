@@ -163,6 +163,7 @@ function RoomDetails(){
                 imagem3: room?.imagem3 || defaultImage,
                 imagem4: room?.imagem4 || defaultImage,
             }} />
+            </div>
                 <div className='price_info'>
                     <h1>
                         <span style={{ fontSize:"50px",color:"#FF7A41", fontWeight:"bold" }}>
@@ -173,7 +174,6 @@ function RoomDetails(){
                         </span>  + despesas {room?.gastos ?? ''}
                     </h1>
                 </div>
-            </div>
             <div className='description_info'>
                 <h2 style={{fontSize:"50px", marginBottom:"30px"}}>Informações sobre o quarto</h2>
                 <p> 
