@@ -56,7 +56,6 @@ const AvaliadorTable = () => {
   
   }, []);
   
-  
   // Filter rooms that have been evaluated
   const toggleShowUnevaluated = () => {
     setShowUnevaluated(!showUnevaluated);
@@ -93,6 +92,9 @@ const AvaliadorTable = () => {
   
   const districts = Array.from(new Set(combinedRooms.map(room => room.cidade))).sort();
 
+  const totalFilteredRooms = filteredRooms.length;
+  const totalPages = Math.ceil(totalFilteredRooms / 10);
+
   return (
     <div className="table-container">
       <style>
@@ -108,23 +110,24 @@ const AvaliadorTable = () => {
           .table-row {
             display: flex;
           }
-
+          
           .table-header div,
           .table-row div {
             flex: 1;
-            padding: 11px;
+            padding: 11px; /* Ensure this matches the padding in the body cells */
             border: 1px solid #ddd;
             display: flex;
-            align-items: center; /* Centralize vertically */
-            justify-content: center; /* Centralize horizontally */
-            font-size: 25px;
+            align-items: center;
+            justify-content: center;
+            font-size: 25px; /* Ensure this matches the font size in the body cells */
             text-align: center;
           }
-
+          
+          /* Apply these styles to the header cells to match the body cells */
           .table-header {
             background-color: #f2f2f2;
           }
-
+          
           .table-row:nth-child(even) {
             background-color: #f2f2f2;
           }
@@ -155,6 +158,7 @@ const AvaliadorTable = () => {
             border-radius: 20px;
             font-size: 25px;
             color: white;
+            width: '40%';
           }
 
           .verde {
@@ -179,7 +183,7 @@ const AvaliadorTable = () => {
           .pagination {
             display: flex;
             justify-content: center;
-            margin-top: 100px;
+            margin-top: 50px;
             
           }
 
@@ -212,28 +216,74 @@ const AvaliadorTable = () => {
             margin-bottom: 40px;
             box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
           }
+          .button-33 {
+            background-color: #c2fbd7;
+            border-radius: 100px;
+            box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset,rgba(44, 187, 99, .15) 0 1px 2px,rgba(44, 187, 99, .15) 0 2px 4px,rgba(44, 187, 99, .15) 0 4px 8px,rgba(44, 187, 99, .15) 0 8px 16px,rgba(44, 187, 99, .15) 0 16px 32px;
+            color: green;
+            cursor: pointer;
+            display: inline-block;
+            font-family: CerebriSans-Regular,-apple-system,system-ui,Roboto,sans-serif;
+            padding: 7px 20px;
+            text-align: center;
+            text-decoration: none;
+            transition: all 250ms;
+            border: 0;
+            font-size: 16px;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+          }
 
+          .button-33:hover {
+            box-shadow: rgba(44,187,99,.35) 0 -25px 18px -14px inset,rgba(44,187,99,.25) 0 1px 2px,rgba(44,187,99,.25) 0 2px 4px,rgba(44,187,99,.25) 0 4px 8px,rgba(44,187,99,.25) 0 8px 16px,rgba(44,187,99,.25) 0 16px 32px;
+            transform: scale(1.05) rotate(-1deg);
+          }
+
+          .button-34 {
+            background-color: #F0B2B0;
+            border-radius: 100px;
+            box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset,rgba(44, 187, 99, .15) 0 1px 2px,rgba(44, 187, 99, .15) 0 2px 4px,rgba(44, 187, 99, .15) 0 4px 8px,rgba(44, 187, 99, .15) 0 8px 16px,rgba(44, 187, 99, .15) 0 16px 32px;
+            color: red;
+            cursor: pointer;
+            display: inline-block;
+            font-family: CerebriSans-Regular,-apple-system,system-ui,Roboto,sans-serif;
+            padding: 7px 20px;
+            text-align: center;
+            text-decoration: none;
+            transition: all 250ms;
+            border: 0;
+            font-size: 16px;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+          }
+
+          .button-34:hover {
+            box-shadow: rgba(109, 34, 33, 0.35) 0 -25px 18px -14px inset,rgba(109, 34, 33, 0.35) 0 1px 2px,rgba(109, 34, 33, 0.35) 0 2px 4px,rgba(109, 34, 33, 0.35) 0 4px 8px,rgba(109, 34, 33, 0.35) 0 8px 16px,rgba(109, 34, 33, 0.35) 0 16px 32px;
+            transform: scale(1.05) rotate(+2deg);
+          }
         `}
       </style>
       <div className="favorites-container-1">
-                <div className='titulos gradient-effect-1'>
-                    <h2>Quartos à espera de avaliação</h2>
-                    <h5>Existem {roomsAwaitingEvaluation.length} a aguardar avaliação</h5>
-                </div>
+        <div className='titulos gradient-effect-1'>
+          <h2>Quartos à espera de avaliação</h2>
+          <h5>Existem {roomsAwaitingEvaluation.length} a aguardar avaliação</h5>
+        </div>
       </div>
       <div className="table">
-      <select className="cidades" onChange={(e) => setSelectedDistrict(e.target.value)} defaultValue={''}>
-        <option value={''}>Todos os distritos</option>
-        {districts.map((district, index) => (
-          <option key={index} value={district}>{district}</option>
-        ))}
-      </select>
-      <button
-        className={`button-79 sort ${showUnevaluated ? 'toggled' : ''}`}
-        onClick={toggleShowUnevaluated}
-      >
-        {showUnevaluated ? 'Mostrar quartos não avaliados' : 'Mostrar quartos não avaliados'}
-      </button>
+        <select className="cidades" onChange={(e) => setSelectedDistrict(e.target.value)} defaultValue={''}>
+          <option value={''}>Todos os distritos</option>
+          {districts.map((district, index) => (
+            <option key={index} value={district}>{district}</option>
+          ))}
+        </select>
+        <button
+          className={`button-79 sort ${showUnevaluated ? 'toggled' : ''}`}
+          onClick={toggleShowUnevaluated}
+        >
+          {showUnevaluated ? 'Mostrar todos os quartos' : 'Mostrar quartos não avaliados'}
+        </button>
         <div className="table-header">
           <div>ID</div>
           <div>Nome</div>
@@ -245,34 +295,35 @@ const AvaliadorTable = () => {
           <div>Opções</div>
         </div>
         <div className="table-body">
-        {filteredRooms.slice(currentPage * 10, (currentPage + 1) * 10).map(item => (
-          <div className="table-row" key={item.id}>
-            <div>{item.id}</div>
-            <div>{item.Proprietaria}</div>
-            <div>{item.localizacao}</div>
-            <div>{item.cidade}</div>
-            <div>{item.telefone}</div>
-            <div>
-              <span className={`label ${evaluatedRooms.includes(Number(item.id)) || item.Avaliado === "Sim" ? 'verde' : 'vermelho'}`}>
-                {evaluatedRooms.includes(Number(item.id)) || item.Avaliado === "Sim" ? 'Avaliado' : 'Não avaliado'}
-              </span>
+          {filteredRooms.slice(currentPage * 10, (currentPage + 1) * 10).map(item => (
+            <div className="table-row" key={item.id}>
+              <div>{item.id}</div>
+              <div>{item.Proprietaria}</div>
+              <div>{item.localizacao}</div>
+              <div>{item.cidade}</div>
+              <div>{item.telefone}</div>
+              <div>
+                <span className={`label ${evaluatedRooms.includes(Number(item.id)) || item.Avaliado === "Sim" ? 'verde' : 'vermelho'}`}>
+                  {evaluatedRooms.includes(Number(item.id)) || item.Avaliado === "Sim" ? 'Avaliado' : 'Não avaliado'}
+                </span>
+              </div>
+              {/* Render the rating */}
+              <div>{evaluatedRooms.includes(Number(item.id)) ? getRating(item.id) || 'N/A' : 'N/A'}</div>
+              <div className="options">
+                <button onClick={() => handleRoom(item.id)}><img className="imgIcon" style={{ width: "30px", height: "30px" }} src="../../src/images/olho.png" alt="Ícone Ver" /></button>
+                <button onClick={() => handleAvaliarClick(item.id)} disabled={evaluatedRooms.includes(Number(item.id))}><img className="imgIcon" style={{ width: "30px", height: "30px" }} src="../../src/images/lapis.png" alt="Ícone Editar" /></button>
+                <button onClick={() => handleDeleteClick(item.id)}><img className="imgIcon" style={{ width: "30px", height: "30px" }} src="../../src/images/lixo.png" alt="Ícone Eliminar" /></button>
+              </div>
             </div>
-            {/* Render the rating */}
-            <div>{evaluatedRooms.includes(Number(item.id)) ? getRating(item.id) || 'N/A' : 'N/A'}</div>
-            <div className="options">
-              <button onClick={() => handleRoom(item.id)}><img className="imgIcon" style={{ width: "30px", height: "30px" }} src="../../src/images/olho.png" alt="Ícone Ver" /></button>
-              <button onClick={() => handleAvaliarClick(item.id)} disabled={evaluatedRooms.includes(Number(item.id))}><img className="imgIcon" style={{ width: "30px", height: "30px" }} src="../../src/images/lapis.png" alt="Ícone Editar" /></button>
-              <button onClick={() => handleDeleteClick(item.id)}><img className="imgIcon" style={{ width: "30px", height: "30px" }} src="../../src/images/lixo.png" alt="Ícone Eliminar" /></button>
-            </div>
-          </div>
-        ))}
-      </div>
-      <div className="pagination">
-        <button onClick={handlePreviousPage} disabled={currentPage === 0}>Anterior</button>
-        <button onClick={handleNextPage} disabled={(currentPage + 1) * 5 >= rooms.length}>Próximo</button>
+          ))}
+        </div>
+        <div className="pagination">
+          <button className='button-33' onClick={handlePreviousPage} disabled={currentPage === 0}>Anterior</button>
+          
+          <button  className='button-34' onClick={handleNextPage} disabled={currentPage + 1 >= totalPages}>Próximo</button>
+        </div>
       </div>
     </div>
-  </div>
   );
 };
 

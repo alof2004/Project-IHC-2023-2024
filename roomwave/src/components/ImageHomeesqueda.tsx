@@ -5,7 +5,7 @@ const ImageHomeesquerda= () => {
     return(
             <section className="about" id="about">
                 <h1 className="heading">
-                    <span>Tens o sonho de estudar</span> longe <span>de casa</span>
+                    <span>Tens o sonho de</span> estudar longe de casa?<span>dEncontra a tua nova casa!</span>
                 </h1>
                 <div className="row">         
                     <div className="content" >

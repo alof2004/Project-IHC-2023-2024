@@ -28,3 +28,7 @@
 .certificate-icon {
   filter: drop-shadow(3px 3px 3px rgba(0, 0, 0, 1));
 }
+
+.carousel-control-next{
+  display: none;
+}
