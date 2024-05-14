@@ -61,41 +61,10 @@
     font-size: 500px;
     margin-bottom: 40px;
 }
-  
-  .main-image {
-    width: 1100px;
-    height: 700px;
-    margin-top: 80px;
-    margin-left: 87px;
-    margin-bottom: 100px;
-  }
-  
-  .other-images {
-    position: absolute;
-    top: 75px;
-    left: calc(87px + 1300px + 20px);
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    cursor: pointer;
-  }
-  
-  .vertical-image {
-    width: 200px;
-    height: 120px;
-  }
 
-
-.description_info {
-    margin:80px;
-    margin-right: 80px !important;
-    font-size: 40px;
-    margin-bottom: 40px;
-    width: 98%;
-    background-color: rgba(255, 255, 255, 0.368);
-    border-radius: 30px;
-    padding:40px
-}   
+  
+ 
+  
 
 
 .info_contact_second {
@@ -177,28 +146,6 @@
   
    
    
-   @media screen and (max-width: 1300px) {
-  
-    .price_info{
-      margin-left:80px;
-      font-size: 500px;
-      margin-bottom: 40px;
-      margin-top: 200px;
-    }
-
-  .room-images {
-    flex-direction: column;
-    gap: 10px; /* Adiciona um espaço entre as imagens */
-    margin-top: 200px;
-    display: flex;
-   }
-   
-   .main-image {
-    flex-direction: column;
-    margin-top: 360px;
-    object-fit: cover;
-    margin-right:80px;
-   }
    
    .other-images{
     position: absolute; /* Posiciona as imagens secundárias em relação ao contêiner .room-images */
@@ -249,33 +196,8 @@
     .info_contact_second {
       margin-left: 0px;
     }
-    
 
-    @media screen and (max-width: 1085px) {
 
-      .info_contact_second {
-        display: flex;
-        position: absolute;
-        margin-left: 0px;
-      }
-
-      .other-images{
-        position: absolute; /* Posiciona as imagens secundárias em relação ao contêiner .room-images */
-        top: 100%; /* Posiciona as imagens secundárias logo abaixo da imagem principal */
-        left: 0; /* Alinha as imagens secundárias à esquerda do contêiner */
-        display: flex;
-        flex-direction: column; /* Alinha as imagens secundárias em uma linha */
-        gap: 10px; /* Espaçamento entre as imagens secundárias */
-        margin-left: 80px;
-       }
-
-       .price_info{
-        margin-top: 400px;
-       }
-       
-    }  
-    
-}
 
 /* RoomDetails.css */
 
