@@ -33,16 +33,16 @@ const PriceRange: React.FC<PriceRangeProps> = ({ onRangeChange }) => {
         sx={{
           color: 'white',
           '& .MuiSlider-thumb': {
-            color: 'white',
+            backgroundColor: 'white',
             '&:hover, &.Mui-focusVisible, &.Mui-active': {
               boxShadow: 'none',
             },
           },
           '& .MuiSlider-track': {
-            color: 'white',
+            backgroundColor: 'white',
           },
           '& .MuiSlider-rail': {
-            color: '#666',
+            backgroundColor: '#666',
           },
         }}
       />

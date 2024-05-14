@@ -306,9 +306,9 @@ progress {
 	background-color: #e47241;
 	color: white;
 	cursor: pointer;
-	height:70px !important;
+	height:100px !important;
 	padding:0px !important;
-	width: 400px !important;
+	width: 600px !important;
 }
 
 .sort:hover{
