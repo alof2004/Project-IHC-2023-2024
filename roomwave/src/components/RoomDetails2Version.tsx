@@ -14,7 +14,7 @@ import Button from '@mui/material/Button';
 import Button1 from './button';
 import Carousel2 from './Carousel2';
 import StarRatingRoom from './StarRatingRoom';
-import { Modal } from 'react-bootstrap';
+import ListRoomDetails from './ListRoomDetails';
 
 
 interface Room {
@@ -206,6 +206,7 @@ return (
                     imagem4: room?.imagem4 || defaultImage,
                 }} />
         </div>
+        <ListRoomDetails id={parseInt(ID || '', 10)} />
     </div>
     <Footer />
     </>
