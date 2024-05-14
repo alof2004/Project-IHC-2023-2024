@@ -1,8 +1,19 @@
-import React, { useState } from 'react';
-import '../css/RoomDetails2Version.css'; // Importando o arquivo CSS
-import { Link } from 'react-router-dom';
+import '../css/RoomDetails2Version.css'; 
+import { Link } from 'react-router-dom'; // Assuming you're using React Router
+import details from './rooms.json';
+import Carousel from './Carousel';
 import NavBar from './NavBar';
-import CarouselRoom from './CarouselRoom';
+import { SetStateAction, useEffect, useState } from 'react';
+import Map from './Map';
+import {useParams } from 'react-router-dom'; // Import useNavigate
+import { useLocation, useNavigate } from 'react-router-dom';
+
+
+import Footer from './footer';
+import TemplateDemo from './Table_location';
+import HeartIcon from './HeartIconDetails';
+import Button from '@mui/material/Button';
+import Button1 from './button';
 
 
 interface Room {
@@ -48,12 +59,53 @@ interface Room {
    }
 
 const RoomDetailsSecond: React.FC = () => {
+    const { ID } = useParams();
     const [room, setRoom] = useState<Room | undefined>(undefined);
     const defaultImage = '../../src/images/default.jpg'; // Replace 'path_to_default_image' with the actual path to your default image
 
+    useEffect(() => {
+        if (ID && parseInt(ID) < 100) {
+            const foundRoom = details.find((room) => room.id.toString() === ID);
+            setRoom(foundRoom);
+        } else {
+            const rooms = localStorage.getItem('roomsData');
+            const parsedRooms = JSON.parse(rooms || '[]');
+            const foundRoom = parsedRooms.find((room: Room) => room.id.toString() === ID);
+            setRoom(foundRoom);
+        }
+    }, [ID]);
 
-    
-    
+
+    const userData = localStorage.getItem('userData');
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    const handleClick = () => {
+        localStorage.setItem('redirectPath', location.pathname);
+        console.log(location.pathname);
+    }
+
+    const saveVisitedRoom = (roomId: string) => {
+        const visitedRooms = JSON.parse(localStorage.getItem('visitedRooms') || '[]');
+        if (!visitedRooms.includes(roomId)) {
+            visitedRooms.push(roomId);
+            localStorage.setItem('visitedRooms', JSON.stringify(visitedRooms));
+        }
+    };
+
+    const isAvaliador = userData && JSON.parse(userData).type === 'avaliador';
+
+    useEffect(() => {
+        if (ID) {
+            saveVisitedRoom(ID);
+        }
+    }, [ID]);
+
+    console.log(ID);
+    if (!room) {
+        console.log(room)
+        return <div>Loading...</div>; // or handle the case when room is not found
+    }
 return (
     <>
     <NavBar />
@@ -65,7 +117,12 @@ return (
                 </Link>
             </div>
             <div>
-                <CarouselRoom />
+            <Carousel room={{ 
+                imagem1: room?.imagem1 || defaultImage,
+                imagem2: room?.imagem2 || defaultImage,
+                imagem3: room?.imagem3 || defaultImage,
+                imagem4: room?.imagem4 || defaultImage,
+            }} />
             </div>
         </div>
     </div>
