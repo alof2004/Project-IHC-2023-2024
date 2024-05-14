@@ -305,11 +305,11 @@ body, html {
 
 .label-container2 {
     margin-right: 20px;
-    margin-top: -9px;
+    margin-top: 18px;
     margin-bottom: 90px;
     font-size: 45px;
 
-    width:600px;
+    width:550px;
 }
 .label-container3 {
     margin-top: -10px;
@@ -319,7 +319,7 @@ body, html {
     margin-bottom: 20px;
     /* Adjust width as needed */
     width: auto;
-    width: 300px;
+    width: 250px;
 }
 
 .label-container4 {
@@ -330,7 +330,7 @@ body, html {
     margin-bottom: 20px;
     /* Adjust width as needed */
     width: auto;
-    width: 300px;
+    width: 250px;
 }
 
 .label-container5 {
