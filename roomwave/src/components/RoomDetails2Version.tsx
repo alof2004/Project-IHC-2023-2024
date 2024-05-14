@@ -14,6 +14,7 @@ import HeartIcon from './HeartIconDetails';
 import Button from '@mui/material/Button';
 import Button1 from './button';
 import Carousel2 from './Carousel2';
+import StarRating from './StarRating';
 
 
 interface Room {
@@ -106,16 +107,72 @@ const RoomDetailsSecond: React.FC = () => {
         console.log(room)
         return <div>Loading...</div>; // or handle the case when room is not found
     }
+        
+    const isRated = (roomId: number) => {
+        const storedRatings = JSON.parse(localStorage.getItem('avaliados')?? '') || [];
+        const rating = storedRatings.find((rating: { id: number; avaliacao: number; }) => rating.id === roomId);
+        console.log(rating)
+        return rating? rating.avaliacao : null;
+    };
+    const rating = isRated(room.id);
+
 return (
     <>
     <NavBar />
     <div className="page-container">
         <div className="content">
             <div className="return-button-container">
-                <Link to={`../../rooms/${room?.cidade}`}>
-                    <img src='../../src/images/return.png' className='return-button' alt="return" />
-                </Link>
+                    <Link to={`../../rooms/${room?.cidade}`}>
+                        <img src='../../src/images/return.png' className='return-button' alt="return" />
+                    </Link>
+                </div>
+            <div className='all_info'> 
+                <div className='all_titles'> 
+                    <div className='proprietaria_localizacao'>
+                        <h1>
+                            Quarto de {''} 
+                            <span style={{ color: "#FF7A41" }}>{room?.Proprietaria || ''}</span>
+                        </h1>
+                        <h2>
+                            Localização: {''} 
+                            <span>{room?.localizacao}, {room?.cidade}</span>
+                        </h2>
+                        <h2>
+                            Avaliação atribuida pelo nosso certificador: {''} 
+                            <StarRating rating={rating} />
+                        </h2>
+                    </div>
+                </div>
+
+                <div className='contacto_butoes_avaliar'>  
+                    {userData ? (
+                        <div className='telefone_contacto_butoes_avaliar'>
+                            <img src="../../src/images/telefone_icon.png" width='80px' height='50px' alt="telefone icon" />
+                            <span>Telefone: {room.telefone}</span>
+                        </div>                    
+                        ) : (
+                        <Link to="/login" style={{ textDecoration: 'none', color: 'inherit' }}>
+                            <div onClick={handleClick} className='senhorio_contacto_butoes_avaliar'>
+                            <img src="../../src/images/telefone_icon.png" width='80px' height='50px' alt="telefone icon" />
+                            <span>Faça login para contactar o senhorio</span>
+                            </div>  
+                        </Link>
+                        )}
+                    <Button1 />
+                    <div className="icons_all" style={{ marginTop: '20px', display: 'flex', alignItems: 'center' }}>
+                        <div className='hearticon_contacto_butoes_avaliar' style={{ marginRight: '10px', marginTop:"10px" }}>
+                            <HeartIcon roomId={parseInt(ID?? '')} isFavorite={false} />
+                        </div>
+                        <div className='shareicon_contacto_butoes_avaliar' style={{ marginLeft: '10px' }}>
+                            <img src='../../src/images/share.png' alt="share" style={{ width: '100%', height: '100%' }} />
+                        </div>
+                        {isAvaliador && (
+                        <Button style={{width:"400px", height:"100px", fontSize:"40px", marginTop:"50px", marginLeft:"30px", color:"white", backgroundColor:"#76b476"}} variant="contained" onClick={() => navigate(`/avaliar/${ID}`)}>AVALIAR QUARTO</Button>
+                        )}
+                    </div>
+                </div>
             </div>
+
             <div className='img-container'>
                 <Carousel2 room={{ 
                     imagem1: room?.imagem1 || defaultImage,
