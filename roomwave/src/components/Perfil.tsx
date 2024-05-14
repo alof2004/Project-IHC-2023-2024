@@ -64,7 +64,7 @@ function PerfilClient() {
     <>
       <NavBarClient />
       <div className="profile-container">
-        <h2>Perfil do Cliente</h2>
+        <h2 className="tituloPerfil">Perfil do Cliente</h2>
         <div className="content-container">
           <div className="photo-container">
             {photo ? (
@@ -83,7 +83,7 @@ function PerfilClient() {
               <p><strong>Data de Nascimento:</strong> {userData.birthdate}</p>
               <p><strong>Função:</strong> {userData.job}</p>
               <p><strong>Telefone:</strong> {userData.phone}</p>
-              <button onClick={handleEditButtonClick}>Editar</button>
+              <button className="editar" onClick={handleEditButtonClick}>Editar</button>
             </div>
           ) : null}
           {isEditing ? (
@@ -94,7 +94,7 @@ function PerfilClient() {
               <input type="date" id="birthdate" defaultValue={userData?.birthdate} placeholder="Data de Nascimento" />
               <input type="text" id="job" defaultValue={userData?.job} placeholder="Função" />
               <input type="tel" id="phone" defaultValue={userData?.phone} placeholder="Telefone" />
-              <button onClick={handleSaveButtonClick}>Salvar</button>
+              <button className="guardar" onClick={handleSaveButtonClick}>Guardar</button>
             </div>
           ) : null}
         </div>
