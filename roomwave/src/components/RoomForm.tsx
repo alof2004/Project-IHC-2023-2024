@@ -244,7 +244,7 @@ function RoomForm(){
             className={`step ${isActive ? 'active' : ''}`}
             onClick={() => handleStepClick(i)}
           >
-            Step {i}
+            {i}
           </div>
           {i !== length && <div className={`progress-line ${isLActive ? 'active' : ''}`} key={`line-${i}`}></div>}
           </div>
@@ -628,7 +628,7 @@ function RoomForm(){
                     <select
                         value={tipoQuarto}
                         onChange={(e) => setTipoQuarto(e.target.value)}
-                        required
+                        
                         title="Indique se o alojamento é um T0/T1/T2/T3/..."
                     >
                         <option value="">Selecione...</option>
@@ -646,19 +646,36 @@ function RoomForm(){
                         type="number"
                         placeholder="Preço"
                         value={price || ''}
-                        onChange={(e) => setPrice(parseFloat(e.target.value))}
+                        onChange={(e) => {
+                            const value = parseFloat(e.target.value);
+                            if (value >= 0) {
+                                setPrice(value);
+                            } else {
+                                // Optionally handle the error, e.g., show an error message
+                                alert("O preço deve ser um valor positivo.");
+                            }
+                        }}
+                        min="0" // Ensure the input does not accept negative values
                         required
                         title="Indique o custo por mês"
                     />
                 </div>
-
                 <div className="label-container3">
                     <label htmlFor="area" className="label1">Área</label>
                     <input
                         type="number"
                         placeholder="Área"
                         value={area || ''}
-                        onChange={(e) => setArea(parseFloat(e.target.value))}
+                        onChange={(e) => {
+                            const value = parseFloat(e.target.value);
+                            if (value >= 0) {
+                                setArea(value);
+                            } else {
+                                // Optionally handle the error, e.g., show an error message
+                                alert("A área deve ser um valor positivo.");
+                            }
+                        }}
+                        min="0" // Ensure the input does not accept negative values
                         required
                         title="Indique a área do quarto (em m^2)"
                     />
@@ -669,7 +686,7 @@ function RoomForm(){
                     <select
                         value={andar}
                         onChange={(e) => setAndar(e.target.value)}
-                        required
+                        
                         title="Indique o andar onde se encontrar o quarto"
                     >
                         <option value="">Selecione...</option>
@@ -688,7 +705,7 @@ function RoomForm(){
                     <select
                         value={gastos}
                         onChange={(e) => setGastos(e.target.value)}
-                        required
+                        
                         title="Indique se os gastos estão incluidos"
                     >
                         <option value="">Selecione...</option>
@@ -702,7 +719,7 @@ function RoomForm(){
                     <select
                         value={animais}
                         onChange={(e) => setAnimais(e.target.value)}
-                        required
+                        
                         title="Indique se são permitodos animais no alojamento"
                     >
                         <option value="">Selecione...</option>
@@ -716,7 +733,7 @@ function RoomForm(){
                     <select
                         value={fumadores}
                         onChange={(e) => setFumadores(e.target.value)}
-                        required
+                        
                         title="Indique se é permitido fumar dentro do alojamento"
                     >
                         <option value="">Selecione...</option>
@@ -738,7 +755,7 @@ function RoomForm(){
                             setGenero(selectedOptions);
                         }
                     }}
-                    required
+                    
                     title="Insira os géneros permitidos"
                 >
                     <option value="">Selecione...</option>
@@ -756,7 +773,7 @@ function RoomForm(){
                 placeholder="Descreva o ambiente"
                 value={ambiente}
                 onChange={(e) => setAmbiente(e.target.value)}
-                required
+                
                 title="Descreva o ambiente"
             />
 
@@ -766,7 +783,7 @@ function RoomForm(){
                 placeholder="Descreva a paisagem à sua volta"
                 value={vista}
                 onChange={(e) => setVista(e.target.value)}
-                required
+                
                 title="Descreva a vista"
             />
 

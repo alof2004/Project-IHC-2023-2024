@@ -64,7 +64,7 @@ function App() {
             <Route path="/avaliar/:ID" element={<Avaliar/>} />
             <Route path="/ajudalandlord" element={<AjudaLandlord />} />
             <Route path="/ajudaavaliador" element={<AjudaAvaliador />} />
-            <Route path="/RoomDetailsSecond" element={<RoomDetailsSecond />} />
+            <Route path="/room/:ID" element={<RoomDetailsSecond />} />
 
           </Routes>
         </FavoriteRoomsProvider>

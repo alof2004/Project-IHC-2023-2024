@@ -72,24 +72,24 @@ const RoomSlider = () => {
   else
   return (
     <div className="px-0">
-      <h1 style={{ marginLeft: "4%", marginTop: "4%", fontSize: "60px" }}>Os meus quartos:</h1>
+      <h1 style={{ marginLeft: '4%', marginTop: '4%', fontSize: '60px' }}>Os meus quartos:</h1>
       <div className="room-slider-container">
         <div className="d-flex justify-content-between align-items-center">
-          <button className="btn btn-light btn-xl" onClick={handlePrevPage} disabled={activePage === 0}><FiChevronLeft size={100} style={{ backgroundColor: "transparent", border: "none" }} /></button>
-          <Carousel style={{ width: "90%" }} className="room-slider-carousel" activeIndex={activePage} onSelect={() => { }}>
+          <button className="btn btn-light btn-xl" onClick={handlePrevPage} disabled={activePage === 0}><FiChevronLeft size={100} style={{ backgroundColor: 'transparent', border: 'none' }} /></button>
+          <Carousel style={{ width: '90%' }} className="room-slider-carousel" activeIndex={activePage} onSelect={() => { }}>
             {pages.map((page, index) => (
               <Carousel.Item key={index}>
                 <Row>
                   {Array.isArray(page) && page.map((room) => (
                     <Col key={room.id} md={4}>
                       <Link to={`/room/${room.id}`} style={{ textDecoration: 'none' }}>
-                        <Card className="shadow-lg border-0 position-relative" style={{ width: '90%', height: "1450px", borderRadius: "60px" }}>
-                          <div className="room-image-container">
-                            <Card.Img className="room-image" style={{ width: "100%", height: "500px", objectFit: "cover" }} variant="top" src={room.imagem1} />
+                        <Card className="shadow-lg border-0 position-relative" style={{ width: '90%', height: '1450px', borderRadius: '60px' }}>
+                          <div className="room-image-container" style={{ width: '100%', height: '500px', overflow: 'hidden', borderTopLeftRadius: '60px', borderTopRightRadius: '60px' }}>
+                            <Card.Img className="room-image" style={{ width: '100%', height: '100%', objectFit: 'cover' }} variant="top" src={room.imagem1} />
                           </div>
                           <Card.Body className="p-2">
                             <div className="text-center">
-                              <h1 style={{ fontSize: "50px" }}>Quarto de {room.Proprietaria}</h1>
+                              <h1 style={{ fontSize: '50px' }}>Quarto de {room.Proprietaria}</h1>
                               <div className="text-sm"><strong>Descrição:</strong> {room.description}</div>
                               <div className="text-sm"><strong>Localização:</strong> {room.localizacao}, {room.cidade}, {room.país}</div>
                               <div className="text-sm"><strong>Preço:</strong> <span style={{ color: '#FF7A41' }}>{room.price}€</span></div>
@@ -108,9 +108,7 @@ const RoomSlider = () => {
               </Carousel.Item>
             ))}
           </Carousel>
-
-          <button className="btn btn-light btn-xl" onClick={handleNextPage} disabled={activePage === pages.length - 1}><FiChevronRight size={100} />
-          </button>
+          <button className="btn btn-light btn-xl" onClick={handleNextPage} disabled={activePage === pages.length - 1}><FiChevronRight size={100} /></button>
         </div>
       </div>
     </div>
