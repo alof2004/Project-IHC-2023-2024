@@ -456,7 +456,32 @@ function RoomsListPage() {
                         // Format the next available date
                         nextAvailableDate = format(nextAvailableDate, 'dd/MM/yyyy');
                     }
-                    const rating = isRated(room.id);
+                    const isRated = (roomId: number) => {
+                        // Retrieve the stored ratings from localStorage and parse them as JSON
+                        const storedRatings = JSON.parse(localStorage.getItem('avaliados') ?? '[]');
+                    
+                        // Find the rating for the given roomId
+                        const rating = storedRatings.find((rating: { id: number; avaliacao: number; }) => rating.id === roomId);
+                    
+                        // Log the rating object to the console
+                        console.log(rating);
+                    
+                        // Return the rating's avaliacao if it exists, otherwise return null
+                        return rating ? rating.avaliacao : null;
+                    };
+                
+                    const getRating = (roomId: number): number => {
+                        const room = rooms.find((room) => room.id === roomId);
+
+                        let rating = null;
+                        if (room && room.Avaliado === 'Sim') {
+                            rating = room.Avaliacao;
+                        } else {
+                            rating = 0; // Set a default value for rating
+                        }
+                        return rating;
+                    };
+                    const rating = getRating(room.id);
                     return (
                     <div key={room.id} className="projcard projcard-blue" onClick={() => navigate(`/room/${room.id}`)}>
                         <div className="projcard-innerbox">
