@@ -14,6 +14,7 @@ import Button from '@mui/material/Button';
 import Button1 from './button';
 import Carousel2 from './Carousel2';
 import StarRatingRoom from './StarRatingRoom';
+import { Modal } from 'react-bootstrap';
 
 
 interface Room {
@@ -177,8 +178,10 @@ return (
                         </h2>
                         <div className='rating_box_margin'>
                             <StarRatingRoom rating={getRating(parseInt(ID || '', 10))} />
+                            
                         </div>
                     </div>
+                    <button className="button-55" role="button">Ver detalhes de Avaliaçao</button>
                 </div>
 
                 <div className='contacto_butoes_avaliar'>  
