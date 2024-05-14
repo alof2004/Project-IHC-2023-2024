@@ -28,7 +28,7 @@
 .room-images{
   position: relative;
   max-width: 95%;
-  margin-top: 5%;  
+  margin-top: 2%;  
 
 
 }
@@ -36,7 +36,7 @@
   top: 0;
   cursor: pointer;
   flex-direction: column;
-  left: calc(87px + 1250px + 20px);  
+  left: calc(87px + 1300px + 20px);  
   position: absolute; /* Posiciona as imagens secundárias em relação ao contêiner .room-images */
   gap: 20px; /* Espaçamento entre as imagens secundárias */
   display: flex;
@@ -50,6 +50,8 @@
 
 .main-image {
   max-width: 100%;
+  width:1200px;
+  height:750px;
   margin-left: 3%;
   display: flex;
 }
@@ -101,7 +103,6 @@
 
 .proprietaria_localizacao h2{
   font-size: 30px;
-  display: flex;
 }
 
 .contacto_butoes_avaliar{
@@ -128,7 +129,7 @@
   color: black;
   border-radius: 40px;
   padding: 10px;
-  font-size: 20px;
+  font-size: 25px;
   font-weight: bold;
 }
 
@@ -283,3 +284,67 @@
  }
 
  
+.rating_box{
+  display: flex;
+}
+
+.rating_box_margin{
+  padding-top: 7px;
+}
+
+.button-55 {
+  align-self: center;
+  background-color: #fff;
+  background-image: none;
+  background-position: 0 90%;
+  background-repeat: repeat no-repeat;
+  background-size: 4px 3px;
+  border-radius: 15px 225px 255px 15px 15px 255px 225px 15px;
+  border-style: solid;
+  border-width: 2px;
+  box-shadow: rgba(0, 0, 0, .2) 15px 28px 25px -18px;
+  box-sizing: border-box;
+  color: #41403e;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Neucha, sans-serif;
+  font-size: 2rem;
+  line-height: 23px;
+  outline: none;
+  padding: .75rem;
+  text-decoration: none;
+  transition: all 235ms ease-in-out;
+  border-bottom-left-radius: 15px 255px;
+  border-bottom-right-radius: 225px 15px;
+  border-top-left-radius: 255px 15px;
+  border-top-right-radius: 15px 225px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  font-weight: bold;
+}
+
+.button-55:hover {
+  box-shadow: rgba(0, 0, 0, .3) 2px 8px 8px -5px;
+  transform: translate3d(0, 2px, 0);
+}
+
+.button-55:focus {
+  box-shadow: rgba(0, 0, 0, .3) 2px 8px 4px -6px;
+}
+
+.room-card {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.room-card h2 {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+}
+
+.room-card p {
+  margin: 5px 0;
+}

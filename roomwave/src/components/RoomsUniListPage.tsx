@@ -9,10 +9,11 @@ import Modal from './Modal';
 import HeartIcon from './HeartIcon';
 import NavBar from './NavBar';
 import MyMapApp from './Map';
-import { format, isToday } from 'date-fns';
+import { format, isToday, set } from 'date-fns';
 import StarRating from './StarRating';
 import MapModal from './MapModal';
-
+import Calendar  from './Calendar';
+import '../css/Calendar.css';
 
 interface Room {
  id: number;
@@ -55,14 +56,8 @@ interface Room {
  data_saida: string;
 }
 
-interface PriceRangeProps {
-    onRangeChange: (newRange: [number, number]) => void;
-}
-
-function RoomsUniListPage() {
-    const { uni } = useParams<{ uni: string }>(); // Define the expected shape of params
-    const university = decodeURIComponent(uni?? '');
-    console.log('University:', university); // Debugging line
+function RoomsListPage() {
+    const { city } = useParams(); // Get the current city from the URL
     const [rooms, setRooms] = useState<Room[]>([]);
     const navigate = useNavigate();
     const [filters, setFilters] = useState({
@@ -90,6 +85,7 @@ function RoomsUniListPage() {
     const [startDate, setStartDate] = useState('');
     const [endDate, setEndDate] = useState('');
     const [modalShow, setModalShow] = React.useState(false);
+
 
 
     const isAvailableToday = (room: Room): boolean => {
@@ -122,11 +118,19 @@ function RoomsUniListPage() {
             setSelectedElectro(prevServices => prevServices.filter(s => s !== service));
         }
     };
+    
+    const onChange = (ranges: any) => {
+        console.log(ranges);
+      };
 
     const handlePriceRangeChange = (newRange: React.SetStateAction<number[]>) => {
         setPriceRange(newRange);
     };
 
+    const handleDateChange = (start: string, end: string) => {
+        setStartDate(start);
+        setEndDate(end);
+      };
     const handleStartDateChange = (e: { target: { value: React.SetStateAction<string>; }; }) => {
         setStartDate(e.target.value);
     };
@@ -135,13 +139,14 @@ function RoomsUniListPage() {
         setEndDate(e.target.value);
     };
     
+    const { uni } = useParams<{ uni: string }>(); // Define the expected shape of params
+    const university = decodeURIComponent(uni?? '');
     useEffect(() => {
         // Filter rooms based on whether Locais_proximos contains the university name
         const filtered = roomsData.filter(room => room.Locais_proximos.includes(university ?? ''));
         setRooms(filtered);
         setFilteredRooms(filtered);
     }, [university]); // Depend on the university parameter
-
 
     useEffect(() => {
         const newFilteredRooms = rooms.filter(room => {
@@ -210,8 +215,9 @@ function RoomsUniListPage() {
             default:
                 break;
         }
-        
+
         setFilteredRooms(sortedRoomsCopy);
+        console.log(filteredRooms)
     };
 
     const sortedRooms = filteredRooms.sort((a, b) => {
@@ -226,15 +232,21 @@ function RoomsUniListPage() {
         return 0;
     });
     
+    const isRated = (roomId: number) => {
+        const storedRatings = JSON.parse(localStorage.getItem('avaliados') ?? '[]');
+        const rating = storedRatings.find((rating: { id: number; avaliacao: number; }) => rating.id === roomId);
+        console.log(rating);
+        return rating ? rating.avaliacao : null;
+    };
     
-
+    
     return (
         <div>
             <div>
                 <NavBar/>
             </div>      
             <div className="filter-container" style={{display:"flex", margin:"30px 30px 20px 20px", backgroundColor:"#dedede", borderRadius:"10px", padding:"20px"}}>
-                <div  style={{ margin: '0px', paddingTop:"10px", paddingBottom:"10px" }}>
+                <div  style={{ margin: '0px', paddingTop:"50px", paddingBottom:"10px" }}>
                 <button className="button-style mapa1" onClick={() => setModalShow(true)} >Ver no Mapa</button>
                 <MapModal
                     show={modalShow}
@@ -251,7 +263,7 @@ function RoomsUniListPage() {
                     {isOptionsVisible && (
                         <div
                         style={{
-                            width: '28rem',
+                            width: '34rem',
                             padding: '20px',
                             margin: '10px',
                             marginBottom: '0px',
@@ -291,7 +303,7 @@ function RoomsUniListPage() {
                     {isOptionsVisible1 && (
                         <div
                         style={{
-                            width: '28rem',
+                            width: '34rem',
                             padding: '20px',
                             margin: '10px',
                             marginBottom: '0px',
@@ -331,7 +343,7 @@ function RoomsUniListPage() {
                     {isOptionsVisible2 && (
                         <div
                         style={{
-                            width: '28rem',
+                            width: '34rem',
                             padding: '20px',
                             margin: '10px',
                             marginBottom: '0px',
@@ -340,19 +352,11 @@ function RoomsUniListPage() {
                             backgroundColor: '#252525',
                             color: 'white',
                             border: 'none',
+                            height: '550px',
 
                         }}
                         >
-                        <fieldset>
-                            <div className="form__group">
-                                <label  style={{marginTop:"0px"}} htmlFor="start_date">Data de entrada:</label>
-                                <input style={{marginLeft:"10px"}} type="date" id="start_date" name="start_date" value={startDate} onChange={handleStartDateChange} />
-                            </div>
-                            <div className="form__group">
-                                <label  style={{marginTop:"0px"}}  htmlFor="end_date">Data de saída:</label>
-                                <input style={{marginLeft:"10px"}}  type="date" id="end_date" name="end_date" value={endDate} onChange={handleEndDateChange} />
-                            </div>
-                        </fieldset>
+                        <Calendar onDateChange={handleDateChange} />
                         </div>
                     )}
                 </div>
@@ -392,8 +396,8 @@ function RoomsUniListPage() {
                 <div>
                     <select className="button-79" onChange={(e) => handleFilter({ animais: e.target.value })}>
                         <option onClick={()=> handleFilter({animais: ''})} value="">Animais</option>
-                        <option onClick={()=> handleFilter({animais: 'admitos'})} value="admitidos">Animais Permitidos</option>
-                        <option onClick={()=> handleFilter({animais: 'proíbidos'})} value="proíbidos">Animais Proíbidos</option>
+                        <option onClick={()=> handleFilter({animais: 'permitidos'})} value="permitidos">Animais Permitidos</option>
+                        <option onClick={()=> handleFilter({animais: 'não permitidos'})} value="não permitidos">Animais Proíbidos</option>
                     </select>
                 </div>
                 <div>
@@ -406,12 +410,12 @@ function RoomsUniListPage() {
             </div>
 
             <div className="projcard-container" style={{ width: '75%', float:"right"}} >
-            <h1>Lista de quartos perto de {university}:</h1>
+            <h1>Lista de quartos em {city}:</h1>
                 <h5>
                 {filteredRooms.length === 1 ? (
-                    <>Foi encontrado 1 quarto perto de {university}</>
+                    <>Foi encontrado 1 quarto em {city}</>
                 ) : (
-                    <>Foram encontrados {filteredRooms.length} quartos em {university}</>
+                    <>Foram encontrados {filteredRooms.length} quartos em {city}</>
                 )}
                 </h5>
                 <div className='sortButtons'>
@@ -440,7 +444,32 @@ function RoomsUniListPage() {
                         // Format the next available date
                         nextAvailableDate = format(nextAvailableDate, 'dd/MM/yyyy');
                     }
+                    const isRated = (roomId: number) => {
+                        // Retrieve the stored ratings from localStorage and parse them as JSON
+                        const storedRatings = JSON.parse(localStorage.getItem('avaliados') ?? '[]');
                     
+                        // Find the rating for the given roomId
+                        const rating = storedRatings.find((rating: { id: number; avaliacao: number; }) => rating.id === roomId);
+                    
+                        // Log the rating object to the console
+                        console.log(rating);
+                    
+                        // Return the rating's avaliacao if it exists, otherwise return null
+                        return rating ? rating.avaliacao : null;
+                    };
+                
+                    const getRating = (roomId: number): number => {
+                        const room = rooms.find((room) => room.id === roomId);
+
+                        let rating = null;
+                        if (room && room.Avaliado === 'Sim') {
+                            rating = room.Avaliacao;
+                        } else {
+                            rating = 0; // Set a default value for rating
+                        }
+                        return rating;
+                    };
+                    const rating = getRating(room.id);
                     return (
                     <div key={room.id} className="projcard projcard-blue" onClick={() => navigate(`/room/${room.id}`)}>
                         <div className="projcard-innerbox">
@@ -455,7 +484,9 @@ function RoomsUniListPage() {
                                     <span>Indisponível até {nextAvailableDate}</span>
                                 )}
                             </div>
-                            <div className="projcard-subtitle"><StarRating rating={(room.Avaliacao)} /> {/* Display the star rating */}
+                            <div className="projcard-subtitle">
+                            <StarRating rating={rating} /> {/* Display the star rating */}
+
                             </div>
 
                             <div className="projcard-description">{room.description}</div>
@@ -482,9 +513,14 @@ function RoomsUniListPage() {
                                 <span key={index} className="projcard-tag">{service}</span>
                             ))}
                             </div>
+                            <div className="projcard-tagbox-1">
+                            {room.Locais_proximos.map((service, index) => (
+                                <span key={index} className="projcard-tag-1">{service}</span>
+                            ))}
+                            </div>
                         </div>
                         </div>
-                        <div className="projcard-price" style={{float:"right", padding:"10px 10px 0px 0px", fontSize:"20px"}}>{room.price}€ / mês
+                        <div className="projcard-price" style={{float:"right", padding:"10px 10px 0px 0px", color:"black", fontSize:"20px"}}>{room.price}€ / mês
                         <br /> 
                         <span style={{fontSize:"15px"}}>Despesas {room.gastos}</span>
                         </div>
@@ -506,4 +542,5 @@ function RoomsUniListPage() {
     );
 }
 
-export default RoomsUniListPage;
+export default RoomsListPage;
+

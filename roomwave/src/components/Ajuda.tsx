@@ -16,11 +16,11 @@ function Ajuda() {
         <div className="contact-info">
           <div className="email-info">
             <h3>RoomWave@empresa.com</h3>
-            <p>E-mail:</p>
+            <p>E-mail</p>
           </div>
           <div className="phone-info">
-            <h3>+351 915 525 048 3</h3>
-            <p>Número de telefone:</p>
+            <h3>+351 915 525 048</h3>
+            <p>Número de telefone</p>
           </div>
         </div>
         <h2 style={{marginBottom:"30px"}}>Perguntas Frequentes</h2>

@@ -14,6 +14,7 @@ import Button from '@mui/material/Button';
 import Button1 from './button';
 import Carousel2 from './Carousel2';
 import StarRatingRoom from './StarRatingRoom';
+import ListRoomDetails from './ListRoomDetails';
 
 
 interface Room {
@@ -168,13 +169,19 @@ return (
                         </div>
                     </div>
                     <h2>
-                            Localização: {''} 
-                            <span>{room?.localizacao}, {room?.cidade}</span>
-                        </h2>
+                        Localização: {''} 
+                        <span>{room?.localizacao}, {room?.cidade}</span>
+                    </h2>
+                    <div className='rating_box'>
                         <h2>
                             Avaliação atribuida pelo RoomWave: {''} 
-                            <StarRatingRoom rating={getRating(parseInt(ID ?? ''))} />
                         </h2>
+                        <div className='rating_box_margin'>
+                            <StarRatingRoom rating={getRating(parseInt(ID || '', 10))} />
+                            
+                        </div>
+                    </div>
+                    <button className="button-55" role="button">Ver detalhes de Avaliaçao</button>
                 </div>
 
                 <div className='contacto_butoes_avaliar'>  
@@ -199,6 +206,7 @@ return (
                     imagem4: room?.imagem4 || defaultImage,
                 }} />
         </div>
+        <ListRoomDetails id={parseInt(ID || '', 10)} />
     </div>
     <Footer />
     </>
