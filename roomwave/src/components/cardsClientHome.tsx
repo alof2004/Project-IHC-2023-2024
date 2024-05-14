@@ -77,7 +77,7 @@ const RoomSlider = () => {
                       <Link to={`/room/${room.id}`} style={{ textDecoration: 'none' }}>
                         <Card className="shadow-lg border-0 position-relative" style={{ width: '90%', height: "1450px", borderRadius: "60px" }}>
                           <div className="room-image-container">
-                            <Card.Img className="room-image" style={{ width: "100%", height: "100%", objectFit: "cover" }} variant="top" src={room.imagem1} />
+                            <Card.Img className="room-image" style={{ width: "100%", height: "600px", objectFit: "cover" }} variant="top" src={room.imagem1} />
                           </div>
                           <Card.Body className="p-2">
                             <div className="text-center">

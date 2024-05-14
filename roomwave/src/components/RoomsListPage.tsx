@@ -227,7 +227,7 @@ function RoomsListPage() {
             default:
                 break;
         }
-        
+
         setFilteredRooms(sortedRoomsCopy);
     };
 
@@ -243,6 +243,12 @@ function RoomsListPage() {
         return 0;
     });
     
+    const isRated = (roomId: number) => {
+        const storedRatings = JSON.parse(localStorage.getItem('avaliados')?? '') || [];
+        const rating = storedRatings.find((rating: { id: number; avaliacao: number; }) => rating.id === roomId);
+        console.log(rating)
+        return rating? rating.avaliacao : null;
+    };
     
 
     return (
@@ -449,7 +455,7 @@ function RoomsListPage() {
                         // Format the next available date
                         nextAvailableDate = format(nextAvailableDate, 'dd/MM/yyyy');
                     }
-                    
+                    const rating = isRated(room.id);
                     return (
                     <div key={room.id} className="projcard projcard-blue" onClick={() => navigate(`/room/${room.id}`)}>
                         <div className="projcard-innerbox">
@@ -464,7 +470,9 @@ function RoomsListPage() {
                                     <span>Indisponível até {nextAvailableDate}</span>
                                 )}
                             </div>
-                            <div className="projcard-subtitle"><StarRating rating={(room.Avaliacao)} /> {/* Display the star rating */}
+                            <div className="projcard-subtitle">
+                            <StarRating rating={rating} /> {/* Display the star rating */}
+
                             </div>
 
                             <div className="projcard-description">{room.description}</div>
