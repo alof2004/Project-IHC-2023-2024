@@ -8,7 +8,7 @@ function AddRoom() {
     return (
         <div>
             <NavBarLandLord />
-            <RoomForm/>
+            <RoomForm />
         </div>
     );
 }
