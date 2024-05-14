@@ -274,7 +274,7 @@ function RoomForm(){
         {step === 1 && (
         <div className= "a4">
             <form className="addroom-form" onSubmit={handleSubmit}>
-            <h2>Room Form</h2>
+            <h2>Formulário para adicionar um quarto</h2>
 
             <label htmlFor="localizacao" className="label1">Morada (Rua)</label>
             <input
@@ -475,7 +475,7 @@ function RoomForm(){
                     <label htmlFor="Casas de banho" className="label1">Casas de Banho</label>
                     <input
                         type="number"
-                        placeholder="Número de casa de banho"
+                        placeholder="Nº de casas de banhos"
                         value={casasDeBanho || ''}
                         onChange={(e) => setCasasDeBanho(parseFloat(e.target.value))}
                         required
@@ -557,9 +557,6 @@ function RoomForm(){
                 <div className="equipment-options">
                     {uniqueEquipmentNames.map((equipment, index) => (
                         <div key={index} className="equipment-option">
-                        <div className="divlabel">
-                            <label htmlFor={`equipment-${index}`}>{equipment}</label>
-                        </div>
                         <div className="divcheckbox">
                             <input
                                 type="checkbox"
@@ -569,6 +566,9 @@ function RoomForm(){
                                 checked={equipamentoDisponivel.includes(equipment)}
                             />
                         </div>
+                        <div className="divlabel">
+                            <label htmlFor={`equipment-${index}`}>{equipment}</label>
+                        </div>
                         </div>
                     ))}
                 </div>
@@ -577,9 +577,6 @@ function RoomForm(){
                 <div className="equipment-options">
                     {uniqueMobiliaNames.map((mobil, index) => (
                         <div key={index} className="equipment-option">
-                        <div className="divlabel">
-                            <label htmlFor={`mobil-${index}`}>{mobil}</label>
-                        </div>
                         <div className="divcheckbox">
                             <input
                                 type="checkbox"
@@ -588,6 +585,9 @@ function RoomForm(){
                                 onChange={() => toggleMobilia(mobil)}
                                 checked={mobilia.includes(mobil)}
                             />
+                        </div>
+                        <div className="divlabel">
+                            <label htmlFor={`mobil-${index}`}>{mobil}</label>
                         </div>
                         </div>
                     ))}
@@ -699,7 +699,8 @@ function RoomForm(){
                         <option value="+5ª">+5º andar</option>
                     </select>
                 </div>
-
+                </div>
+                <div className="location-info-container2">
                 <div className="label-container3">
                     <label htmlFor="gastos" className="label1">Gastos</label>
                     <select
