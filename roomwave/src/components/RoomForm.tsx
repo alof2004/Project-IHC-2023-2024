@@ -4,8 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import {useUser} from './UserContext';
 import jsonData from './rooms.json';
 import "leaflet/dist/leaflet.css";
-import L from "leaflet";
-import { MapContainer, TileLayer, useMap, Marker } from "react-leaflet";
+import Calendar from './Calendar';
 
 function RoomForm(){
     // Define state variables to store form field values
@@ -231,7 +230,11 @@ function RoomForm(){
         const newstep = step + increment;
         setstep(newstep);
     };
-    
+
+const handleDateChange = (start: string, end: string) => {
+    setDataEntrada(start);
+    setDataSaida(end);
+};
     
     const steps = [];
     for (let i = 1; i <= length; i++) {
@@ -347,34 +350,32 @@ function RoomForm(){
                         <option value="Viseu">Viseu</option>
                     </select>
                 </div>
-
-                <div className="label-container1">
-                    <label htmlFor="longitude" className="label1">Data de entrada</label>
-                    <input 
-                            type="date" 
-                            placeholder="Data de entrada" 
-                            value={data_entrada ? data_entrada.slice(0, 10) : ''} 
-                            onChange={(e) => setDataEntrada(`${e.target.value}T00:00:00.000Z`)} 
-                            required
-                            title='Insira a data a partir de quando o alojamento está disponível'
-                        />
-                </div>
-
-                <div className="label-container1">
-                <label htmlFor="longitude" className="label1">Data de saída</label>
-                <input 
-                        type="date" 
-                        placeholder="Data de saída" 
-                        value={data_saida ? data_saida.slice(0, 10) : ''} 
-                        onChange={(e) => setDataSaida(`${e.target.value}T00:00:00.000Z`)} 
-                        required
-                        title='Insira a data a partir de quando o alojamento deixa de estar disponível'
-                    />
-                </div>
-
             </div>
+            
+                            <div
+                style={{
+                    width: '34rem',
+                    padding: '20px',
+                    margin: '10px',
+                    marginBottom: '100px',
+                    borderTop: '1px solid #333',
+                    marginTop: '150px',
+                    backgroundColor: '#333333',
+                    color: 'white',
+                    border: 'none',
+                    height: '550px',
+                    marginLeft: '37%',
+                    marginRight: '37%',
+                    alignItems: 'center', // Center vertically
+                    justifyContent: 'center', // Center horizontally
+                    scale: '1.5',
+                }}
+                >
+                <Calendar onDateChange={handleDateChange} />
+                </div>
+
             <button
-                        className="button"
+                        className="buttonJoao"
                         id="prev"
                         disabled={step === 1}
                         onClick={() => handleButtonstep(-1)}
@@ -387,7 +388,7 @@ function RoomForm(){
                         Back
                     </button>
                     <button
-                        className="button"
+                        className="buttonJoao"
                         id="next"
                         disabled={step === length || !isFormValid1()} // Disable if on last step or form is invalid
                         onClick={() => handleButtonstep(1)}
@@ -526,7 +527,7 @@ function RoomForm(){
                 />
             </div>
             <button
-                        className="button"
+                        className="buttonJoao"
                         id="prev"
                         disabled={step === 1}
                         onClick={() => handleButtonstep(-1)}
@@ -539,7 +540,7 @@ function RoomForm(){
                         Back
                     </button>
                     <button
-                        className="button"
+                        className="buttonJoao"
                         id="next"
                         disabled={step === length || !isFormValid2()} // Disable if on last step or form is invalid
                         onClick={() => handleButtonstep(1)}
@@ -593,7 +594,7 @@ function RoomForm(){
                     ))}
                 </div>
                 <button
-                        className="button"
+                        className="buttonJoao"
                         id="prev"
                         disabled={step === 1}
                         onClick={() => handleButtonstep(-1)}
@@ -606,7 +607,7 @@ function RoomForm(){
                         Back
                     </button>
                     <button
-                        className="button"
+                        className="buttonJoao"
                         id="next"
                         disabled={step === length || !isFormValid3()} // Disable if on last step or form is invalid
                         onClick={() => handleButtonstep(1)}
@@ -788,13 +789,13 @@ function RoomForm(){
                 title="Descreva a vista"
             />
 
-            <button type="button" className='bb' onClick={handleClick} style={{ backgroundColor: clicked ? 'green' : '' }}>Deseja que o seu Quarto seja avaliado pelos nossos um dos nossos funcionários?</button>
+            <button type="buttonJoao" className='bb' onClick={handleClick} style={{ backgroundColor: clicked ? 'green' : '' }}>Deseja que o seu Quarto seja avaliado pelos nossos um dos nossos funcionários?</button>
             <div className='goo'>
                 <button type="submit">Submit</button>
             </div>
             
             <button
-                        className="button"
+                        className="buttonJoao"
                         id="prev"
                         disabled={step === 1}
                         onClick={() => handleButtonstep(-1)}
