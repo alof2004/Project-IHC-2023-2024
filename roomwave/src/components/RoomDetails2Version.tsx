@@ -109,12 +109,29 @@ const RoomDetailsSecond: React.FC = () => {
     }
 
     const isRated = (roomId: number) => {
-        const storedRatings = JSON.parse(localStorage.getItem('avaliados')?? '') || [];
+        // Retrieve the stored ratings from localStorage and parse them as JSON
+        const storedRatings = JSON.parse(localStorage.getItem('avaliados') ?? '[]');
+    
+        // Find the rating for the given roomId
         const rating = storedRatings.find((rating: { id: number; avaliacao: number; }) => rating.id === roomId);
-        console.log(rating)
-        return rating? rating.avaliacao : null;
+    
+        // Log the rating object to the console
+        console.log(rating);
+    
+        // Return the rating's avaliacao if it exists, otherwise return null
+        return rating ? rating.avaliacao : null;
     };
-    const rating = isRated(parseInt(ID || ''));
+
+    const getRating = (roomId: number): number => {
+        const room = details.find((room) => room.id === roomId);
+        let rating = null;
+        if (room && room.Avaliado === 'Sim') {
+            rating = room.Avaliacao;
+        } else {
+            rating = isRated(parseInt(ID || '', 10));
+        }
+        return rating;
+    };
 
 return (
     <>
@@ -139,7 +156,7 @@ return (
                         </h2>
                         <h2>
                             Avaliação atribuida pelo nosso certificador: {''} 
-                            <StarRating rating={rating} />
+                            <StarRating rating={getRating(parseInt(ID ?? ''))} />
                         </h2>
                     </div>
                 </div>

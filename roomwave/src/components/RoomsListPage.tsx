@@ -245,13 +245,13 @@ function RoomsListPage() {
     });
     
     const isRated = (roomId: number) => {
-        const storedRatings = JSON.parse(localStorage.getItem('avaliados')?? '') || [];
+        const storedRatings = JSON.parse(localStorage.getItem('avaliados') ?? '[]');
         const rating = storedRatings.find((rating: { id: number; avaliacao: number; }) => rating.id === roomId);
-        console.log(rating)
-        return rating? rating.avaliacao : null;
+        console.log(rating);
+        return rating ? rating.avaliacao : null;
     };
     
-
+    
     return (
         <div>
             <div>
