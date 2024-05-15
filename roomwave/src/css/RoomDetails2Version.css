@@ -6,7 +6,7 @@
   border-radius: 20px;
   position: relative; /* Adiciona posição relativa para conter o botão de retorno absoluto */
   max-width: 95%;
-
+  margin-bottom: 10%;
 }
 
 .content {
