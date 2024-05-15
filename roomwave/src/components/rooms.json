@@ -98,7 +98,6 @@
         "description": "Quarto individual com varanda e vista para a cidade",
         "Transportes": " a 50 m",
         "mobilia": [
-            "Cama de solteiro",
             "Mesa de estudo",
             "Guarda-roupa",
             "Poltrona",
@@ -182,7 +181,6 @@
         "Vista": "para a rua",
         "Renda_inclui": [],
         "Equipamento_disponivel": [
-            "Geladeira",
             "Máquina de lavar roupa",
             "Forno",
             "Micro-ondas"
@@ -221,7 +219,6 @@
         "description": "Quarto luminoso com cama de solteiro",
         "Transportes": " a 150 m",
         "mobilia": [
-            "Cama de solteiro",
             "Secretária",
             "Guarda-roupa",
             "Cadeira confortável"
@@ -344,7 +341,6 @@
         "description": "Quarto com cama de casal e uma grande sala de estar",
         "Transportes": " a 100 m",
         "mobilia": [
-            "Cama individual",
             "Mesa de estudo",
             "Guarda-roupa",
             "Poltrona",
@@ -592,7 +588,6 @@
         "description": "Quarto com cama individual e varanda",
         "Transportes": "a 50 m",
         "mobilia": [
-            "Cama individual",
             "Mesa de estudo",
             "Guarda-roupa",
             "Cadeira",
@@ -715,7 +710,6 @@
             "description": "Quarto com cama individual e varanda",
             "Transportes": "a 200 m",
             "mobilia": [
-                "Cama individual",
                 "Mesa de estudo",
                 "Guarda-roupa",
                 "Cadeira",
@@ -838,7 +832,6 @@
             "description": "Quarto com cama individual e varanda",
             "Transportes": "a 100 m",
             "mobilia": [
-                "Cama individual",
                 "Mesa de estudo",
                 "Guarda-roupa",
                 "Cadeira",
@@ -960,7 +953,6 @@
         "description": "Quarto com cama individual e vista para a praça",
         "Transportes": "a 100 m",
         "mobilia": [
-            "Cama individual",
             "Mesa de estudo",
             "Guarda-roupa",
             "Cadeira",
@@ -1083,7 +1075,6 @@
         "description": "Quarto com cama individual e varanda",
         "Transportes": "a 200 m",
         "mobilia": [
-            "Cama individual",
             "Mesa de estudo",
             "Guarda-roupa",
             "Cadeira",
@@ -1205,7 +1196,6 @@
         "description": "Quarto com cama individual e varanda",
         "Transportes": "a 150 m",
         "mobilia": [
-            "Cama individual",
             "Mesa de estudo",
             "Guarda-roupa",
             "Cadeira",
@@ -1264,7 +1254,6 @@
         "description": "Quarto com cama individual e vista para o parque",
         "Transportes": "a 200 m",
         "mobilia": [
-            "Cama individual",
             "Mesa de estudo",
             "Guarda-roupa",
             "Cadeira",
@@ -1388,7 +1377,6 @@
         "description": "Quarto com cama individual e varanda",
         "Transportes": "a 150 m",
         "mobilia": [
-            "Cama individual",
             "Mesa de estudo",
             "Guarda-roupa",
             "Cadeira",
@@ -1511,7 +1499,6 @@
         "description": "Quarto com cama individual e vista para a cidade",
         "Transportes": "a 100 m",
         "mobilia": [
-            "Cama individual",
             "Mesa de estudo",
             "Guarda-roupa",
             "Cadeira",
@@ -1635,7 +1622,6 @@
         "description": "Quarto com cama individual e vista para o parque",
         "Transportes": "a 200 m",
         "mobilia": [
-            "Cama individual",
             "Mesa de estudo",
             "Guarda-roupa",
             "Cadeira",
@@ -1758,7 +1744,6 @@
         "description": "Quarto com cama individual e varanda",
         "Transportes": "a 100 m",
         "mobilia": [
-            "Cama individual",
             "Mesa de estudo",
             "Guarda-roupa",
             "Cadeira",
@@ -1883,7 +1868,6 @@
         "description": "Quarto com cama individual e varanda",
         "Transportes": "a 150 m",
         "mobilia": [
-            "Cama individual",
             "Mesa de estudo",
             "Guarda-roupa",
             "Cadeira",
@@ -2006,7 +1990,6 @@
         "description": "Quarto com cama individual e varanda",
         "Transportes": "a 200 m",
         "mobilia": [
-            "Cama individual",
             "Mesa de estudo",
             "Guarda-roupa",
             "Cadeira",
@@ -2129,7 +2112,6 @@
         "description": "Quarto com cama individual e varanda",
         "Transportes": "a 150 m",
         "mobilia": [
-            "Cama individual",
             "Mesa de estudo",
             "Guarda-roupa",
             "Cadeira",
@@ -2252,7 +2234,6 @@
         "description": "Quarto com cama individual e varanda",
         "Transportes": "a 200 m",
         "mobilia": [
-            "Cama individual",
             "Mesa de estudo",
             "Guarda-roupa",
             "Cadeira",
@@ -2375,7 +2356,6 @@
         "description": "Quarto com cama individual e varanda",
         "Transportes": "a 200 m",
         "mobilia": [
-            "Cama individual",
             "Mesa de estudo",
             "Guarda-roupa",
             "Cadeira",
@@ -2522,7 +2502,6 @@
         "Vista": "para o jardim",
         "Renda_inclui": [],
         "Equipamento_disponivel": [
-            "Geladeira",
             "Máquina de lavar roupa",
             "Forno",
             "Micro-ondas"
@@ -2586,7 +2565,6 @@
         "Vista": "para a rua",
         "Renda_inclui": [],
         "Equipamento_disponivel": [
-            "Geladeira",
             "Máquina de lavar roupa",
             "Forno",
             "Micro-ondas"
@@ -2625,7 +2603,6 @@
         "description": "Quarto moderno com cama individual e área de estudo",
         "Transportes": "a 100 m da paragem de autocarro",
         "mobilia": [
-            "Cama individual",
             "Mesa de estudo",
             "Armário",
             "Cadeira ergonômica",
@@ -2648,7 +2625,6 @@
         "Vista": "para a rua",
         "Renda_inclui": [],
         "Equipamento_disponivel": [
-            "Geladeira",
             "Máquina de lavar roupa",
             "Forno",
             "Micro-ondas"
@@ -2687,7 +2663,6 @@
         "description": "Quarto confortável com cama de solteiro e espaço de estudo",
         "Transportes": "a 150 m da estação de metrô",
         "mobilia": [
-            "Cama de solteiro",
             "Mesa de estudo",
             "Armário",
             "Cadeira",
@@ -2710,7 +2685,6 @@
         "Vista": "para a rua",
         "Renda_inclui": [],
         "Equipamento_disponivel": [
-            "Geladeira",
             "Máquina de lavar roupa",
             "Forno",
             "Micro-ondas"

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components'; 
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 const universities = [
@@ -32,7 +32,7 @@ const universities = [
 const StyledForm = styled.form`
   flex-direction: column; /* Align items vertically */
   position: relative;
-  width: 45rem;
+  width: 100rem;
   background: var(--color-brand);
   margin-left: 25%;
   margin-top: 100px;
@@ -42,14 +42,14 @@ const StyledForm = styled.form`
 
 const StyledInput = styled.input`
   flex-grow: 1; /* Make input grow to fill available space */
-  height: 50px;
+  height: 60px;
   font-family: var(--font-fam);
   border: 0;
   color: var(--color-dark);
-  font-size: 1.8rem;
+  font-size: 40px;
   outline: 0;
   padding: 0 1.6rem;
-  width: 80%;
+  width: 750px;
   border-radius: 10px;
   appearance: none;
   position: relative;
@@ -78,13 +78,13 @@ const StyledOption = styled.option`
 `;
 
 const StyledButton = styled.button`
-  height: 50px;
+  height: 60px;
   padding: 0 1.6rem;
   margin-left: 0.1rem;
   border-radius: 10px;
   background-color: #FF7A41;
   color: var(--color-dark);
-  font-size: 1.8rem;
+  font-size: 40px;
   border: none;
   cursor: pointer;
 `;
@@ -140,7 +140,7 @@ const SearchForm = () => {
 
   return (
     <StyledForm onSubmit={handleSubmit} role="search">
-      <StyledLabel htmlFor="search">Pesquise pelo seu estabelecimento</StyledLabel>
+      <StyledLabel htmlFor="search"></StyledLabel>
       <StyledInput
         id="search"
         type="search"
