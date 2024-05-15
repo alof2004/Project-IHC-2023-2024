@@ -1,18 +1,18 @@
 import "../css/sections.css"
-import Searchuni from "./searchuni"
+import Searchuni from "./searchuni" 
 
 const ImageHomeesquerda= () => {
     return(
             <section className="about" id="about">
                 <h1 className="heading">
-                    <span>Tens o sonho de</span> estudar longe de casa?<span>dEncontra a tua nova casa!</span>
+                    <span>Tens o sonho de</span> estudar longe de casa? <span>Encontra a tua nova casa!</span>
                 </h1>
                 <div className="row">         
                     <div className="content" >
                         <h3>Já escolheste o estabelecimento de ensino?</h3>
-                        <p>Escolher uma universidade é uma das decisões mais significativas que uma pessoa pode fazer em sua jornada educacional e profissional</p>
-                        <p>A importância desse processo vai além do simples ato de selecionar uma instituição de ensino superior; envolve uma série de considerações que moldarão não apenas os anos acadêmicos, mas também o futuro pessoal e profissional de um indivíduo. </p> 
-                        <Searchuni />
+                        <p>Escolher a universidade certa é uma decisão crucial que pode impactar significativamente o futuro de alguém.</p>
+                        <p>Existem várias considerações a serem feitas ao decidir sobre uma instituição de ensino superior. Cada uma dessas considerações pode influenciar a experiência educacional e as perspectivas de carreira de um estudante. Por isso, é importante dedicar tempo para pesquisar e avaliar cuidadosamente todas as opções disponíveis antes de tomar uma decisão final. </p>
+                        <Searchuni/>
                     </div>
                     <div className="video-container">
                         <video src="./src/images/universidade.mp4" loop autoPlay muted></video>
@@ -23,4 +23,4 @@ const ImageHomeesquerda= () => {
     )
 }
 
-export default ImageHomeesquerda;
+export default ImageHomeesquerda; 
