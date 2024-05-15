@@ -73,12 +73,12 @@ const ListRoomDetails = ({ id }: { id: number }) => {
                 <ul>
                     <div className="group">
                         {room.mobilia.slice(0, 5).map((item, index) => (
-                            <li key={index}>{item}</li>
+                            <li key={index}><span className="marker"></span>{item}</li>
                         ))}
                     </div>
                     <div className="group">
                         {room.mobilia.slice(5).map((item, index) => (
-                            <li key={index}>{item}</li>
+                            <li key={index}><span className="marker"></span>{item}</li>
                         ))}
                     </div>
                 </ul>
@@ -88,12 +88,12 @@ const ListRoomDetails = ({ id }: { id: number }) => {
             <ul>
                 <div className="group">
                     {room.Equipamento_disponivel.slice(0, 5).map((item, index) => (
-                        <li key={index}>{item}</li>
+                        <li key={index}><span className="marker"></span>{item}</li>
                     ))}
                 </div>
                 <div className="group">
                     {room.Equipamento_disponivel.slice(5).map((item, index) => (
-                        <li key={index}>{item}</li>
+                        <li key={index}><span className="marker"></span>{item}</li>
                     ))}
                 </div>
             </ul>
@@ -102,43 +102,30 @@ const ListRoomDetails = ({ id }: { id: number }) => {
         <div className="divider"></div>
         <div className="wrapper_separator">
             <div className="wrapper room-card">
-            <h1>Renda Inclui:</h1>
-                <ul className='ul_top'>
-                    <div className="group">
-                        {room.Renda_inclui.slice(0, 5).map((item, index) => (
-                            <li key={index}>{item}</li>
-                        ))}
-                    </div>
-                    <div className="group">
-                        {room.Renda_inclui.slice(5).map((item, index) => (
-                            <li key={index}>{item}</li>
-                        ))}
-                    </div>
-                </ul>
-            </div>
-            <div className="wrapper room-card">
-            <ul className='ul_top'>
                 <div className="group">
-                <h1 >Géneros permitidos:</h1>
-                    {room.Pessoas_permitidas.slice(0, 3).map((item, index) => (
-                        <li key={index}>{item}</li>
-                    ))}
-                </div>
-                <div className="group">
-                    <h1>Permissão de animais:</h1>
-                    <li>{room.Animais}</li>
-                </div>
-            </ul>
-            <ul className='ul_top'>
-                <div className="group">
-                    <h1>Locais disponiveis:</h1>
+                    <h1>Locais Próximos:</h1>
                     {room.Locais_proximos.slice(0, 3).map((item, index) => (
                         <li key={index}>{item}</li>
                     ))}
                 </div>
+            </div>
+            <div className="wrapper room-card">
+            <ul className='ul_top'>
+                <div className="group">
+                <h1 >Pessoas permitidas:</h1>
+                    {room.Pessoas_permitidas.slice(0, 3).map((item, index) => (
+                        <li key={index}><span className="marker"></span>{item}</li>
+                    ))}
+                </div>
+                <div className="group">
+                    <h1>Permissão de animais:</h1>
+                    <li><span className="marker"></span>{room.Animais}</li>
+                </div>
+            </ul>
+            <ul className='ul_top'>
                 <div className="group">
                     <h1>Permissão de fumadores:</h1>
-                    <li>{room.Fumadores}</li>
+                    <li><span className="marker"></span>{room.Fumadores}</li>
                 </div>
             </ul>
             </div>

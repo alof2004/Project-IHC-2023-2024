@@ -343,8 +343,10 @@
 
 .wrapper_separator{
   display: flex;
-  background-color:#c8c8c8;
+  background-color:#fff;
   gap: 10%;
+  margin-left: 50px;
+  margin-right: 50px;
 }
 
 li {
@@ -363,6 +365,14 @@ li {
 	color: rgb(204, 110, 28);
 }
 
+.marker {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgb(204, 110, 28); /* Adjust color as needed */
+  margin-right: 20px; /* Adjust spacing between marker and text */
+}
 li span {
 	display: block;
 }
@@ -378,7 +388,7 @@ li span:last-child {
 
 .divider {
 	min-height: 6rem;
-	background: #c8c8c8;
+	background: #fff;
 }
 
 .room-card {
@@ -395,7 +405,7 @@ li span:last-child {
 }
 
 .group li {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
 }
 
 .wrapper.room-card{
@@ -403,7 +413,7 @@ li span:last-child {
 }
 
 .mapcontainer{
-  background-color: #c8c8c8;
+  background-color: #fff;
   padding-top: 5%;
 }
 
@@ -416,8 +426,8 @@ li span:last-child {
  
 
  .wrapper.room-card h1{
-  font-size: 30px;
-  margin-bottom: 5%;
+  font-size: 40px;
+  margin-bottom: 2%;
  }
 
  .mapcontainer{
@@ -531,5 +541,7 @@ progress[value]::after {
 
 .Comentarios li{
   font-size: 30px;
+  margin-bottom: 30px;
+  margin-top: 30px;
 }
 

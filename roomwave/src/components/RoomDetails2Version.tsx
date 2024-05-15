@@ -250,7 +250,7 @@ return (
         </div>
         <ListRoomDetails id={parseInt(ID || '', 10)} />
         <div className='mapcontainer'>
-            <h2 style={{fontSize:"60px", marginBottom:"50px"}}>Localização:</h2>
+            <h2 style={{fontSize:"60px", marginBottom:"50px", marginLeft:"50px"}}>Localização:</h2>
             <Map />
         </div>
         <h2 style={{fontSize:"40px", marginLeft:"50px"}}>Comentários de clientes</h2>
@@ -275,7 +275,7 @@ return (
                 <div className="group">
                     {category.slice(8,10).map((item, index) => (
                         <div key={index}>
-                            <li>{item}</li>
+                            <li className='marker1'>{item}</li>
                             <progress value={getOpinionPercentage(item)} max="100" style={{ "--value": getOpinionPercentage(item), "--max": "100" } as any}></progress>
                         </div>
                     ))}

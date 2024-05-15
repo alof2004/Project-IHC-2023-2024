@@ -126,7 +126,7 @@ const Footer = () => {
             <div className="layout">
               <div className="layout_item w-50">
                 <div className="newsletter">
-                  <h3 className="newsletter_title">Get updates on fun stuff you probably want to know about in your inbox.</h3>
+                  <h3 className="newsletter_title">Entra connosco em contacto connosco.</h3>
                   <form className='addr' action="">
                     <input className='introduzir' type="text" placeholder="Email Address" />
                     <button className='altera'>
