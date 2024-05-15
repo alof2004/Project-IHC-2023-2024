@@ -17,13 +17,16 @@
     border-radius: 5px;
     cursor: pointer;
     margin: 5px;
-    font-size: 1.5rem;
+    font-size: 0.7rem;
     font-weight: bold;
     transition: all 0.5s;
     border-radius: 20px !important;
     box-shadow: 0 0 25px 0 #FF7A41, 0 20px 25px 0 rgba(0, 0, 0, 0.2);
 }
+.text-sm{
+    font-size: 1.6rem;
 
+}
 /* In your CSS file */
 .certificate-icon {
   filter: drop-shadow(3px 3px 3px rgba(0, 0, 0, 1));
@@ -31,4 +34,16 @@
 
 .carousel-control-next{
   display: none;
+}
+
+.room-slider-container .carousel-inner .carousel-item {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.room-slider-container .carousel-inner .carousel-item .card {
+  flex: 1 0 300px; /* Adjust the width of the card as needed */
+  margin: 10px; /* Adjust margin between cards as needed */
+  height: 100%; /* Ensure cards take up full height */
 }
