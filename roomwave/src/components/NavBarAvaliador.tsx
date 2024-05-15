@@ -39,19 +39,19 @@ function NavBarClient() {
     <><nav className="navbar border-bottom navbar-expand-lg myCustomNavbar" data-bs-theme="dark">
       <div className="container-fluid">
         <Link to="/HomeAvaliador" className="navbar-brand">
-          <img src="../src/images/roomWaveLogo.png" width="95" height="50" alt="Logo" />
+          <img src="../src/images/roomWaveLogo.png" width="148" height="80" alt="Logo" />
         </Link>
         <div className="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
           <ul className="navbar-nav">
             <li className="nav-item nav-item-flex">
               <Link to="../../../HomeAvaliador" className="nav-link">
-                <img src="../../src/images/quarto.png" width="30" height="35" alt="Home Icon" />
+                <img src="../../src/images/quarto.png" width="50" height="50" alt="Home Icon" />
                   Quartos por Avaliar
               </Link>
             </li>
             <li className="nav-item dropdown">
               <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{ paddingLeft: "2px" }} href='#'>
-                <img src="../../src/images/perfil_icon.png" width="30" height="30" alt="Profile Icon" />
+                <img src="../../src/images/perfil_icon.png" width="50" height="50" alt="Profile Icon" />
                 Perfil
                 <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                   <button className="dropdown-item" onClick={handleperfil}>O meu Perfil</button>
@@ -61,7 +61,7 @@ function NavBarClient() {
             </li>
             <li className="nav-item nav-item-flex">
               <Link to="../../../AjudaAvaliador" className="nav-link">
-                <img src="../src/images/ajuda_icon.png" width="25" height="25" alt="Help Icon" />
+                <img src="../src/images/ajuda_icon.png" width="50" height="50" alt="Help Icon" />
                 Ajuda
               </Link>
             </li>
