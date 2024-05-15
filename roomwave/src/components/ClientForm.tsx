@@ -61,7 +61,7 @@ function ClientForm(){
     return ( 
         <div className="signup-container">
             <form className="signup-form" onSubmit={handleSubmit}>
-                <h2>Sign Up</h2>
+                <h2>Criar conta:</h2>
                 <div className="name-inputs">
                     <input 
                         type="text" 
@@ -115,21 +115,20 @@ function ClientForm(){
                         style={{height: '40px', width: '100%', padding: '5px'}}
 
                     >
-                        <option value="">Select Role</option>
+                        <option value="">Ocupação</option>
                         <option value="student">Student</option>
                         <option value="worker">Worker</option>
                         <option value="other">Other</option>
                     </select>
-                    <div className="arrow">&#x25BC;</div>
                 </div>
                 <input 
                     type="number"
-                    placeholder="Phone-Number" 
+                    placeholder="Numero de Telefone" 
                     value={phone} 
                     onChange={(e) => setPhoneNumber(e.target.value)} 
                     required 
                 />
-                <button type="submit">Sign Up</button>
+                <button type="submit">CRIAR CONTA</button>
             </form>
         </div>
     );

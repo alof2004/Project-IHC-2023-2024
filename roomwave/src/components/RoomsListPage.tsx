@@ -288,19 +288,21 @@ function RoomsListPage() {
                         }}
                         >
                         <fieldset>
-                            {availableServices.map((service) => (
-                            <div className="form__group" key={service}>
-                                <input
-                                type="checkbox"
-                                id={service}
-                                value={service}
-                                name="services"
-                                onChange={handleServiceChange}
-                                checked={selectedServices.includes(service)}
-                                />
-                                <label  style={{marginTop:"0px"}} htmlFor={service}>{service}</label>
-                            </div>
-                            ))}
+                            {availableServices
+                                .sort((a, b) => a.localeCompare(b)) // Sort alphabetically
+                                .map((service) => (
+                                    <div className="form__group" key={service}>
+                                        <input
+                                            type="checkbox"
+                                            id={service}
+                                            value={service}
+                                            name="services"
+                                            onChange={handleServiceChange}
+                                            checked={selectedServices.includes(service)}
+                                        />
+                                        <label style={{ marginTop: "0px" }} htmlFor={service}>{service}</label>
+                                    </div>
+                                ))}
                         </fieldset>
                         </div>
                     )}
@@ -328,19 +330,21 @@ function RoomsListPage() {
                         }}
                         >
                         <fieldset>
-                            {availableElectro.map((eletronicos) => (
-                            <div className="form__group" key={eletronicos}>
-                                <input
-                                type="checkbox"
-                                id={eletronicos}
-                                value={eletronicos}
-                                name="eletronicos"
-                                onChange={handleElectroChange}
-                                checked={selectedElectro.includes(eletronicos)}
-                                />
-                                <label style={{marginTop:"0px"}} htmlFor={eletronicos}>{eletronicos}</label>
-                            </div>
-                            ))}
+                            {availableElectro
+                                .sort((a, b) => a.localeCompare(b)) // Sort alphabetically
+                                .map((eletronicos) => (
+                                    <div className="form__group" key={eletronicos}>
+                                        <input
+                                            type="checkbox"
+                                            id={eletronicos}
+                                            value={eletronicos}
+                                            name="eletronicos"
+                                            onChange={handleElectroChange}
+                                            checked={selectedElectro.includes(eletronicos)}
+                                        />
+                                        <label style={{ marginTop: "0px" }} htmlFor={eletronicos}>{eletronicos}</label>
+                                    </div>
+                                ))}
                         </fieldset>
                         </div>
                     )}

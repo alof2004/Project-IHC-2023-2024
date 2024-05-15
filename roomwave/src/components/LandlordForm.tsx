@@ -61,11 +61,11 @@ function LandlordForm(){
     return ( 
         <div className="signup-container">
             <form className="signup-form" onSubmit={handleSubmit}>
-                <h2>Sign Up</h2>
+                <h2>Criar conta</h2>
                 <div className="name-inputs">
                     <input 
                         type="text" 
-                        placeholder="First Name" 
+                        placeholder="Primeiro Nome" 
                         value={firstname} 
                         onChange={(e) => setFirstName(e.target.value)} 
                         required 
@@ -73,7 +73,7 @@ function LandlordForm(){
                     <span className="name-space"> </span>
                     <input 
                         type="text" 
-                        placeholder="Last Name" 
+                        placeholder="Último Nome" 
                         value={lastname} 
                         onChange={(e) => setLastName(e.target.value)} 
                         required 
@@ -96,7 +96,7 @@ function LandlordForm(){
                 <div className="job-pass">
                     <input 
                         type="date" 
-                        placeholder="Date of Birth" 
+                        placeholder="Data de Nascimento" 
                         value={birthdate} 
                         onChange={(e) => setDateOfBirth(e.target.value)} 
                         required 
@@ -134,12 +134,12 @@ function LandlordForm(){
                 </div>
                 <input 
                     type="number" 
-                    placeholder="Phone-Number" 
+                    placeholder="Número de Telefone" 
                     value={phone} 
                     onChange={(e) => setPhoneNumber(e.target.value)} 
                     required 
                 />
-                <button type="submit">Sign Up</button>
+                <button type="submit">CRIAR CONTA</button>
             </form>
         </div>
     );

@@ -353,7 +353,6 @@ function RoomForm() {
                             placeholder="Locais Próximos (separados por vírgula)"
                             value={locaisProximos.join(',')}
                             onChange={(e) => setLocaisProximos(e.target.value.split(','))}
-                            required
                         />
 
                         <div className="location-info-container">
@@ -401,7 +400,7 @@ function RoomForm() {
                                 marginTop: '150px',
                                 backgroundColor: 'white',
                                 color: 'white',
-                                border: 'none',
+                                border: '2px',
                                 alignContent:"center",
                                 marginLeft: '35%',
                                 marginRight: '37%',
@@ -747,8 +746,6 @@ function RoomForm() {
                                 <select
                                     value={animais}
                                     onChange={(e) => setAnimais(e.target.value)}
-                                    style={{ ...(animais === "" && { borderColor: "red", borderWidth: "5px" }) }}
-                                    required
                                     title="Indique se são permitodos animais no alojamento"
                                 >
                                     <option value="">Selecione...</option>
@@ -774,7 +771,6 @@ function RoomForm() {
                                 <label htmlFor="genero" className="label1">Género *</label>
                                 <select
                                     value={genero}
-                                    style={{ ...(genero.length == 0 && { borderColor: "red", borderWidth: "5px" }) }}
                                     onChange={(e) => {
                                         const selectedOptions = Array.from(e.target.selectedOptions, option => option.value);
                                         if (selectedOptions.includes("Indiferente")) {
@@ -788,7 +784,6 @@ function RoomForm() {
                                             setGenero(selectedOptions);
                                         }
                                     }}
-                                    required
                                     title="Insira os géneros permitidos"
                                 >
                                     <option value="">Selecione...</option>
