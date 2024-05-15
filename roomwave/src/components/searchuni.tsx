@@ -49,7 +49,7 @@ const StyledInput = styled.input`
   font-size: 40px;
   outline: 0;
   padding: 0 1.6rem;
-  width: 650px;
+  width: 700px;
   border-radius: 10px;
   appearance: none;
   position: relative;
