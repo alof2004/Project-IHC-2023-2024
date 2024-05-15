@@ -107,6 +107,7 @@ function LandlordForm(){
                         value={city} 
                         onChange={(e) => setRole(e.target.value)} 
                         required 
+                        style={{height: '40px', width: '100%', padding: '5px'}}
                     >
                         <option value="">Cidade</option>
                         <option value="Aveiro">Aveiro</option>

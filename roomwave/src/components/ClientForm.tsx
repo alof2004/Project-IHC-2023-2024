@@ -112,6 +112,8 @@ function ClientForm(){
                         value={job} 
                         onChange={(e) => setRole(e.target.value)} 
                         required 
+                        style={{height: '40px', width: '100%', padding: '5px'}}
+
                     >
                         <option value="">Select Role</option>
                         <option value="student">Student</option>
@@ -121,7 +123,7 @@ function ClientForm(){
                     <div className="arrow">&#x25BC;</div>
                 </div>
                 <input 
-                    type="text" 
+                    type="number"
                     placeholder="Phone-Number" 
                     value={phone} 
                     onChange={(e) => setPhoneNumber(e.target.value)} 
