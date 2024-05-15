@@ -32,7 +32,7 @@ const universities = [
 const StyledForm = styled.form`
   flex-direction: column; /* Align items vertically */
   position: relative;
-  width: 100rem;
+  width:70%
   background: var(--color-brand);
   margin-left: 25%;
   margin-top: 100px;
