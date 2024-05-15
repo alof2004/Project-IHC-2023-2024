@@ -233,7 +233,7 @@ return (
                 </span>  + despesas {room?.gastos ?? ''}
             </h1>
             <h2 style={{fontSize:"50px", marginBottom:"3%",marginLeft:"5%"}}>Informações sobre o quarto</h2>
-            <p style={{fontSize:"30px", marginBottom:"3%",marginLeft:"5%",marginRight:"5%"}} > 
+            <p style={{fontSize:"35px", marginBottom:"3%",marginLeft:"5%",marginRight:"5%"}} > 
                 A habitação dispõem de uma área de {room.area}m2 e é rodeada por um ambiente {room.Ambiente}. Inclui uma {room.mobilia.join(", ").toLowerCase()} e, o mais importante, uma cama {room.Cama.toLowerCase()}. <br />
                 Ambiente {room.Ambiente}. A cozinha é {room.Cozinha.toLowerCase()}, a casa tem disponiveis {room.casas_de_banho} casas de banho.<br />
                 Na sua proximidade encontra vários edifícios como: {room.Locais_proximos.join(", ")}.
