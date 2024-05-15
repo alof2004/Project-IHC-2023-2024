@@ -410,14 +410,14 @@ function RoomsListPage() {
             </div>
 
             <div className="projcard-container" style={{ width: '75%', float:"right"}} >
-            <h1>Lista de quartos em {city}:</h1>
-                <h5>
+            <h1>Lista de quartos perto de {university}:</h1>
+                <h4>
                 {filteredRooms.length === 1 ? (
-                    <>Foi encontrado 1 quarto em {city}</>
+                    <>Foi encontrado 1 quarto perto da {university}</>
                 ) : (
-                    <>Foram encontrados {filteredRooms.length} quartos em {city}</>
+                    <>Foram encontrados {filteredRooms.length} quartos perto da {university}</>
                 )}
-                </h5>
+                </h4>
                 <div className='sortButtons'>
                         <button className={`button-79 sort ${activeButton === 'price' ? 'active' : ''}`} onClick={() => handleSortOrder("price")}>
                             Ordenar por Preço {sortOrderPrice === 'asc' ? 'decrescente ↑' : 'crescente ↓'}

@@ -138,6 +138,9 @@ body {
   display: none;
 }
 
+.dropdown-item{
+  font-size: 30px;
+}
 .nav-item{
   margin-top:20px;
   font-size: 30px;
