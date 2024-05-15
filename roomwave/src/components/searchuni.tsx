@@ -34,7 +34,7 @@ const StyledForm = styled.form`
   position: relative;
   width:70%
   background: var(--color-brand);
-  margin-left: 5%;
+  margin-left: 25%;
   margin-top: 100px;
   background: var(--color-dark);
   
