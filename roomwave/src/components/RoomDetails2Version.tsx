@@ -133,6 +133,12 @@ const RoomDetailsSecond: React.FC = () => {
         return rating;
     };
 
+
+    const handleBack = () => {
+        navigate(-1);
+    };
+
+
     const category = ["Funcionários", "Conforto", "Wifi", "Comodidade", "Relação Qualidade/Preço", "Limpeza", "Localização", "Instalações", "Serviços"];
     function getOpinionPercentage(categoryName: string) {
         const opinionPercentages: {[key: string]: number} = {
@@ -156,9 +162,9 @@ return (
     <div className="page-container">
         <div className="content">
             <div className="return-button-container">
-                    <Link to={`../../rooms/${room?.cidade}`}>
+                    <button onClick={handleBack}>
                         <img src='../../src/images/return.png' className='return-button' alt="return" />
-                    </Link>
+                    </button>
                 </div>
             <div className='all_info'> 
                 <div className='all_titles'> 
