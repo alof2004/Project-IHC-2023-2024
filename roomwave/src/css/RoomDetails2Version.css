@@ -519,13 +519,16 @@ progress[value]::after {
 
 .Comentarios{
   display: flex;
+  flex-direction: column;
 }
 
 .Comentarios ul {
   display: flex; /* Display flex para alinhar os grupos na horizontal */
   gap: 25rem; /* Espaçamento entre os grupos */
-  margin-top: 2%;
+  margin-top: 1%;
   margin-left: 10%;
+  margin-right: 5%;
+  margin-bottom: 10%;
 }
 
 .Comentarios li{
