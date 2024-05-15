@@ -28,14 +28,14 @@ function RoomForm() {
     const [descricaoProprietaria, setDescricaoProprietaria] = useState('');
     const [cama, setCama] = useState('');
     const [cozinha, setCozinha] = useState('');
-    const [casasDeBanho, setCasasDeBanho] = useState<number | null>(null);
+    const [casasDeBanho, setCasasDeBanho] = useState<number | undefined>(undefined);
     const [ambiente, setAmbiente] = useState('');
-    const [price, setPrice] = useState<number | null>(null);
+    const [price, setPrice] = useState<number | undefined>(undefined);
     const [pessoasPermitidas, setPessoasPermitidas] = useState<string[]>([]);
     const [gastos, setGastos] = useState('');
     const [animais, setAnimais] = useState('');
     const [fumadores, setFumadores] = useState('');
-    const [area, setArea] = useState<number | null>(null);
+    const [area, setArea] = useState<number | undefined>(undefined);
     const [vista, setVista] = useState('');
     const [rendaInclui, setRendaInclui] = useState<string[]>([]);
     const [equipamentoDisponivel, setEquipamentoDisponivel] = useState<string[]>([]);
@@ -234,6 +234,9 @@ function RoomForm() {
         formData.Proprietaria = user?.firstname + " " + user?.lastname;
         formData.telefone = user?.phone ?? '';
         formData.Avaliacao = 0;
+        if(avaliado === ""){
+            formData.Avaliado = "Não";
+        }
         formData.Renda_inclui = [];
         // Assuming you have a mechanism to store all rooms in an array in localStorage
         const roomsData = JSON.parse(localStorage.getItem('roomsData') || '[]');
@@ -310,24 +313,26 @@ function RoomForm() {
                     <form className="addroom-form" onSubmit={handleSubmit}>
                         <h2>Formulário para adicionar um quarto</h2>
 
-                        <label htmlFor="localizacao" className="label1">Morada (Rua)</label>
+                        <label htmlFor="localizacao" className="label1">Morada (Rua) *</label>
                         <input
                             type="text"
                             placeholder="Morada"
                             value={localizacao}
                             onChange={(e) => setLocalizacao(e.target.value)}
+                            style={{ ...(localizacao === "" && { borderColor: "red", borderWidth: "5px" }) }}
                             required
                             title="Insira a rua/morada"
                         />
 
                         <div className="image-upload-container">
-                            <label className="image-upload-label">Upload Images (Max 4)</label>
+                            <label className="image-upload-label">Upload Images (Max 4) *</label>
                             <input
                                 type="file"
                                 accept="image/*"
                                 multiple
                                 onChange={handleImageChange}
                                 className="image-upload-input"
+                                style={{ ...(images.length == 0 && { borderColor: "red", borderWidth: "5px" }) }}
                             />
                             <div className="image-preview-container">
                                 {images.map((image, index) => (
@@ -353,11 +358,12 @@ function RoomForm() {
 
                         <div className="location-info-container">
                             <div className="label-container">
-                                <label htmlFor="cidade" className="label1">Cidade</label>
+                                <label htmlFor="cidade" className="label1">Cidade *</label>
                                 <select
                                     value={cidade}
                                     onChange={(e) => setCidade(e.target.value)}
                                     required
+                                    style={{ ...(cidade === "" && { borderColor: "red", borderWidth: "5px" }) }}
                                     title="Insira a cidade onde se encontra o alojamento"
                                 >
                                     <option value="">Cidade</option>
@@ -382,22 +388,25 @@ function RoomForm() {
                                 </select>
                             </div>
                         </div>
-
+                        
+                        <label htmlFor="cidade" className="label1">Datas *</label>
                         <div
                             style={{
-                                width: '34rem',
-                                padding: '20px',
+                                width: '30%',
+                                padding: '5px',
+                                height: '20%',
                                 margin: '10px',
                                 marginBottom: '200px',
                                 borderTop: '1px solid #333',
                                 marginTop: '150px',
-                                backgroundColor: '#333333',
+                                backgroundColor: 'white',
                                 color: 'white',
                                 border: 'none',
-                                height: '550px',
-                                marginLeft: '37%',
+                                alignContent:"center",
+                                marginLeft: '35%',
                                 marginRight: '37%',
                                 scale: '1.5',
+                                ...(data_entrada === "" && { backgroundColor: "red"})
                             }}
                         >
                             <Calendar onDateChange={handleDateChange} />
@@ -421,7 +430,7 @@ function RoomForm() {
                                 id="next"
                                 disabled={step === length || !isFormValid1()} // Disable if on last step or form is invalid
                                 onClick={() => handleButtonstep(1)}
-                                style={{ float: 'right', ...(step === length || !isFormValid1() && { backgroundColor: '#71b36e' }) }} // Grey when disabled
+                                style={{ float: 'right', ...(step === length || !isFormValid1() ? { backgroundColor: '#71b36e' } : {backgroundColor: "#18c454"}) }} // Grey when disabled
                             >
                                 Next
                             </button>
@@ -432,13 +441,14 @@ function RoomForm() {
             {step === 2 && (
                 <div className="a4">
                     <form className="addroom-form" onSubmit={handleSubmit}>
-                        <label htmlFor="localizacao" className="label1">Titulo</label>
+                        <label htmlFor="localizacao" className="label1">Titulo *</label>
                         <input
                             type="text"
                             placeholder="Escreva uma pequena frase que descreva o quarto (Esta frase é a que irá aparecer destacada no anuncio do seu quarto)"
                             value={description}
                             onChange={(e) => setDescription(e.target.value)}
                             maxLength={80}
+                            style={{ ...(description === "" && { borderColor: "red", borderWidth: "5px" }) }}
                             required
                             title="Escreva uma pequena frase que descreva o quarto (Esta frase é a que irá aparecer destacada no anuncio do seu quarto)"
                         />
@@ -448,28 +458,20 @@ function RoomForm() {
                             <div className="label-container2">
                                 <div className="dropdown-container">
                                     <label className="dropdown-label" style={{ marginTop: "13px" }}>Distancia aos meios de transporte</label>
-                                    <input
-                                        type="text"
+                                    <select
                                         value={transportes}
-                                        placeholder="Seleciona a distância da casa ao transporte público mais próximo (autocarro, metro, comboio)"
-                                        readOnly
-                                        onClick={handleToggle}
-                                        className="dropdown-input"
-                                        title="A que distãncia se encontra o transporte público mais perto (autocarro)"
-                                    />
-                                    {isOpen && (
-                                        <div className="options-container">
-                                            {distances.map((distance, index) => (
-                                                <div
-                                                    key={index}
-                                                    className="option-item"
-                                                    onClick={() => handleSelectDistance(distance)}
-                                                >
-                                                    {distance === 500 ? '+500m' : `${distance}m`}
-                                                </div>
-                                            ))}
-                                        </div>
-                                    )}
+                                        onChange={(e) => setTransportes(e.target.value)}
+                                        title="Insira a que distância se encontra o transporte publico mais próximo"
+                                        style= {{ fontSize:"40px"}}
+                                    >
+                                        <option value="">Selecione...</option>
+                                        <option value="a 100m">a 100m</option>
+                                        <option value="a 200m">a 200m</option>
+                                        <option value="a 300m">a 300m</option>
+                                        <option value="a 400m">a 400m</option>
+                                        <option value="a 500m">a 500m</option>
+                                        <option value="a +500m">a +500m</option>
+                                    </select>
                                 </div>
                             </div>
 
@@ -478,7 +480,6 @@ function RoomForm() {
                                 <select
                                     value={cama}
                                     onChange={(e) => setCama(e.target.value)}
-                                    required
                                     title="Insira o tipo de cama (casal/solteiro/beliche)"
                                 >
                                     <option value="">Selecione...</option>
@@ -489,10 +490,11 @@ function RoomForm() {
                             </div>
 
                             <div className="label-container3">
-                                <label htmlFor="cozinha" className="label1">Cozinha</label>
+                                <label htmlFor="cozinha" className="label1">Cozinha *</label>
                                 <select
                                     value={cozinha}
                                     onChange={(e) => setCozinha(e.target.value)}
+                                    style={{ ...(cozinha === "" && { borderColor: "red", borderWidth: "5px" }) }}
                                     required
                                     title="Indique se o alojamento tem cozinha"
                                 >
@@ -503,15 +505,17 @@ function RoomForm() {
                             </div>
 
                             <div className="label-container5">
-                                <label htmlFor="Casas de banho" className="label1">Casas de Banho</label>
+                                <label htmlFor="Casas de banho" className="label1">Casas de Banho *</label>
                                 <input
                                     type="number"
                                     placeholder="Nº de casas de banhos"
-                                    value={casasDeBanho || ''}
-                                    onChange={(e) => setCasasDeBanho(parseFloat(e.target.value))}
+                                    value={casasDeBanho || undefined}
+                                    style={{ ...(casasDeBanho === undefined && { borderColor: "red", borderWidth: "5px" }) }}
+                                    onChange={(e) => setCasasDeBanho(e.target.value === '' || parseFloat(e.target.value) < 0 ? undefined : parseFloat(e.target.value))}
                                     required
                                     title="Número de casas de banho"
                                 />
+
                             </div>
 
                             <div className="label-container4">
@@ -519,7 +523,6 @@ function RoomForm() {
                                 <select
                                     value={wc}
                                     onChange={(e) => setWC(e.target.value)}
-                                    required
                                     title="Insira o tipo de WC (individual/partilhado)"
                                 >
                                     <option value="">Selecione...</option>
@@ -533,6 +536,7 @@ function RoomForm() {
                                 <select
                                     value={alojamento}
                                     onChange={(e) => setAlojamento(e.target.value)}
+                                    style={{ ...(alojamento === "" && { borderColor: "red", borderWidth: "5px" }) }}
                                     required
                                     title="Indique o tipo de alojamento"
                                 >
@@ -550,6 +554,7 @@ function RoomForm() {
                                 id="descricao"
                                 placeholder="Descrição"
                                 value={descricaoProprietaria}
+                                style={{ ...(descricaoProprietaria === "" && { borderColor: "red", borderWidth: "5px" }) }}
                                 onChange={(e) => setDescricaoProprietaria(e.target.value)}
                                 required
                                 className="descricao-input"
@@ -575,7 +580,7 @@ function RoomForm() {
                                 id="next"
                                 disabled={step === length || !isFormValid2()} // Disable if on last step or form is invalid
                                 onClick={() => handleButtonstep(1)}
-                                style={{ float: 'right', ...(step === length || !isFormValid2() && { backgroundColor: '#71b36e' }) }} // Grey when disabled
+                                style={{ float: 'right', ...(step === length || !isFormValid1() ? { backgroundColor: '#71b36e' } : {backgroundColor: "#18c454"}) }} // Grey when disabled
                             >
                                 Next
                             </button>
@@ -644,7 +649,7 @@ function RoomForm() {
                                 id="next"
                                 disabled={step === length || !isFormValid3()} // Disable if on last step or form is invalid
                                 onClick={() => handleButtonstep(1)}
-                                style={{ float: 'right', ...(step === length || !isFormValid3() && { backgroundColor: '#71b36e' }) }} // Grey when disabled
+                                style={{ float: 'right', ...(step === length || !isFormValid1() ? { backgroundColor: '#71b36e' } : {backgroundColor: "#18c454"}) }} // Grey when disabled
                             >
                                 Next
                             </button>
@@ -676,40 +681,26 @@ function RoomForm() {
                             </div>
 
                             <div className="label-container3">
-                                <label htmlFor="price" className="label1">Preço</label>
+                                <label htmlFor="price" className="label1">Preço *</label>
                                 <input
                                     type="number"
                                     placeholder="Preço"
-                                    value={price || ''}
-                                    onChange={(e) => {
-                                        const value = parseFloat(e.target.value);
-                                        if (value >= 0) {
-                                            setPrice(value);
-                                        } else {
-                                            // Optionally handle the error, e.g., show an error message
-                                            alert("O preço deve ser um valor positivo.");
-                                        }
-                                    }}
+                                    value={price || undefined}
+                                    style={{ ...(price === undefined && { borderColor: "red", borderWidth: "5px" }) }}
+                                    onChange={(e) => setPrice(e.target.value === '' || parseFloat(e.target.value) < 0 ? undefined : parseFloat(e.target.value))}
                                     min="0" // Ensure the input does not accept negative values
                                     required
                                     title="Indique o custo por mês"
                                 />
                             </div>
                             <div className="label-container3">
-                                <label htmlFor="area" className="label1">Área</label>
+                                <label htmlFor="area" className="label1">Área *</label>
                                 <input
                                     type="number"
                                     placeholder="Área"
-                                    value={area || ''}
-                                    onChange={(e) => {
-                                        const value = parseFloat(e.target.value);
-                                        if (value >= 0) {
-                                            setArea(value);
-                                        } else {
-                                            // Optionally handle the error, e.g., show an error message
-                                            alert("A área deve ser um valor positivo.");
-                                        }
-                                    }}
+                                    value={area || undefined}
+                                    style={{ ...(area === undefined && { borderColor: "red", borderWidth: "5px" }) }}
+                                    onChange={(e) => setArea(e.target.value === '' || parseFloat(e.target.value) < 0 ? undefined : parseFloat(e.target.value))}
                                     min="0" // Ensure the input does not accept negative values
                                     required
                                     title="Indique a área do quarto (em m^2)"
@@ -737,10 +728,11 @@ function RoomForm() {
                         </div>
                         <div className="location-info-container2">
                             <div className="label-container3">
-                                <label htmlFor="gastos" className="label1">Gastos</label>
+                                <label htmlFor="gastos" className="label1">Gastos *</label>
                                 <select
                                     value={gastos}
                                     onChange={(e) => setGastos(e.target.value)}
+                                    style={{ ...(gastos === "" && { borderColor: "red", borderWidth: "5px" }) }}
                                     required
                                     title="Indique se os gastos estão incluidos"
                                 >
@@ -751,10 +743,11 @@ function RoomForm() {
                             </div>
 
                             <div className="label-container6">
-                                <label htmlFor="Animais" className="label1">Animais</label>
+                                <label htmlFor="Animais" className="label1">Animais *</label>
                                 <select
                                     value={animais}
                                     onChange={(e) => setAnimais(e.target.value)}
+                                    style={{ ...(animais === "" && { borderColor: "red", borderWidth: "5px" }) }}
                                     required
                                     title="Indique se são permitodos animais no alojamento"
                                 >
@@ -769,7 +762,6 @@ function RoomForm() {
                                 <select
                                     value={fumadores}
                                     onChange={(e) => setFumadores(e.target.value)}
-                                    required
                                     title="Indique se é permitido fumar dentro do alojamento"
                                 >
                                     <option value="">Selecione...</option>
@@ -779,15 +771,20 @@ function RoomForm() {
                             </div>
 
                             <div className="label-container3">
-                                <label htmlFor="genero" className="label1">Género</label>
+                                <label htmlFor="genero" className="label1">Género *</label>
                                 <select
                                     value={genero}
+                                    style={{ ...(genero.length == 0 && { borderColor: "red", borderWidth: "5px" }) }}
                                     onChange={(e) => {
                                         const selectedOptions = Array.from(e.target.selectedOptions, option => option.value);
                                         if (selectedOptions.includes("Indiferente")) {
                                             setGenero(["Masculino", "Feminino"]);
                                             setGenero(["Indiferente"])
-                                        } else {
+                                        } 
+                                        else if (selectedOptions.includes("")){
+                                            setGenero([]);
+                                        }
+                                        else {
                                             setGenero(selectedOptions);
                                         }
                                     }}
