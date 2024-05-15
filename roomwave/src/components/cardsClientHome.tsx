@@ -12,7 +12,6 @@ const RoomSlider = () => {
   const [activePage, setActivePage] = useState(0);
   const [visitedRoomIds, setVisitedRoomIds] = useState<number[]>([]);
 
-
   useEffect(() => {
     const visitedRooms = JSON.parse(localStorage.getItem('visitedRooms') || '[]').map((id: any) => Number(id));
     setVisitedRoomIds(visitedRooms);
@@ -68,20 +67,20 @@ const RoomSlider = () => {
       <div className="room-slider-container">
         <div className="d-flex justify-content-between align-items-center">
           <button className="btn btn-light btn-xl" onClick={handlePrevPage} disabled={activePage === 0}><FiChevronLeft size={100} style={{ backgroundColor: "transparent", border: "none" }} /></button>
-          <Carousel style={{ width: "90%" }} className="room-slider-carousel" activeIndex={activePage} onSelect={() => { }}>
+          <Carousel style={{ width: "100%" }} className="room-slider-carousel" activeIndex={activePage} onSelect={() => { }}>
             {pages.map((page, index) => (
               <Carousel.Item key={index}>
                 <Row>
                   {Array.isArray(page) && page.map((room) => (
-                    <Col key={room.id} md={4}>
+                    <Col key={room.id} sm={12} md={4} className="mb-4">
                       <Link to={`/room/${room.id}`} style={{ textDecoration: 'none' }}>
-                        <Card className="shadow-lg border-0 position-relative" style={{ width: '90%', height: "1450px", borderRadius: "60px" }}>
+                        <Card className="shadow-lg border-0 position-relative" style={{ borderRadius: "60px", margin:"5px" }}>
                           <div className="room-image-container">
-                            <Card.Img className="room-image" style={{ width: "100%", height: "600px", objectFit: "cover" }} variant="top" src={room.imagem1} />
+                            <Card.Img className="room-image" style={{ width: "100%", height: "100%", objectFit: "cover" }} variant="top" src={room.imagem1} />
                           </div>
                           <Card.Body className="p-2">
                             <div className="text-center">
-                              <h1 style={{ fontSize: "50px" }}>Quarto de {room.Proprietaria}</h1>
+                              <h1 style={{ fontSize: "40px" }}>Quarto de {room.Proprietaria}</h1>
                               <div className="text-sm"><strong>Descrição:</strong> {room.description}</div>
                               <div className="text-sm"><strong>Localização:</strong> {room.localizacao}, {room.cidade}, {room.país}</div>
                               <div className="text-sm"><strong>Preço:</strong> <span style={{ color: '#FF7A41' }}>{room.price}€</span></div>
