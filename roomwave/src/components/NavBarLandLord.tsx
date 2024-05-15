@@ -40,7 +40,7 @@ function NavBarLandLord() {
     <><nav className="navbar border-bottom navbar-expand-lg myCustomNavbar" data-bs-theme="dark">
       <div className="container-fluid">
         <Link to="/HomeLandlord" className="navbar-brand">
-        <img src="../src/images/roomWaveLogo.png" width="158" height="80" alt="Logo" />
+        <img src="../src/images/roomWaveLogo.png" width="158" height="80" alt="Logo" style={{marginTop:"20px"}}/>
         </Link>
         <div className="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
           <ul className="navbar-nav">
