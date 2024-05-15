@@ -127,16 +127,6 @@ body {
   width: 25px;
 }
 
-.container1 input:focus ~ .search::after {
-  top: 0;
-  left: 0;
-  width: 25px;
-  height: 2px;
-  border: none;
-  background: white;
-  border-radius: 0%;
-  transform: rotate(-45deg);
-}
 
 .container1 input::placeholder {
   color: white;
