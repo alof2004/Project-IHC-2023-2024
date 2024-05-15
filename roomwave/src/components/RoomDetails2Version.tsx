@@ -133,6 +133,23 @@ const RoomDetailsSecond: React.FC = () => {
         return rating;
     };
 
+    const category = ["Funcionários", "Conforto", "Wifi", "Comodidade", "Relação Qualidade/Preço", "Limpeza", "Localização", "Instalações", "Serviços"];
+    function getOpinionPercentage(categoryName: string) {
+        const opinionPercentages: {[key: string]: number} = {
+            "Funcionários": 22,
+            "Conforto": 70,
+            "Wifi": 90,
+            "Comodidade": 85,
+            "Qualidade-Preço": 75,
+            "Limpeza": 65,
+            "Localização": 100,
+            "Instalações": 80,
+            "Serviços": 55
+        };
+    
+        return opinionPercentages[categoryName] || 0;
+    }
+
 return (
     <>
     <NavBar />
@@ -229,6 +246,35 @@ return (
         <div className='mapcontainer'>
             <h2 style={{fontSize:"60px", marginBottom:"50px"}}>Localização:</h2>
             <Map />
+        </div>
+        <h2 style={{fontSize:"40px", marginLeft:"50px"}}>Comentários de clientes</h2>
+        <div className='Comentarios'>
+            <ul>
+                <div className="group">
+                    {category.slice(0, 3).map((item, index) => (
+                        <div key={index}>
+                            <li>{item}</li>
+                            <progress value={getOpinionPercentage(item)} max="100" style={{ "--value": getOpinionPercentage(item), "--max": "100" } as any}></progress>
+                        </div>
+                    ))}
+                </div>
+                <div className="group">
+                    {category.slice(4,7).map((item, index) => (
+                        <div key={index}>
+                            <li>{item}</li>
+                            <progress value={getOpinionPercentage(item)} max="100" style={{ "--value": getOpinionPercentage(item), "--max": "100" } as any}></progress>
+                        </div>
+                    ))}
+                </div>
+                <div className="group">
+                    {category.slice(8,10).map((item, index) => (
+                        <div key={index}>
+                            <li>{item}</li>
+                            <progress value={getOpinionPercentage(item)} max="100" style={{ "--value": getOpinionPercentage(item), "--max": "100" } as any}></progress>
+                        </div>
+                    ))}
+                </div>
+            </ul>
         </div>
     </div>
     <Footer />
