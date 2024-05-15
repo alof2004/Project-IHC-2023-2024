@@ -15,10 +15,10 @@ const RoomSlider = () => {
 
   const filteredRooms = roomData.filter(room => room.telefone === parseInt(userPhoneNumber));
   const roomsJSON = localStorage.getItem('roomsData');
-  const roomsJSONParsed = roomsJSON ? JSON.parse(roomsJSON) : [];
+  const roomsJSONParsed = roomsJSON? JSON.parse(roomsJSON) : [];
 
   const localStorageRooms = roomsJSONParsed.filter((room: { telefone: string; }) => room.telefone === userPhoneNumber);
-  const allRooms = [...filteredRooms, ...localStorageRooms];
+  const allRooms = [...filteredRooms,...localStorageRooms];
 
   const renderRatingStars = (rating: number) => {
     const stars = [];
@@ -62,11 +62,11 @@ const RoomSlider = () => {
   const pages = splitRoomsIntoPages(allRooms, itemsPerPage);
   if (pages.length === 0) {
     return (
-      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', paddingTop: "50px" }}>
-        <Link to="/addroom">
-          <button className='arrendar'>
-            <h1 style={{ fontSize: "60px" }}>Ainda não adicionou quartos na nossa plataforma</h1><h1 style={{ fontSize: "60px" }}>Clique aqui para adicionar</h1></button>
-        </Link>
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', paddingTop:"50px" }}>
+      <Link to="/addroom">
+      <button className='arrendar'>
+        <h1 style={{ fontSize: "60px" }}>Ainda não adicionou quartos na nossa plataforma</h1><h1 style={{fontSize:"60px"}}>Clique aqui para adicionar</h1></button>
+      </Link>
       </div>);
   }
   else

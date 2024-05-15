@@ -14,19 +14,19 @@ function NavBar() {
       <nav className="navbar border-bottom navbar-expand-lg myCustomNavbar" data-bs-theme="dark">
         <div className="container-fluid">
           <Link to="/Home" className="navbar-brand">
-            <img src="../src/images/roomWaveLogo.png" width="95" height="50" alt="Logo"/>
+          <img src="../src/images/roomWaveLogo.png" width="148" height="80" alt="Logo" />
           </Link>
           <div className="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
             <ul className="navbar-nav">
               <li className="nav-item nav-item-flex">
                 <Link to="/login" className="nav-link">
-                  <img src="../src/images/perfil_icon.png" width="30" height="30" alt="Profile Icon"/>
+                  <img src="../src/images/perfil_icon.png" width="50" height="50" alt="Profile Icon"/>
                   Log-In
                 </Link>
               </li>
               <li className="nav-item nav-item-flex">
                 <Link to="/Ajuda" className="nav-link">
-                  <img src="../src/images/ajuda_icon.png" width="25" height="25" alt="Help Icon"/>Ajuda
+                  <img src="../src/images/ajuda_icon.png" width="50" height="50" alt="Help Icon"/>Ajuda
                 </Link>
               </li>
             </ul>
