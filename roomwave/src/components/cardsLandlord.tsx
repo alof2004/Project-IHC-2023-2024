@@ -15,10 +15,10 @@ const RoomSlider = () => {
 
   const filteredRooms = roomData.filter(room => room.telefone === parseInt(userPhoneNumber));
   const roomsJSON = localStorage.getItem('roomsData');
-  const roomsJSONParsed = roomsJSON? JSON.parse(roomsJSON) : [];
+  const roomsJSONParsed = roomsJSON ? JSON.parse(roomsJSON) : [];
 
   const localStorageRooms = roomsJSONParsed.filter((room: { telefone: string; }) => room.telefone === userPhoneNumber);
-  const allRooms = [...filteredRooms,...localStorageRooms];
+  const allRooms = [...filteredRooms, ...localStorageRooms];
 
   const renderRatingStars = (rating: number) => {
     const stars = [];
@@ -62,57 +62,58 @@ const RoomSlider = () => {
   const pages = splitRoomsIntoPages(allRooms, itemsPerPage);
   if (pages.length === 0) {
     return (
-      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', paddingTop:"50px" }}>
-      <Link to="/addroom">
-      <button className='arrendar'>
-        <h1 style={{ fontSize: "60px" }}>Ainda não adicionou quartos na nossa plataforma</h1><h1 style={{fontSize:"60px"}}>Clique aqui para adicionar</h1></button>
-      </Link>
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', paddingTop: "50px" }}>
+        <Link to="/addroom">
+          <button className='arrendar'>
+            <h1 style={{ fontSize: "60px" }}>Ainda não adicionou quartos na nossa plataforma</h1><h1 style={{ fontSize: "60px" }}>Clique aqui para adicionar</h1></button>
+        </Link>
       </div>);
   }
   else
-  return (
-    <div className="px-0">
-      <h1 style={{ marginLeft: '4%', marginTop: '4%', fontSize: '60px' }}>Os meus quartos:</h1>
-      <div className="room-slider-container">
-        <div className="d-flex justify-content-between align-items-center">
-          <button className="btn btn-light btn-xl" onClick={handlePrevPage} disabled={activePage === 0}><FiChevronLeft size={100} style={{ backgroundColor: 'transparent', border: 'none' }} /></button>
-          <Carousel style={{ width: '90%' }} className="room-slider-carousel" activeIndex={activePage} onSelect={() => { }}>
-            {pages.map((page, index) => (
-              <Carousel.Item key={index}>
-                <Row>
-                  {Array.isArray(page) && page.map((room) => (
-                    <Col key={room.id} md={4}>
-                      <Link to={`/room/${room.id}`} style={{ textDecoration: 'none' }}>
-                        <Card className="shadow-lg border-0 position-relative" style={{ width: '90%', height: '1450px', borderRadius: '60px' }}>
-                          <div className="room-image-container" style={{ width: '100%', height: '500px', overflow: 'hidden', borderTopLeftRadius: '60px', borderTopRightRadius: '60px' }}>
-                            <Card.Img className="room-image" style={{ width: '100%', height: '600px', objectFit: 'cover' }} variant="top" src={room.imagem1} />
-                          </div>
-                          <Card.Body className="p-2">
-                            <div className="text-center">
-                              <h1 style={{ fontSize: '50px' }}>Quarto de {room.Proprietaria}</h1>
-                              <div className="text-sm"><strong>Descrição:</strong> {room.description}</div>
-                              <div className="text-sm"><strong>Localização:</strong> {room.localizacao}, {room.cidade}, {room.país}</div>
-                              <div className="text-sm"><strong>Preço:</strong> <span style={{ color: '#FF7A41' }}>{room.price}€</span></div>
-                              <div className="text-sm"><strong>Avaliação:</strong> {renderRatingStars(room.Avaliacao)}</div>
-                              <div className="text-sm"><strong>Pessoas permitidas:</strong> {room.Pessoas_permitidas.join(', ')}</div>
-                              <div className="text-sm"><strong>Animais permitidos:</strong> {room.Animais}</div>
-                              <div className="text-sm"><strong>Gastos incluídos:</strong> {room.gastos === 'incluídas' ? 'Sim' : 'Não'}</div>
+    return (
+      <div className="px-0">
+        <h1 style={{ marginLeft: '4%', marginTop: '4%', fontSize: '60px' }}>Os meus quartos:</h1>
+        <div className="room-slider-container">
+          <div className="d-flex justify-content-between align-items-center">
+            <button className="btn btn-light btn-xl" onClick={handlePrevPage} disabled={activePage === 0}><FiChevronLeft size={100} style={{ backgroundColor: 'transparent', border: 'none' }} /></button>
+            <Carousel style={{ width: "90%" }} className="room-slider-carousel" controls={false} activeIndex={activePage} onSelect={() => { }}>
+              {pages.map((page, index) => (
+                <Carousel.Item key={index}>
+                  <Row>
+                    {Array.isArray(page) && page.map((room) => (
+                      <Col key={room.id} md={4} className='mb-4' style={{ transform: 'scale(0.5)' }}>
+                        <Link to={`/room/${room.id}`} style={{ textDecoration: 'none', display: 'block', transform: 'scale(2)' }}>
+                          <Card className="shadow-lg border-0" style={{ height: "1200px", borderRadius: "60px" }}>
+                            <div className="room-image-container">
+                              <Card.Img className="room-image" style={{ width: "100%", height: "400px", objectFit: "cover" , margin: '10px'}} variant="top" src={room.imagem1} />
                             </div>
-                          </Card.Body>
-                          {renderCertificationIcon(room.Avaliacao)}
-                        </Card>
-                      </Link>
-                    </Col>
-                  ))}
-                </Row>
-              </Carousel.Item>
-            ))}
-          </Carousel>
-          <button className="btn btn-light btn-xl" onClick={handleNextPage} disabled={activePage === pages.length - 1}><FiChevronRight size={100} /></button>
+                            <Card.Body className="p-2">
+                              <div className="text-center">
+                                <h1 style={{ fontSize: "50px" }}>Quarto de {room.Proprietaria}</h1>
+                                <div className="text-sm" style={{ fontSize: "40px" }}><strong>Descrição:</strong> {room.description}</div>
+                                <div className="text-sm" style={{ fontSize: "40px" }}><strong>Localização:</strong> {room.localizacao}, {room.cidade}, {room.país}</div>
+                                <div className="text-sm" style={{ fontSize: "40px" }}><strong>Preço:</strong> <span style={{ color: '#FF7A41', fontSize: '20px' }}>{room.price}€</span></div>
+                                <div className="text-sm" style={{ fontSize: "40px" }}><strong>Avaliação:</strong> {renderRatingStars(room.Avaliacao)}</div>
+                                <div className="text-sm" style={{ fontSize: "40px" }}><strong>Pessoas permitidas:</strong> {room.Pessoas_permitidas.join(', ')}</div>
+                                <div className="text-sm" style={{ fontSize: "40px" }}><strong>Animais permitidos:</strong> {room.Animais}</div>
+                                <div className="text-sm" style={{ fontSize: "40px" }}><strong>Gastos incluídos:</strong> {room.gastos === 'incluídas' ? 'Sim' : 'Não'}</div>
+                              </div>
+                            </Card.Body>
+                            {renderCertificationIcon(room.Avaliacao)}
+                          </Card>
+                        </Link>
+                      </Col>
+                    ))}
+                  </Row>
+                </Carousel.Item>
+              ))}
+            </Carousel>
+
+            <button className="btn btn-light btn-xl" onClick={handleNextPage} disabled={activePage === pages.length - 1}><FiChevronRight size={100} /></button>
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
 };
 
 export default RoomSlider;
