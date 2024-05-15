@@ -133,7 +133,7 @@ function LandlordForm(){
 
                 </div>
                 <input 
-                    type="text" 
+                    type="number" 
                     placeholder="Phone-Number" 
                     value={phone} 
                     onChange={(e) => setPhoneNumber(e.target.value)} 
