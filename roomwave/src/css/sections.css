@@ -4,13 +4,14 @@ section{
 
 .heading{
     text-align: center;
-    font-size: 3rem;
+    font-size: 4rem;
     color: #000000;
     padding: 1rem;
     margin: 2rem 0;
-    /* background: #f9b496 ; */
-    background-color: #ffffff;
+    background: #fff ;
     font-family:Arial, Helvetica, sans-serif;
+    border-radius: 20px;
+    box-shadow: 0 .9rem 1rem rgba(0,0,0,0.1);
     font-weight: bold;
 }
 
@@ -21,6 +22,7 @@ section{
     background: #000000;
     color: #fff;
     font-size: 1.7rem;
+    width: 600px;
     border-radius: 5rem;
     cursor:pointer;
     margin-left: 60%;
@@ -69,19 +71,18 @@ section{
     padding: 1rem 2rem;
     text-align: center;
     mix-blend-mode:screen ;
+    font-weight: bold;
     font-size:2rem;
 }
 
 
 .about .row .content h3{
-    font-size: 2.7rem;
+    font-size: 3rem;
     color:#000000;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold;
 }   
 
 .about .row .content p{
-    font-size: 40px;
+    font-size: 2rem;
     color: #000000;
     padding-top: 1rem;
     line-height: 1.5;
