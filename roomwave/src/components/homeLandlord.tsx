@@ -61,6 +61,6 @@ function homeLandlord() {
       <Footer />
     </div>
   );
-}
+}                       
 
 export default homeLandlord;

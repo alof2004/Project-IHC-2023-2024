@@ -37,7 +37,6 @@
 }
 
 .room-slider-container .carousel-inner .carousel-item {
-  display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
