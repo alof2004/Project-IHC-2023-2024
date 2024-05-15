@@ -146,7 +146,7 @@ const RoomDetailsSecond: React.FC = () => {
             "Conforto": 70,
             "Wifi": 90,
             "Comodidade": 85,
-            "Qualidade-Preço": 75,
+            "Relação Qualidade/Preço": 75,
             "Limpeza": 65,
             "Localização": 100,
             "Instalações": 80,
