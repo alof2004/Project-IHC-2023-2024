@@ -177,10 +177,14 @@ return (
                         </div>
                         <div className='Quarto2'>
                             {userData ? (
-                                <div className='telefone_contacto_butoes_avaliar'>
-                                    <img src="../../src/images/telefone_icon.png" width='80px' height='50px' alt="telefone icon" />
-                                    <span>Telefone: {room.telefone}</span>
-                                </div>                    
+                                <><div className='telefone_contacto_butoes_avaliar'>
+                                        <img src="../../src/images/telefone_icon.png" width='80px' height='50px' alt="telefone icon" />
+                                        <span>Telefone: {room.telefone}</span>
+                                    </div><div className='icon_avaliar'>
+                                            {isAvaliador && (
+                                                <Button variant="contained" onClick={() => navigate(`/avaliar/${ID}`)}>AVALIAR QUARTO</Button>
+                                            )}
+                                        </div></>                    
                                 ) : (
                                 <Link to="/login" style={{ textDecoration: 'none', color: 'inherit' }}>
                                     <div onClick={handleClick} className='senhorio_contacto_butoes_avaliar'>
@@ -216,9 +220,6 @@ return (
                         <div className='shareicon_contacto_butoes_avaliar' style={{ marginLeft: '10px' }}>
                             <img src='../../src/images/share.png' alt="share" style={{ width: '100%', height: '100%' }} />
                         </div>
-                        {isAvaliador && (
-                        <Button style={{width:"400px", height:"100px", fontSize:"40px", marginTop:"50px", marginLeft:"30px", color:"white", backgroundColor:"#76b476"}} variant="contained" onClick={() => navigate(`/avaliar/${ID}`)}>AVALIAR QUARTO</Button>
-                        )}
                     </div>
                 </div>
             </div>
