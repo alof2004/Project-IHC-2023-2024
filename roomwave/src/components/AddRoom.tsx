@@ -1,4 +1,4 @@
-import NavBarLandLord from './NavBarLandLord';
+import NavBarLandLord from './NavBarLandLordHOME';
 import RoomForm from './RoomForm';
 import React from 'react';
 import { Link } from 'react-router-dom';

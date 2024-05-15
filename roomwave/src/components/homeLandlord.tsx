@@ -6,7 +6,7 @@ import Footer from './footer';
 import CardsClientHome from './cardsLandlord';
 import ImageHome from './ImageHome';
 import LastImageHome from './LastImageHome';
-import NavBarLandLord from './NavBarLandLord';
+import NavBarLandLord from './NavBarLandLordHOME';
 
 
 function homeLandlord() {

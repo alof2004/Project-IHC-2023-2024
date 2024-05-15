@@ -1,4 +1,3 @@
-import NavBar from "./NavBar";
 import React, { useState, useEffect } from 'react';
 import '../css/FavoritesPage.css';
 import { useUser } from "./UserContext";
