@@ -34,7 +34,7 @@ const StyledForm = styled.form`
   position: relative;
   width:70%
   background: var(--color-brand);
-  margin-left: 25%;
+  margin-left: 5%;
   margin-top: 100px;
   background: var(--color-dark);
   
@@ -49,7 +49,7 @@ const StyledInput = styled.input`
   font-size: 40px;
   outline: 0;
   padding: 0 1.6rem;
-  width: 750px;
+  width: 700px;
   border-radius: 10px;
   appearance: none;
   position: relative;
