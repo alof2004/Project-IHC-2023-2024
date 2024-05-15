@@ -42,7 +42,7 @@ const StyledForm = styled.form`
 
 const StyledInput = styled.input`
   flex-grow: 1; /* Make input grow to fill available space */
-  height: 50px;
+  height: 60px;
   font-family: var(--font-fam);
   border: 0;
   color: var(--color-dark);
@@ -78,7 +78,7 @@ const StyledOption = styled.option`
 `;
 
 const StyledButton = styled.button`
-  height: 50px;
+  height: 60px;
   padding: 0 1.6rem;
   margin-left: 0.1rem;
   border-radius: 10px;
