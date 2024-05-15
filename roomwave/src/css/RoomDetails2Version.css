@@ -6,7 +6,7 @@
   border-radius: 20px;
   position: relative; /* Adiciona posição relativa para conter o botão de retorno absoluto */
   max-width: 95%;
-
+  margin-bottom: 10%;
 }
 
 .content {
@@ -277,7 +277,7 @@
  }
 
  .Quarto1{
-  width: 100%
+  width: 100%;
  }
 
  .Quarto2{
@@ -545,3 +545,24 @@ progress[value]::after {
   margin-top: 30px;
 }
 
+.icon_avaliar{
+  width: 100%;
+}
+
+.icon_avaliar button{
+  background-color: #000000;
+  margin-top: -60%;
+  color: rgb(255, 255, 255);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 2rem;
+  margin-left: 15%;
+  font-weight: bold;
+  border-radius: 20px !important;
+  box-shadow: 0 0 25px 0 #823d00, 0 20px 25px 0 rgba(0, 0, 0, 0.2);
+}
+
+.icon_avaliar button:hover{
+  background-color: #45ac00;
+}

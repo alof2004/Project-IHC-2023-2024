@@ -45,7 +45,7 @@ function NavBarClient() {
           <ul className="navbar-nav">
             <li className="nav-item nav-item-flex">
               <Link to="../../../HomeAvaliador" className="nav-link">
-                <img src="../../src/images/quarto.png" width="50" height="50" alt="Home Icon" />
+                <img src="../../src/images/quarto.png" width="50" height="60" alt="Home Icon" />
                   Quartos por Avaliar
               </Link>
             </li>
