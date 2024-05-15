@@ -489,7 +489,7 @@ function RoomForm() {
                             </div>
 
                             <div className="label-container3">
-                                <label htmlFor="cozinha" className="label1">Cozinha *</label>
+                                <label htmlFor="cozinha" className="label1">Cozinha</label>
                                 <select
                                     value={cozinha}
                                     onChange={(e) => setCozinha(e.target.value)}
@@ -504,12 +504,11 @@ function RoomForm() {
                             </div>
 
                             <div className="label-container5">
-                                <label htmlFor="Casas de banho" className="label1">Casas de Banho *</label>
+                                <label htmlFor="Casas de banho" className="label1">Casas de Banho</label>
                                 <input
                                     type="number"
                                     placeholder="Nº de casas de banhos"
                                     value={casasDeBanho || undefined}
-                                    style={{ ...(casasDeBanho === undefined && { borderColor: "red", borderWidth: "5px" }) }}
                                     onChange={(e) => setCasasDeBanho(e.target.value === '' || parseFloat(e.target.value) < 0 ? undefined : parseFloat(e.target.value))}
                                     required
                                     title="Número de casas de banho"
@@ -553,9 +552,7 @@ function RoomForm() {
                                 id="descricao"
                                 placeholder="Descrição"
                                 value={descricaoProprietaria}
-                                style={{ ...(descricaoProprietaria === "" && { borderColor: "red", borderWidth: "5px" }) }}
                                 onChange={(e) => setDescricaoProprietaria(e.target.value)}
-                                required
                                 className="descricao-input"
                                 title="Insira aqui uma descrição do quarto"
                             />
