@@ -22,9 +22,7 @@
             "Roupeiro",
             "Secretária",
             "Estante de livros",
-            "Sofá",
-            "Frigorífico",
-            "Equipamento de Cozinha"
+            "Sofá"
         ],
         "Descrição_Proprietaria": "Prédio de muita qualidade, muito cuidado, elevadores e porteiro. Espaço privado no terraço do imóvel com vista de Rio e cidade.",
         "Cama": "de casal",
@@ -100,8 +98,7 @@
         "mobilia": [
             "Mesa de estudo",
             "Guarda-roupa",
-            "Poltrona",
-            "Frigorífico pequeno"
+            "Poltrona"
         ],
         "Descrição_Proprietaria": "Edifício bem localizado, próximo a todas as comodidades e transportes públicos.",
         "Cama": "de solteiro",
