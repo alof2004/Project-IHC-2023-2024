@@ -73,7 +73,7 @@ const RoomSlider = () => {
                   {Array.isArray(page) && page.map((room) => (
                     <Col key={room.id} md={4} className='mb-4' style={{ transform: 'scale(0.5)' }}>
                       <Link to={`/room/${room.id}`} style={{ textDecoration: 'none', display: 'block', transform: 'scale(2)' }}>
-                        <Card className="shadow-lg border-0" style={{ height: "1200px", borderRadius: "60px" }}>
+                        <Card className="shadow-lg border-0" style={{ height: "1400px", borderRadius: "60px" }}>
                           <div className="room-image-container">
                             <Card.Img className="room-image" style={{ width: "100%", height: "400px", objectFit: "cover", margin: '10px' }} variant="top" src={room.imagem1} />
                           </div>
