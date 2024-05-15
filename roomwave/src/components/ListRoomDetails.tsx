@@ -117,9 +117,9 @@ const ListRoomDetails = ({ id }: { id: number }) => {
                 </ul>
             </div>
             <div className="wrapper room-card">
-            <h1 >Géneros permitidos:</h1>
             <ul className='ul_top'>
                 <div className="group">
+                <h1 >Géneros permitidos:</h1>
                     {room.Pessoas_permitidas.slice(0, 3).map((item, index) => (
                         <li key={index}>{item}</li>
                     ))}
@@ -129,9 +129,9 @@ const ListRoomDetails = ({ id }: { id: number }) => {
                     <li>{room.Animais}</li>
                 </div>
             </ul>
-            <h1>Locais disponiveis:</h1>
             <ul className='ul_top'>
                 <div className="group">
+                    <h1>Locais disponiveis:</h1>
                     {room.Locais_proximos.slice(0, 3).map((item, index) => (
                         <li key={index}>{item}</li>
                     ))}
