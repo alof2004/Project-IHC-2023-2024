@@ -71,6 +71,7 @@
         "Alojamento": "Apartamento",
         "Andar": "2º",
         "Avaliado": "Sim",
+        "Rating": [1, 4, 5, 5, 5, 4, 5, 5, 4, 5, 2, 4, 5],
         "Avaliacao": 4,
         "data_entrada": "2024-05-01T00:00:00.000Z",
         "data_saida": "2024-06-01T00:00:00.000Z",
@@ -192,6 +193,7 @@
         "Andar": "1º",
         "Avaliado": "Sim",
         "Avaliacao": 4.7,
+        "Rating": [1, 4, 5, 5, 5, 4, 5, 5, 4, 5, 2, 4, 5],
         "data_entrada": "2024-06-01T00:00:00.000Z",
         "data_saida": "2024-09-01T00:00:00.000Z",
         "telefone":910202992
@@ -2512,6 +2514,7 @@
         "Alojamento": "Apartamento",
         "Andar": "2º",
         "Avaliado": "Sim",
+        "Rating": [4, 4, 5, 3, 5, 4, 4, 5, 4, 5, 2, 4, 5],
         "Avaliacao": 4.5,
         "data_entrada": "2024-07-01T00:00:00.000Z",
         "data_saida": "2024-10-01T00:00:00.000Z",

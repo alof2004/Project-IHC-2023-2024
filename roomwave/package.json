@@ -19,7 +19,7 @@
     "@material/slider": "^14.0.0",
     "@mui/icons-material": "^5.15.17",
     "@mui/lab": "^5.0.0-alpha.170",
-    "@mui/material": "^5.15.17",
+    "@mui/material": "^5.15.18",
     "@mui/x-date-pickers-pro": "^7.4.0",
     "@react-google-maps/api": "^2.19.3",
     "@syncfusion/ej2-react-calendars": "^25.2.3",

@@ -1,12 +1,12 @@
 import '../css/RoomDetails2Version.css'; 
 import { Link } from 'react-router-dom'; // Assuming you're using React Router
 import details from './rooms.json';
+import './rating.json';
 import NavBar from './NavBar';
 import { SetStateAction, useEffect, useState } from 'react';
 import Map from './Map';
-import {useParams } from 'react-router-dom'; // Import useNavigate
+import {useParams} from 'react-router-dom'; // Import useNavigate
 import { useLocation, useNavigate } from 'react-router-dom';
-
 
 import Footer from './footer';
 import HeartIcon from './HeartIconDetails';
@@ -15,8 +15,11 @@ import Button1 from './button';
 import Carousel2 from './Carousel2';
 import StarRatingRoom from './StarRatingRoom';
 import ListRoomDetails from './ListRoomDetails';
-
-
+import CloseIcon from '@mui/icons-material/Close';
+import Modal from '@mui/material/Modal';
+import IconButton from '@mui/material/IconButton';
+import Box from '@mui/material/Box';
+import Avaliar from './AvaliadoDetails';
 interface Room {
     id: number;
     Proprietaria: string;
@@ -57,12 +60,17 @@ interface Room {
     data_entrada: string;
     data_saida: string;
     telefone: number;
-   }
+    Rating?: number[]
+}
 
 const RoomDetailsSecond: React.FC = () => {
     const { ID } = useParams();
     const [room, setRoom] = useState<Room | undefined>(undefined);
     const defaultImage = '../../src/images/default.jpg'; // Replace 'path_to_default_image' with the actual path to your default image
+    const [modalOpen, setModalOpen] = useState(false);
+
+    const handleOpen = () => setModalOpen(true);
+    const handleClose = () => setModalOpen(false);
 
     useEffect(() => {
         if (ID && parseInt(ID) < 100) {
@@ -75,7 +83,6 @@ const RoomDetailsSecond: React.FC = () => {
             setRoom(foundRoom);
         }
     }, [ID]);
-
 
     const userData = localStorage.getItem('userData');
     const location = useLocation();
@@ -104,21 +111,14 @@ const RoomDetailsSecond: React.FC = () => {
 
     console.log(ID);
     if (!room) {
-        console.log(room)
+        console.log(room);
         return <div>Loading...</div>; // or handle the case when room is not found
     }
 
     const isRated = (roomId: number) => {
-        // Retrieve the stored ratings from localStorage and parse them as JSON
         const storedRatings = JSON.parse(localStorage.getItem('avaliados') ?? '[]');
-    
-        // Find the rating for the given roomId
         const rating = storedRatings.find((rating: { id: number; avaliacao: number; }) => rating.id === roomId);
-    
-        // Log the rating object to the console
         console.log(rating);
-    
-        // Return the rating's avaliacao if it exists, otherwise return null
         return rating ? rating.avaliacao : null;
     };
 
@@ -133,15 +133,13 @@ const RoomDetailsSecond: React.FC = () => {
         return rating;
     };
 
-
     const handleBack = () => {
         navigate(-1);
     };
 
-
     const category = ["Funcionários", "Conforto", "Wifi", "Comodidade", "Relação Qualidade/Preço", "Limpeza", "Localização", "Instalações", "Serviços"];
     function getOpinionPercentage(categoryName: string) {
-        const opinionPercentages: {[key: string]: number} = {
+        const opinionPercentages: { [key: string]: number } = {
             "Funcionários": 22,
             "Conforto": 70,
             "Wifi": 90,
@@ -152,141 +150,171 @@ const RoomDetailsSecond: React.FC = () => {
             "Instalações": 80,
             "Serviços": 55
         };
-    
+
         return opinionPercentages[categoryName] || 0;
     }
 
-return (
-    <>
-    <NavBar />
-    <div className="page-container">
-        <div className="content">
-            <div className="return-button-container">
-                    <button onClick={handleBack}>
-                        <img src='../../src/images/return.png' className='return-button' alt="return" />
-                    </button>
-                </div>
-            <div className='all_info'> 
-                <div className='all_titles'> 
-                    <div className='proprietaria_localizacao'>
-                        <div className='Quarto1'>
-                            <h1>
-                                Quarto de {''} 
-                                <span style={{ color: "#FF7A41"}}>{room?.Proprietaria || ''}</span>
-                            </h1>
-                        </div>
-                        <div className='Quarto2'>
-                            {userData ? (
-                                <><div className='telefone_contacto_butoes_avaliar'>
-                                        <img src="../../src/images/telefone_icon.png" width='80px' height='50px' alt="telefone icon" />
-                                        <span>Telefone: {room.telefone}</span>
-                                    </div><div className='icon_avaliar'>
-                                            {isAvaliador && (
-                                                <Button variant="contained" onClick={() => navigate(`/avaliar/${ID}`)}>AVALIAR QUARTO</Button>
-                                            )}
-                                        </div></>                    
-                                ) : (
-                                <Link to="/login" style={{ textDecoration: 'none', color: 'inherit' }}>
-                                    <div onClick={handleClick} className='senhorio_contacto_butoes_avaliar'>
-                                    <img src="../../src/images/telefone_icon.png" width='70px' height='40px' alt="telefone icon" />
-                                    <span>Faça login para contactar o senhorio</span>
-                                    </div>  
-                                </Link>
-                                )}
-                        </div>
-                    </div>
-                    <h2>
-                        Localização: {''} 
-                        <span>{room?.localizacao}, {room?.cidade}</span>
-                    </h2>
-                    <div className='rating_box'>
-                        <h2>
-                            Avaliação atribuida pelo RoomWave: {''} 
-                        </h2>
-                        <div className='rating_box_margin'>
-                            <StarRatingRoom rating={getRating(parseInt(ID || '', 10))} />
-                            
-                        </div>
-                    </div>
-                    <button className="button-55" role="button">Ver detalhes de Avaliaçao</button>
-                </div>
+    const rating = getRating(parseInt(ID || '', 10));
 
-                <div className='contacto_butoes_avaliar'>  
-                    <Button1 />
-                    <div className="icons_all" style={{ marginTop: '20px', display: 'flex', alignItems: 'center' }}>
-                        <div className='hearticon_contacto_butoes_avaliar' style={{ marginRight: '10px', marginTop:"10px" }}>
-                            <HeartIcon roomId={parseInt(ID?? '')} isFavorite={false} />
+    return (
+        <>
+            <NavBar />
+            <div className="page-container">
+                <div className="content">
+                    <div className="return-button-container">
+                        <button onClick={handleBack}>
+                            <img src='../../src/images/return.png' className='return-button' alt="return" />
+                        </button>
+                    </div>
+                    <div className='all_info'>
+                        <div className='all_titles'>
+                            <div className='proprietaria_localizacao'>
+                                <div className='Quarto1'>
+                                    <h1>
+                                        Quarto de {''}
+                                        <span style={{ color: "#FF7A41" }}>{room?.Proprietaria || ''}</span>
+                                    </h1>
+                                </div>
+                                <div className='Quarto2'>
+                                    {userData ? (
+                                        <><div className='telefone_contacto_butoes_avaliar'>
+                                            <img src="../../src/images/telefone_icon.png" width='80px' height='50px' alt="telefone icon" />
+                                            <span>Telefone: {room.telefone}</span>
+                                        </div><div className='icon_avaliar'>
+                                                {isAvaliador && (
+                                                    <Button variant="contained" onClick={() => navigate(`/avaliar/${ID}`)}>AVALIAR QUARTO</Button>
+                                                )}
+                                            </div></>
+                                    ) : (
+                                        <Link to="/login" style={{ textDecoration: 'none', color: 'inherit' }}>
+                                            <div onClick={handleClick} className='senhorio_contacto_butoes_avaliar'>
+                                                <img src="../../src/images/telefone_icon.png" width='70px' height='40px' alt="telefone icon" />
+                                                <span>Faça login para contactar o senhorio</span>
+                                            </div>
+                                        </Link>
+                                    )}
+                                </div>
+                            </div>
+                            <h2>
+                                Localização: {''}
+                                <span>{room?.localizacao}, {room?.cidade}</span>
+                            </h2>
+                            <div className='rating_box'>
+                                <h2>
+                                    Avaliação atribuida pelo RoomWave: {''}
+                                </h2>
+                                <div className='rating_box_margin'>
+                                    <StarRatingRoom rating={rating} />
+                                </div>
+                            </div>
+                            {rating > 0 && (
+                                <button className="button-55" role="button" onClick={handleOpen}>Ver detalhes de Avaliaçao</button>
+                            )}
                         </div>
-                        <div className='shareicon_contacto_butoes_avaliar' style={{ marginLeft: '10px' }}>
-                            <img src='../../src/images/share.png' alt="share" style={{ width: '100%', height: '100%' }} />
+
+                        <div className='contacto_butoes_avaliar'>
+                            <Button1 />
+                            <div className="icons_all" style={{ marginTop: '20px', display: 'flex', alignItems: 'center' }}>
+                                <div className='hearticon_contacto_butoes_avaliar' style={{ marginRight: '10px', marginTop: "10px" }}>
+                                    <HeartIcon roomId={parseInt(ID ?? '')} isFavorite={false} />
+                                </div>
+                                <div className='shareicon_contacto_butoes_avaliar' style={{ marginLeft: '10px' }}>
+                                    <img src='../../src/images/share.png' alt="share" style={{ width: '100%', height: '100%' }} />
+                                </div>
+                            </div>
                         </div>
                     </div>
+                    <Carousel2 room={{
+                        imagem1: room?.imagem1 || defaultImage,
+                        imagem2: room?.imagem2 || defaultImage,
+                        imagem3: room?.imagem3 || defaultImage,
+                        imagem4: room?.imagem4 || defaultImage
+                    }} />
+                    <h1 style={{ fontSize: "50px", marginTop: "3%", marginLeft: "5%" }}> {room?.price}€ + despesas {room?.gastos ?? ''}</h1>
+                    <h2 style={{ fontSize: "50px", marginTop: "3%", marginLeft: "5%" }}>Informações sobre o quarto</h2>
+                    <p style={{ fontSize: "35px", marginBottom: "3%", marginLeft: "5%", marginRight: "5%" }}>
+                        A habitação dispõem de uma área de {room.area}m2 e é rodeada por um ambiente {room.Ambiente}. Inclui uma {room.mobilia.join(", ").toLowerCase()} e, o mais importante, uma cama {room.Cama.toLowerCase()}. <br />
+                        Ambiente {room.Ambiente}. A cozinha é {room.Cozinha.toLowerCase()}, a casa tem disponiveis {room.casas_de_banho} casas de banho.<br />
+                        Na sua proximidade encontra vários edifícios como: {room.Locais_proximos.join(", ")}.
+                        Autocarros {room.Transportes}. {room.Descrição_Proprietaria}<br />
+                        Pessoas do género(s) {room.Pessoas_permitidas[0]} são permitidas, bem como {room.Pessoas_permitidas[1]}. Animais são {room.Animais} e o acesso a fumadores é {room.Fumadores}.<br />
+                        As despesas estão {room.gastos}<br />
+                    </p>
+                </div>
+                <ListRoomDetails id={parseInt(ID || '', 10)} />
+                <div className='mapcontainer'>
+                    <h2 style={{ fontSize: "60px", marginBottom: "50px", marginLeft: "50px" }}>Localização:</h2>
+                    <Map />
+                </div>
+                <h2 style={{ fontSize: "40px", marginLeft: "50px" }}>Comentários de clientes</h2>
+                <div className='Comentarios'>
+                    <ul>
+                        <div className="group">
+                            {category.slice(0, 3).map((item, index) => (
+                                <div key={index}>
+                                    <li>{item}</li>
+                                    <progress value={getOpinionPercentage(item)} max="100" style={{ "--value": getOpinionPercentage(item), "--max": "100" } as any}></progress>
+                                </div>
+                            ))}
+                        </div>
+                        <div className="group">
+                            {category.slice(4, 7).map((item, index) => (
+                                <div key={index}>
+                                    <li>{item}</li>
+                                    <progress value={getOpinionPercentage(item)} max="100" style={{ "--value": getOpinionPercentage(item), "--max": "100" } as any}></progress>
+                                </div>
+                            ))}
+                        </div>
+                        <div className="group">
+                            {category.slice(8, 10).map((item, index) => (
+                                <div key={index}>
+                                    <li className='marker1'>{item}</li>
+                                    <progress value={getOpinionPercentage(item)} max="100" style={{ "--value": getOpinionPercentage(item), "--max": "100" } as any}></progress>
+                                </div>
+                            ))}
+                        </div>
+                    </ul>
                 </div>
             </div>
-                <Carousel2 room={{ 
-                    imagem1: room?.imagem1 || defaultImage,
-                    imagem2: room?.imagem2 || defaultImage,
-                    imagem3: room?.imagem3 || defaultImage,
-                    imagem4: room?.imagem4 || defaultImage,
-                }} />
-        </div>
-        <div className='price'>
-            <h1>
-                <span style={{ fontSize:"50px",color:"#FF7A41", fontWeight:"bold",marginLeft:"5%", marginRight:"1%"}}>
-                Preço por mês:
-                </span>
-                <span style={{fontSize:"80px"}}>
-                     {room?.price}€
-                </span>  + despesas {room?.gastos ?? ''}
-            </h1>
-            <h2 style={{fontSize:"50px", marginTop:"3%",marginLeft:"5%"}}>Informações sobre o quarto</h2>
-            <p style={{fontSize:"35px", marginBottom:"3%",marginLeft:"5%",marginRight:"5%"}} > 
-                A habitação dispõem de uma área de {room.area}m2 e é rodeada por um ambiente {room.Ambiente}. Inclui uma {room.mobilia.join(", ").toLowerCase()} e, o mais importante, uma cama {room.Cama.toLowerCase()}. <br />
-                Ambiente {room.Ambiente}. A cozinha é {room.Cozinha.toLowerCase()}, a casa tem disponiveis {room.casas_de_banho} casas de banho.<br />
-                Na sua proximidade encontra vários edifícios como: {room.Locais_proximos.join(", ")}.
-                Autocarros {room.Transportes}. {room.Descrição_Proprietaria}<br />
-                Pessoas do género(s) {room.Pessoas_permitidas[0]} são permitidas, bem como {room.Pessoas_permitidas[1]}. Animais são {room.Animais} e o acesso a fumadores é {room.Fumadores}.<br />
-                As despesas estão {room.gastos}<br />
-            </p>
-        </div>
-        <ListRoomDetails id={parseInt(ID || '', 10)} />
-        <div className='mapcontainer'>
-            <h2 style={{fontSize:"60px", marginBottom:"50px", marginLeft:"50px"}}>Localização:</h2>
-            <Map />
-        </div>
-        <h2 style={{fontSize:"40px", marginLeft:"50px"}}>Comentários de clientes</h2>
-        <div className='Comentarios'>
-            <ul>
-                <div className="group">
-                    {category.slice(0, 3).map((item, index) => (
-                        <div key={index}>
-                            <li>{item}</li>
-                            <progress value={getOpinionPercentage(item)} max="100" style={{ "--value": getOpinionPercentage(item), "--max": "100" } as any}></progress>
-                        </div>
-                    ))}
-                </div>
-                <div className="group">
-                    {category.slice(4,7).map((item, index) => (
-                        <div key={index}>
-                            <li>{item}</li>
-                            <progress value={getOpinionPercentage(item)} max="100" style={{ "--value": getOpinionPercentage(item), "--max": "100" } as any}></progress>
-                        </div>
-                    ))}
-                </div>
-                <div className="group">
-                    {category.slice(8,10).map((item, index) => (
-                        <div key={index}>
-                            <li className='marker1'>{item}</li>
-                            <progress value={getOpinionPercentage(item)} max="100" style={{ "--value": getOpinionPercentage(item), "--max": "100" } as any}></progress>
-                        </div>
-                    ))}
-                </div>
-            </ul>
-        </div>
-    </div>
-    <Footer />
-    </>
-);
+            <Footer />
+
+            {/* Modal Implementation */}
+            <Modal
+                open={modalOpen}
+                onClose={handleClose}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+            >
+                <Box sx={{
+                    position: 'absolute',
+                    top: '50%',
+                    left: '50%',
+                    transform: 'translate(-50%, -50%)',
+                    maxWidth: '90vw', // Adjusted to use viewport width
+                    maxHeight: '85vh', // Adjusted to use viewport height
+                    overflowY: 'auto', // Allows scrolling if content exceeds the modal height
+                    bgcolor: 'background.paper',
+                    boxShadow: 24,
+                    p: 4,
+                    borderRadius: '12px', // Optional: Adds rounded corners to the modal
+                }}>
+                            <IconButton
+                            onClick={handleClose}
+                            sx={{
+                                position: 'absolute',
+                                top: '8px',
+                                right: '8px',
+                                color: 'red',
+                            }}
+                            
+                        >
+                        <CloseIcon />
+                        </IconButton>
+                    <Avaliar />
+                </Box>
+            </Modal>
+        </>
+    );
 };
 
 export default RoomDetailsSecond;
