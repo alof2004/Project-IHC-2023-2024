@@ -8,6 +8,7 @@ import {useParams } from 'react-router-dom'; // Import useNavigate
 import { useLocation, useNavigate } from 'react-router-dom';
 
 
+
 import Footer from './footer';
 import HeartIcon from './HeartIconDetails';
 import Button from '@mui/material/Button';
@@ -15,6 +16,7 @@ import Button1 from './button';
 import Carousel2 from './Carousel2';
 import StarRatingRoom from './StarRatingRoom';
 import ListRoomDetails from './ListRoomDetails';
+import Opinions_carrousel from './opinions_carrousel';
 
 
 interface Room {
@@ -282,6 +284,10 @@ return (
                     ))}
                 </div>
             </ul>
+        </div>
+        <div className='client_opinions'>
+            <h2 style={{fontSize:"40px", marginLeft:"50px"}}>Veja aqui a opinião de outros clientes:</h2>
+            <Opinions_carrousel />
         </div>
     </div>
     <Footer />
