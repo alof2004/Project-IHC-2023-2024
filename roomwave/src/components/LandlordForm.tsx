@@ -93,7 +93,7 @@ function LandlordForm(){
                     onChange={(e) => setPassword(e.target.value)} 
                     required 
                 />
-                                <h2 style={{marginRight:"400px", fontSize:"25px", marginBottom:"-20px"}}>Data de Nascimento:</h2>
+                <h2 style={{marginRight:"450px", fontSize:"20px", marginBottom:"-20px"}}>Data de Nascimento:</h2>
 
                 <div className="job-pass">
                     <input 
