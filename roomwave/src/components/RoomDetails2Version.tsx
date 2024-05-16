@@ -8,6 +8,8 @@ import Map from './Map';
 import {useParams} from 'react-router-dom'; // Import useNavigate
 import { useLocation, useNavigate } from 'react-router-dom';
 
+
+
 import Footer from './footer';
 import HeartIcon from './HeartIconDetails';
 import Button from '@mui/material/Button';
@@ -15,6 +17,7 @@ import Button1 from './button';
 import Carousel2 from './Carousel2';
 import StarRatingRoom from './StarRatingRoom';
 import ListRoomDetails from './ListRoomDetails';
+import Opinions_carrousel from './opinions_carrousel';
 import CloseIcon from '@mui/icons-material/Close';
 import Modal from '@mui/material/Modal';
 import IconButton from '@mui/material/IconButton';
@@ -139,19 +142,19 @@ const RoomDetailsSecond: React.FC = () => {
 
     const category = ["Funcionários", "Conforto", "Wifi", "Comodidade", "Relação Qualidade/Preço", "Limpeza", "Localização", "Instalações", "Serviços"];
     function getOpinionPercentage(categoryName: string) {
-        const opinionPercentages: { [key: string]: number } = {
-            "Funcionários": 22,
-            "Conforto": 70,
-            "Wifi": 90,
-            "Comodidade": 85,
-            "Relação Qualidade/Preço": 75,
-            "Limpeza": 65,
-            "Localização": 100,
-            "Instalações": 80,
-            "Serviços": 55
+        const opinionPercentages: {[key: string]: number} = {
+            "Funcionários": Math.floor(Math.random() * 101),
+            "Conforto": Math.floor(Math.random() * 101),
+            "Wifi": Math.floor(Math.random() * 101),
+            "Comodidade": Math.floor(Math.random() * 101),
+            "Relação Qualidade/Preço": Math.floor(Math.random() * 101),
+            "Limpeza": Math.floor(Math.random() * 101),
+            "Localização": Math.floor(Math.random() * 101),
+            "Instalações": Math.floor(Math.random() * 101),
+            "Serviços": Math.floor(Math.random() * 101)
         };
-
-        return opinionPercentages[categoryName] || 0;
+    
+        return opinionPercentages[categoryName] || 0;
     }
 
     const rating = getRating(parseInt(ID || '', 10));
@@ -275,6 +278,10 @@ const RoomDetailsSecond: React.FC = () => {
                         </div>
                     </ul>
                 </div>
+        <div className='client_opinions'>
+            <h2 style={{fontSize:"40px", marginLeft:"50px"}}>Veja aqui a opinião de outros clientes:</h2>
+            <Opinions_carrousel />
+        </div>
             </div>
             <Footer />
 

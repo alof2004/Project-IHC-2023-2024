@@ -1,0 +1,20 @@
+[
+    {
+        "id": "1",
+        "name": "John Doe",
+        "país": "Estados Unidos",
+        "comentario": "Que estadia maravilhosa! O quarto era impecável, confortável e tão acolhedor. A equipe foi incrivelmente atenciosa e prestativa, tornando a minha estadia ainda mais agradável. Mal posso esperar para voltar e desfrutar deste refúgio novamente!"
+    },
+    {
+        "id": "2",
+        "name": "Jane Doe",
+        "país": "Portugal",
+        "comentario": "O quarto é lindo e muito confortável. A equipe foi muito simpática e prestativa. A localização é perfeita, perto de tudo. Eu definitivamente voltarei!"
+    },
+    {
+        "id": "3",
+        "name": "John Smith",
+        "país": "Brasil",
+        "comentario": "O apartamento é incrível! O quarto era muito confortável e aconchegante. A equipe foi muito simpática e prestativa. A localização é perfeita, perto de tudo. Eu definitivamente voltarei!"
+    }
+]
