@@ -239,7 +239,7 @@ const AvaliadorTable = () => {
                   </IconButton>
                 </button>
                 <button onClick={() => handleAvaliarClick(item.id)} disabled={evaluatedRooms.includes(Number(item.id))}>
-                <IconButton aria-label="edit" style={{ color: evaluatedRooms.includes(Number(item.id)) ? 'grey' : 'black' }}>
+                <IconButton aria-label="edit" style={{ display: evaluatedRooms.includes(Number(item.id)) ? 'none' : '' }}>
                     <EditIcon style={{ color: 'black' }} fontSize='large' />
                   </IconButton>
                 </button>
