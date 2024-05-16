@@ -143,9 +143,9 @@ function Avaliar() {
                                     <th>{index + 1}</th>
                                     <td>{s.statement}</td>
                                     {s.scores.map((score, i) => (
-                                        <td key={i} className="response">
+                                        <td key={i} className="response" style={{ textAlign: "center", verticalAlign: "middle" }}>
                                             {room && room.Rating[index] === score ? (
-                                                <span className="numeros" >&#10003;</span>
+                                                <span className="numeros" style={{fontSize:"30px", alignItems:"center"}}>&#10003;</span>
                                             ) : null}
                                         </td>
                                     ))}
