@@ -249,7 +249,7 @@ const RoomDetailsSecond: React.FC = () => {
                     <h2 style={{ fontSize: "60px", marginBottom: "50px", marginLeft: "50px" }}>Localização:</h2>
                     <Map />
                 </div>
-                <h2 style={{ fontSize: "40px", marginLeft: "50px" }}>Comentários de clientes</h2>
+                <h2 style={{ fontSize: "40px", marginLeft: "50px",fontWeight:'bold' }}>Comentários de clientes</h2>
                 <div className='Comentarios'>
                     <ul>
                         <div className="group">
@@ -279,7 +279,7 @@ const RoomDetailsSecond: React.FC = () => {
                     </ul>
                 </div>
         <div className='client_opinions'>
-            <h2 style={{fontSize:"40px", marginLeft:"50px"}}>Veja aqui a opinião de outros clientes:</h2>
+            <h2 style={{fontSize:"40px", marginLeft:"50px",fontWeight:'bold'}}>Veja aqui a opinião de outros clientes:</h2>
             <Opinions_carrousel />
         </div>
             </div>
