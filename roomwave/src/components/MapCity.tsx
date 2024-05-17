@@ -121,8 +121,6 @@ interface Room {
       center={centerRoom? [centerRoom.latitude, centerRoom.longitude] : [40.393944738596296, -8.450301889205338]}  // Example center coordinates, replace with actual city center
       zoom={13}
       style={{ height: "100vh" }}
-      dragging={false}
-      scrollWheelZoom={false}
     >
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -133,20 +131,20 @@ interface Room {
           `
           .projcard-blue-1 {
             height: 400px;
-            font-size: 16px;
+            font-size: 10px!important;
           `
         }
       </style>
       {popupOpen && selectedRoom && (
         <Popup position={[selectedRoom.latitude, selectedRoom.longitude]} className="custom-popup" >
-                <div className="custom-popup-content" style={{width:"1000px"}}>
+                <div className="custom-popup-content" style={{width:"1000px", fontSize:"10px!important"}}>
                     <div key={selectedRoom.id} className="projcard projcard-blue-1" style={{margin:"0px!important"}} onClick={() => navigate(`/room/${selectedRoom.id}`)}>
                         <div className="projcard-innerbox">
                         <img className="projcard-img" src={selectedRoom.imagem1} alt={`Room ${selectedRoom.id}`} />
                         <div className="projcard-textbox">
-                            <div className="projcard-title">{selectedRoom.description}</div>
-                            <div className="projcard-subtitle"><span className="location-label" style={{color:"#FF7A41",fontWeight:"bold"}}>Localização: </span>{selectedRoom.localizacao}</div>
-                            <div className="projcard-subtitle" style={{ fontFamily: "Circular, Helvetica, sans-serif", color: isAvailableToday ? 'green' : 'red' }}>
+                            <div className="projcard-title" style={{fontSize:"20px"}}>{selectedRoom.description}</div>
+                            <div className="projcard-subtitle" style={{fontSize:"15px"}}><span className="location-label" style={{color:"#FF7A41",fontWeight:"bold", fontSize:"15px"}}>Localização: </span>{selectedRoom.localizacao}</div>
+                            <div className="projcard-subtitle" style={{ fontFamily: "Circular, Helvetica, sans-serif", color: isAvailableToday ? 'green' : 'red', fontSize:"15px" }}>
                                 {isAvailableToday ? (
                                     <span>Disponível hoje</span>
                                 ) : (
@@ -158,25 +156,25 @@ interface Room {
 
                             <div className="containerList">
                                 <div className="row-list">
-                                    <div className="projcard-description-items">
+                                    <div style={{fontSize:"15px"}}className="projcard-description-items">
                                         <img className="mini" src="../../src/images/bed.png" /> Cama {selectedRoom.Cama}
                                     </div>
-                                    <div className="projcard-description-items">
+                                    <div  style={{fontSize:"15px"}} className="projcard-description-items">
                                         <img className="mini" src="../../src/images/building.png" />Andar: {selectedRoom.Andar}
                                     </div>
                                 </div>
                                 <div className="row-list">
-                                    <div className="projcard-description-items">
+                                    <div  style={{fontSize:"15px"}} className="projcard-description-items">
                                         <img className="mini" src="../../src/images/area.png" /> Área total: {selectedRoom.area} m²
                                     </div>
-                                    <div className="projcard-description-items">
+                                    <div  style={{fontSize:"15px"}} className="projcard-description-items">
                                         <img className="mini" src="../../src/images/WC.png" />WC {selectedRoom.WC}
                                     </div>
                                 </div>
                             </div>
-                            <div className="projcard-tagbox">
+                            <div  style={{fontSize:"15px"}} className="projcard-tagbox">
                             {selectedRoom.mobilia.map((service, index) => (
-                                <span key={index} className="projcard-tag">{service}</span>
+                                <span  style={{fontSize:"15px"}} key={index} className="projcard-tag">{service}</span>
                             ))}
                             </div>
                         </div>
