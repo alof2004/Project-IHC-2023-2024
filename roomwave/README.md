@@ -8,7 +8,13 @@
 ## Setup Instructions
 
 - npm install
+- npm install vite
 - npm run dev
+
+IMPORTANTE: Os avaliadores não têm página de registo visto que os emails são dados pela empresa RoomWave sendo as credenciais para testar essa página:
+
+- email: admin
+- password: admin
 
 ## Algumas alterações realizadas depois da apresentação do projeto:
 
