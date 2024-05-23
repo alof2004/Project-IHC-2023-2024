@@ -300,7 +300,7 @@ function RoomsListPage() {
                                             onChange={handleServiceChange}
                                             checked={selectedServices.includes(service)}
                                         />
-                                        <label style={{ marginTop: "0px" }} htmlFor={service}>{service}</label>
+                                        <label style={{ marginTop: "0px" , fontSize:"25px"}} htmlFor={service}>{service}</label>
                                     </div>
                                 ))}
                         </fieldset>
@@ -342,7 +342,7 @@ function RoomsListPage() {
                                             onChange={handleElectroChange}
                                             checked={selectedElectro.includes(eletronicos)}
                                         />
-                                        <label style={{ marginTop: "0px" }} htmlFor={eletronicos}>{eletronicos}</label>
+                                        <label style={{ marginTop: "0px"  , fontSize:"25px"}} htmlFor={eletronicos}>{eletronicos}</label>
                                     </div>
                                 ))}
                         </fieldset>

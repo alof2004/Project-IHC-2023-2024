@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -137,6 +138,16 @@ const Footer = () => {
                     </button>
                   </form>
                 </div>
+                <div className="layout_item w-50">
+                <nav className="c-nav-tool">
+                  <h4 style={{marginTop:"100px"}}>Trabalho Realizado por:</h4>
+                  <h4 style={{fontWeight:"initial"}}>Afonso Ferreira - 113480</h4>
+                  <h4 style={{fontWeight:"initial"}}>João Neto - 113482</h4>
+                  <h4 style={{fontWeight:"initial"}}>Regina Tavares - 114129</h4>
+                  <h4 style={{fontWeight:"initial"}}>Tomás Brás - 112665</h4>
+                  <h4 style={{fontWeight:"initial", marginTop:"10px"}}>Interação Humano Computador 23-24</h4>
+                </nav>
+              </div>
               </div>
 
               <div className="layout_item w-25">
@@ -144,18 +155,18 @@ const Footer = () => {
                   <h4 className="c-nav-tool_title">Quartos</h4>
                   <ul className="c-nav-tool_list">
                     <li>
-                      <a href="/collections/all" className="c-link">Shop All</a>
+                      <h5 style={{marginTop:"20px"}} className="c-link"><Link to={'../../rooms/Lisboa'}>Quartos em Lisboa</Link></h5>
                     </li>
 
                     <li>
-                      <a href="/pages/about-us" className="c-link">About Us</a>
+                      <h5  style={{marginTop:"-40px"}} className="c-link"><Link to={'../../rooms/Porto'}>Quartos no Porto</Link></h5>
                     </li>
 
                     <li>
-                      <a href="/blogs/community" className="c-link">Community</a>
+                      <h5 style={{marginTop:"-40px"}} className="c-link"><Link to={'../../rooms/Aveiro'}>Quartos em Aveiro</Link></h5>
                     </li>
                     <li>
-                      <a href="#" className="c-link"></a>
+                      <a className="c-link"></a>
                     </li>
                   </ul>
                 </nav>
@@ -163,7 +174,7 @@ const Footer = () => {
 
               <div className="layout_item w-25">
                 <nav className="c-nav-tool">
-                  <h4 className="c-nav-tool_title">Ajuda</h4>
+                  <h4 className="c-nav-tool_title"><Link to={'../../Ajuda'}>Ajuda</Link></h4>          
                 </nav>
               </div>
             </div>
