@@ -9,12 +9,9 @@
 
 - npm install
 - npm install vite
-- npm run dev
+- npm run dev (neste diretório)
 
-IMPORTANTE: Os avaliadores não têm página de registo visto que os emails são dados pela empresa RoomWave sendo as credenciais para testar essa página:
-
-- email: admin
-- password: admin
+IMPORTANTE: O avaliador não tem uma pagina de registo, visto que a empresa disponibliza as contas aos seus trabalhadores. Para testar a página do avaliador as credenciais são: - Email: admin - Password: admin
 
 ## Algumas alterações realizadas depois da apresentação do projeto:
 
