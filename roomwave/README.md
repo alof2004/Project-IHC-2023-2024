@@ -8,7 +8,7 @@
 ## Setup Instructions
 
 - npm install
-- npm run dev
+- npm run dev (neste diretório)
 
 ## Algumas alterações realizadas depois da apresentação do projeto:
 
