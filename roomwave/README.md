@@ -1,30 +1,24 @@
-# React + TypeScript + Vite
+# RoomWave - Projeto de IHC
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Prerequisites
 
-Currently, two official plugins are available:
+- Node.js (version 20.13.1 or later)
+- npm (version 10.5.2 or later)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Setup Instructions
 
-## Expanding the ESLint configuration
+- npm install
+- npm run dev
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Algumas alterações realizadas depois da apresentação do projeto:
 
-- Configure the top-level `parserOptions` property like this:
+Correção da alguns problemas que foram apresentados na avaliação heurística: - Botão de editar avaliação não aparece se a avaliação ao quarto já foi realizada - É dada mais informação aos - Mais botões de voltar atrás - Map now allows movement and is not static
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+Para além disso colocámos um botão que mostra a os detalhes da avaliação de quartos na sua página específica chamada "Mostrar Avaliação", que foi uma crítica feita por um dos utilizadores que achávamos dificl de implementar mas que se tornou bastante fácil até.
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Membros do grupo:
+
+- Afonso Ferreira: 113480
+- João Neto: 113482
+- Regina Tavares: 114129
+- Tomás Brás: 112665
