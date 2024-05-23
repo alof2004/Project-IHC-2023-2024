@@ -7,7 +7,7 @@
 
 ## Setup Instructions
 
-- Instalar node.js (caso ainda ainda não esteja instalado) - sudo apt install nodejs
+- Instalar node.js (caso ainda ainda não esteja instalado)
 
 - npm install
 - npm install vite
