@@ -15,7 +15,7 @@ function Calendar({ onDateChange }: { onDateChange: (startDate: string, endDate:
   ]);
 
   // Function to handle changes
-  const handleDateChange = (item) => {
+  const handleDateChange = (item: { selection: { startDate: any; endDate: any; key?: string; }; }) => {
     setState([item.selection]);
     const startDate = format(item.selection.startDate, "yyyy-MM-dd");
     const endDate = item.selection.endDate ? format(item.selection.endDate, "yyyy-MM-dd") : "";

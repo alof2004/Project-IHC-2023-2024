@@ -427,7 +427,7 @@ function RoomsListPage() {
 
             <div className="projcard-container" style={{ width: '75%', float:"right"}} >
             <h1>Lista de quartos em {city}:</h1>
-                <h5>
+                <h5 style={{fontSize:"30px", color:"black"}}>
                 {filteredRooms.length === 1 ? (
                     <>Foi encontrado 1 quarto em {city}</>
                 ) : (
