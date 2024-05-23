@@ -141,7 +141,7 @@ const Footer = () => {
 
               <div className="layout_item w-25">
                 <nav className="c-nav-tool">
-                  <h4 className="c-nav-tool_title">Menu</h4>
+                  <h4 className="c-nav-tool_title">Quartos</h4>
                   <ul className="c-nav-tool_list">
                     <li>
                       <a href="/collections/all" className="c-link">Shop All</a>
@@ -155,7 +155,7 @@ const Footer = () => {
                       <a href="/blogs/community" className="c-link">Community</a>
                     </li>
                     <li>
-                      <a href="#" className="c-link">Vibes</a>
+                      <a href="#" className="c-link"></a>
                     </li>
                   </ul>
                 </nav>
@@ -163,34 +163,7 @@ const Footer = () => {
 
               <div className="layout_item w-25">
                 <nav className="c-nav-tool">
-                  <h4 className="c-nav-tool_title">Support</h4>
-                  <ul className="c-nav-tool_list">
-                    <li className="c-nav-tool_item">
-                      <a href="/pages/shipping-returns" className="c-link">Shipping &amp; Returns</a>
-                    </li>
-
-                    <li className="c-nav-tool_item">
-                      <a href="/pages/help" className="c-link">Help &amp; FAQ</a>
-                    </li>
-
-                    <li className="c-nav-tool_item">
-                      <a href="/pages/terms-conditions" className="c-link">Terms &amp; Conditions</a>
-                    </li>
-
-                    <li className="c-nav-tool_item">
-                      <a href="/pages/privacy-policy" className="c-link">Privacy Policy</a>
-                    </li>
-
-                    <li className="c-nav-tool_item">
-                      <a href="/pages/contact" className="c-link">Contact</a>
-                    </li>
-
-                    <li className="c-nav-tool_item">
-                      <a href="/account/login" className="c-link">
-                        Login
-                      </a>
-                    </li>
-                  </ul>
+                  <h4 className="c-nav-tool_title">Ajuda</h4>
                 </nav>
               </div>
             </div>
